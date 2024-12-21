@@ -17,29 +17,25 @@ class Player(pygame.sprite.Sprite):
         self.direction = vector()
         self.speed = 200
         self.gravity = 1000
+        self.jump = False
+        self.jump_distance = 900
 
         # collision
         self.collision_sprites = collision_sprites
+        self.collides_with = {
+            "floor": False,
+            "left": False,
+            "right": False
+        }
+
+    from ._player_collision import collision, check_collision_side
 
     def input(self):
         keys = pygame.key.get_pressed()
         self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
-        self.direction.x = self.direction.normalize().x if self.direction else self.direction.x
 
-    def collision(self, direction):
-        for sprite in self.collision_sprites:
-            if sprite.rect.colliderect(self.rect):
-                if direction == "horizontal":
-                    if self.rect.right >= sprite.rect.left and self.old_rect.right <= sprite.old_rect.left: # direction.x = 1
-                        self.rect.right = sprite.rect.left
-                    if self.rect.left <= sprite.rect.right and self.old_rect.left >= sprite.old_rect.right: # direction.x = -1
-                        self.rect.left = sprite.rect.right
-                else:
-                    if self.rect.bottom >= sprite.rect.top and self.old_rect.bottom <= sprite.old_rect.top: # direction.y = -1
-                        self.rect.bottom = sprite.rect.top
-                    if self.rect.top <= sprite.rect.bottom and self.old_rect.top >= sprite.old_rect.bottom: # direction.y = 1
-                        self.rect.top = sprite.rect.bottom
-                    self.direction.y = 0
+        if keys[pygame.K_SPACE]:
+            self.jump = True
 
     def move(self, dt):
         self.rect.x += self.direction.x * self.speed * dt
@@ -49,6 +45,11 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.direction.y * dt
         self.direction.y += self.gravity / 2 * dt
         self.collision("vertical")
+
+        if self.jump:
+            self.jump = False
+            if self.collides_with["floor"]:
+                self.direction.y = -self.jump_distance
 
     def update(self, dt):
         self.old_rect = self.rect.copy()

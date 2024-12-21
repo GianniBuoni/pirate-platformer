@@ -1,6 +1,6 @@
 from settings import *
 from lib.sprites import Sprite
-from lib.player import Player
+from player import Player
 
 class Level:
     def __init__(self, tmx_map):

@@ -12,7 +12,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     py = pkgs.writeShellScriptBin "py" ''
-      python3 main.py
+      python3 src/main.py
     '';
   in {
     devShells.${system}.default = pkgs.mkShell {
