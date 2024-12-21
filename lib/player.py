@@ -8,17 +8,13 @@ class Player(pygame.sprite.Sprite):
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
 
     # movement
-        self.direction = vector()
+        self.direction = pygame.Vector2()
         self.speed = 200
 
     def input(self):
         keys = pygame.key.get_pressed()
-        input_vector = vector(0,0)
-        if keys[pygame.K_RIGHT]:
-            input_vector.x += 1
-        if keys[pygame.K_LEFT]:
-            input_vector.x -= 1
-            self.direction = input_vector.normalize() if input_vector else input_vector
+        self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
+        self.direction = self.direction.normalize() if self.direction else self.direction
 
     def move(self, dt):
         self.rect.topleft += self.direction * self.speed * dt
