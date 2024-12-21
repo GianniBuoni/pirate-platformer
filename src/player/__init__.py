@@ -53,6 +53,6 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, dt):
         self.old_rect = self.rect.copy()
-        self.check_collision_side()
         self.input()
         self.move(dt)
+        self.check_collision_side()
