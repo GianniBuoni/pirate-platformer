@@ -14,7 +14,7 @@ class Level:
 
     def setup(self, tmx_map):
         for x, y, surf in tmx_map.get_layer_by_name("Terrain").tiles():
-            Sprite((x * TILE_SIZE,y * TILE_SIZE), surf, self.all_sprites)
+            Sprite((x * TILE_SIZE,y * TILE_SIZE), surf, (self.all_sprites, self.collision_sprites))
 
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "player":
