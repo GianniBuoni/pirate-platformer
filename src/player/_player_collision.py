@@ -1,3 +1,4 @@
+from settings import *
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -19,4 +20,7 @@ def collision(self: "Player", direction):
                 self.direction.y = 0
 
 def check_collision_side(self: "Player"):
-    pass
+    collide_rects = [x.rect for x in self.collision_sprites]
+    floor_rect = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
+
+    self.collides_with["floor"] = True if floor_rect.collidelist(collide_rects) >= 0 else False

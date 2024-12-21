@@ -22,7 +22,7 @@ class Player(pygame.sprite.Sprite):
 
         # collision
         self.collision_sprites = collision_sprites
-        self.collides_with = {
+        self.collides_with: dict[str, bool] = {
             "floor": False,
             "left": False,
             "right": False
@@ -34,7 +34,7 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
 
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] and self.collides_with["floor"]:
             self.jump = True
 
     def move(self, dt):
@@ -46,12 +46,13 @@ class Player(pygame.sprite.Sprite):
         self.direction.y += self.gravity / 2 * dt
         self.collision("vertical")
 
+        # jumping logic
         if self.jump:
             self.jump = False
-            if self.collides_with["floor"]:
-                self.direction.y = -self.jump_distance
+            self.direction.y = -self.jump_distance
 
     def update(self, dt):
         self.old_rect = self.rect.copy()
+        self.check_collision_side()
         self.input()
         self.move(dt)
