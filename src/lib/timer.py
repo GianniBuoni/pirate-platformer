@@ -8,6 +8,9 @@ class Timer:
         self.active = False
         self.repeat = repeat
 
+    def __bool__(self):
+        return self.active
+
     def activate(self):
         self.active = True
         self.start_time = get_ticks()

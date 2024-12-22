@@ -32,5 +32,5 @@ def check_collision_side(self: "Player"):
     )
 
     self.collides_with["floor"] = True if floor_rect.collidelist(collide_rects) >= 0 else False
-    self.collides_with["right"] = True if right_rect.collidelist(collide_rects) >= 0 else False
     self.collides_with["left"] = True if left_rect.collidelist(collide_rects) >= 0 else False
+    self.collides_with["right"] = True if right_rect.collidelist(collide_rects) >= 0 else False
