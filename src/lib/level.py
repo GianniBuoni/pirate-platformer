@@ -3,7 +3,6 @@ from lib.groups import *
 
 from player import Player
 from lib.sprites import MovingSprite, Sprite
-import settings
 
 class Level:
     def __init__(self, tmx_map):
@@ -36,7 +35,7 @@ class Level:
                     start_pos = (obj.x + obj.width / 2, obj.y)
                     end_pos = (obj.x + obj.width / 2, obj.y + obj.height)
                 speed = obj.properties["speed"]
-                MovingSprite(start_pos, end_pos, move_direction, speed, self.all_sprites)
+                MovingSprite(start_pos, end_pos, move_direction, speed, self.all_sprites, self.collision_sprites)
 
     def run(self, dt):
         self.display_surface.fill("black")

@@ -23,6 +23,10 @@ def move(self: "Player", dt):
         self.rect.y += self.direction.y * dt
         self.direction.y += self.gravity / 2 * dt
 
+    # platform logic
+    if self.platform:
+        self.rect.center += self.platform.direction * self.platform.speed * dt
+
     self.collision("vertical")
 
     # jumping logic

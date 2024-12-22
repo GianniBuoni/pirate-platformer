@@ -1,5 +1,8 @@
 from settings import *
+from typing import Union
+
 from lib.groups import CollisionSprites
+from lib.sprites import MovingSprite
 from lib.timer import Timer
 
 class Player(pygame.sprite.Sprite):
@@ -26,6 +29,7 @@ class Player(pygame.sprite.Sprite):
             "left": False,
             "right": False
         }
+        self.platform: Union[MovingSprite, None] = None
 
         # timers
         self.timers = {

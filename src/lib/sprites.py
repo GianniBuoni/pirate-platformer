@@ -17,14 +17,15 @@ class MovingSprite(Sprite):
         self.start_pos = start_pos
         self.rect.center = self.start_pos
         self.end_pos = end_pos
+        self.moving = True
 
         # movement props
         self.speed = speed
-        self.move_direction = move_direction
+        self.move_axis = move_direction
         self.direction = vector(1,0) if move_direction == "x" else vector(0,1)
 
     def constraints(self):
-        match self.move_direction:
+        match self.move_axis:
             case "x":
                 if any((self.rect.centerx >= self.end_pos[0], self.rect.centerx <= self.start_pos[0])):
                     self.rect.centerx = self.end_pos[0] if self.direction.x == 1 else self.start_pos[0]
