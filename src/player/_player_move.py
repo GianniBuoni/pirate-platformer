@@ -27,7 +27,6 @@ def move(self: "Player", dt):
 
     # jumping logic
     if self.jump:
-        print(self.timers["wjump t/o"].active)
         if self.collides_with["floor"]:
             self.timers["wjump t/o"].activate()
             self.direction.y = -self.jump_distance

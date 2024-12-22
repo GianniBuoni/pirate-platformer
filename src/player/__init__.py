@@ -1,11 +1,11 @@
 from settings import *
-from lib.sprites import Sprite
+from lib.groups import CollisionSprites
 from lib.timer import Timer
 
 class Player(pygame.sprite.Sprite):
     def __init__(
             self, pos,
-            collision_sprites: "pygame.sprite.Group[Sprite]",
+            collision_sprites: CollisionSprites,
             *groups
     ):
         super().__init__(*groups)
