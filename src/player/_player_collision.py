@@ -10,23 +10,23 @@ def collision(self: "Player", axis):
             if axis == "horizontal":
                 if (
                     self.hitbox.right >= sprite.rect.left
-                    and int(self.old_rect.right) <= sprite.old_rect.left
+                    and int(self.old_rect.right) <= int(sprite.old_rect.left)
                 ):
                     self.hitbox.right = sprite.rect.left
                 if (
                     self.hitbox.left <= sprite.rect.right
-                    and int(self.old_rect.left) >= sprite.old_rect.right
+                    and int(self.old_rect.left) >= int(sprite.old_rect.right)
                 ):
                     self.hitbox.left = sprite.rect.right
             else:
                 if (
                     self.hitbox.bottom >= sprite.rect.top
-                    and int(self.old_rect.bottom) <= sprite.old_rect.top
+                    and int(self.old_rect.bottom) <= int(sprite.old_rect.top)
                 ):
                     self.hitbox.bottom = sprite.rect.top
                 if (
                     self.hitbox.top <= sprite.rect.bottom
-                    and int(self.old_rect.top) >= sprite.old_rect.bottom
+                    and int(self.old_rect.top) >= int(sprite.old_rect.bottom)
                 ):
                     self.hitbox.top = sprite.rect.bottom
                 self.direction.y = 0
@@ -37,7 +37,7 @@ def platform_collision(self: "Player"):
             if sprite.rect.colliderect(self.hitbox):
                 if (
                     self.hitbox.bottom >= sprite.rect.top
-                    and int(self.old_rect.bottom) <= sprite.old_rect.top
+                    and int(self.old_rect.bottom) <= int(sprite.old_rect.top)
                 ):
                     self.hitbox.bottom = sprite.rect.top
                     self.direction.y = 0 if self.direction.y > 0 else self.direction.y
