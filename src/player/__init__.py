@@ -5,6 +5,8 @@ from lib.groups import CollisionSprites
 from lib.sprites import MovingSprite
 from lib.timer import Timer
 
+from os.path import join
+
 class Player(pygame.sprite.Sprite):
     def __init__(
             self, pos,
@@ -13,10 +15,12 @@ class Player(pygame.sprite.Sprite):
             *groups
     ):
         super().__init__(*groups)
-        self.image = pygame.Surface((48,56))
-        self.image.fill("red")
+        self.image = pygame.image.load(join("graphics", "player", "idle", "0.png")).convert_alpha()
+
+        # rects
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
-        self.old_rect = self.rect.copy()
+        self.hitbox = self.rect.inflate(-76, -36)
+        self.old_rect = self.hitbox.copy()
 
         # movement
         self.direction = vector()
@@ -41,26 +45,5 @@ class Player(pygame.sprite.Sprite):
         }
 
     from ._player_collision import collision, platform_collision, check_collision_side
+    from ._player_core_methods import input, update_timers, update
     from ._player_move import move
-
-    def input(self):
-        keys = pygame.key.get_pressed()
-
-        if not self.timers["jump t/o"]:
-            self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
-            if keys[pygame.K_DOWN]:
-                self.timers["platform t/o"].activate()
-
-        if keys[pygame.K_SPACE]:
-            self.jump = True
-
-    def update_timers(self):
-        for timer in self.timers.values():
-            timer.update()
-
-    def update(self, dt):
-        self.update_timers()
-        self.old_rect = self.rect.copy()
-        self.input()
-        self.move(dt)
-        self.check_collision_side()
