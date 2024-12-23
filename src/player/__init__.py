@@ -9,6 +9,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(
             self, pos,
             collision_sprites: CollisionSprites,
+            platform_sprites,
             *groups
     ):
         super().__init__(*groups)
@@ -24,20 +25,22 @@ class Player(pygame.sprite.Sprite):
 
         # collision
         self.collision_sprites = collision_sprites
+        self.platform_sprites = platform_sprites
+        self.platform: Union[MovingSprite, None] = None
         self.collides_with: dict[str, bool] = {
             "floor": False,
             "left": False,
             "right": False
         }
-        self.platform: Union[MovingSprite, None] = None
 
         # timers
         self.timers = {
             "jump t/o": Timer(400),
-            "wjump t/o": Timer(250)
+            "wjump t/o": Timer(250),
+            "platform t/o": Timer(300)
         }
 
-    from ._player_collision import collision, check_collision_side
+    from ._player_collision import collision, platform_collision, check_collision_side
     from ._player_move import move
 
     def input(self):
@@ -45,6 +48,8 @@ class Player(pygame.sprite.Sprite):
 
         if not self.timers["jump t/o"]:
             self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
+            if keys[pygame.K_DOWN]:
+                self.timers["platform t/o"].activate()
 
         if keys[pygame.K_SPACE]:
             self.jump = True
