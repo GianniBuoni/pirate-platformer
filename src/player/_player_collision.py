@@ -8,14 +8,26 @@ def collision(self: "Player", direction):
     for sprite in self.collision_sprites:
         if sprite.rect.colliderect(self.rect):
             if direction == "horizontal":
-                if self.rect.right >= sprite.rect.left and int(self.old_rect.right) <= int(sprite.old_rect.left): # direction.x = 1
+                if (
+                    self.rect.right >= sprite.rect.left
+                    and int(self.old_rect.right) <= int(sprite.old_rect.left)
+                ):
                     self.rect.right = sprite.rect.left
-                if self.rect.left <= sprite.rect.right and int(self.old_rect.left) >= int(sprite.old_rect.right): # direction.x = -1
+                if (
+                    self.rect.left <= sprite.rect.right
+                    and int(self.old_rect.left) >= int(sprite.old_rect.right)
+                ):
                     self.rect.left = sprite.rect.right
             else:
-                if self.rect.bottom >= sprite.rect.top and int(self.old_rect.bottom) <= int(sprite.old_rect.top): # direction.y = -1
+                if (
+                    self.rect.bottom >= sprite.rect.top
+                    and int(self.old_rect.bottom) <= int(sprite.old_rect.top)
+                ):
                     self.rect.bottom = sprite.rect.top
-                if self.rect.top <= sprite.rect.bottom and int(self.old_rect.top) >= int(sprite.old_rect.bottom): # direction.y = 1
+                if (
+                    self.rect.top <= sprite.rect.bottom
+                    and int(self.old_rect.top) >= int(sprite.old_rect.bottom)
+                ):
                     self.rect.top = sprite.rect.bottom
                 self.direction.y = 0
 
