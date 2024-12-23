@@ -9,7 +9,7 @@ class Level:
         self.display_surface = pygame.display.get_surface()
 
         # groups
-        self.all_sprites = pygame.sprite.Group()
+        self.all_sprites = AllSprites()
         self.collision_sprites = CollisionSprites()
         self.platform_sprites = pygame.sprite.Group()
 
@@ -23,7 +23,7 @@ class Level:
         # objects
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "player":
-                Player((obj.x, obj.y), self.collision_sprites, self.platform_sprites, self.all_sprites)
+                self.player = Player((obj.x, obj.y), self.collision_sprites, self.platform_sprites, self.all_sprites)
 
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
             if obj.name == "helicopter":
@@ -41,4 +41,4 @@ class Level:
     def run(self, dt):
         self.display_surface.fill("black")
         self.all_sprites.update(dt)
-        self.all_sprites.draw(self.display_surface)
+        self.all_sprites.draw(self.player.hitbox.center)
