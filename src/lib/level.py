@@ -1,11 +1,12 @@
+from random import uniform
 from settings import *
 from lib.groups import *
 
 from player import Player
-from lib.sprites import MovingSprite, Sprite
+from lib.sprites import AnimatedSprite, MovingSprite, Sprite
 
 class Level:
-    def __init__(self, tmx_map):
+    def __init__(self, tmx_map, level_frames):
         self.display_surface = pygame.display.get_surface()
 
         # groups
@@ -13,9 +14,9 @@ class Level:
         self.collision_sprites = CollisionSprites()
         self.platform_sprites = pygame.sprite.Group()
 
-        self.setup(tmx_map)
+        self.setup(tmx_map, level_frames)
 
-    def setup(self, tmx_map):
+    def setup(self, tmx_map, level_frames):
         # tiles
         for layer in ["BG", "Terrain", "FG", "Platforms"]:
             for x, y, surf in tmx_map.get_layer_by_name(layer).tiles():
@@ -34,6 +35,21 @@ class Level:
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "player":
                 self.player = Player((obj.x, obj.y), self.collision_sprites, self.platform_sprites, self.all_sprites)
+            elif obj.name in ("crate", "barrel"): # codespell:ignore
+                Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
+            else: # all other animated sprites on the objects layer
+                frames = level_frames[obj.name]
+                groups = [self.all_sprites]
+                animation_speed = ANIMATION_SPEED
+                z = Z_LAYERS["main"]
+
+                # modify frames, groups, animation_speed, and z based on object name
+                if obj.name == "floor_spike" and obj.inverted:
+                    frames = [pygame.transform.flip(x, False, True) for x in frames]
+                if obj.name in ("palm_large", "palm_small"): groups.append(self.platform_sprites)
+                if "palm" in obj.name: animation_speed += uniform(-1,1)
+                if "bg" in obj.name: z = Z_LAYERS["bg"]
+                AnimatedSprite((obj.x, obj.y), groups, frames=frames, z=z, animation_speed=animation_speed)
 
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
             if obj.name == "helicopter":
