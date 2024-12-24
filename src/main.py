@@ -18,10 +18,15 @@ class Game:
 
     def import_assets(self):
         self.level_frames = {
+            "big_chain": import_folder("graphics", "level", "big_chains"),
+            "candle": import_folder("graphics", "level", "candle"),
+            "candle_light": import_folder("graphics", "level", "candle light"),
             "flag": import_folder("graphics", "level", "flag"),
             "floor_spike": import_folder("graphics", "enemies", "floor_spikes"),
             "helicopter": import_folder("graphics", "level", "helicopter"),
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
+            "small_chain": import_folder("graphics", "level", "small_chains"),
+            "window": import_folder("graphics", "level", "window"),
         }
         self.level_frames.update(import_sub_folders("graphics", "level", "palms"))
 
