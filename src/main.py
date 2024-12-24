@@ -19,8 +19,9 @@ class Game:
     def import_assets(self):
         self.level_frames = {
             "flag": import_folder("graphics", "level", "flag"),
+            "floor_spike": import_folder("graphics", "enemies", "floor_spikes"),
+            "helicopter": import_folder("graphics", "level", "helicopter"),
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
-            "floor_spike": import_folder("graphics", "enemies", "floor_spikes")
         }
         self.level_frames.update(import_sub_folders("graphics", "level", "palms"))
 

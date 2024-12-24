@@ -49,10 +49,13 @@ class Level:
                 if obj.name in ("palm_large", "palm_small"): groups.append(self.platform_sprites)
                 if "palm" in obj.name: animation_speed += uniform(-1,1)
                 if "bg" in obj.name: z = Z_LAYERS["bg"]
-                AnimatedSprite((obj.x, obj.y), groups, frames=frames, z=z, animation_speed=animation_speed)
+
+                AnimatedSprite((obj.x, obj.y), frames, groups, z=z, animation_speed=animation_speed)
 
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
             if obj.name == "helicopter":
+                frames = level_frames[obj.name]
+
                 if obj.width > obj.height: # horizontal movement
                     move_direction = "x"
                     start_pos = (obj.x, obj.y + obj.height / 2)
@@ -62,7 +65,8 @@ class Level:
                     start_pos = (obj.x + obj.width / 2, obj.y)
                     end_pos = (obj.x + obj.width / 2, obj.y + obj.height)
                 speed = obj.properties["speed"]
-                MovingSprite(start_pos, end_pos, move_direction, speed, self.all_sprites, self.platform_sprites)
+
+                MovingSprite(start_pos, end_pos, move_direction, speed, frames, self.all_sprites, self.platform_sprites)
 
     def run(self, dt):
         self.display_surface.fill("black")
