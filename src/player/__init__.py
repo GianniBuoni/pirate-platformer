@@ -16,6 +16,7 @@ class Player(pygame.sprite.Sprite):
     ):
         super().__init__(*groups)
         self.image = pygame.image.load(join("graphics", "player", "idle", "0.png")).convert_alpha()
+        self.z = Z_LAYERS["main"]
 
         # rects
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
@@ -41,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         self.timers = {
             "jump t/o": Timer(400),
             "wjump t/o": Timer(250),
-            "platform t/o": Timer(300)
+            "platform t/o": Timer(100)
         }
 
     from ._player_collision import collision, platform_collision, check_collision_side

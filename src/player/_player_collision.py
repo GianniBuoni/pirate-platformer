@@ -61,4 +61,8 @@ def check_collision_side(self: "Player"):
 
     self.platform = None
     for sprite in self.platform_sprites:
-        if sprite.rect.colliderect(floor_rect): self.platform = sprite
+        if (
+            sprite.rect.colliderect(floor_rect)
+            and hasattr(sprite, "moving")
+        ):
+            self.platform = sprite

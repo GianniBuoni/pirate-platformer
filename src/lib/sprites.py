@@ -2,18 +2,21 @@ from settings import *
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(
-            self, pos, surf = pygame.Surface((TILE_SIZE,TILE_SIZE)), *groups
+            self, pos, *groups,
+            surf = pygame.Surface((TILE_SIZE,TILE_SIZE)),
+            z = Z_LAYERS["main"],
     ) -> None:
         super().__init__(*groups)
-        self.image = surf
-        self.image.fill("white")
+        self.image: pygame.Surface = surf
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
         self.old_rect = self.rect.copy()
+        self.z = z
 
 class MovingSprite(Sprite):
     def __init__(self, start_pos, end_pos, move_direction, speed, *groups) -> None:
         surface = pygame.Surface((200, 50))
-        super().__init__(start_pos, surface, *groups)
+        super().__init__(start_pos, *groups, surf = surface)
+        self.image.fill("white")
         self.start_pos = start_pos
         self.rect.center = self.start_pos
         self.end_pos = end_pos
