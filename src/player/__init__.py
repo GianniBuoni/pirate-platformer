@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.frames, self.frames_idx = frames, 0
         self.state, self.facing_right = "idle", True
         self.image = self.frames[self.state][self.frames_idx]
-        self.animation_speed = 8
+        self.animation_speed = ANIMATION_SPEED
 
         # rects
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
@@ -49,7 +49,7 @@ class Player(pygame.sprite.Sprite):
             "platform t/o": Timer(100)
         }
 
-    from ._player_animate import animate
+    from ._player_animate import animate, get_state
     from ._player_collision import collision, platform_collision, check_collision_side
     from ._player_core_methods import input, update_timers, update
     from ._player_move import move

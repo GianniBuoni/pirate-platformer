@@ -9,6 +9,8 @@ def input(self: "Player"):
 
     if not self.timers["jump t/o"]:
         self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
+        if self.direction.x > 0: self.facing_right = True
+        if self.direction.x < 0: self.facing_right = False
         if keys[pygame.K_DOWN]:
             self.timers["platform t/o"].activate()
 
@@ -21,8 +23,13 @@ def update_timers(self: "Player"):
 
 def update(self: "Player", dt):
     self.update_timers()
+
+    # movement and collision
     self.old_rect = self.hitbox.copy()
     self.input()
     self.move(dt)
     self.check_collision_side()
+
+    # animation
+    self.get_state()
     self.animate(dt)
