@@ -27,6 +27,9 @@ class Game:
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
             "small_chain": import_folder("graphics", "level", "small_chains"),
             "window": import_folder("graphics", "level", "window"),
+
+            # player imported as a nested dictionary
+            "player": import_sub_folders("graphics", "player")
         }
         self.level_frames.update(import_sub_folders("graphics", "level", "palms"))
 

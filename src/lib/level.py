@@ -34,7 +34,8 @@ class Level:
         # objects
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "player":
-                self.player = Player((obj.x, obj.y), self.collision_sprites, self.platform_sprites, self.all_sprites)
+                frames = level_frames[obj.name]
+                self.player = Player((obj.x, obj.y), frames, self.collision_sprites, self.platform_sprites, self.all_sprites)
             elif obj.name in ("crate", "barrel"): # codespell:ignore
                 Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
             else: # all other animated sprites on the objects layer

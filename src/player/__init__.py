@@ -5,18 +5,22 @@ from lib.groups import CollisionSprites
 from lib.sprites import MovingSprite
 from lib.timer import Timer
 
-from os.path import join
-
 class Player(pygame.sprite.Sprite):
     def __init__(
             self, pos,
+            frames: dict[str, list[pygame.Surface]],
             collision_sprites: CollisionSprites,
             platform_sprites,
             *groups
     ):
         super().__init__(*groups)
-        self.image = pygame.image.load(join("graphics", "player", "idle", "0.png")).convert_alpha()
         self.z = Z_LAYERS["main"]
+
+        # image
+        self.frames, self.frames_idx = frames, 0
+        self.state, self.facing_right = "idle", True
+        self.image = self.frames[self.state][self.frames_idx]
+        self.animation_speed = 8
 
         # rects
         self.rect: pygame.FRect = self.image.get_frect(topleft = pos)
@@ -45,6 +49,7 @@ class Player(pygame.sprite.Sprite):
             "platform t/o": Timer(100)
         }
 
+    from ._player_animate import animate
     from ._player_collision import collision, platform_collision, check_collision_side
     from ._player_core_methods import input, update_timers, update
     from ._player_move import move

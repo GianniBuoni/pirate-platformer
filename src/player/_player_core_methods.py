@@ -25,3 +25,4 @@ def update(self: "Player", dt):
     self.input()
     self.move(dt)
     self.check_collision_side()
+    self.animate(dt)
