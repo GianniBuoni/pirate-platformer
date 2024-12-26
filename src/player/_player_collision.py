@@ -1,3 +1,4 @@
+from player._collision_enum import CollidesWith
 from settings import *
 from typing import TYPE_CHECKING
 
@@ -55,9 +56,13 @@ def check_collision_side(self: "Player"):
         (2, self.hitbox.h / 2)
     )
 
-    self.collides_with["floor"] = True if floor_rect.collidelist(collide_rects + platform_rects) >= 0 else False
-    self.collides_with["left"] = True if left_rect.collidelist(collide_rects) >= 0 else False
-    self.collides_with["right"] = True if right_rect.collidelist(collide_rects) >= 0 else False
+    if floor_rect.collidelist(collide_rects + platform_rects) >= 0:
+        self.collides_with = CollidesWith.FLOOR
+    elif left_rect.collidelist(collide_rects) >= 0:
+        self.collides_with = CollidesWith.LEFT
+    elif right_rect.collidelist(collide_rects) >= 0:
+        self.collides_with = CollidesWith.RIGHT
+    else: self.collides_with = CollidesWith.AIR
 
     self.platform = None
     for sprite in self.platform_sprites:
