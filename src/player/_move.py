@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from ._player_enums import CollidesWith
+from ._enums import CollidesWith
 
 if TYPE_CHECKING:
     from . import Player

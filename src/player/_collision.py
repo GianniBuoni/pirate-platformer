@@ -1,5 +1,5 @@
 from lib.sprites import MovingSprite
-from ._player_enums import CollidesWith
+from ._enums import CollidesWith
 from settings import *
 from typing import TYPE_CHECKING, Union
 

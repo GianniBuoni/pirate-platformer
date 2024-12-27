@@ -1,4 +1,4 @@
-from ._player_enums import CollidesWith, PlayerState
+from ._enums import CollidesWith, PlayerState
 from settings import *
 from typing import TYPE_CHECKING
 

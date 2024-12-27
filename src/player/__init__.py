@@ -1,5 +1,7 @@
+__all__ = ["Player"]
+
 from settings import *
-from ._player_enums import *
+from ._enums import *
 
 from lib.groups import CollisionSprites
 from lib.timer import Timer
@@ -46,7 +48,7 @@ class Player(pygame.sprite.Sprite):
             "wjump t/o": Timer(250)
         }
 
-    from ._player_animate import animate, get_state
-    from ._player_collision import collision, platform_collision, check_collision_side, platform
-    from ._player_core_methods import attack, input, update_timers, update
-    from ._player_move import move
+    from ._animate import animate, get_state
+    from ._collision import collision, platform_collision, check_collision_side, platform
+    from ._core_methods import attack, input, update_timers, update
+    from ._move import move
