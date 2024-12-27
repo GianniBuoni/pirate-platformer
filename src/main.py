@@ -2,7 +2,7 @@ from settings import *
 from pytmx.util_pygame import load_pygame
 from os.path import join
 
-from lib.level import Level
+from level import Level
 from lib.helpers import *
 
 class Game:
