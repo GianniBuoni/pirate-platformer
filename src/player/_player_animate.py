@@ -1,4 +1,4 @@
-from player._collision_enum import CollidesWith
+from ._player_enums import CollidesWith, PlayerState
 from settings import *
 from typing import TYPE_CHECKING
 
@@ -6,7 +6,7 @@ if TYPE_CHECKING: from . import Player
 
 def animate(self: "Player", dt):
     self.frames_idx += self.animation_speed * dt
-    current_frames = self.frames[self.state]
+    current_frames = self.frames[self.get_state().value]
 
     if self.attacking and self.frames_idx >= len(current_frames):
         current_frames = self.frames["idle"]
@@ -15,17 +15,17 @@ def animate(self: "Player", dt):
     self.image = current_frames[int(self.frames_idx) % len(current_frames)]
     self.image = self.image if self.facing_right else pygame.transform.flip(self.image, True, False)
 
-def get_state(self: "Player"):
-    match self.collides_with:
+def get_state(self: "Player") -> PlayerState:
+    match self.check_collision_side():
         case CollidesWith.FLOOR:
             if self.attacking:
-                self.state = "attack"
+                return PlayerState.ATTACK
             else:
-                self.state = "idle" if self.direction.x == 0 else "run"
+                return PlayerState.IDLE if self.direction.x == 0 else PlayerState.RUN
         case CollidesWith.LEFT | CollidesWith.RIGHT:
-            self.state = "wall"
+            return PlayerState.WALL
         case CollidesWith.AIR:
             if self.attacking:
-                self.state = "air_attack"
+                return PlayerState.AIR_ATK
             else:
-                self.state = "jump" if self.direction.y < 0 else "fall"
+                return PlayerState.JUMP if self.direction.y < 0 else PlayerState.FALL

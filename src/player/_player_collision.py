@@ -1,6 +1,7 @@
-from player._collision_enum import CollidesWith
+from lib.sprites import MovingSprite
+from ._player_enums import CollidesWith
 from settings import *
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import Player
@@ -43,7 +44,7 @@ def platform_collision(self: "Player"):
                     self.hitbox.bottom = sprite.rect.top
                     self.direction.y = 0 if self.direction.y > 0 else self.direction.y
 
-def check_collision_side(self: "Player"):
+def check_collision_side(self: "Player") -> CollidesWith:
     collide_rects = [x.rect for x in self.collision_sprites]
     platform_rects = [x.rect for x in self.platform_sprites]
     floor_rect = pygame.Rect(self.hitbox.bottomleft, (self.hitbox.width, 2))
@@ -57,17 +58,21 @@ def check_collision_side(self: "Player"):
     )
 
     if floor_rect.collidelist(collide_rects + platform_rects) >= 0:
-        self.collides_with = CollidesWith.FLOOR
-    elif left_rect.collidelist(collide_rects) >= 0:
-        self.collides_with = CollidesWith.LEFT
-    elif right_rect.collidelist(collide_rects) >= 0:
-        self.collides_with = CollidesWith.RIGHT
-    else: self.collides_with = CollidesWith.AIR
+        return CollidesWith.FLOOR
+    if left_rect.collidelist(collide_rects) >= 0:
+        return CollidesWith.LEFT
+    if right_rect.collidelist(collide_rects) >= 0:
+        return CollidesWith.RIGHT
+    else: return CollidesWith.AIR
 
-    self.platform = None
+def platform(self: "Player") -> Union[MovingSprite, None]:
+    floor_rect = pygame.Rect(self.hitbox.bottomleft, (self.hitbox.width, 4))
+    platform = None
+
     for sprite in self.platform_sprites:
         if (
             sprite.rect.colliderect(floor_rect)
             and hasattr(sprite, "moving")
         ):
-            self.platform = sprite
+            platform = sprite
+    return platform

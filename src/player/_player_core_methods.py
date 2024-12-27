@@ -1,7 +1,7 @@
 import pygame
 from typing import TYPE_CHECKING
 
-from player._collision_enum import CollidesWith
+from ._player_enums import CollidesWith
 
 if TYPE_CHECKING:
     from . import Player
@@ -18,7 +18,7 @@ def input(self: "Player"):
             self.timers["platform t/o"].activate()
 
     # need to disable attack during wall sliding
-    match self.collides_with:
+    match self.check_collision_side():
         case CollidesWith.FLOOR | CollidesWith.AIR:
             if keys[pygame.K_f] and not self.timers["attack t/o"]:
                 self.attack()
@@ -40,12 +40,7 @@ def update_timers(self: "Player"):
 def update(self: "Player", dt):
     self.update_timers()
 
-    # movement and collision
     self.old_rect = self.hitbox.copy()
     self.input()
     self.move(dt)
-    self.check_collision_side()
-
-    # animation
-    self.get_state()
     self.animate(dt)

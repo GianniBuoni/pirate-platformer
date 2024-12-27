@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from ._collision_enum import CollidesWith
+from ._player_enums import CollidesWith
 
 if TYPE_CHECKING:
     from . import Player
@@ -10,7 +10,7 @@ def move(self: "Player", dt):
     self.collision("horizontal")
 
     # vert
-    match self.collides_with:
+    match self.check_collision_side():
         case CollidesWith.LEFT | CollidesWith.RIGHT:
         # wall slide decreases gravity
             if not self.timers["wjump t/o"]:
@@ -24,20 +24,20 @@ def move(self: "Player", dt):
     self.collision("vertical")
 
     # platform logic
-    if self.platform:
-        self.hitbox.center += self.platform.direction * self.platform.speed * dt
+    if self.platform():
+        self.hitbox.center += self.platform().direction * self.platform().speed * dt # pyright: ignore
     self.platform_collision()
 
     # jumping logic
     if self.jump:
-        match self.collides_with:
+        match self.check_collision_side():
             case CollidesWith.FLOOR:
                 self.timers["wjump t/o"].activate()
                 self.direction.y = -self.jump_distance
             case CollidesWith.LEFT | CollidesWith.RIGHT:
                 self.timers["jump t/o"].activate()
                 self.direction.y = -self.jump_distance
-                self.direction.x = 1 if self.collides_with == CollidesWith.LEFT else -1
+                self.direction.x = 1 if CollidesWith.LEFT else -1
         self.jump = False
 
     self.rect.center = self.hitbox.center
