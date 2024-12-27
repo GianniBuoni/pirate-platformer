@@ -13,6 +13,7 @@ class Level:
         self.all_sprites = AllSprites()
         self.collision_sprites = CollisionSprites()
         self.platform_sprites = pygame.sprite.Group()
+        self.damage_sprites = pygame.sprite.Group()
 
         self.setup(tmx_map, level_frames)
 
@@ -54,8 +55,12 @@ class Level:
                 AnimatedSprite((obj.x, obj.y), frames, groups, z=z, animation_speed=animation_speed)
 
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
-            if obj.name == "helicopter":
+            if obj.name != "spike":
                 frames = level_frames[obj.name]
+                groups = (
+                    [self.all_sprites, self.platform_sprites] if obj.properties["platform"]
+                    else [self.all_sprites, self.damage_sprites]
+                )
 
                 if obj.width > obj.height: # horizontal movement
                     move_direction = "x"
@@ -67,7 +72,7 @@ class Level:
                     end_pos = (obj.x + obj.width / 2, obj.y + obj.height)
                 speed = obj.properties["speed"]
 
-                MovingSprite(start_pos, end_pos, move_direction, speed, frames, self.all_sprites, self.platform_sprites)
+                MovingSprite(start_pos, end_pos, move_direction, speed, frames, groups)
 
         for obj in tmx_map.get_layer_by_name("BG details"):
             z = Z_LAYERS["bg details"]

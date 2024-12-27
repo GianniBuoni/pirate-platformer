@@ -19,6 +19,7 @@ class Game:
     def import_assets(self):
         self.level_frames = {
             "big_chain": import_folder("graphics", "level", "big_chains"),
+            "boat": import_folder("graphics", "objects", "boat"),
             "candle": import_folder("graphics", "level", "candle"),
             "candle_light": import_folder("graphics", "level", "candle light"),
             "flag": import_folder("graphics", "level", "flag"),
