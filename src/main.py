@@ -28,6 +28,7 @@ class Game:
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
             "saw_chain": import_image("graphics", "enemies", "saw", "saw_chain"),
             "small_chain": import_folder("graphics", "level", "small_chains"),
+            "spike": import_image("graphics", "enemies", "spike_ball", "Spiked Ball"),
             "window": import_folder("graphics", "level", "window"),
 
             # player imported as a nested dictionary

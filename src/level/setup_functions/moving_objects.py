@@ -1,11 +1,24 @@
 from settings import *
 from lib.sprites import Sprite
 from lib.moving_sprites import MovingSprite
+from lib.radial_sprites import RadialSprite
 
-def setup(self, tmx_map, level_frames):
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from level import Level
+
+def setup(self: "Level", tmx_map, level_frames):
     for obj in tmx_map.get_layer_by_name("Moving Objects"):
         if obj.name == "spike":
-            pass
+            RadialSprite(
+                self.all_sprites, self.damage_sprites,
+                pos = (obj.x + obj.width, obj.y + obj.height), # centre point
+                radius = obj.properties["radius"],
+                speed = obj.properties["speed"],
+                start_angle = obj.properties["start_angle"],
+                end_angle = obj.properties["end_angle"],
+                surf = level_frames[obj.name],
+            )
         else:
             frames = level_frames[obj.name]
             groups = (
