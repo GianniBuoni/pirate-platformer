@@ -19,6 +19,18 @@ def setup(self: "Level", tmx_map, level_frames):
                 end_angle = obj.properties["end_angle"],
                 surf = level_frames[obj.name],
             )
+            for radius in range(0, obj.properties["radius"], 20):
+                RadialSprite(
+                    self.all_sprites,
+                    pos = (obj.x + obj.width, obj.y + obj.height), # centre point
+                    radius = radius,
+                    speed = obj.properties["speed"],
+                    start_angle = obj.properties["start_angle"],
+                    end_angle = obj.properties["end_angle"],
+                    surf = level_frames["spike_chain"],
+                    z = Z_LAYERS["bg details"]
+                )
+
         else:
             frames = level_frames[obj.name]
             groups = (
