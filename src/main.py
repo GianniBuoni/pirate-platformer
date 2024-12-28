@@ -26,6 +26,7 @@ class Game:
             "floor_spike": import_folder("graphics", "enemies", "floor_spikes"),
             "helicopter": import_folder("graphics", "level", "helicopter"),
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
+            "saw_chain": import_image("graphics", "enemies", "saw", "saw_chain"),
             "small_chain": import_folder("graphics", "level", "small_chains"),
             "window": import_folder("graphics", "level", "window"),
 

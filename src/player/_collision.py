@@ -1,4 +1,4 @@
-from lib.sprites import MovingSprite
+from lib.moving_sprites import MovingSprite
 from ._enums import CollidesWith
 from settings import *
 from typing import TYPE_CHECKING, Union
