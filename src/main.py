@@ -1,10 +1,11 @@
-from settings import *
 from pytmx.util_pygame import load_pygame
 from os.path import join
 
-from level import Level
+from settings import *
 from lib.helpers import *
+from level import Level
 from lib.data import Data
+from ui import UI
 
 class Game:
     def __init__(self):
@@ -14,6 +15,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.import_assets()
 
+        self.ui = UI(self.font, self.ui_frames)
         self.data = Data()
         self.tmx_maps = {0: load_pygame(join("data", "levels", "omni.tmx"))}
         self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data)
@@ -48,6 +50,12 @@ class Game:
         }
         self.level_frames.update(import_sub_folders("graphics", "level", "palms"))
 
+        self.font = pygame.font.Font(join("graphics", "ui", "runescape_uf.ttf"), 40)
+        self.ui_frames = {
+            "heart": import_folder("graphics", "ui", "heart"),
+            "coin": import_image("graphics", "ui", "coin")
+        }
+
     def run(self):
         while True:
             dt = self.clock.tick(60) / 1000
@@ -57,6 +65,7 @@ class Game:
                     sys.exit()
 
             self.current_stage.run(dt)
+            self.ui.update(dt)
             pygame.display.update()
 
 if __name__ == "__main__":
