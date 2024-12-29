@@ -54,15 +54,16 @@ class Shell(AnimatedSprite):
             return ShellState.IDLE
 
     def animate(self, dt):
+        self.frames = self.state_frames[self.get_state().value]
+
         match self.get_state():
             case ShellState.FIRE:
                 if not self.timeouts["fire"]:
                     self.frames_idx = 0
                     self.timeouts["fire"].activate()
-                if self.frames_idx >= 5:
-                    self.frames_idx = 5
+                if self.frames_idx >= len(self.frames) - 1:
+                    self.frames_idx = len(self.frames) - 1
 
-        self.frames = self.state_frames[self.get_state().value]
         super().animate(dt)
 
     def spawn_wrapper(self):

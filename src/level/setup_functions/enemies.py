@@ -18,7 +18,8 @@ def setup(self: "Level", tmx_map, level_frames):
             case "shell":
                 def spawn_pearl(pos, direction):
                     pearl.Pearl(
-                        pos, (self.all_sprites, self.damage_sprites),
+                        pos, self.collision_sprites,
+                        (self.all_sprites, self.damage_sprites),
                         surf = level_frames["pearl"],
                         bullet_direction = direction
                     )
