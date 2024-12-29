@@ -7,6 +7,7 @@ from level.setup_functions import *
 class Level:
     def __init__(self, tmx_map, level_frames):
         self.display_surface = pygame.display.get_surface()
+        self.player = None
 
         # groups
         self.all_sprites = AllSprites()
@@ -23,6 +24,7 @@ class Level:
         bg.setup(*args)
         objects.setup(*args)
         moving_objects.setup(*args)
+        enemies.setup(*args)
 
     def run(self, dt):
         self.display_surface.fill("black")

@@ -19,18 +19,25 @@ class Game:
     def import_assets(self):
         self.level_frames = {
             "big_chain": import_folder("graphics", "level", "big_chains"),
-            "boat": import_folder("graphics", "objects", "boat"),
             "candle": import_folder("graphics", "level", "candle"),
+            "window": import_folder("graphics", "level", "window"),
+
+            # moving sprites
+            "boat": import_folder("graphics", "objects", "boat"),
             "candle_light": import_folder("graphics", "level", "candle light"),
             "flag": import_folder("graphics", "level", "flag"),
-            "floor_spike": import_folder("graphics", "enemies", "floor_spikes"),
             "helicopter": import_folder("graphics", "level", "helicopter"),
+            "small_chain": import_folder("graphics", "level", "small_chains"),
+
+            # enemies
+            "floor_spike": import_folder("graphics", "enemies", "floor_spikes"),
+            "pearl": import_image("graphics", "enemies", "bullets", "pearl"),
+            "tooth": import_folder("graphics", "enemies", "tooth", "run"),
             "saw": import_folder("graphics", "enemies", "saw", "animation"),
             "saw_chain": import_image("graphics", "enemies", "saw", "saw_chain"),
-            "small_chain": import_folder("graphics", "level", "small_chains"),
+            "shell": import_sub_folders("graphics", "enemies", "shell"),
             "spike": import_image("graphics", "enemies", "spike_ball", "Spiked Ball"),
             "spike_chain": import_image("graphics", "enemies", "spike_ball", "spiked_chain"),
-            "window": import_folder("graphics", "level", "window"),
 
             # player imported as a nested dictionary
             "player": import_sub_folders("graphics", "player")
