@@ -45,10 +45,12 @@ class Player(pygame.sprite.Sprite):
             "attack t/o": Timer(500),
             "jump t/o": Timer(400),
             "platform t/o": Timer(100),
-            "wjump t/o": Timer(250)
+            "wjump t/o": Timer(250),
+            "damage t/o": Timer(400)
         }
 
     from ._animate import animate, get_state
     from ._collision import collision, platform_collision, check_collision_side, platform
     from ._core_methods import attack, input, update_timers, update
     from ._move import move
+    from .damage import damaged, flicker

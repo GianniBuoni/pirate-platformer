@@ -44,3 +44,4 @@ def update(self: "Player", dt):
     self.input()
     self.move(dt)
     self.animate(dt)
+    self.flicker()

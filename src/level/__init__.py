@@ -20,7 +20,12 @@ class Level:
         # sprites
         self.pearl_surface = level_frames["pearl"]
         self.particle_frames = level_frames["particle"]
-        self.player = Player((0, 0), level_frames["player"], self.collision_sprites, self.platform_sprites, self.all_sprites)
+        self.player = Player(
+            (0, 0), level_frames["player"],
+            self.collision_sprites,
+            self.platform_sprites,
+            self.all_sprites
+        )
 
         self.setup(tmx_map, level_frames)
 

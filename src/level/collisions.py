@@ -18,7 +18,7 @@ def check_collisions(self: "Level"):
     for sprite in self.damage_sprites:
         collision = sprite.rect.colliderect(self.player.hitbox)
         if collision:
-            print("player hit")
+            self.player.damaged()
             if hasattr(sprite, "particle"):
                 sprite.kill()
                 self.spawn_particle(sprite.rect.center)
