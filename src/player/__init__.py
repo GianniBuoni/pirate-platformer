@@ -49,8 +49,7 @@ class Player(pygame.sprite.Sprite):
             "damage t/o": Timer(400)
         }
 
-    from ._animate import animate, get_state
+    from ._animate import animate, get_state, flicker
     from ._collision import collision, platform_collision, check_collision_side, platform
     from ._core_methods import attack, input, update_timers, update
     from ._move import move
-    from .damage import damaged, flicker

@@ -16,3 +16,12 @@ Z_LAYERS = {
     "water": 6,
     "fg": 7
 }
+
+# item values
+ITEM_VALUES = {
+    "potion": 1,
+    "silver": 1,
+    "gold": 5,
+    "diamond": 20,
+    "skull": 50
+}

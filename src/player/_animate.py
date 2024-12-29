@@ -1,7 +1,8 @@
-from ._enums import CollidesWith, PlayerState
+from math import sin
 from settings import *
-from typing import TYPE_CHECKING
+from ._enums import CollidesWith, PlayerState
 
+from typing import TYPE_CHECKING
 if TYPE_CHECKING: from . import Player
 
 def animate(self: "Player", dt):
@@ -29,3 +30,11 @@ def get_state(self: "Player") -> PlayerState:
                 return PlayerState.AIR_ATK
             else:
                 return PlayerState.JUMP if self.direction.y < 0 else PlayerState.FALL
+
+def flicker(self: "Player"):
+    if self.timers["damage t/o"] and self.image and sin(pygame.time.get_ticks() / 50) >= 0:
+        white_mask = pygame.mask.from_surface(self.image)
+        white_surface = white_mask.to_surface()
+        white_surface.set_colorkey("black")
+        self.image = white_surface
+

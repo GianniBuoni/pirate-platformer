@@ -12,13 +12,15 @@ def check_collisions(self: "Level"):
             if collision:
                 sprite.kill()
                 self.spawn_particle(sprite.rect.center)
-                print(f"item collected: {sprite.item_type}")
+                self.get_item(sprite.item_type)
 
     # pearl and player
     for sprite in self.damage_sprites:
         collision = sprite.rect.colliderect(self.player.hitbox)
         if collision:
-            self.player.damaged()
+            if not self.player.timers["damage t/o"]:
+                self.data.health -= 1
+                self.player.timers["damage t/o"].activate()
             if hasattr(sprite, "particle"):
                 sprite.kill()
                 self.spawn_particle(sprite.rect.center)
@@ -32,3 +34,10 @@ def check_collisions(self: "Level"):
         )
         if collision and self.player.attacking and facing_target:
             target.reverse()
+
+def get_item(self: "Level", item_type):
+    if item_type == "potion":
+        self.data.health += ITEM_VALUES["potion"]
+    else:
+        self.data.coins += ITEM_VALUES[item_type]
+    print(f"health: {self.data.health}, coins: {self.data.coins}")

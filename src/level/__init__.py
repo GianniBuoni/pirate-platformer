@@ -6,8 +6,9 @@ from level.setup_functions import *
 from player import Player
 
 class Level:
-    def __init__(self, tmx_map, level_frames):
+    def __init__(self, tmx_map, level_frames, data):
         self.display_surface = pygame.display.get_surface()
+        self.data = data
 
         # groups
         self.all_sprites = AllSprites()
@@ -40,7 +41,7 @@ class Level:
         items.setup(*args)
 
     from .spawn import spawn_pearl, spawn_particle
-    from .collisions import check_collisions
+    from .collisions import check_collisions, get_item
 
     def run(self, dt):
         self.display_surface.fill("black")
