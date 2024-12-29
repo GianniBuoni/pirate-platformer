@@ -25,6 +25,7 @@ class Level:
         objects.setup(*args)
         moving_objects.setup(*args)
         enemies.setup(*args)
+        items.setup(*args)
 
     def run(self, dt):
         self.display_surface.fill("black")

@@ -1,6 +1,6 @@
 from settings import *
 from random import choice
-from lib.sprites import AnimatedSprite
+from sprites.animated import AnimatedSprite
 
 class Tooth(AnimatedSprite):
     def __init__(

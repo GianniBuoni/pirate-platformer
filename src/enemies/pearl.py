@@ -1,5 +1,5 @@
 from settings import *
-from lib.sprites import Sprite
+from sprites.sprites import Sprite
 from lib.timer import Timer
 
 class Pearl(Sprite):

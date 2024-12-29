@@ -2,7 +2,7 @@ from enum import Enum
 
 from settings import *
 from lib.timer import Timer
-from lib.sprites import AnimatedSprite
+from sprites.animated import AnimatedSprite
 
 class ShellState(Enum):
     FIRE = "fire"

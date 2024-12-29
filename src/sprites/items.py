@@ -11,3 +11,4 @@ class Item(AnimatedSprite):
     ) -> None:
 
         super().__init__(pos, frames, *groups, animation_speed=animation_speed, z=z)
+        self.rect.center = pos

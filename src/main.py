@@ -40,6 +40,7 @@ class Game:
             "spike_chain": import_image("graphics", "enemies", "spike_ball", "spiked_chain"),
 
             # player imported as a nested dictionary
+            "items": import_sub_folders("graphics", "items"),
             "player": import_sub_folders("graphics", "player")
         }
         self.level_frames.update(import_sub_folders("graphics", "level", "palms"))

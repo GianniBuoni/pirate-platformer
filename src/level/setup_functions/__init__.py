@@ -2,6 +2,7 @@
 __all__ = [
     "bg",
     "enemies",
+    "items",
     "moving_objects",
     "objects",
     "tiles"
