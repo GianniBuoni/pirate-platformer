@@ -20,6 +20,7 @@ class Game:
         self.level_frames = {
             "big_chain": import_folder("graphics", "level", "big_chains"),
             "candle": import_folder("graphics", "level", "candle"),
+            "particle": import_folder("graphics", "effects", "particle"),
             "window": import_folder("graphics", "level", "window"),
 
             # moving sprites

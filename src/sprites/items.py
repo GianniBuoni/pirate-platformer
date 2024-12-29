@@ -3,7 +3,7 @@ from .animated import AnimatedSprite
 
 class Item(AnimatedSprite):
     def __init__(
-        self, pos,
+        self, pos, item_type,
         frames: list[pygame.Surface],
         *groups,
         animation_speed: float = ANIMATION_SPEED,
@@ -12,3 +12,4 @@ class Item(AnimatedSprite):
 
         super().__init__(pos, frames, *groups, animation_speed=animation_speed, z=z)
         self.rect.center = pos
+        self.item_type = item_type

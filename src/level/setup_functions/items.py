@@ -12,6 +12,7 @@ def setup(self: "Level", tmx_map: TiledMap, level_frames):
 
         Item(
             (obj.x + obj.width / 2 , obj.y + obj.height / 2),
+            obj.name,
             level_frames["items"][obj.name],
-            self.all_sprites
+            (self.all_sprites, self.item_sprites)
         )
