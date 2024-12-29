@@ -7,7 +7,7 @@ def setup(self, tmx_map, level_frames):
         # objects
     for obj in tmx_map.get_layer_by_name("Objects"):
         if obj.name == "player":
-            self.player.hitbox.topleft = (obj.x, obj.y)
+            self.player.hitbox.topleft = (obj.x, obj.y) + vector(76, 0)
         elif obj.name in ("crate", "barrel"): # codespell:ignore
             sprites.Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
         else: # all other animated sprites on the objects layer

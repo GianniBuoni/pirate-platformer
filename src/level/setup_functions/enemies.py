@@ -13,9 +13,10 @@ def setup(self: "Level", tmx_map, level_frames):
 
         match obj.name:
             case "tooth":
-                groups.append(self.damage_sprites)
+                groups.extend([self.damage_sprites, self.reversible_sprites])
                 tooth.Tooth((obj.x, obj.y), frames, self.collision_sprites, groups)
             case "shell":
+                groups.append(self.collision_sprites)
                 shell.Shell(
                     groups,
                     pos = (obj.x, obj.y),

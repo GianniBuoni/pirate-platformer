@@ -15,6 +15,7 @@ class Level:
         self.platform_sprites = pygame.sprite.Group()
         self.damage_sprites = pygame.sprite.Group()
         self.item_sprites = pygame.sprite.Group()
+        self.reversible_sprites = pygame.sprite.Group()
 
         # sprites
         self.pearl_surface = level_frames["pearl"]

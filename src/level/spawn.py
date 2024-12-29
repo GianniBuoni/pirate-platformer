@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 def spawn_pearl(self: "Level", pos, direction):
     Pearl(
         pos, self.collision_sprites,
-        (self.all_sprites, self.damage_sprites),
+        (self.all_sprites, self.reversible_sprites, self.damage_sprites),
         surf = self.pearl_surface,
         bullet_direction = direction,
         particle_funct = self.spawn_particle
