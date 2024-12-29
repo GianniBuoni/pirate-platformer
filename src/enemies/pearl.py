@@ -12,14 +12,27 @@ class Pearl(Sprite):
         super().__init__(pos, *groups, surf=surf, z=z)
         self.collsion_sprites = [x.rect for x in collision_sprites]
 
+        # timers
+        self.timers = {
+            "despawn": Timer(10000),
+            "reverse": Timer(250)
+        }
+
         # movement
         self.direction = bullet_direction
         self.speed = 100
-        self.despawn = Timer(10000)
-        self.despawn.activate()
+        self.timers["despawn"].activate()
 
         # spawn a particle sprite
         self.particle = particle_funct
+
+        # offset position to avoid colliison with shell
+        self.rect.center = pos + vector(10 * self.direction, 7)
+
+    def reverse(self):
+        if not self.timers["reverse"]:
+            self.direction *= -1
+            self.timers["reverse"].activate()
 
     def collision(self):
         if self.rect.collidelist(self.collsion_sprites) > 0: self.destroy()
@@ -29,8 +42,8 @@ class Pearl(Sprite):
         self.particle(self.rect.center)
 
     def update(self, dt):
-        self.despawn.update()
-        if self.despawn:
+        for key in self.timers.keys(): self.timers[key].update()
+        if self.timers["despawn"]:
             self.rect.centerx += self.direction * self.speed * dt
             self.collision()
         else: self.destroy()

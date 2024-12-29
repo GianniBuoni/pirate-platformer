@@ -1,5 +1,7 @@
 from settings import *
 from random import choice
+
+from lib.timer import Timer
 from sprites.animated import AnimatedSprite
 
 class Tooth(AnimatedSprite):
@@ -12,6 +14,7 @@ class Tooth(AnimatedSprite):
         z=Z_LAYERS["main"]
     ) -> None:
         super().__init__(pos, frames, *groups, animation_speed=animation_speed, z=z)
+        self.reverse_timeout = Timer(250)
 
         # movement
         self.direction = choice((-1, 1))
@@ -19,6 +22,11 @@ class Tooth(AnimatedSprite):
 
         # collision
         self.collision_sprites: list[pygame.FRect] = [x.rect for x in collision_sprites]
+
+    def reverse(self):
+        if not self.reverse_timeout:
+            self.direction *= -1
+            self.reverse_timeout.activate()
 
     def animate(self, dt):
         super().animate(dt)
@@ -41,6 +49,7 @@ class Tooth(AnimatedSprite):
         ): self.direction *= -1
 
     def update(self, dt):
+        self.reverse_timeout.update()
         super().update(dt)
         self.constrain()
         self.rect.centerx += self.direction * self.move_speed * dt

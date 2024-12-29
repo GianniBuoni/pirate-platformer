@@ -8,7 +8,7 @@ def animate(self: "Player", dt):
     self.frames_idx += self.animation_speed * dt
     current_frames = self.frames[self.get_state().value]
 
-    if self.attacking and self.frames_idx >= len(current_frames):
+    if self.attacking and self.frames_idx >= len(current_frames) - 1:
         current_frames = self.frames["idle"]
         self.attacking = False
 
