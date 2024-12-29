@@ -1,5 +1,5 @@
 from settings import *
-from .sprites import AnimatedSprite
+from .animated import AnimatedSprite
 
 class MovingSprite(AnimatedSprite):
     def __init__(

@@ -1,5 +1,5 @@
 from settings import *
-from lib.sprites import Sprite
+from sprites.sprites import Sprite
 
 def setup_tiles(self, tmx_map, _):
     for layer in ["BG", "Terrain", "FG", "Platforms"]:

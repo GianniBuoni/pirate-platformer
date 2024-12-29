@@ -1,7 +1,8 @@
-from settings import *
-from lib.sprites import AnimatedSprite, Sprite
-from player import Player
 from random import uniform
+
+from settings import *
+from sprites import *
+from player import Player
 
 def setup(self, tmx_map, level_frames):
         # objects
@@ -10,7 +11,7 @@ def setup(self, tmx_map, level_frames):
             frames = level_frames[obj.name]
             self.player = Player((obj.x, obj.y), frames, self.collision_sprites, self.platform_sprites, self.all_sprites)
         elif obj.name in ("crate", "barrel"): # codespell:ignore
-            Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
+            sprites.Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
         else: # all other animated sprites on the objects layer
             frames = level_frames[obj.name]
             groups = [self.all_sprites]
@@ -24,4 +25,4 @@ def setup(self, tmx_map, level_frames):
             if "palm" in obj.name: animation_speed += uniform(-1,1)
             if "bg" in obj.name: z = Z_LAYERS["bg"]
 
-            AnimatedSprite((obj.x, obj.y), frames, groups, z=z, animation_speed=animation_speed)
+            animated.AnimatedSprite((obj.x, obj.y), frames, groups, z=z, animation_speed=animation_speed)
