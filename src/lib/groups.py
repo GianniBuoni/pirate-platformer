@@ -3,7 +3,7 @@ from settings import *
 from typing import Union, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from lib.sprites import Sprite
+    from sprites.sprites import Sprite
     from player import Player
 
 class AllSprites(pygame.sprite.Group):

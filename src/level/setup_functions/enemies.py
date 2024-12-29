@@ -16,19 +16,11 @@ def setup(self: "Level", tmx_map, level_frames):
                 groups.append(self.damage_sprites)
                 tooth.Tooth((obj.x, obj.y), frames, self.collision_sprites, groups)
             case "shell":
-                def spawn_pearl(pos, direction):
-                    pearl.Pearl(
-                        pos, self.collision_sprites,
-                        (self.all_sprites, self.damage_sprites),
-                        surf = level_frames["pearl"],
-                        bullet_direction = direction
-                    )
-
                 shell.Shell(
                     groups,
                     pos = (obj.x, obj.y),
                     frames = frames,
                     reverse = obj.properties["reverse"],
                     player = self.player,
-                    spawn_funct = spawn_pearl
+                    spawn_funct = self.spawn_pearl
                 )
