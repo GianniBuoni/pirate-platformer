@@ -26,6 +26,8 @@ class Game:
             "candle": import_folder("graphics", "level", "candle"),
             "particle": import_folder("graphics", "effects", "particle"),
             "window": import_folder("graphics", "level", "window"),
+            "water_top": import_folder("graphics", "level", "water", "top"),
+            "water_body": import_image("graphics", "level", "water", "body"),
 
             # moving sprites
             "boat": import_folder("graphics", "objects", "boat"),

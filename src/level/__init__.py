@@ -39,6 +39,7 @@ class Level:
         moving_objects.setup(*args)
         enemies.setup(*args)
         items.setup(*args)
+        water.setup(*args)
 
     from .spawn import spawn_pearl, spawn_particle
     from .collisions import check_collisions, get_item
