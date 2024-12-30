@@ -24,3 +24,6 @@ def setup(self, tmx_map, level_frames):
             if "bg" in obj.name: z = Z_LAYERS["bg"]
 
             animated.AnimatedSprite((obj.x, obj.y), frames, groups, z=z, animation_speed=animation_speed)
+
+        if obj.name == "flag":
+            self.level_flag = pygame.FRect(obj.x, obj.y, obj.width, obj.height)

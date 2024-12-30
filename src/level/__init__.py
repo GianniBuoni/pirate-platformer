@@ -10,6 +10,10 @@ class Level:
         self.display_surface = pygame.display.get_surface()
         self.data = data
 
+        # level_info:
+        self.level_w = tmx_map.width * TILE_SIZE
+        self.level_h = tmx_map.height * TILE_SIZE
+
         # groups
         self.all_sprites = AllSprites()
         self.collision_sprites = CollisionSprites()
@@ -43,9 +47,11 @@ class Level:
 
     from .spawn import spawn_pearl, spawn_particle
     from .collisions import check_collisions, get_item
+    from .constraints import check_constraints
 
     def run(self, dt):
         self.display_surface.fill("black")
         self.all_sprites.update(dt)
         self.check_collisions()
         self.all_sprites.draw(self.player.hitbox.center)
+        self.check_constraints()
