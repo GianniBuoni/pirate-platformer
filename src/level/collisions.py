@@ -40,4 +40,3 @@ def get_item(self: "Level", item_type):
         self.data.health += ITEM_VALUES["potion"]
     else:
         self.data.coins += ITEM_VALUES[item_type]
-    print(f"health: {self.data.health}, coins: {self.data.coins}")

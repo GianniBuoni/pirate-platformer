@@ -1,7 +1,13 @@
+from typing import TYPE_CHECKING
+if TYPE_CHECKING: from ui import UI
 class Data():
-    def __init__(self) -> None:
+    def __init__(self, ui: "UI") -> None:
         self._health = 5
         self._coins = 0
+
+        # ui init
+        self.ui = ui
+        self.ui.create_hearts(self.health)
 
     @property
     def health(self):
@@ -10,6 +16,7 @@ class Data():
     @health.setter
     def health(self, value):
         self._health = min(5, max(0, value))
+        self.ui.create_hearts(value)
 
     @property
     def coins(self):
@@ -18,3 +25,4 @@ class Data():
     @coins.setter
     def coins(self, value):
         self._coins = max(0, value)
+        self.ui.show_coin(value)

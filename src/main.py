@@ -16,7 +16,7 @@ class Game:
         self.import_assets()
 
         self.ui = UI(self.font, self.ui_frames)
-        self.data = Data()
+        self.data = Data(self.ui)
         self.tmx_maps = {0: load_pygame(join("data", "levels", "omni.tmx"))}
         self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data)
 
