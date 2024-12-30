@@ -10,12 +10,17 @@ class Level:
         self.display_surface = pygame.display.get_surface()
         self.data = data
 
-        # level_info:
+        # level_data:
         self.level_w = tmx_map.width * TILE_SIZE
         self.level_h = tmx_map.height * TILE_SIZE
+        self.level_data = tmx_map.get_layer_by_name("Data")[0].properties
 
         # groups
-        self.all_sprites = AllSprites()
+        self.all_sprites = AllSprites(
+            cam_w= self.level_w,
+            cam_h= self.level_data["bottom_limit"],
+            cam_t= self.level_data["top_limit"]
+        )
         self.collision_sprites = CollisionSprites()
         self.platform_sprites = pygame.sprite.Group()
         self.damage_sprites = pygame.sprite.Group()
