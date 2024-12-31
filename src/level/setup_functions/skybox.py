@@ -20,5 +20,4 @@ def setup(self: "Level", tmx_map: pytmx.TiledMap, level_frames):
                 y = row * TILE_SIZE - extra_rows * TILE_SIZE
                 Sprite((x, y), self.all_sprites, surf=level_frames["bg"][bg_tile], z=-1)
     else:
-        print(self.level_data)
         self.sky = True

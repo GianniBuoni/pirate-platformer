@@ -17,6 +17,7 @@ class Level:
         self.level_data = tmx_map.get_layer_by_name("Data")[0].properties
         self.cam_offset = vector()
         self.sky = False
+        self.sky_offset = 0
 
         # groups
         self.all_sprites = AllSprites()
@@ -29,6 +30,10 @@ class Level:
         # sprites
         self.pearl_surface = level_frames["pearl"]
         self.particle_frames = level_frames["particle"]
+        self.clouds = {
+            "small": level_frames["cloud_small"],
+            "large": level_frames["cloud_large"]
+        }
         self.player = Player(
             (0, 0), level_frames["player"],
             self.collision_sprites,
@@ -50,6 +55,7 @@ class Level:
         items.setup(*args)
         water.setup(*args)
 
+    from ._skybox import draw_skybox
     from .camera import offset_camera
     from .collisions import check_collisions, get_item
     from .constraints import check_constraints
@@ -57,7 +63,7 @@ class Level:
 
     def run(self, dt):
         if self.sky:
-            self.display_surface.fill("#ddc6a1")
+            self.draw_skybox(dt)
         else:
             self.display_surface.fill("black")
         self.check_constraints()
