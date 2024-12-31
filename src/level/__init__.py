@@ -7,6 +7,7 @@ from player import Player
 
 class Level:
     def __init__(self, tmx_map, level_frames, data):
+        # game data
         self.display_surface = pygame.display.get_surface()
         self.data = data
 
@@ -14,14 +15,11 @@ class Level:
         self.level_w = tmx_map.width * TILE_SIZE
         self.level_h = tmx_map.height * TILE_SIZE
         self.level_data = tmx_map.get_layer_by_name("Data")[0].properties
+        self.cam_offset = vector()
         self.sky = False
 
         # groups
-        self.all_sprites = AllSprites(
-            cam_w= self.level_w,
-            cam_h= self.level_data["bottom_limit"],
-            cam_t= self.level_data["top_limit"]
-        )
+        self.all_sprites = AllSprites()
         self.collision_sprites = CollisionSprites()
         self.platform_sprites = pygame.sprite.Group()
         self.damage_sprites = pygame.sprite.Group()
@@ -52,16 +50,18 @@ class Level:
         items.setup(*args)
         water.setup(*args)
 
-    from .spawn import spawn_pearl, spawn_particle
+    from .camera import offset_camera
     from .collisions import check_collisions, get_item
     from .constraints import check_constraints
+    from .spawn import spawn_pearl, spawn_particle
 
     def run(self, dt):
         if self.sky:
             self.display_surface.fill("#ddc6a1")
         else:
             self.display_surface.fill("black")
+        self.check_constraints()
+        self.offset_camera(self.player.hitbox.center)
         self.all_sprites.update(dt)
         self.check_collisions()
-        self.all_sprites.draw(self.player.hitbox.center)
-        self.check_constraints()
+        self.all_sprites.draw(self.cam_offset)
