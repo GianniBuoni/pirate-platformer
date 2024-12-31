@@ -48,7 +48,6 @@ class AllSprites(pygame.sprite.Group):
         self.offset.x = -(target_pos[0] - WINDOW_WIDTH / 2)
         self.offset.y = -(target_pos[1] - WINDOW_HEIGHT / 2)
         self.constrain_camera()
-        print(self.offset.y)
 
         for sprite in sorted(self, key = lambda x: x.z):
             offset_pos = sprite.rect.topleft + self.offset

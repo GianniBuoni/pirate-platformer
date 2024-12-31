@@ -14,6 +14,7 @@ class Level:
         self.level_w = tmx_map.width * TILE_SIZE
         self.level_h = tmx_map.height * TILE_SIZE
         self.level_data = tmx_map.get_layer_by_name("Data")[0].properties
+        self.sky = False
 
         # groups
         self.all_sprites = AllSprites(
@@ -42,6 +43,7 @@ class Level:
     def setup(self, tmx_map, level_frames):
         args = (self, tmx_map, level_frames)
 
+        skybox.setup(*args)
         tiles.setup_tiles(*args)
         bg.setup(*args)
         objects.setup(*args)
@@ -55,7 +57,10 @@ class Level:
     from .constraints import check_constraints
 
     def run(self, dt):
-        self.display_surface.fill("black")
+        if self.sky:
+            self.display_surface.fill("#ddc6a1")
+        else:
+            self.display_surface.fill("black")
         self.all_sprites.update(dt)
         self.check_collisions()
         self.all_sprites.draw(self.player.hitbox.center)

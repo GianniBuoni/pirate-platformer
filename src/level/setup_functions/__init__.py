@@ -5,6 +5,7 @@ __all__ = [
     "items",
     "moving_objects",
     "objects",
+    "skybox",
     "tiles",
     "water"
 ]
