@@ -1,7 +1,11 @@
+from random import randint, choice
+
+from settings import *
 from enemies.pearl import Pearl
-from sprites.particle import Particle
+from sprites import *
 
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from . import Level
 
@@ -15,4 +19,15 @@ def spawn_pearl(self: "Level", pos, direction):
     )
 
 def spawn_particle(self: "Level", pos):
-    Particle(pos, self.particle_frames, self.all_sprites)
+    particle.Particle(pos, self.particle_frames, self.all_sprites)
+
+def spawn_cloud(self: "Level"):
+    surface = choice(self.clouds["small"])
+
+    x = randint(
+        int(self.level_w + surface.width / 2),
+        int(self.level_w + WINDOW_WIDTH / 2)
+    )
+    y = randint(0 , int(self.level_data["horizon_line"] / 2))
+
+    cloud.Cloud((x, y), self.all_sprites, surf = surface)

@@ -1,6 +1,7 @@
+from random import choice, randint
 import pytmx
 from settings import *
-from sprites.sprites import Sprite
+from sprites import *
 
 from typing import TYPE_CHECKING
 
@@ -18,6 +19,12 @@ def setup(self: "Level", tmx_map: pytmx.TiledMap, level_frames):
             for row in range(rows):
                 x = col * TILE_SIZE
                 y = row * TILE_SIZE - extra_rows * TILE_SIZE
-                Sprite((x, y), self.all_sprites, surf=level_frames["bg"][bg_tile], z=-1)
+                sprites.Sprite((x, y), self.all_sprites, surf=level_frames["bg"][bg_tile], z=-1)
     else:
         self.sky = True
+        for _ in range(10):
+            surface = choice(self.clouds["small"])
+            x = randint(0, self.level_w)
+            y = randint(0, int(self.level_data["horizon_line"] / 2))
+
+            cloud.Cloud((x, y), self.all_sprites, surf = surface)

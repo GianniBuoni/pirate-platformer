@@ -2,7 +2,10 @@
 
 __all__ = [
     "animated",
+    "cloud",
+    "items",
     "moving",
+    "particle",
     "radial",
-    "sprites",
+    "sprites"
 ]
