@@ -23,6 +23,7 @@ class Overworld():
 
         tiles.setup(*args)
         water.setup(*args)
+        objects.setup(*args)
 
     def run(self, dt):
         self.all_sprites.update(dt)
