@@ -21,7 +21,7 @@ class Game:
         self.tmx_maps = {0: load_pygame(join("data", "levels", "omni.tmx"))}
         self.tmx_overworld = load_pygame(join("data", "overworld", "overworld.tmx"))
         #self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data)
-        self.current_stage = Overworld(self.tmx_overworld, self.ovworld_frames, self.data)
+        self.current_stage = Overworld(self.tmx_overworld, self.overworld_frames, self.data)
 
     def import_assets(self):
         self.level_frames = {
@@ -65,7 +65,7 @@ class Game:
             "coin": import_image("graphics", "ui", "coin")
         }
 
-        self.ovworld_frames = {
+        self.overworld_frames = {
             "palms": import_folder("graphics", "overworld", "palm"),
             "water": import_folder("graphics", "overworld", "water")
         }

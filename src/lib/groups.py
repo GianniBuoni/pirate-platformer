@@ -10,7 +10,6 @@ class AllSprites(pygame.sprite.Group):
     def __init__(self, *sprites: "Union[Sprite, Player]") -> None:
         super().__init__(*sprites)
         self.display_surface = pygame.display.get_surface()
-        self.offset = vector()
 
     def draw(self, cam_offset): # pyright: ignore
         for sprite in sorted(self, key = lambda x: x.z):
