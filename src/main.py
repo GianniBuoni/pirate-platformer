@@ -67,7 +67,10 @@ class Game:
 
         self.overworld_frames = {
             "palms": import_folder("graphics", "overworld", "palm"),
-            "water": import_folder("graphics", "overworld", "water")
+            "water": import_folder("graphics", "overworld", "water"),
+
+            # imparted as nested dict
+            "path": import_folder_dict("graphics", "overworld", "path")
         }
 
     def run(self):

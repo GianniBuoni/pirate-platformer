@@ -5,6 +5,7 @@ __all__ = [
     "cloud",
     "items",
     "moving",
+    "node",
     "particle",
     "radial",
     "sprites"
