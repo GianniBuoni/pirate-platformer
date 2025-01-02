@@ -8,13 +8,12 @@ class Data():
         self._coins = 0
 
         # level and stage data
-        self.current_level = 2
-        self.unlocked_levels = 1
+        self.current_level = 1
+        self.unlocked_levels = 3
 
         # ui init
         self.ui = ui
         self.ui.create_hearts(self.health)
-
 
     @property
     def health(self):

@@ -1,6 +1,4 @@
 from enum import Enum
-
-from pygame import key
 from settings import *
 
 class IconStates(Enum):
@@ -26,15 +24,6 @@ class Icon(pygame.sprite.Sprite):
         self.rect: "pygame.FRect" = self.image.get_frect()
         self.z = Z_LAYERS["main"]
 
-    def input(self):
-        keys = pygame.key.get_pressed()
-        self.direction.x = int(keys[pygame.K_RIGHT]) - int(keys[pygame.K_LEFT])
-        self.direction.y = int(keys[pygame.K_DOWN]) - int(keys[pygame.K_UP])
-        self.direction = self.direction.normalize() if self.direction else self.direction
-
-    def move(self, dt):
-        self.rect.center += self.direction * self.speed * dt
-
     def animate(self, dt):
         self.frame_idx += self.animations_speed * dt
         frames = self.state_frames[self.get_state().value]
@@ -48,6 +37,4 @@ class Icon(pygame.sprite.Sprite):
         else: return IconStates.IDLE
 
     def update(self, dt):
-        self.input()
-        self.move(dt)
         self.animate(dt)
