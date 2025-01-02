@@ -1,6 +1,5 @@
 from settings import *
 from sprites import *
-from sprites.icon import Icon
 
 from typing import TYPE_CHECKING
 
@@ -18,4 +17,4 @@ def setup(self: "Overworld", tmx_map: "pytmx.TiledMap", frames):
         # render player on current level
         match obj.properties["stage"]:
             case self.data.current_level:
-                Icon(self.all_sprites, pos=(obj.x, obj.y), frames=frames["icon"])
+                self.icon.rect.topleft = (obj.x, obj.y)
