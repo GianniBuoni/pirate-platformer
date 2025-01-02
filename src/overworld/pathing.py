@@ -9,11 +9,11 @@ def get_paths(self: "Overworld", tmx_map: "pytmx.TiledMap"):
     for obj in tmx_map.get_layer_by_name("Paths"):
         obj: "pytmx.TiledObject" = obj
 
-        for i in range(3):
+        for point in obj.points:
             if not obj.properties["path_id"] in path_points.keys():
-                path_points[obj.properties["path_id"]] = [(obj.points[i].x, obj.points[i].y)]
+                path_points[obj.properties["path_id"]] = [(point.x, point.y)]
             else:
-                path_points[obj.properties["path_id"]].append((obj.points[i].x, obj.points[i].y))
+                path_points[obj.properties["path_id"]].append((point.x, point.y))
 
     sorted_paths = {}
     for key in (sorted(path_points.keys())):

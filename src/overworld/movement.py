@@ -32,3 +32,4 @@ def pivot_path_points(self: "Overworld", speed):
         self.icon.rect.topleft = self.current_path[0]
         self.start_point = self.icon.rect.topleft
         del self.current_path[0]
+        self.check_current_node()

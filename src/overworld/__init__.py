@@ -53,6 +53,10 @@ class Overworld():
             self.start_point = self.icon.rect.topleft
             self.current_path = self.availabe_paths()["down"][1:]
 
+    def check_current_node(self):
+        node = pygame.sprite.spritecollide(self.icon, self.node_sprites, False)
+        if node: self.data.current_level = node[0].id
+
     from .movement import move_icon, offset_camera, pivot_path_points
     from .pathing import get_paths, availabe_inputs, availabe_paths
 

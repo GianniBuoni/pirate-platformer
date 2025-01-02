@@ -24,6 +24,7 @@
           python3
           python312Packages.pygame-ce
           python312Packages.pytmx
+          tiled
         ]);
 
       shellHook = "tmux";
