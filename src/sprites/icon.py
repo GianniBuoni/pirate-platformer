@@ -11,6 +11,7 @@ class IconStates(Enum):
 class Icon(pygame.sprite.Sprite):
     def __init__(self, *groups, pos, frames: dict[str, list[pygame.Surface]]) -> None:
         super().__init__(*groups)
+        self.player = True
 
         # frames & animation
         self.state_frames, self.frame_idx = frames, 0

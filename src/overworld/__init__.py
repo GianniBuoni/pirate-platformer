@@ -29,4 +29,4 @@ class Overworld():
 
     def run(self, dt):
         self.all_sprites.update(dt)
-        self.all_sprites.draw(self.cam_offset)
+        self.all_sprites.draw_overworld(self.cam_offset)

@@ -27,4 +27,5 @@ def setup(self: "Overworld", tmx_map: "pytmx.TiledMap", frames):
                     (obj.x, obj.y),
                     self.all_sprites,
                     surf = obj.image, # pyright: ignore
+                    z=Z_LAYERS["bg details"]
                 )
