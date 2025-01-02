@@ -3,9 +3,10 @@ __all__ = ["Overworld"]
 from lib.groups import AllSprites
 from settings import *
 from overworld.setup_functions import *
+from lib.data import Data
 
 class Overworld():
-    def __init__(self, tmx_map, overworld_frames, data) -> None:
+    def __init__(self, tmx_map, overworld_frames, data: Data) -> None:
         self.display_surface = pygame.display.get_surface()
         self.data = data
 
