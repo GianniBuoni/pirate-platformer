@@ -9,7 +9,7 @@ class Data():
 
         # level and stage data
         self.current_level = 2
-        self.unlocked_levels = 3
+        self.unlocked_levels = 1
 
         # ui init
         self.ui = ui

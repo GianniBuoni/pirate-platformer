@@ -1,8 +1,9 @@
 __all__ = ["Overworld"]
 
-from lib.groups import AllSprites
 from settings import *
 from overworld.setup_functions import *
+
+from lib.groups import AllSprites
 from lib.data import Data
 from sprites.icon import Icon
 
@@ -12,7 +13,7 @@ class Overworld():
         self.data = data
 
         # overworld data
-        self.cam_offset = vector(-500, -300)
+        self.cam_offset = vector()
 
         # sprites
         self.all_sprites = AllSprites()
