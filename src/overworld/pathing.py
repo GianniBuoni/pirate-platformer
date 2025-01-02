@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from . import Overworld
@@ -19,14 +19,14 @@ def get_paths(self: "Overworld", tmx_map: "pytmx.TiledMap"):
     for key in (sorted(path_points.keys())):
         sorted_paths[key] = path_points[key]
 
-    self.paths = sorted_paths
+    self.paths = path_points
 
 def availabe_inputs(self: "Overworld") -> tuple[list[str], dict[str, tuple[int, bool]]]: # pyright: ignore
     for node in self.node_sprites:
         if node.id == self.data.current_level:
             return list(node.inputs.keys()), node.inputs
 
-def availabe_paths(self: "Overworld") -> dict[str, list[tuple[float]]]:
+def availabe_paths(self: "Overworld") -> dict[str, list[tuple[float, float]]]:
     node_info = self.availabe_inputs()
     all_paths = {}
     for key in node_info[0]:

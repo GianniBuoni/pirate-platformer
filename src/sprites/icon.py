@@ -24,6 +24,9 @@ class Icon(pygame.sprite.Sprite):
         self.rect: "pygame.FRect" = self.image.get_frect()
         self.z = Z_LAYERS["main"]
 
+    def move(self, dt):
+        self.rect.center += self.direction * self.speed * dt
+
     def animate(self, dt):
         self.frame_idx += self.animations_speed * dt
         frames = self.state_frames[self.get_state().value]
@@ -37,4 +40,5 @@ class Icon(pygame.sprite.Sprite):
         else: return IconStates.IDLE
 
     def update(self, dt):
+        self.move(dt)
         self.animate(dt)
