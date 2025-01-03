@@ -18,6 +18,7 @@ class Overworld():
         self.paths = {}
         self.current_path = []
         self.start_point: Union[tuple[float, float], None] = None
+        self.can_input = True
 
         # sprites
         self.all_sprites = AllSprites()
@@ -36,27 +37,14 @@ class Overworld():
         objects.setup(*args)
         nodes.setup(*args)
 
-    def input(self):
-        keys = pygame.key.get_pressed()
-        valid_inputs = self.availabe_inputs()[0]
-
-        if keys[pygame.K_LEFT] and "left" in valid_inputs:
-            self.start_point = self.icon.rect.topleft
-            self.current_path = self.availabe_paths()["left"][1:]
-        if keys[pygame.K_RIGHT] and "right" in valid_inputs:
-            self.start_point = self.icon.rect.topleft
-            self.current_path = self.availabe_paths()["right"][1:]
-        if keys[pygame.K_UP] and "up" in valid_inputs:
-            self.start_point = self.icon.rect.topleft
-            self.current_path = self.availabe_paths()["up"][1:]
-        if keys[pygame.K_DOWN] and "down" in valid_inputs:
-            self.start_point = self.icon.rect.topleft
-            self.current_path = self.availabe_paths()["down"][1:]
 
     def check_current_node(self):
         node = pygame.sprite.spritecollide(self.icon, self.node_sprites, False)
-        if node: self.data.current_level = node[0].id
+        if node:
+            self.data.current_level = node[0].id
+            self.can_input = True
 
+    from ._input import input
     from .movement import move_icon, offset_camera, pivot_path_points
     from .pathing import get_paths, availabe_inputs, availabe_paths
 
