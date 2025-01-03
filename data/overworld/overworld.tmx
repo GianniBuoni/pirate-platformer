@@ -71,7 +71,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Nodes" visible="0">
+ <objectgroup id="4" name="Nodes">
   <object id="62" name="Node" x="640" y="768" width="64" height="64">
    <properties>
     <property name="down" value="1"/>
@@ -89,9 +89,9 @@
   <object id="64" name="Node" x="1728" y="960" width="64" height="64">
    <properties>
     <property name="down" value="4"/>
-    <property name="left" value="3r"/>
     <property name="right" value="5"/>
     <property name="stage" type="int" value="3"/>
+    <property name="up" value="3r"/>
    </properties>
   </object>
   <object id="65" name="Node" x="1408" y="512" width="64" height="64">
