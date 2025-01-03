@@ -37,7 +37,6 @@ class Overworld():
         objects.setup(*args)
         nodes.setup(*args)
 
-
     def check_current_node(self):
         node = pygame.sprite.spritecollide(self.icon, self.node_sprites, False)
         if node:

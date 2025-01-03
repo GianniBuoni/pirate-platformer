@@ -8,8 +8,8 @@ class Data():
         self._coins = 0
 
         # level and stage data
-        self.current_level = 5
-        self.unlocked_levels = 5
+        self.current_level = 0
+        self.unlocked_levels = 1
 
         # ui init
         self.ui = ui
