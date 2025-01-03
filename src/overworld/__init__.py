@@ -27,6 +27,7 @@ class Overworld():
 
         # events
         self.setup(tmx_map, overworld_frames)
+        self.create_path(overworld_frames)
 
     def setup(self, tmx_map, overworld_frames):
         self.get_paths(tmx_map)
@@ -45,7 +46,7 @@ class Overworld():
 
     from ._input import input
     from .movement import move_icon, offset_camera, pivot_path_points
-    from .pathing import get_paths, availabe_inputs, availabe_paths
+    from .pathing import get_paths, availabe_inputs, availabe_paths, create_path
 
     def run(self, dt):
         self.display_surface.fill("black")
