@@ -1,4 +1,3 @@
-from operator import ne
 from settings import *
 from typing import TYPE_CHECKING
 
@@ -81,11 +80,11 @@ def create_path(self: "Overworld", frames):
             tile = tile_data[0]
             direction = tile_data[1]
             other = i + 1 if i < len(path) - 1 else i - 1
+            next_vector = path[other][1]
 
-            if direction == path[other][1]:
+            if direction == next_vector:
                 frame_key = "vertical" if tile.x == path[other][0].x else "horizontal"
             else:
-                next_vector = path[other][1]
                 frame_key = {
                     (direction.x == 1 and next_vector.y == -1) or (direction.y == 1 and next_vector.x == -1): "tl",
                     (direction.x == -1 and next_vector.y == -1) or (direction.y == 1 and next_vector.x == 1): "tr",
@@ -93,4 +92,9 @@ def create_path(self: "Overworld", frames):
                     (direction.x == -1 and next_vector.y == 1) or (direction.y == -1 and next_vector.x == 1): "br"
                 }[True]
 
-            Sprite((tile.x * TILE_SIZE, tile.y * TILE_SIZE), self.all_sprites, surf=frames["path"][frame_key], z=Z_LAYERS["path"])
+            Sprite(
+                (tile.x * TILE_SIZE, tile.y * TILE_SIZE),
+                self.all_sprites,
+                surf=frames["path"][frame_key],
+                z=Z_LAYERS["path"]
+            )
