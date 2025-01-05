@@ -10,7 +10,7 @@ def setup(self: "Level", tmx_map, level_frames):
         # objects
     for obj in tmx_map.get_layer_by_name("Objects"):
         if obj.name == "player":
-            self.player.hitbox.topleft = (obj.x, obj.y) + vector(76, 0)
+            self.player.hitbox.topleft = (obj.x, obj.y)
         elif obj.name in ("crate", "barrel"): # codespell:ignore
             sprites.Sprite((obj.x, obj.y), self.all_sprites, self.collision_sprites, surf = obj.image)
         else: # all other animated sprites on the objects layer
@@ -22,7 +22,7 @@ def setup(self: "Level", tmx_map, level_frames):
             # modify frames, groups, animation_speed, and z based on object name
             if obj.name == "floor_spike":
                 groups.append(self.damage_sprites)
-                if obj.inverted:
+                if obj.properties["inverted"]:
                     frames = [pygame.transform.flip(x, False, True) for x in frames]
             if obj.name in ("palm_large", "palm_small"): groups.append(self.platform_sprites)
             if "palm" in obj.name: animation_speed += uniform(-1,1)

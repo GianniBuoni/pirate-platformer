@@ -7,10 +7,11 @@ from level.setup_functions import *
 from player import Player
 
 class Level:
-    def __init__(self, tmx_map, level_frames, data):
+    def __init__(self, tmx_map, level_frames, data, swith_stage):
         # game data
         self.display_surface = pygame.display.get_surface()
         self.data = data
+        self.swith_stage = swith_stage
 
         # level_data:
         self.level_w = tmx_map.width * TILE_SIZE
