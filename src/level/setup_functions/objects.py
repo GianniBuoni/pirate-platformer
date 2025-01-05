@@ -25,6 +25,7 @@ def setup(self: "Level", tmx_map, level_frames):
                 if obj.properties["inverted"]:
                     frames = [pygame.transform.flip(x, False, True) for x in frames]
             if obj.name in ("palm_large", "palm_small"): groups.append(self.platform_sprites)
+            if obj.name == "saw": groups.append(self.damage_sprites)
             if "palm" in obj.name: animation_speed += uniform(-1,1)
             if "bg" in obj.name: z = Z_LAYERS["bg"]
 
