@@ -9,9 +9,10 @@ from lib.data import Data
 from sprites.icon import Icon
 
 class Overworld():
-    def __init__(self, tmx_map, overworld_frames, data: Data) -> None:
+    def __init__(self, tmx_map, overworld_frames, data: Data, switch_stage) -> None:
         self.display_surface = pygame.display.get_surface()
         self.data = data
+        self.switch_stage = switch_stage
 
         # overworld data
         self.cam_offset = vector()

@@ -21,3 +21,5 @@ def input(self):
             self.start_point = self.icon.rect.topleft
             self.current_path = self.availabe_paths()["down"][1:]
             self.can_input = False
+        if keys[pygame.K_RETURN]:
+            self.switch_stage("level", self.data.current_level)

@@ -24,12 +24,23 @@ class Game:
 
         self.ui = UI(self.font, self.ui_frames)
         self.data = Data(self.ui)
-        self.tmx_maps = {0: load_pygame(join("data", "levels", "omni.tmx"))}
+        self.tmx_maps = {
+            0: load_pygame(join("data", "levels", "0.tmx")),
+            1: load_pygame(join("data", "levels", "1.tmx")),
+            2: load_pygame(join("data", "levels", "2.tmx")),
+            3: load_pygame(join("data", "levels", "3.tmx")),
+            4: load_pygame(join("data", "levels", "4.tmx")),
+        }
         self.tmx_overworld = load_pygame(join("data", "overworld", "overworld.tmx"))
-        #self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data)
-        self.current_stage = Overworld(self.tmx_overworld, self.overworld_frames, self.data)
+        self.current_stage: Union[Overworld, Level] = Overworld(
+            self.tmx_overworld,
+            self.overworld_frames,
+            self.data,
+            self.switch_stage
+        )
 
     from lib.import_assets import import_assets
+    from lib.staging import switch_stage
 
     def run(self):
         while True:
