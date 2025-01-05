@@ -16,7 +16,10 @@ def switch_stage(self: "Game", target, unlock = 0):
     else:
         # Overworld
         if unlock > 0:
-            self.data.unlocked_levels = unlock
+            self.data.unlocked_levels = (
+                unlock if self.data.unlocked_levels < unlock
+                else self.data.unlocked_levels
+            )
         else:
             self.data.health -= 1
         self.current_stage = Overworld(

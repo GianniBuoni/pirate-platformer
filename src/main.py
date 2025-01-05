@@ -25,10 +25,10 @@ class Game:
         self.ui = UI(self.font, self.ui_frames)
         self.data = Data(self.ui)
         self.tmx_maps = {
-            0: load_pygame(join("data", "levels", "0.tmx")),
+            0: load_pygame(join("data", "levels", "3.tmx")),
             1: load_pygame(join("data", "levels", "1.tmx")),
             2: load_pygame(join("data", "levels", "2.tmx")),
-            3: load_pygame(join("data", "levels", "3.tmx")),
+            3: load_pygame(join("data", "levels", "0.tmx")),
             4: load_pygame(join("data", "levels", "4.tmx")),
         }
         self.tmx_overworld = load_pygame(join("data", "overworld", "overworld.tmx"))
