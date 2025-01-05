@@ -10,18 +10,15 @@ def move(self: "Player", dt):
     self.collision("horizontal")
 
     # vert
-    if (
-        self.check_collision_side() == CollidesWith.LEFT
-        or self.check_collision_side() == CollidesWith.RIGHT
-        and not self.timers["wjump t/o"]
-    ):
-        # wall slide decreases gravity
-        self.direction.y = 0
-        self.hitbox.y += self.gravity / 10 * dt
-    else: # normal gravity
-        self.direction.y += self.gravity / 2 * dt
-        self.hitbox.y += self.direction.y * dt
-        self.direction.y += self.gravity / 2 * dt
+    match self.check_collision_side():
+        case CollidesWith.FLOOR | CollidesWith.AIR:
+            self.reset_gravity(dt)
+        case CollidesWith.LEFT | CollidesWith.RIGHT:
+            if not self.timers["wjump t/o"]:
+                self.direction.y = 0
+                self.hitbox.y += self.gravity / 10 * dt
+            else:
+                self.reset_gravity(dt)
 
     self.collision("vertical")
 
@@ -44,3 +41,8 @@ def move(self: "Player", dt):
         self.jump = False
 
     self.rect.center = self.hitbox.center
+
+def reset_gravity(self: "Player", dt):
+    self.direction.y += self.gravity / 2 * dt
+    self.hitbox.y += self.direction.y * dt
+    self.direction.y += self.gravity / 2 * dt

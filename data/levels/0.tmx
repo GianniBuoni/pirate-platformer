@@ -202,7 +202,7 @@
  <objectgroup id="6" name="Enemies">
   <object id="36" name="shell" gid="224" x="64" y="448" width="76" height="46">
    <properties>
-    <property name="reverse" type="bool" value="true"/>
+    <property name="reverse" type="bool" value="false"/>
    </properties>
   </object>
   <object id="39" name="shell" gid="224" x="2176" y="384" width="76" height="46">

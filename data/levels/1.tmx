@@ -442,7 +442,7 @@
   </object>
   <object id="158" name="shell" gid="229" x="128" y="448" width="76" height="46">
    <properties>
-    <property name="reverse" type="bool" value="true"/>
+    <property name="reverse" type="bool" value="false"/>
    </properties>
   </object>
   <object id="159" name="shell" gid="229" x="128" y="1024" width="76" height="46">

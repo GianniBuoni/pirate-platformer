@@ -52,4 +52,4 @@ class Player(pygame.sprite.Sprite):
     from ._animate import animate, get_state, flicker
     from ._collision import collision, platform_collision, check_collision_side, platform
     from ._core_methods import attack, input, update_timers, update
-    from ._move import move
+    from ._move import move, reset_gravity

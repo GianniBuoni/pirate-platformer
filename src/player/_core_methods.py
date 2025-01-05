@@ -28,7 +28,6 @@ def input(self: "Player"):
         self.jump = True
 
 def attack(self: "Player"):
-    print("attack")
     self.attacking = True
     self.frames_idx = 0
     self.timers["attack t/o"].activate()
