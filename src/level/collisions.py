@@ -10,6 +10,7 @@ def check_collisions(self: "Level"):
         for sprite in self.item_sprites:
             collision = sprite.rect.colliderect(self.player.hitbox)
             if collision:
+                self.play_sound("coin", -0.2)
                 sprite.kill()
                 self.spawn_particle(sprite.rect.center)
                 self.get_item(sprite.item_type)
@@ -22,6 +23,7 @@ def check_collisions(self: "Level"):
             collision = sprite.rect.colliderect(self.player.hitbox)
         if collision:
             if not self.player.timers["damage t/o"]:
+                self.play_sound("damage")
                 self.data.health -= 1
                 self.player.timers["damage t/o"].activate()
             if hasattr(sprite, "particle"):
@@ -35,7 +37,8 @@ def check_collisions(self: "Level"):
             self.player.rect.center < target.rect.center and self.player.facing_right
             or self.player.rect.center > target.rect.center and not self.player.facing_right
         )
-        if collision and self.player.attacking and facing_target:
+        if collision and self.player.attacking and facing_target and not target.timers["reverse"]:
+            self.play_sound("hit")
             target.reverse()
 
 def get_item(self: "Level", item_type):

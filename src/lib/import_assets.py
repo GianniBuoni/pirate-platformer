@@ -53,3 +53,5 @@ def import_assets(self: "Game"):
         "icon": import_sub_folders("graphics", "overworld", "icon"),
         "path": import_folder_dict("graphics", "overworld", "path")
     }
+
+    self.audio = import_sound("audio")

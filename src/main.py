@@ -17,9 +17,8 @@ class Game:
 
         # assets
         self.font: "Union[None, pygame.Font]" = None
-        self.ui_frames = {}
-        self.level_frames = {}
-        self.overworld_frames = {}
+        self.ui_frames, self.level_frames, self.overworld_frames, = {}, {}, {}
+        self.audio = {}
         self.import_assets()
 
         self.ui = UI(self.font, self.ui_frames)
@@ -38,6 +37,10 @@ class Game:
             self.data,
             self.switch_stage
         )
+
+        # events
+        self.audio["starlight_city"].set_volume(.1)
+        self.audio["starlight_city"].play(-1)
 
     from lib.import_assets import import_assets
     from lib.staging import switch_stage

@@ -24,10 +24,13 @@ def input(self: "Player"):
                 self.attack()
 
     # movement handled in jumping logic
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_SPACE] and not self.timers["jump input t/o"]:
+        self.timers["jump input t/o"].activate()
         self.jump = True
+        self.play_sound("jump", -0.1)
 
 def attack(self: "Player"):
+    self.play_sound("attack", -0.1)
     self.attacking = True
     self.frames_idx = 0
     self.timers["attack t/o"].activate()

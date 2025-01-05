@@ -30,3 +30,12 @@ def import_sub_folders(*path):
             for sub_folder in sub_folders:
                 frame_dict[sub_folder] = import_folder(*path, sub_folder)
     return frame_dict
+
+def import_sound(*path) -> dict[str, pygame.mixer.Sound]:
+    sound_dict = {}
+    for folder, _, files in walk(join(*path)):
+        for file_name in files:
+            full_path = join(folder, file_name)
+            sound = pygame.mixer.Sound(full_path)
+            sound_dict[file_name.split(".")[0]] = sound
+    return sound_dict

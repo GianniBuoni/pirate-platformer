@@ -7,11 +7,12 @@ from level.setup_functions import *
 from player import Player
 
 class Level:
-    def __init__(self, tmx_map, level_frames, data, swith_stage):
+    def __init__(self, tmx_map, level_frames, data, switch_stage, audio):
         # game data
         self.display_surface = pygame.display.get_surface()
         self.data = data
-        self.swith_stage = swith_stage
+        self.switch_stage = switch_stage
+        self.audio = audio
 
         # level_data:
         self.level_w = tmx_map.width * TILE_SIZE
@@ -39,6 +40,7 @@ class Level:
             (0, 0), level_frames["player"],
             self.collision_sprites,
             self.platform_sprites,
+            self.play_sound,
             self.all_sprites
         )
 
@@ -65,6 +67,7 @@ class Level:
     from .collisions import check_collisions, get_item
     from .constraints import check_constraints
     from .spawn import spawn_pearl, spawn_particle, spawn_cloud
+    from .sound import play_sound
 
     def run(self, dt):
         if self.sky:

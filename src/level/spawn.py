@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from . import Level
 
 def spawn_pearl(self: "Level", pos, direction):
+    self.play_sound("pearl", 0.5)
     Pearl(
         pos, self.collision_sprites,
         (self.all_sprites, self.reversible_sprites, self.damage_sprites),

@@ -11,7 +11,8 @@ def switch_stage(self: "Game", target, unlock = 0):
             self.tmx_maps[unlock],
             self.level_frames,
             self.data,
-            self.switch_stage
+            self.switch_stage,
+            self.audio
         )
     else:
         # Overworld

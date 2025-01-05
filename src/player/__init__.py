@@ -12,10 +12,12 @@ class Player(pygame.sprite.Sprite):
             frames: dict[str, list[pygame.Surface]],
             collision_sprites: CollisionSprites,
             platform_sprites,
+            play_sound,
             *groups
     ):
         super().__init__(*groups)
         self.z = Z_LAYERS["main"]
+        self.play_sound = play_sound
 
         # image
         self.frames, self.frames_idx = frames, 0
@@ -43,6 +45,7 @@ class Player(pygame.sprite.Sprite):
         # timers
         self.timers = {
             "attack t/o": Timer(500),
+            "jump input t/o": Timer(250),
             "jump t/o": Timer(400),
             "platform t/o": Timer(100),
             "wjump t/o": Timer(250),
