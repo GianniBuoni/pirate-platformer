@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING: from overworld import Overworld
 
-def input(self: "Overworld"):
+def get_input(self: "Overworld"):
     keys = pygame.key.get_pressed()
     valid_inputs = self.availabe_inputs()[0]
 

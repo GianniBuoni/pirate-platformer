@@ -32,8 +32,8 @@ class Overworld():
 
         # events
         self.setup(tmx_map, overworld_frames)
-        self.create_path(overworld_frames)
         self.check_current_node()
+        self.create_path(overworld_frames)
 
     def setup(self, tmx_map, overworld_frames):
         self.get_paths(tmx_map)
@@ -51,7 +51,7 @@ class Overworld():
             self.data.current_level = node[0].id
             self.can_input = True
 
-    from ._input import input
+    from .input import get_input
     from .movement import move_icon, offset_camera, pivot_path_points
     from .pathing import get_paths, availabe_inputs, availabe_paths, create_path
 
@@ -59,7 +59,7 @@ class Overworld():
         self.display_surface.fill("black")
         for key in self.timers.keys():
             self.timers[key].update()
-        self.input()
+        self.get_input()
         self.move_icon()
         self.offset_camera(self.icon.rect.center)
         self.all_sprites.update(dt)
