@@ -1,6 +1,7 @@
 __all__ = ["Overworld"]
 
 from typing import Union
+from lib.timer import Timer
 from settings import *
 from overworld.setup_functions import *
 
@@ -19,16 +20,20 @@ class Overworld():
         self.paths = {}
         self.current_path = []
         self.start_point: Union[tuple[float, float], None] = None
-        self.can_input = True
+        self.can_input = False
 
         # sprites
         self.all_sprites = AllSprites()
         self.node_sprites = pygame.sprite.Group()
         self.icon = Icon(self.all_sprites, frames=overworld_frames["icon"])
 
+        # timers
+        self.timers = { "input t/o": Timer(200)}
+
         # events
         self.setup(tmx_map, overworld_frames)
         self.create_path(overworld_frames)
+        self.check_current_node()
 
     def setup(self, tmx_map, overworld_frames):
         self.get_paths(tmx_map)
@@ -42,6 +47,7 @@ class Overworld():
     def check_current_node(self):
         node = pygame.sprite.spritecollide(self.icon, self.node_sprites, False)
         if node:
+            self.timers["input t/o"].activate()
             self.data.current_level = node[0].id
             self.can_input = True
 
@@ -51,6 +57,8 @@ class Overworld():
 
     def run(self, dt):
         self.display_surface.fill("black")
+        for key in self.timers.keys():
+            self.timers[key].update()
         self.input()
         self.move_icon()
         self.offset_camera(self.icon.rect.center)
