@@ -14,9 +14,12 @@ def check_collisions(self: "Level"):
                 self.spawn_particle(sprite.rect.center)
                 self.get_item(sprite.item_type)
 
-    # pearl and player
+    # damage sprite and player
     for sprite in self.damage_sprites:
-        collision = sprite.rect.colliderect(self.player.hitbox)
+        if hasattr(sprite, "hitbox"):
+            collision = sprite.hitbox.colliderect(self.player.hitbox)
+        else:
+            collision = sprite.rect.colliderect(self.player.hitbox)
         if collision:
             if not self.player.timers["damage t/o"]:
                 self.data.health -= 1
