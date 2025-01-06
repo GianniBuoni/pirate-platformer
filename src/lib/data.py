@@ -21,7 +21,7 @@ class Data():
 
     @health.setter
     def health(self, value):
-        self._health = min(5, max(0, value))
+        self._health = min(10, max(0, value))
         self.ui.create_hearts(self._health)
 
     @property

@@ -39,7 +39,7 @@ class Player(pygame.sprite.Sprite):
 
         # movement
         self.direction = vector()
-        self.speed, self.gravity, self.jump_distance = 200, 1000, 800
+        self.speed, self.gravity, self.jump_distance = 200, 1000, 650
         self.jump = False
 
         # timers
