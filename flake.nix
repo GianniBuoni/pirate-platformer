@@ -11,19 +11,17 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    py = pkgs.writeShellScriptBin "py" ''
-      python3 src/main.py
+    gg = pkgs.writeShellScriptBin "gg" ''
+      go run .
     '';
   in {
     devShells.${system}.default = pkgs.mkShell {
       packages =
         [
-          py
+          gg
         ]
         ++ (with pkgs; [
-          python3
-          python312Packages.pygame-ce
-          python312Packages.pytmx
+          go
           tiled
         ]);
 
