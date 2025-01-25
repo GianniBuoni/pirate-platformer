@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -20,7 +18,7 @@ func main() {
 	// load assets
 	levelAssets.ImportImage([]string{"graphics", "objects", "boat"})
 	levelAssets.ImportFolder([]string{"graphics", "items", "gold"})
-	fmt.Println(levelAssets.Frames)
+  levelAssets.ImportSubfolders([]string{"graphics", "player"})
 
 	rl.SetTargetFPS(60)
 
