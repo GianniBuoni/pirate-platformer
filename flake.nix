@@ -12,7 +12,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     gg = pkgs.writeShellScriptBin "ggg" ''
-      go run .
+      go run . > run.log
     '';
   in {
     devShells.${system}.default = pkgs.mkShell {
