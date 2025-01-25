@@ -1,5 +1,5 @@
 {
-  description = "A raylib dev shell and build environment";
+  description = "A raylib-go dev shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -11,14 +11,14 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    gg = pkgs.writeShellScriptBin "ggg" ''
+    ggg = pkgs.writeShellScriptBin "ggg" ''
       go run . > run.log
     '';
   in {
     devShells.${system}.default = pkgs.mkShell {
       packages =
         [
-          gg
+          ggg
         ]
         ++ (with pkgs; [
           go
