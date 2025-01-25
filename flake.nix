@@ -40,8 +40,7 @@
         libxkbcommon
       ];
       shellHook = ''
-        export LD_LIBRARY_PATH=${pkgs.wayland}/lib:$LD_LIBRARY_PATH &&
-        tmux
+        export LD_LIBRARY_PATH=${pkgs.wayland}/lib:$LD_LIBRARY_PATH
       '';
     };
   };
