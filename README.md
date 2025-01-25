@@ -3,15 +3,17 @@
 Trying to put together what I've learned about making games.  
 Originally written in Python, and now trying to rewrite it in Go.
 
-## Controls
+## ⌨️ Controls
 
-`W,A,S,D or UP, LEFT, RIGHT, DOWN`: directional movement.
-`SPACE`: jump; combine with directional inputs to wall jump.
-`F`: attack; slashes sword and sends away projectiles and enemies.
+- `W,A,S,D or UP, LEFT, RIGHT, DOWN`: directional movement.
+- `SPACE`: jump; combine with directional inputs to wall jump.
+- `F`: attack; slashes sword and sends away projectiles and enemies.
 
-## Goals
+There's the potential to add joystick controls later.
 
-I'm using this project to learn how to put together a game with thees features:
+## 🗒️ Goals
+
+I'm using this project to learn how to put together a game with these features:
 
 - Menus/UI/Game Over Screen
 - Overworld
