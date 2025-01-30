@@ -1,10 +1,9 @@
 package game
 
 import (
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/GianniBuoni/pirate-platformer/internal/window"
 )
 
 func (g *GameData) Load() {
-	rl.InitWindow(WindowW, WindowH, Title)
+  g.window = window.NewWindow()
 }

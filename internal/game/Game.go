@@ -1,13 +1,16 @@
 package game
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+)
 
 type GameData struct {
-  running bool
+	running bool
+	window  Window
 }
 
 func NewGame() Game {
-  return &GameData{
-    running: true,
-  }
+	return &GameData{
+		running: true,
+	}
 }
