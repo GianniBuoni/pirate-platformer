@@ -3,7 +3,6 @@ package sprites
 import (
 	"fmt"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -15,7 +14,7 @@ type BasicSprite struct {
 	rect      rl.Rectangle
 }
 
-func NewSprite(image string, pos rl.Vector2, a interfaces.Assets) (Sprite, error) {
+func NewSprite(image string, pos rl.Vector2, a Assets) (Sprite, error) {
 	src, err := a.GetImage(image)
 	if err != nil {
 		return nil, fmt.Errorf(

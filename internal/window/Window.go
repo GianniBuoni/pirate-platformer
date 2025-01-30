@@ -15,6 +15,8 @@ type WindowData struct {
 func NewWindow() interfaces.Window {
   rl.SetConfigFlags(rl.FlagWindowResizable | rl.FlagVsyncHint)
 	rl.InitWindow(int32(WindowW), int32(WindowH), Title)
+  rl.SetWindowMinSize(int(WindowW), int(WindowH))
+
 	target := rl.LoadRenderTexture(int32(WindowW), int32(WindowH))
 	rl.SetTextureFilter(target.Texture, rl.FilterBilinear)
 

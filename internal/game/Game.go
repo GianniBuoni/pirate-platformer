@@ -5,10 +5,11 @@ import (
 )
 
 type GameData struct {
-	running     bool
-	window      Window
-	levelAssets Assets
-	allSprites  []Sprite
+	running      bool
+	window       Window
+	levelAssets  Assets
+	player       Sprite
+	allSprites   []Sprite
 }
 
 func NewGame() Game {
