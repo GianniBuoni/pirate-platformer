@@ -24,6 +24,7 @@
           go
           libGL
           tiled
+          aseprite
 
           # x11 dependencies
           xorg.libX11
