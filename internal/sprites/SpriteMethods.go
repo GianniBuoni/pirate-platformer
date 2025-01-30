@@ -21,7 +21,3 @@ func (s *BasicSprite) Draw(a interfaces.Assets) {
 		rl.White,
 	)
 }
-
-func (s *BasicSprite) Pos() rl.Vector2 {
-	return rl.NewVector2(s.rect.X, s.rect.Y)
-}

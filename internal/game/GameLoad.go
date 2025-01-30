@@ -1,6 +1,8 @@
 package game
 
 import (
+	"log"
+
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
@@ -12,7 +14,17 @@ func (g *GameData) Load() {
 	g.window = window.NewWindow()
 	g.levelAssets = assets.NewAssets()
 	g.loadAssets()
-  g.AddSprite(sprites.NewSprite("boat", rl.NewVector2(lib.WindowW/2, lib.WindowH/2)))
+	boat, err := sprites.NewSprite(
+		"boat",
+		rl.NewVector2(lib.WindowW/2, lib.WindowH/2),
+		g.levelAssets,
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+  boat.OffsetCentre()
+	g.AddSprite(boat)
 
 }
 
