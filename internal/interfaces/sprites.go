@@ -1,6 +1,6 @@
 package interfaces
 
-type Sprites interface {
+type Sprite interface {
 	Update()
-	Draw(Assets) error
+	Draw(Assets)
 }

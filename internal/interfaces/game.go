@@ -7,4 +7,7 @@ type Game interface {
 
   // getters
   IsRunning() bool
+
+  // setters
+  AddSprite(Sprite)
 }

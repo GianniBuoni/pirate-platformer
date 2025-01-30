@@ -8,6 +8,7 @@ type GameData struct {
 	running     bool
 	window      Window
 	levelAssets Assets
+	allSprites  []Sprite
 }
 
 func NewGame() Game {

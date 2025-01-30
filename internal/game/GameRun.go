@@ -18,6 +18,11 @@ func (g *GameData) draw() {
   // draw onto render texture
   rl.BeginTextureMode(g.window.GetRenderTexture())
   rl.ClearBackground(rl.Pink)
+
+  for _, sprite := range g.allSprites {
+    sprite.Draw(g.levelAssets)
+  }
+
   rl.EndTextureMode()
 
   // draw render texture scaled

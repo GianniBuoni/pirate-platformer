@@ -1,7 +1,7 @@
 package assets
 
 import (
-	"errors"
+	"fmt"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -9,7 +9,9 @@ import (
 func (a *AssetData) GetImage(key string) (rl.Texture2D, error) {
 	image, ok := a.Images[key]
 	if !ok {
-		return rl.Texture2D{}, errors.New("issue getting asset. make sure it is loaded")
+		return rl.Texture2D{}, fmt.Errorf(
+			"issue getting asset: %s. make sure it is loaded", key,
+		)
 	}
 	return image, nil
 }
