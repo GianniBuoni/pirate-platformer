@@ -5,8 +5,9 @@ import (
 )
 
 type GameData struct {
-	running bool
-	window  Window
+	running     bool
+	window      Window
+	levelAssets Assets
 }
 
 func NewGame() Game {

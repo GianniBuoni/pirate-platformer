@@ -15,7 +15,7 @@ func (g *GameData) update() {
 }
 
 func (g *GameData) draw() {
-  // darw onto render texture
+  // draw onto render texture
   rl.BeginTextureMode(g.window.GetRenderTexture())
   rl.ClearBackground(rl.Pink)
   rl.EndTextureMode()
