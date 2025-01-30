@@ -12,6 +12,10 @@ func (g *GameData) Run() {
 func (g *GameData) update() {
   g.running = !rl.WindowShouldClose()
   g.window.Update()
+
+  for _, sprite := range g.allSprites {
+    sprite.Update()
+  }
 }
 
 func (g *GameData) draw() {

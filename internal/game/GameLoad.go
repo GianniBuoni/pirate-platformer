@@ -28,7 +28,7 @@ func (g *GameData) Load() {
 	boat.OffsetCentre()
 	g.AddSprite(boat)
 
-	player, err := sprites.NewPlayer(rl.NewVector2(0, 0), g.levelAssets)
+	player, err := sprites.NewPlayer(rl.NewVector2(lib.WindowW/2, lib.WindowH/2-86), g.levelAssets)
 	if err != nil {
 		fmt.Println(err)
     // todo figure out how to trigger data unload on error
