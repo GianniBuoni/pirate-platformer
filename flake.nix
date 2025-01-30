@@ -11,9 +11,8 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    name = "pirate-platformer";
     ggg = pkgs.writeShellScriptBin "ggg" ''
-      go build -tags x11 && ./${name} > run.log
+      go run -tags x11 .
     '';
   in {
     devShells.${system}.default = pkgs.mkShell {

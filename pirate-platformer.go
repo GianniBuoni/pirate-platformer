@@ -1,17 +1,15 @@
 package main
 
 import (
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/GianniBuoni/pirate-platformer/internal/game"
 )
 
 func main() {
-  rl.InitWindow(WindowW, WindowH, Title)
-  defer rl.CloseWindow()
+  game := game.NewGame()
+  game.Load()
+  defer game.Quit()
 
-  for !rl.WindowShouldClose() {
-    rl.BeginDrawing()
-    rl.ClearBackground(rl.Pink)
-    rl.EndDrawing()
+  for game.IsRunning() {
+    game.Run()
   }
 }
