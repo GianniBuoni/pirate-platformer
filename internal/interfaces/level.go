@@ -10,7 +10,4 @@ type Level interface {
 	Load() error
 	Update()
 	Draw() error
-
-	// Setter to add sprite to allSprites group
-	AddSprite(Sprite)
 }

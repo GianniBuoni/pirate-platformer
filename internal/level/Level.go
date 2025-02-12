@@ -8,10 +8,10 @@ import (
 )
 
 type LevelData struct {
-	allSprites  []Sprite
 	player      Sprite
 	levelAssets Assets
 	mapData     *tiled.Map
+	groups      map[string][]Sprite
 }
 
 func NewLevel(assets Assets, mapPath string) (Level, error) {
@@ -23,6 +23,7 @@ func NewLevel(assets Assets, mapPath string) (Level, error) {
 	return &LevelData{
 		levelAssets: assets,
 		mapData:     mapData,
+		groups:      map[string][]Sprite{},
 	}, nil
 }
 
@@ -31,8 +32,9 @@ func (l *LevelData) Update() {
 }
 
 func (l *LevelData) Draw() error {
-	if len(l.allSprites) != 0 {
-		for _, sprite := range l.allSprites {
+	allSprites, ok := l.groups["all"]
+	if ok {
+		for _, sprite := range allSprites {
 			err := sprite.Draw(l.levelAssets)
 			if err != nil {
 				return err

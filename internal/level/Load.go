@@ -1,6 +1,8 @@
 package level
 
 import (
+	"strings"
+
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -31,7 +33,6 @@ func (l *LevelData) loadPlayer() error {
 						return err
 					}
 					l.AddPlayer(sprite)
-					l.AddSprite(sprite)
 				}
 			}
 		}
@@ -60,8 +61,13 @@ func (l *LevelData) loadTiles() error {
 				if err != nil {
 					return err
 				}
-				l.AddSprite(sprite)
-				// TODO add conditional to add sprite to collisionSprites
+
+				if strings.Contains(layer.Name, "BG") ||
+					strings.Contains(layer.Name, "FG") {
+					l.AddSpriteGroup(sprite, "all")
+				} else {
+					l.AddSpriteGroup(sprite, "all", "collision")
+				}
 			}
 		}
 	}

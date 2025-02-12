@@ -2,11 +2,13 @@ package level
 
 import . "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 
-func (l *LevelData) AddSprite(s Sprite) {
-	l.allSprites = append(l.allSprites, s)
-}
-
 func (l *LevelData) AddPlayer(s Sprite) {
 	l.player = s
-	l.AddSprite(s)
+	l.AddSpriteGroup(s, "all")
+}
+
+func (l *LevelData) AddSpriteGroup(s Sprite, groups ...string) {
+	for _, group := range groups {
+		l.groups[group] = append(l.groups[group], s)
+	}
 }
