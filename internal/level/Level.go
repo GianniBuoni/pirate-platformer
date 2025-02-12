@@ -26,7 +26,9 @@ func NewLevel(assets Assets, mapPath string) (Level, error) {
 	}, nil
 }
 
-func (l *LevelData) Update() {}
+func (l *LevelData) Update() {
+	l.player.Update()
+}
 
 func (l *LevelData) Draw() error {
 	if len(l.allSprites) != 0 {

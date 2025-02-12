@@ -7,6 +7,39 @@ import (
 )
 
 func (l *LevelData) Load() error {
+	err := l.loadTiles()
+	if err != nil {
+		return err
+	}
+	err = l.loadPlayer()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *LevelData) loadPlayer() error {
+	for _, objGroup := range l.mapData.ObjectGroups {
+		if objGroup.Name == "Objects" {
+			for _, obj := range objGroup.Objects {
+				if obj.Name == "player" {
+					sprite, err := sprites.NewPlayer(
+						rl.Vector2{X: float32(obj.X), Y: float32(obj.Y)},
+						l.levelAssets,
+					)
+					if err != nil {
+						return err
+					}
+					l.AddPlayer(sprite)
+					l.AddSprite(sprite)
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func (l *LevelData) loadTiles() error {
 	for _, layer := range l.mapData.Layers {
 		for i, tile := range layer.Tiles {
 			if !tile.IsNil() {

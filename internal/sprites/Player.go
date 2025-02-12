@@ -9,13 +9,13 @@ import (
 )
 
 type Player struct {
-	frameIndex  float32
-	frameOffset float32
-	frameSpeed  float32
-	frameCount  int
-	posOffset   rl.Vector2
-	hitbox      rl.Rectangle
 	BasicSprite
+	hitbox     rl.Rectangle
+	frameCount int
+	frameIndex float32
+	frameSize  float32
+	frameSpeed float32
+	gravity    float32
 }
 
 func NewPlayer(pos rl.Vector2, a Assets) (Sprite, error) {
@@ -29,16 +29,15 @@ func NewPlayer(pos rl.Vector2, a Assets) (Sprite, error) {
 	}
 
 	sprite := &Player{
-		frameOffset: 96,
-		frameSpeed:  lib.FrameSpeed,
-		posOffset:   rl.Vector2{X: 32, Y: 32},
+		frameSize:  96,
+		frameSpeed: lib.FrameSpeed,
 	}
 	sprite.image = state
-	sprite.frameCount = int(float32(src.Width) / sprite.frameOffset)
+	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
 	rect := rl.NewRectangle(
-		pos.X, pos.Y,
-		sprite.frameOffset*2, sprite.frameOffset*2,
+		pos.X, pos.Y-sprite.frameSize*2,
+		sprite.frameSize*2, sprite.frameSize*2,
 	)
 	sprite.rect = rect
 	return sprite, nil

@@ -16,17 +16,17 @@ func (p *Player) Draw(a Assets) error {
 	}
 
 	srcRect := rl.NewRectangle(
-		p.frameOffset*float32(int(p.frameIndex)%p.frameCount),
-		p.frameOffset*float32(int(p.frameIndex)%p.frameCount),
-		p.frameOffset,
-		p.frameOffset,
+		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
+		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
+		p.frameSize,
+		p.frameSize,
 	)
 
 	rl.DrawTexturePro(
 		src,
 		srcRect,
 		p.rect,
-		rl.Vector2Scale(p.posOffset, 2),
+		rl.Vector2{},
 		0,
 		rl.White,
 	)
