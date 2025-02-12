@@ -8,18 +8,18 @@ import (
 )
 
 func (p *Player) Update() {
-  p.animate()
+	p.animate()
 }
 
 func (p *Player) Draw(a interfaces.Assets) {
-	src, err := a.GetPlayer(p.image)
+	src, err := a.GetImage(interfaces.Player, p.image)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	srcRect := rl.NewRectangle(
-		p.frameOffset * float32(int(p.frameIndex) % p.frameCount),
-		p.frameOffset * float32(int(p.frameIndex) % p.frameCount),
+		p.frameOffset*float32(int(p.frameIndex)%p.frameCount),
+		p.frameOffset*float32(int(p.frameIndex)%p.frameCount),
 		p.frameOffset,
 		p.frameOffset,
 	)

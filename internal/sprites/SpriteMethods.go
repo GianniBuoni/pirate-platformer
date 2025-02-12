@@ -10,7 +10,7 @@ import (
 func (s *BasicSprite) Update() {}
 
 func (s *BasicSprite) Draw(a interfaces.Assets) {
-	src, err := a.GetImage(s.image)
+	src, err := a.GetImage(interfaces.Images, s.image)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,6 +1,9 @@
 package game
 
 import (
+	"fmt"
+	"os"
+
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -23,7 +26,11 @@ func (g *GameData) draw() {
 	rl.BeginTextureMode(g.window.GetRenderTexture())
 	rl.ClearBackground(rl.Pink)
 
-	DrawMap(g)
+	err := DrawMap(g)
+	if err != nil {
+		fmt.Printf("❌: Game.draw(), DrawMap, %s", err.Error())
+		os.Exit(2)
+	}
 
 	for _, sprite := range g.allSprites {
 		sprite.Draw(g.levelAssets)

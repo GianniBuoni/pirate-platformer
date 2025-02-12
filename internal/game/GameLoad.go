@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	"github.com/GianniBuoni/pirate-platformer/internal/window"
@@ -44,14 +45,24 @@ func (g *GameData) loadAssets() {
 	g.levelAssets = assets.NewAssets()
 
 	// load all assets
-	g.levelAssets.ImportImages("graphics", "objects")
-	g.levelAssets.ImportPlayer("graphics", "player")
-	g.levelAssets.ImportImages("graphics", "tilesets")
-
 	err := LoadMap()
 	if err != nil {
-		fmt.Printf("%s", err.Error())
+		fmt.Printf("❌: Game.loadAssets(), map data: %s", err.Error())
 		os.Exit(1)
 	}
-
+	err = g.levelAssets.ImportImages(Images, "graphics", "objects")
+	if err != nil {
+		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
+		os.Exit(1)
+	}
+	err = g.levelAssets.ImportImages(Player, "graphics", "player")
+	if err != nil {
+		fmt.Printf("❌: Game.loadAssets(), player: %s", err.Error())
+		os.Exit(1)
+	}
+	err = g.levelAssets.ImportImages(Tilesets, "graphics", "tilesets")
+	if err != nil {
+		fmt.Printf("❌: Game.loadAssets(), tilesets: %s", err.Error())
+		os.Exit(1)
+	}
 }

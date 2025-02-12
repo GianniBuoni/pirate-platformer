@@ -3,7 +3,7 @@ package sprites
 import (
 	"fmt"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	"github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -18,9 +18,9 @@ type Player struct {
 	BasicSprite
 }
 
-func NewPlayer(pos rl.Vector2, a Assets) (Sprite, error) {
+func NewPlayer(pos rl.Vector2, a interfaces.Assets) (interfaces.Sprite, error) {
 	state := "run"
-	src, err := a.GetPlayer(state)
+	src, err := a.GetImage(interfaces.Player, state)
 	if err != nil {
 		return nil, fmt.Errorf(
 			"New player with state: %s, could not be created. %w",

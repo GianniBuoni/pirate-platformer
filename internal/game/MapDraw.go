@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
@@ -41,7 +42,7 @@ func DrawMap(g *GameData) error {
 					Height: lib.TileSize,
 				}
 				srcKey := lib.GetAssetKey(tile.Tileset.Image.Source)
-				srcImage, err := g.levelAssets.GetImage(srcKey)
+				srcImage, err := g.levelAssets.GetImage(Tilesets, srcKey)
 				if err != nil {
 					return err
 				}
