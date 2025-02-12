@@ -8,11 +8,11 @@ import (
 )
 
 type GameData struct {
-	window       Window
 	levelAssets  Assets
 	levelCurrent Level
 	levelMaps    map[int]string
 	stats        *Stats
+	window       *WindowData
 	Running      bool
 }
 

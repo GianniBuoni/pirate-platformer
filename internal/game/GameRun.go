@@ -20,7 +20,7 @@ func (g *GameData) update() {
 
 func (g *GameData) draw() {
 	// draw onto render texture
-	rl.BeginTextureMode(g.window.GetRenderTexture())
+	rl.BeginTextureMode(g.window.renderTexture)
 	rl.ClearBackground(rl.Pink)
 	err := g.levelCurrent.Draw()
 	if err != nil {

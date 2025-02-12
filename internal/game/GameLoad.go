@@ -7,11 +7,10 @@ import (
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
-	"github.com/GianniBuoni/pirate-platformer/internal/window"
 )
 
 func (g *GameData) Load() {
-	g.window = window.NewWindow()
+	g.window = NewWindow()
 	g.loadAssets()
 	var err error
 	g.levelCurrent, err = level.NewLevel(g.levelAssets, g.levelMaps[g.stats.currentLevel])
