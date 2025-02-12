@@ -15,7 +15,13 @@ func (g *GameData) Load() {
 	var err error
 	g.levelCurrent, err = level.NewLevel(g.levelAssets, g.levelMaps[g.stats.currentLevel])
 	if err != nil {
+		fmt.Printf("❌: Game.Load(), could not init level %s", err.Error())
+		os.Exit(2)
+	}
+	err = g.levelCurrent.Load()
+	if err != nil {
 		fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
+		os.Exit(2)
 	}
 }
 

@@ -8,10 +8,10 @@ import (
 )
 
 type BasicSprite struct {
-	speed     float32
-	direction rl.Vector2
 	image     string
 	rect      rl.Rectangle
+	direction rl.Vector2
+	speed     float32
 }
 
 func NewSprite(image string, pos rl.Vector2, a Assets) (Sprite, error) {
