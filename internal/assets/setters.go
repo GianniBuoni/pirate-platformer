@@ -9,9 +9,8 @@ import (
 )
 
 func (a *AssetData) ImportImages(
-	rootArgs []string,
+	rootArgs ...string,
 ) {
-
 	paths := lib.GetFilePaths(rootArgs)
 
 	for _, path := range paths {
@@ -21,9 +20,8 @@ func (a *AssetData) ImportImages(
 }
 
 func (a *AssetData) ImportPlayer(
-	rootArgs []string,
+	rootArgs ...string,
 ) {
-
 	paths := lib.GetFilePaths(rootArgs)
 
 	for _, path := range paths {
@@ -31,4 +29,3 @@ func (a *AssetData) ImportPlayer(
 		a.Player[key] = rl.LoadTexture(path)
 	}
 }
-

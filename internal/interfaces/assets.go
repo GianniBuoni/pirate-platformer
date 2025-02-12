@@ -6,8 +6,8 @@ type Assets interface {
 	Unload()
 
 	// setters
-	ImportImages([]string)
-	ImportPlayer([]string)
+	ImportImages(...string)
+	ImportPlayer(...string)
 
 	// getters
 	GetImage(string) (rl.Texture2D, error)

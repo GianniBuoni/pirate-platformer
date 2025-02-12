@@ -43,6 +43,7 @@ func (g *GameData) loadAssets() {
 	g.levelAssets = assets.NewAssets()
 
 	// load all assets
-	g.levelAssets.ImportImages([]string{"graphics", "objects"})
-	g.levelAssets.ImportPlayer([]string{"graphics", "player"})
+	g.levelAssets.ImportImages("graphics", "objects")
+	g.levelAssets.ImportPlayer("graphics", "player")
+	g.levelAssets.ImportImages("graphics", "tilesets")
 }

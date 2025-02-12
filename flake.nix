@@ -25,6 +25,7 @@
         ]
         ++ (with pkgs; [
           go
+          gopls
           libGL
           tiled
           aseprite
