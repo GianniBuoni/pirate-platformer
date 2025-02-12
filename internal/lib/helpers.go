@@ -4,9 +4,10 @@ import (
 	"io/fs"
 	"log"
 	"path/filepath"
+	"strings"
 )
 
-func GetFilePaths(args []string) (paths []string) {
+func GetFilePaths(args ...string) (paths []string) {
 	root := filepath.Join(args...)
 
 	filepath.Walk(
@@ -23,4 +24,8 @@ func GetFilePaths(args []string) (paths []string) {
 		},
 	)
 	return paths
+}
+
+func GetAssetKey(fullPath string) string {
+	return strings.Split(filepath.Base(fullPath), ".")[0]
 }

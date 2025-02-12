@@ -22,34 +22,38 @@ func LoadMap() (err error) {
 }
 
 func DrawMap(g *GameData) error {
-	bgLayer := mapData.Layers[0]
-	srcImage, err := g.levelAssets.GetImage("inside")
-	if err != nil {
-		return fmt.Errorf("%w", err)
-	}
+	// TODO turn PLATFORM and TERRAIN layers into sprites
+	// TODO make Level struct
 
-	for i, tile := range bgLayer.Tiles {
-		if !tile.IsNil() {
-			srcData := tile.GetTileRect()
-			srcRect := rl.Rectangle{
-				X:      float32(srcData.Min.X),
-				Y:      float32(srcData.Min.Y),
-				Width:  lib.TileSize,
-				Height: lib.TileSize}
-			destRect := rl.Rectangle{
-				X:      float32(i%mapData.Width) * lib.TileSize,
-				Y:      float32(i/mapData.Width) * lib.TileSize,
-				Width:  lib.TileSize,
-				Height: lib.TileSize,
+	for _, layer := range mapData.Layers {
+		for i, tile := range layer.Tiles {
+			if !tile.IsNil() {
+				srcData := tile.GetTileRect()
+				srcRect := rl.Rectangle{
+					X:      float32(srcData.Min.X),
+					Y:      float32(srcData.Min.Y),
+					Width:  lib.TileSize,
+					Height: lib.TileSize}
+				destRect := rl.Rectangle{
+					X:      float32(i%mapData.Width) * lib.TileSize,
+					Y:      float32(i/mapData.Width) * lib.TileSize,
+					Width:  lib.TileSize,
+					Height: lib.TileSize,
+				}
+				srcKey := lib.GetAssetKey(tile.Tileset.Image.Source)
+				srcImage, err := g.levelAssets.GetImage(srcKey)
+				if err != nil {
+					return err
+				}
+
+				rl.DrawTexturePro(
+					srcImage,
+					srcRect,
+					destRect,
+					rl.Vector2{},
+					0, rl.White,
+				)
 			}
-
-			rl.DrawTexturePro(
-				srcImage,
-				srcRect,
-				destRect,
-				rl.Vector2{},
-				0, rl.White,
-			)
 		}
 	}
 	return nil
