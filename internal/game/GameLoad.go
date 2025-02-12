@@ -2,6 +2,7 @@ package game
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
@@ -22,7 +23,7 @@ func (g *GameData) Load() {
 	)
 	if err != nil {
 		fmt.Println(err)
-    // todo figure out how to trigger data unload on error
+		// todo figure out how to trigger data unload on error
 	}
 
 	boat.OffsetCentre()
@@ -31,7 +32,7 @@ func (g *GameData) Load() {
 	player, err := sprites.NewPlayer(rl.NewVector2(lib.WindowW/2, lib.WindowH/2-86), g.levelAssets)
 	if err != nil {
 		fmt.Println(err)
-    // todo figure out how to trigger data unload on error
+		// todo figure out how to trigger data unload on error
 	}
 	g.AddPlayer(player)
 
@@ -46,4 +47,11 @@ func (g *GameData) loadAssets() {
 	g.levelAssets.ImportImages("graphics", "objects")
 	g.levelAssets.ImportPlayer("graphics", "player")
 	g.levelAssets.ImportImages("graphics", "tilesets")
+
+	err := LoadMap()
+	if err != nil {
+		fmt.Printf("%s", err.Error())
+		os.Exit(1)
+	}
+
 }

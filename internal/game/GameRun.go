@@ -5,31 +5,33 @@ import (
 )
 
 func (g *GameData) Run() {
-  g.update()
-  g.draw()
+	g.update()
+	g.draw()
 }
 
 func (g *GameData) update() {
-  g.running = !rl.WindowShouldClose()
-  g.window.Update()
+	g.running = !rl.WindowShouldClose()
+	g.window.Update()
 
-  for _, sprite := range g.allSprites {
-    sprite.Update()
-  }
+	for _, sprite := range g.allSprites {
+		sprite.Update()
+	}
 }
 
 func (g *GameData) draw() {
-  // draw onto render texture
-  rl.BeginTextureMode(g.window.GetRenderTexture())
-  rl.ClearBackground(rl.Pink)
+	// draw onto render texture
+	rl.BeginTextureMode(g.window.GetRenderTexture())
+	rl.ClearBackground(rl.Pink)
 
-  for _, sprite := range g.allSprites {
-    sprite.Draw(g.levelAssets)
-  }
+	DrawMap(g)
 
-  rl.EndTextureMode()
+	for _, sprite := range g.allSprites {
+		sprite.Draw(g.levelAssets)
+	}
 
-  // draw render texture scaled
-  g.window.Draw()
+	rl.EndTextureMode()
+
+	// draw render texture scaled
+	g.window.Draw()
 
 }
