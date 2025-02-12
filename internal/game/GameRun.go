@@ -13,29 +13,20 @@ func (g *GameData) Run() {
 }
 
 func (g *GameData) update() {
-	g.running = !rl.WindowShouldClose()
+	g.Running = !rl.WindowShouldClose()
 	g.window.Update()
-
-	for _, sprite := range g.allSprites {
-		sprite.Update()
-	}
+	g.levelCurrent.Update()
 }
 
 func (g *GameData) draw() {
 	// draw onto render texture
 	rl.BeginTextureMode(g.window.GetRenderTexture())
 	rl.ClearBackground(rl.Pink)
-
-	err := DrawMap(g)
+	err := g.levelCurrent.Draw()
 	if err != nil {
-		fmt.Printf("❌: Game.draw(), DrawMap, %s", err.Error())
+		fmt.Printf("Game.draw(), %s", err.Error())
 		os.Exit(2)
 	}
-
-	for _, sprite := range g.allSprites {
-		sprite.Draw(g.levelAssets)
-	}
-
 	rl.EndTextureMode()
 
 	// draw render texture scaled

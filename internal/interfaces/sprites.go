@@ -2,7 +2,7 @@ package interfaces
 
 type Sprite interface {
 	Update()
-	Draw(Assets)
+	Draw(Assets) error
 
 	// setters
 	OffsetCentre()

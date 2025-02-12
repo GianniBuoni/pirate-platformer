@@ -5,11 +5,11 @@ import (
 )
 
 func main() {
-  game := game.NewGame()
-  game.Load()
-  defer game.Quit()
+	game := game.NewGame()
+	game.Load()
+	defer game.Quit()
 
-  for game.IsRunning() {
-    game.Run()
-  }
+	for game.Running {
+		game.Run()
+	}
 }

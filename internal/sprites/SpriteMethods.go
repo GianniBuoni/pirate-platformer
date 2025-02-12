@@ -1,18 +1,16 @@
 package sprites
 
 import (
-	"log"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func (s *BasicSprite) Update() {}
 
-func (s *BasicSprite) Draw(a Assets) {
+func (s *BasicSprite) Draw(a Assets) error {
 	src, err := a.GetImage(ImageLib, s.image)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	rl.DrawTextureV(
@@ -20,4 +18,5 @@ func (s *BasicSprite) Draw(a Assets) {
 		s.Pos(),
 		rl.White,
 	)
+	return nil
 }

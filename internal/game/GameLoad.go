@@ -6,38 +6,18 @@ import (
 
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	"github.com/GianniBuoni/pirate-platformer/internal/window"
-	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func (g *GameData) Load() {
 	g.window = window.NewWindow()
 	g.loadAssets()
-
-	// start replace with level load
-	boat, err := sprites.NewSprite(
-		"boat",
-		rl.NewVector2(lib.WindowW/2, lib.WindowH/2),
-		g.levelAssets,
-	)
+	var err error
+	g.levelCurrent, err = level.NewLevel(g.levelAssets, g.levelMaps[g.stats.currentLevel])
 	if err != nil {
-		fmt.Println(err)
-		// todo figure out how to trigger data unload on error
+		fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
 	}
-
-	boat.OffsetCentre()
-	g.AddSprite(boat)
-
-	player, err := sprites.NewPlayer(rl.NewVector2(lib.WindowW/2, lib.WindowH/2-86), g.levelAssets)
-	if err != nil {
-		fmt.Println(err)
-		// todo figure out how to trigger data unload on error
-	}
-	g.AddPlayer(player)
-
-	// end replace with level load
 }
 
 func (g *GameData) loadAssets() {
@@ -45,12 +25,7 @@ func (g *GameData) loadAssets() {
 	g.levelAssets = assets.NewAssets()
 
 	// load all assets
-	err := LoadMap()
-	if err != nil {
-		fmt.Printf("❌: Game.loadAssets(), map data: %s", err.Error())
-		os.Exit(1)
-	}
-	err = g.levelAssets.ImportImages(ImageLib, "graphics", "objects")
+	err := g.levelAssets.ImportImages(ImageLib, "graphics", "objects")
 	if err != nil {
 		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
 		os.Exit(1)
