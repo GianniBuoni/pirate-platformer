@@ -50,17 +50,17 @@ func (g *GameData) loadAssets() {
 		fmt.Printf("❌: Game.loadAssets(), map data: %s", err.Error())
 		os.Exit(1)
 	}
-	err = g.levelAssets.ImportImages(Images, "graphics", "objects")
+	err = g.levelAssets.ImportImages(ImageLib, "graphics", "objects")
 	if err != nil {
 		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
 		os.Exit(1)
 	}
-	err = g.levelAssets.ImportImages(Player, "graphics", "player")
+	err = g.levelAssets.ImportImages(PlayerLib, "graphics", "player")
 	if err != nil {
 		fmt.Printf("❌: Game.loadAssets(), player: %s", err.Error())
 		os.Exit(1)
 	}
-	err = g.levelAssets.ImportImages(Tilesets, "graphics", "tilesets")
+	err = g.levelAssets.ImportImages(TilesetLib, "graphics", "tilesets")
 	if err != nil {
 		fmt.Printf("❌: Game.loadAssets(), tilesets: %s", err.Error())
 		os.Exit(1)

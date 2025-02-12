@@ -20,11 +20,11 @@ func (a *AssetData) ImportImages(
 	for _, path := range paths {
 		key := strings.Split(filepath.Base(path), ".")[0]
 		switch aLib {
-		case Images:
+		case ImageLib:
 			a.Images[key] = rl.LoadTexture(path)
-		case Player:
+		case PlayerLib:
 			a.Player[key] = rl.LoadTexture(path)
-		case Tilesets:
+		case TilesetLib:
 			a.Tilesets[key] = rl.LoadTexture(path)
 		default:
 			return errors.New("asset library not implemented.")
@@ -41,11 +41,11 @@ func (a *AssetData) GetImage(
 		image rl.Texture2D
 	)
 	switch aLib {
-	case Images:
+	case ImageLib:
 		image, ok = a.Images[key]
-	case Player:
+	case PlayerLib:
 		image, ok = a.Player[key]
-	case Tilesets:
+	case TilesetLib:
 		image, ok = a.Tilesets[key]
 	}
 	if !ok {

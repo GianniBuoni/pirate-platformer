@@ -5,10 +5,10 @@ import rl "github.com/gen2brain/raylib-go/raylib"
 type AssetLibrary uint
 
 const (
-	Images AssetLibrary = iota
-	Player
-	Tilesets
-	Frames
+	ImageLib AssetLibrary = iota
+	PlayerLib
+	TilesetLib
+	FrameLib
 )
 
 type Assets interface {

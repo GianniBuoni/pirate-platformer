@@ -3,7 +3,7 @@ package sprites
 import (
 	"log"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -11,8 +11,8 @@ func (p *Player) Update() {
 	p.animate()
 }
 
-func (p *Player) Draw(a interfaces.Assets) {
-	src, err := a.GetImage(interfaces.Player, p.image)
+func (p *Player) Draw(a Assets) {
+	src, err := a.GetImage(PlayerLib, p.image)
 	if err != nil {
 		log.Fatal(err)
 	}

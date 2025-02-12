@@ -3,14 +3,14 @@ package sprites
 import (
 	"log"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func (s *BasicSprite) Update() {}
 
-func (s *BasicSprite) Draw(a interfaces.Assets) {
-	src, err := a.GetImage(interfaces.Images, s.image)
+func (s *BasicSprite) Draw(a Assets) {
+	src, err := a.GetImage(ImageLib, s.image)
 	if err != nil {
 		log.Fatal(err)
 	}

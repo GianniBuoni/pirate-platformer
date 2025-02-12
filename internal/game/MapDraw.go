@@ -42,7 +42,7 @@ func DrawMap(g *GameData) error {
 					Height: lib.TileSize,
 				}
 				srcKey := lib.GetAssetKey(tile.Tileset.Image.Source)
-				srcImage, err := g.levelAssets.GetImage(Tilesets, srcKey)
+				srcImage, err := g.levelAssets.GetImage(TilesetLib, srcKey)
 				if err != nil {
 					return err
 				}
