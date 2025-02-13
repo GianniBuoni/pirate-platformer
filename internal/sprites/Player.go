@@ -5,12 +5,13 @@ import (
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type PlayerData struct {
 	BasicSprite
-	hitbox           rl.Rectangle
+	hitbox           SpriteRect
 	collisionSprites *[]Sprite
 	frameCount       int
 	frameIndex       float32
@@ -38,13 +39,13 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 	sprite.image = state
 	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
-	sprite.rect = rl.NewRectangle(
+	sprite.rect = rects.NewRectangle(
 		pos.X, pos.Y-sprite.frameSize*2,
 		sprite.frameSize*2, sprite.frameSize*2,
 	)
-	sprite.hitbox = rl.NewRectangle(
-		sprite.rect.X+TileSize,
-		sprite.rect.Y+TileSize,
+	sprite.hitbox = rects.NewRectangle(
+		sprite.rect.Left()+TileSize,
+		sprite.rect.Top()+TileSize,
 		40, TileSize,
 	)
 

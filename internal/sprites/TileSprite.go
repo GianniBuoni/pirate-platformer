@@ -5,6 +5,7 @@ import (
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -28,10 +29,9 @@ func NewTileSprite(
 
 	sprite := &TileSprite{}
 	sprite.image = image
-	sprite.rect = rl.Rectangle{
-		X: pos.X, Y: pos.Y,
-		Width: TileSize, Height: TileSize,
-	}
+	sprite.rect = rects.NewRectangle(
+		pos.X, pos.Y, TileSize, TileSize,
+	)
 	sprite.srcRect = rl.Rectangle{
 		X: srcPos.X, Y: srcPos.Y,
 		Width: TileSize, Height: TileSize,
@@ -46,7 +46,7 @@ func (s *TileSprite) Draw(a Assets) error {
 	}
 
 	rl.DrawTexturePro(
-		src, s.srcRect, s.rect, rl.Vector2{}, 0, rl.White,
+		src, s.srcRect, s.rect.Rect(), rl.Vector2{}, 0, rl.White,
 	)
 
 	return nil

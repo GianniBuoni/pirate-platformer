@@ -15,7 +15,7 @@ func (s *BasicSprite) Draw(a Assets) error {
 
 	rl.DrawTextureV(
 		src,
-		s.Pos(),
+		rl.Vector2{X: s.rect.Left(), Y: s.rect.Right()},
 		rl.White,
 	)
 	return nil

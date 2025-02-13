@@ -2,7 +2,8 @@ package sprites
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -10,8 +11,10 @@ func (p *PlayerData) Update() {
 	p.input()
 	p.move()
 	p.animate()
-	p.rect.X = p.hitbox.X - lib.TileSize
-	p.rect.Y = p.hitbox.Y - lib.TileSize
+	p.rect.Set(
+		rects.Top(p.hitbox.Top()-TileSize),
+		rects.Left(p.hitbox.Left()-TileSize),
+	)
 	p.oldRect = p.hitbox
 }
 
@@ -31,12 +34,12 @@ func (p *PlayerData) Draw(a Assets) error {
 	rl.DrawTexturePro(
 		src,
 		srcRect,
-		p.rect,
+		p.rect.Rect(),
 		rl.Vector2{},
 		0,
 		rl.White,
 	)
-	rl.DrawRectangleRec(p.hitbox, rl.Black)
+	rl.DrawRectangleRec(p.hitbox.Rect(), rl.Black)
 	return nil
 }
 
