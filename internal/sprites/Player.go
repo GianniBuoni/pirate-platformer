@@ -48,6 +48,10 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 		sprite.rect.Top()+TileSize,
 		40, TileSize,
 	)
+	sprite.oldRect = rects.NewRectangle(
+		sprite.hitbox.Left(), sprite.hitbox.Top(),
+		sprite.hitbox.Rect().Width, sprite.hitbox.Rect().Height,
+	)
 
 	return sprite, nil
 }

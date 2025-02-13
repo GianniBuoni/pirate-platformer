@@ -15,7 +15,10 @@ func (p *PlayerData) Update() {
 		rects.Top(p.hitbox.Top()-TileSize),
 		rects.Left(p.hitbox.Left()-TileSize),
 	)
-	p.oldRect = p.hitbox
+	p.oldRect.Set(
+		rects.Top(p.hitbox.Top()),
+		rects.Left(p.hitbox.Left()),
+	)
 }
 
 func (p *PlayerData) Draw(a Assets) error {

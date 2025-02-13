@@ -73,6 +73,6 @@ func Left(x float32) func(*Rect) {
 
 func Right(x float32) func(*Rect) {
 	return func(r *Rect) {
-		r.Y = x - r.Width
+		r.X = x - r.Width
 	}
 }

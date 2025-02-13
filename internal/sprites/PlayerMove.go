@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"fmt"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -25,27 +23,26 @@ func (p *PlayerData) move() {
 }
 
 func (p *PlayerData) collision(axis string) {
-	for _, sprite := range *p.collisionSprites {
-		if rl.CheckCollisionRecs(sprite.HitBox().Rect(), p.HitBox().Rect()) {
+	for _, s := range *p.collisionSprites {
+		if rl.CheckCollisionRecs(s.HitBox().Rect(), p.hitbox.Rect()) {
 			switch axis {
 			case "x":
-				fmt.Println(p.direction.X)
-				if p.hitbox.Left() <= sprite.HitBox().Right() &&
-					p.direction.X < 0 {
-					p.hitbox.Set(rects.Left(sprite.HitBox().Right()))
+				if p.hitbox.Left() <= s.HitBox().Right() &&
+					p.oldRect.Left() >= s.HitBox().Right() {
+					p.hitbox.Set(rects.Left(s.HitBox().Right()))
 				}
-				if p.hitbox.Right() >= sprite.HitBox().Left() &&
-					p.direction.X > 0 {
-					p.hitbox.Set(rects.Right(sprite.HitBox().Left()))
+				if p.hitbox.Right() >= s.HitBox().Left() &&
+					p.oldRect.Right() <= s.HitBox().Left() {
+					p.hitbox.Set(rects.Right(s.HitBox().Left()))
 				}
 			case "y":
-				if p.hitbox.Top() <= sprite.HitBox().Bottom() &&
-					p.direction.Y < 0 {
-					p.hitbox.Set(rects.Top(sprite.HitBox().Bottom()))
+				if p.hitbox.Top() <= s.HitBox().Bottom() &&
+					p.oldRect.Top() >= s.HitBox().Bottom() {
+					p.hitbox.Set(rects.Top(s.HitBox().Bottom()))
 				}
-				if p.hitbox.Bottom() >= sprite.HitBox().Top() &&
-					p.direction.Y > 0 {
-					p.hitbox.Set(rects.Bottom(sprite.HitBox().Top()))
+				if p.hitbox.Bottom() >= s.HitBox().Top() &&
+					p.oldRect.Bottom() <= s.HitBox().Top() {
+					p.hitbox.Set(rects.Bottom(s.HitBox().Top()))
 				}
 				p.direction.Y = 0
 			}
