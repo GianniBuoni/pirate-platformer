@@ -35,7 +35,7 @@ func (s *PlayerData) Bottom() float32 {
 }
 
 func (s *PlayerData) Left() float32 {
-	return s.hitbox.X + s.hitbox.Width
+	return s.hitbox.X
 }
 
 func (s *PlayerData) Right() float32 {

@@ -7,10 +7,12 @@ import (
 )
 
 func (p *PlayerData) Update() {
+	p.input()
 	p.move()
 	p.animate()
 	p.rect.X = p.hitbox.X - lib.TileSize
 	p.rect.Y = p.hitbox.Y - lib.TileSize
+	p.oldRect = p.hitbox
 }
 
 func (p *PlayerData) Draw(a Assets) error {
@@ -34,7 +36,7 @@ func (p *PlayerData) Draw(a Assets) error {
 		0,
 		rl.White,
 	)
-	//rl.DrawRectangleRec(p.hitbox, rl.Black)
+	rl.DrawRectangleRec(p.hitbox, rl.Black)
 	return nil
 }
 
