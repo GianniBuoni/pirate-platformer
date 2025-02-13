@@ -1,6 +1,7 @@
 package level
 
 import (
+	"errors"
 	"strings"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
@@ -21,6 +22,12 @@ func (l *LevelData) Load() error {
 }
 
 func (l *LevelData) loadPlayer() error {
+	collisonSprites, ok := l.groups["collision"]
+	if !ok {
+		return errors.New(
+			"error Level.loadPlayer(): collison group is not defined.",
+		)
+	}
 	for _, objGroup := range l.mapData.ObjectGroups {
 		if objGroup.Name == "Objects" {
 			for _, obj := range objGroup.Objects {
@@ -28,6 +35,7 @@ func (l *LevelData) loadPlayer() error {
 					sprite, err := sprites.NewPlayer(
 						rl.Vector2{X: float32(obj.X), Y: float32(obj.Y)},
 						l.levelAssets,
+						&collisonSprites,
 					)
 					if err != nil {
 						return err

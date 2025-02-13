@@ -4,22 +4,23 @@ import (
 	"fmt"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type Player struct {
+type PlayerData struct {
 	BasicSprite
-	hitbox     rl.Rectangle
-	frameCount int
-	frameIndex float32
-	frameSize  float32
-	frameSpeed float32
-	gravity    float32
+	hitbox           rl.Rectangle
+	collisionSprites *[]Sprite
+	frameCount       int
+	frameIndex       float32
+	frameSize        float32
+	frameSpeed       float32
+	gravity          float32
 }
 
-func NewPlayer(pos rl.Vector2, a Assets) (Sprite, error) {
-	state := "run"
+func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
+	state := "idle"
 	src, err := a.GetImage(PlayerLib, state)
 	if err != nil {
 		return nil, fmt.Errorf(
@@ -28,17 +29,24 @@ func NewPlayer(pos rl.Vector2, a Assets) (Sprite, error) {
 		)
 	}
 
-	sprite := &Player{
-		frameSize:  96,
-		frameSpeed: lib.FrameSpeed,
+	sprite := &PlayerData{
+		frameSize:        96,
+		frameSpeed:       FrameSpeed,
+		gravity:          Gravity,
+		collisionSprites: s,
 	}
 	sprite.image = state
 	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
-	rect := rl.NewRectangle(
+	sprite.rect = rl.NewRectangle(
 		pos.X, pos.Y-sprite.frameSize*2,
 		sprite.frameSize*2, sprite.frameSize*2,
 	)
-	sprite.rect = rect
+	sprite.hitbox = rl.NewRectangle(
+		sprite.rect.X+TileSize,
+		sprite.rect.Y+TileSize,
+		40, TileSize,
+	)
+
 	return sprite, nil
 }
