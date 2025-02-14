@@ -24,17 +24,32 @@ func (p *PlayerData) move() {
 	p.collision("y")
 }
 
-// Player.jump() will make player move vertically up.
-// It's also responible for swithing the wall action to true.
-// The wall action is deactivated in the Player.checkCollisonSide() method.
 func (p *PlayerData) jump() {
-	switch p.checkCollisonSide() {
-	case floor:
-		p.direction.Y -= JumpDist
-		go func() {
-			wallTimeout := time.NewTimer(400 * time.Millisecond)
-			<-wallTimeout.C
-			p.actions["wall"] = true
-		}()
+	p.direction.Y -= JumpDist
+	go func() {
+		wallTimeout := time.NewTimer(400 * time.Millisecond)
+		<-wallTimeout.C
+		p.actions["wall"] = true
+	}()
+}
+
+func (p *PlayerData) wallJump(direction float32) {
+	p.direction.Y -= JumpDist
+	p.direction.X = direction
+	p.actions["run"] = false
+	go func() {
+		runTimeout := time.NewTimer(100 * time.Millisecond)
+		<-runTimeout.C
+		p.actions["run"] = true
+	}()
+}
+
+func (p *PlayerData) SetGravity(b bool) {
+	switch b {
+	case true:
+		p.gravity = Gravity
+	case false:
+		p.direction.Y = 0
+		p.gravity = Gravity * 0.8
 	}
 }

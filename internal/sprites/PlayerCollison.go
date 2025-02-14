@@ -60,12 +60,15 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 		}
 		if rl.CheckCollisionRecs(leftRect, s.HitBox().Rect()) &&
 			p.actions["wall"] {
+			p.SetGravity(false)
 			return left
 		}
 		if rl.CheckCollisionRecs(rightRect, s.HitBox().Rect()) &&
 			p.actions["wall"] {
+			p.SetGravity(false)
 			return right
 		}
 	}
+	p.SetGravity(true)
 	return air
 }

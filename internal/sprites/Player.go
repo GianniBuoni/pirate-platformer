@@ -46,8 +46,8 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 
 	// INIT ACTION MAP
 	p.actions = map[string]bool{
-		"wall":   false,
-		"attack": false,
+		"wall": false,
+		"run":  true,
 	}
 
 	// INIT RECT DATA
