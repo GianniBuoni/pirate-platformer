@@ -32,6 +32,13 @@ func (r *Rect) Right() float32 {
 	return r.X + r.Width
 }
 
+func (r *Rect) Center() rl.Vector2 {
+	return rl.NewVector2(
+		r.X+(r.Width/2),
+		r.Y+(r.Height/2),
+	)
+}
+
 func (r *Rect) Set(opts ...func(*Rect)) {
 	new := Rect{
 		X: r.X, Y: r.Y, Width: r.Width, Height: r.Height,

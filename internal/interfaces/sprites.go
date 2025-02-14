@@ -22,6 +22,7 @@ type SpriteRect interface {
 	Bottom() float32
 	Left() float32
 	Right() float32
+	Center() rl.Vector2
 
 	// setter to manipulate underlying Raylib rectagle
 	Set(...func(*rect.Rect))

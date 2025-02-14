@@ -1,5 +1,7 @@
 package interfaces
 
+import rl "github.com/gen2brain/raylib-go/raylib"
+
 /*
 Keeps track of level data: map, player, sprites...
 
@@ -10,4 +12,6 @@ type Level interface {
 	Load() error
 	Update()
 	Draw() error
+	// Reports player position (rl.Vector2) back to the main game
+	PlayerPos() rl.Vector2
 }

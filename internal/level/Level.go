@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
 )
 
@@ -42,4 +43,8 @@ func (l *LevelData) Draw() error {
 		}
 	}
 	return nil
+}
+
+func (l *LevelData) PlayerPos() rl.Vector2 {
+	return l.player.HitBox().Center()
 }

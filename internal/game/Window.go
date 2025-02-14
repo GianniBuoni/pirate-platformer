@@ -6,9 +6,10 @@ import (
 )
 
 type WindowData struct {
-	scale         float32
-	gameScreen    rl.Rectangle
 	renderTexture rl.RenderTexture2D
+	camera        rl.Camera2D
+	gameScreen    rl.Rectangle
+	scale         float32
 }
 
 func NewWindow() *WindowData {
@@ -23,4 +24,10 @@ func NewWindow() *WindowData {
 		gameScreen:    rl.Rectangle{Width: WindowW, Height: WindowH},
 		renderTexture: target,
 	}
+}
+
+func (w *WindowData) loadCam(target rl.Vector2) {
+	w.camera.Target = target
+	w.camera.Offset = rl.NewVector2(w.gameScreen.Width/2, w.gameScreen.Height/2)
+	w.camera.Zoom = 1
 }
