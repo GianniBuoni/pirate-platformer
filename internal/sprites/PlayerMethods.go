@@ -22,15 +22,23 @@ func (p *PlayerData) Update() {
 }
 
 func (p *PlayerData) Draw(a Assets) error {
+	p.image = string(p.getState())
 	src, err := a.GetImage(PlayerLib, p.image)
 	if err != nil {
 		return err
 	}
 
+	if p.direction.X > 0 {
+		p.flip = 1
+	}
+	if p.direction.X < 0 {
+		p.flip = -1
+	}
+
 	srcRect := rl.NewRectangle(
 		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
 		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
-		p.frameSize,
+		p.frameSize*p.flip,
 		p.frameSize,
 	)
 
@@ -42,7 +50,7 @@ func (p *PlayerData) Draw(a Assets) error {
 		0,
 		rl.White,
 	)
-	rl.DrawRectangleRec(p.hitbox.Rect(), rl.Black)
+	//rl.DrawRectangleRec(p.hitbox.Rect(), rl.Black)
 	return nil
 }
 

@@ -18,6 +18,7 @@ type PlayerData struct {
 	frameSize        float32
 	frameSpeed       float32
 	gravity          float32
+	flip             float32
 }
 
 func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
@@ -31,12 +32,12 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 	}
 
 	sprite := &PlayerData{
+		collisionSprites: s,
 		frameSize:        96,
 		frameSpeed:       FrameSpeed,
 		gravity:          Gravity,
-		collisionSprites: s,
+		flip:             1,
 	}
-	sprite.image = state
 	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
 	sprite.rect = rects.NewRectangle(
