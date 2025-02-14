@@ -55,12 +55,15 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 
 	for _, s := range *p.collisionSprites {
 		if rl.CheckCollisionRecs(floorRect, s.HitBox().Rect()) {
+			p.actions["wall"] = false
 			return floor
 		}
-		if rl.CheckCollisionRecs(leftRect, s.HitBox().Rect()) {
+		if rl.CheckCollisionRecs(leftRect, s.HitBox().Rect()) &&
+			p.actions["wall"] {
 			return left
 		}
-		if rl.CheckCollisionRecs(rightRect, s.HitBox().Rect()) {
+		if rl.CheckCollisionRecs(rightRect, s.HitBox().Rect()) &&
+			p.actions["wall"] {
 			return right
 		}
 	}

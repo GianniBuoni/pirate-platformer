@@ -13,6 +13,7 @@ type PlayerData struct {
 	BasicSprite
 	hitbox           SpriteRect
 	collisionSprites *[]Sprite
+	actions          map[string]bool
 	frameCount       int
 	frameIndex       float32
 	frameSize        float32
@@ -30,33 +31,41 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 			state, err,
 		)
 	}
-
-	sprite := &PlayerData{
+	// INIT CONSTANTS AND ARGUMENTS
+	p := &PlayerData{
 		collisionSprites: s,
 		frameSize:        96,
 		frameSpeed:       FrameSpeed,
 		gravity:          Gravity,
 	}
-	sprite.flip = 1
-	sprite.speed = PlayerSpeed
-	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
-	sprite.rect = rects.NewRectangle(
-		pos.X, pos.Y-sprite.frameSize*2,
-		sprite.frameSize*2, sprite.frameSize*2,
+	// INIT ANIMATION DATA
+	p.frameCount = int(float32(src.Width) / p.frameSize)
+	p.speed = PlayerSpeed
+	p.flip = 1
+
+	// INIT ACTION MAP
+	p.actions = map[string]bool{
+		"wall":   false,
+		"attack": false,
+	}
+
+	// INIT RECT DATA
+	p.rect = rects.NewRectangle(
+		pos.X, pos.Y-p.frameSize*2,
+		p.frameSize*2, p.frameSize*2,
 	)
 	var hitboxW float32
 	hitboxW = 48
-	sprite.hitboxOffset = TileSize + (TileSize-hitboxW)/2
-	sprite.hitbox = rects.NewRectangle(
-		sprite.rect.Left()+sprite.hitboxOffset,
-		sprite.rect.Top()+TileSize,
+	p.hitboxOffset = TileSize + (TileSize-hitboxW)/2
+	p.hitbox = rects.NewRectangle(
+		p.rect.Left()+p.hitboxOffset,
+		p.rect.Top()+TileSize,
 		hitboxW, TileSize,
 	)
-	sprite.oldRect = rects.NewRectangle(
-		sprite.hitbox.Left(), sprite.hitbox.Top(),
-		sprite.hitbox.Rect().Width, sprite.hitbox.Rect().Height,
+	p.oldRect = rects.NewRectangle(
+		p.hitbox.Left(), p.hitbox.Top(),
+		p.hitbox.Rect().Width, p.hitbox.Rect().Height,
 	)
-
-	return sprite, nil
+	return p, nil
 }
