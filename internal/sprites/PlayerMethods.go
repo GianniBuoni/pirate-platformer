@@ -10,10 +10,11 @@ import (
 func (p *PlayerData) Update() {
 	p.input()
 	p.move()
+	p.image = string(p.getState())
 	p.animate()
 	p.rect.Set(
 		rects.Top(p.hitbox.Top()-TileSize),
-		rects.Left(p.hitbox.Left()-TileSize),
+		rects.Left(p.hitbox.Left()-p.hitboxOffset),
 	)
 	p.oldRect.Set(
 		rects.Top(p.hitbox.Top()),
@@ -22,7 +23,6 @@ func (p *PlayerData) Update() {
 }
 
 func (p *PlayerData) Draw(a Assets) error {
-	p.image = string(p.getState())
 	src, err := a.GetImage(PlayerLib, p.image)
 	if err != nil {
 		return err
@@ -50,11 +50,16 @@ func (p *PlayerData) Draw(a Assets) error {
 		0,
 		rl.White,
 	)
-	//rl.DrawRectangleRec(p.hitbox.Rect(), rl.Black)
 	return nil
 }
 
 func (p *PlayerData) animate() {
 	dt := rl.GetFrameTime()
 	p.frameIndex += p.frameSpeed * dt
+}
+
+// call this func to debug any hitbox and rect issues
+func (p *PlayerData) drawRects() {
+	rl.DrawRectangleRec(p.rect.Rect(), rl.ColorAlpha(rl.Black, .25))
+	rl.DrawRectangleRec(p.hitbox.Rect(), rl.ColorAlpha(rl.Green, .5))
 }

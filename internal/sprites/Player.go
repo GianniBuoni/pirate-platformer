@@ -18,7 +18,7 @@ type PlayerData struct {
 	frameSize        float32
 	frameSpeed       float32
 	gravity          float32
-	flip             float32
+	hitboxOffset     float32
 }
 
 func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
@@ -36,18 +36,22 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 		frameSize:        96,
 		frameSpeed:       FrameSpeed,
 		gravity:          Gravity,
-		flip:             1,
 	}
+	sprite.flip = 1
+	sprite.speed = PlayerSpeed
 	sprite.frameCount = int(float32(src.Width) / sprite.frameSize)
 
 	sprite.rect = rects.NewRectangle(
 		pos.X, pos.Y-sprite.frameSize*2,
 		sprite.frameSize*2, sprite.frameSize*2,
 	)
+	var hitboxW float32
+	hitboxW = 48
+	sprite.hitboxOffset = TileSize + (TileSize-hitboxW)/2
 	sprite.hitbox = rects.NewRectangle(
-		sprite.rect.Left()+TileSize,
+		sprite.rect.Left()+sprite.hitboxOffset,
 		sprite.rect.Top()+TileSize,
-		40, TileSize,
+		hitboxW, TileSize,
 	)
 	sprite.oldRect = rects.NewRectangle(
 		sprite.hitbox.Left(), sprite.hitbox.Top(),

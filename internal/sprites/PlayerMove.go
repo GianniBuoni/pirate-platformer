@@ -10,7 +10,7 @@ func (p *PlayerData) move() {
 	dt := rl.GetFrameTime()
 	// horizontan check
 	p.hitbox.Set(rects.Left(
-		p.hitbox.Left() + p.direction.X*PlayerSpeed*dt,
+		p.hitbox.Left() + p.direction.X*p.speed*dt,
 	))
 	p.collision("x")
 
@@ -20,4 +20,11 @@ func (p *PlayerData) move() {
 		p.hitbox.Top() + p.direction.Y*dt,
 	))
 	p.collision("y")
+}
+
+func (p *PlayerData) jump() {
+	switch p.checkCollisonSide() {
+	case floor:
+		p.direction.Y -= JumpDist
+	}
 }

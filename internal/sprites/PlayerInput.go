@@ -19,4 +19,8 @@ func (p *PlayerData) input() {
 		}
 	}
 	p.direction.X = x
+
+	if rl.IsKeyPressed(rl.KeySpace) {
+		p.jump()
+	}
 }
