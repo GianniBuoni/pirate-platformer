@@ -25,7 +25,11 @@ func (p *PlayerData) move() {
 }
 
 func (p *PlayerData) jump() {
+	p.mu.Lock()
+	defer p.mu.Unlock()
 	p.direction.Y -= JumpDist
+	p.actions["jump"] = true
+	p.frameIndex = 0
 	go func() {
 		wallTimeout := time.NewTimer(400 * time.Millisecond)
 		<-wallTimeout.C
@@ -34,6 +38,8 @@ func (p *PlayerData) jump() {
 }
 
 func (p *PlayerData) wallJump(direction float32) {
+	p.mu.Lock()
+	defer p.mu.Unlock()
 	p.direction.Y -= JumpDist
 	p.direction.X = direction
 	p.actions["run"] = false

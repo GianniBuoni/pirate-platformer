@@ -10,7 +10,6 @@ import (
 func (p *PlayerData) Update() {
 	p.input()
 	p.move()
-	p.image = string(p.getState())
 	p.animate()
 	p.rect.Set(
 		rects.Top(p.hitbox.Top()-TileSize),
@@ -27,6 +26,7 @@ func (p *PlayerData) Draw(a Assets) error {
 	if err != nil {
 		return err
 	}
+	p.frameCount = int(float32(src.Width) / p.frameSize)
 
 	if p.direction.X > 0 {
 		p.flip = 1
@@ -50,16 +50,6 @@ func (p *PlayerData) Draw(a Assets) error {
 		0,
 		rl.White,
 	)
+	//p.drawRects()
 	return nil
-}
-
-func (p *PlayerData) animate() {
-	dt := rl.GetFrameTime()
-	p.frameIndex += p.frameSpeed * dt
-}
-
-// call this func to debug any hitbox and rect issues
-func (p *PlayerData) drawRects() {
-	rl.DrawRectangleRec(p.rect.Rect(), rl.ColorAlpha(rl.Black, .25))
-	rl.DrawRectangleRec(p.hitbox.Rect(), rl.ColorAlpha(rl.Green, .5))
 }

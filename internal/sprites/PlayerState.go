@@ -26,6 +26,9 @@ func (p *PlayerData) getState() PlayerState {
 	case left, right:
 		return wall
 	case air:
+		if p.actions["jump"] {
+			return jump
+		}
 		return fall
 	default:
 		return idle

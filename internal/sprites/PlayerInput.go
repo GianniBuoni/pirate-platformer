@@ -7,6 +7,7 @@ import (
 func (p *PlayerData) input() {
 	var x float32
 	var direction float32
+	collision := p.checkCollisonSide()
 
 	leftInput := []int32{rl.KeyLeft, rl.KeyH, rl.KeyA}
 	rightInput := []int32{rl.KeyRight, rl.KeyL, rl.KeyD}
@@ -25,7 +26,7 @@ func (p *PlayerData) input() {
 		}
 	}
 	for _, key := range rightInput {
-		if rl.IsKeyDown(key) && p.actions["run"] {
+		if rl.IsKeyDown(key) {
 			x += direction
 		}
 	}
@@ -34,7 +35,7 @@ func (p *PlayerData) input() {
 	// Player.wallJump() params manually set since p.direction.X has
 	// a chance of being 0.
 	if rl.IsKeyPressed(rl.KeySpace) {
-		switch p.checkCollisonSide() {
+		switch collision {
 		case floor:
 			p.jump()
 		case left:
@@ -42,5 +43,9 @@ func (p *PlayerData) input() {
 		case right:
 			p.wallJump(-1)
 		}
+	}
+
+	if rl.IsKeyPressed(rl.KeyF) {
+		p.attack(collision)
 	}
 }

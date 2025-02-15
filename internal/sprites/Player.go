@@ -2,6 +2,7 @@ package sprites
 
 import (
 	"fmt"
+	"sync"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
@@ -11,6 +12,7 @@ import (
 
 type PlayerData struct {
 	BasicSprite
+	mu               sync.RWMutex
 	hitbox           SpriteRect
 	collisionSprites *[]Sprite
 	actions          map[string]bool
@@ -46,8 +48,9 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 
 	// INIT ACTION MAP
 	p.actions = map[string]bool{
-		"wall": false,
+		"jump": false,
 		"run":  true,
+		"wall": false,
 	}
 
 	// INIT RECT DATA
