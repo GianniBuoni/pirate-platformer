@@ -7,7 +7,6 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/rects"
-	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type PlayerData struct {
@@ -15,6 +14,7 @@ type PlayerData struct {
 	mu               sync.RWMutex
 	hitbox           SpriteRect
 	collisionSprites *[]Sprite
+	platformSprites  *[]Sprite
 	actions          map[PlayerState]bool
 	frameCount       int
 	frameIndex       float32
@@ -24,9 +24,9 @@ type PlayerData struct {
 	hitboxOffset     float32
 }
 
-func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
+func NewPlayer(args NewPlayerParams) (Sprite, error) {
 	state := "idle"
-	src, err := a.GetImage(PlayerLib, state)
+	src, err := args.Assets.GetImage(PlayerLib, state)
 	if err != nil {
 		return nil, fmt.Errorf(
 			"New player with state: %s, could not be created. %w",
@@ -35,7 +35,8 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 	}
 	// INIT CONSTANTS AND ARGUMENTS
 	p := &PlayerData{
-		collisionSprites: s,
+		collisionSprites: args.CSprites,
+		platformSprites:  args.PSprites,
 		frameSize:        96,
 		frameSpeed:       FrameSpeed,
 		gravity:          Gravity,
@@ -57,7 +58,7 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 
 	// INIT RECT DATA
 	p.rect = rects.NewRectangle(
-		pos.X, pos.Y-p.frameSize*2,
+		args.Pos.X, args.Pos.Y-p.frameSize*2,
 		p.frameSize*2, p.frameSize*2,
 	)
 	var hitboxW float32

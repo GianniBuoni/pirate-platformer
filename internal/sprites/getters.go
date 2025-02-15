@@ -12,6 +12,14 @@ func (s *BasicSprite) HitBox() SpriteRect {
 	return s.rect
 }
 
+func (s *BasicSprite) OldRect() SpriteRect {
+	return s.oldRect
+}
+
 func (s *PlayerData) HitBox() SpriteRect {
 	return s.hitbox
+}
+
+func (s *PlayerData) IsAttacking() bool {
+	return s.actions[attack]
 }

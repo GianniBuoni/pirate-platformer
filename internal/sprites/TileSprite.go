@@ -32,6 +32,9 @@ func NewTileSprite(
 	sprite.rect = rects.NewRectangle(
 		pos.X, pos.Y, TileSize, TileSize,
 	)
+	sprite.oldRect = rects.NewRectangle(
+		pos.X, pos.Y, TileSize, TileSize,
+	)
 	sprite.srcRect = rl.Rectangle{
 		X: srcPos.X, Y: srcPos.Y,
 		Width: TileSize, Height: TileSize,

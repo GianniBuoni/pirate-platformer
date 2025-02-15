@@ -22,6 +22,7 @@ func (p *PlayerData) move() {
 		p.hitbox.Top() + p.direction.Y*dt,
 	))
 	p.collision("y")
+	p.platformCollision()
 }
 
 func (p *PlayerData) attack() {

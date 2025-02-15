@@ -43,6 +43,17 @@ func (p *PlayerData) collision(axis string) {
 	}
 }
 
+func (p *PlayerData) platformCollision() {
+	for _, s := range *p.platformSprites {
+		if rl.CheckCollisionRecs(p.hitbox.Rect(), s.HitBox().Rect()) {
+			if p.hitbox.Bottom() >= s.HitBox().Top() &&
+				p.oldRect.Bottom() <= s.OldRect().Top() {
+				p.hitbox.Set(rects.Bottom(s.HitBox().Top()))
+			}
+		}
+	}
+}
+
 func (p *PlayerData) checkCollisonSide() CollisionSide {
 	floorRect := rl.NewRectangle(
 		p.hitbox.Left()+2, p.hitbox.Bottom(), p.hitbox.Rect().Width-4, 2,
@@ -53,7 +64,6 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 	rightRect := rl.NewRectangle(
 		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
 	)
-
 	for _, s := range *p.collisionSprites {
 		if rl.CheckCollisionRecs(floorRect, s.HitBox().Rect()) {
 			p.actions[wall] = false
@@ -70,6 +80,7 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 			return right
 		}
 	}
+	// check for platform here
 	p.SetGravity(true)
 	return air
 }

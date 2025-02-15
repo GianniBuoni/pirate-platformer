@@ -2,8 +2,8 @@ package level
 
 import (
 	"errors"
-	"strings"
 
+	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -28,15 +28,23 @@ func (l *LevelData) loadPlayer() error {
 			"error Level.loadPlayer(): collison group is not defined.",
 		)
 	}
+	platformSprites, ok := l.groups["platform"]
+	if !ok {
+		return errors.New(
+			"error Level.loadPlayer(): platform group is not defined.",
+		)
+	}
 	for _, objGroup := range l.mapData.ObjectGroups {
 		if objGroup.Name == "Objects" {
 			for _, obj := range objGroup.Objects {
 				if obj.Name == "player" {
-					sprite, err := sprites.NewPlayer(
-						rl.Vector2{X: float32(obj.X), Y: float32(obj.Y)},
-						l.levelAssets,
-						&collisonSprites,
-					)
+					newPlayer := NewPlayerParams{
+						Pos:      rl.NewVector2(float32(obj.X), float32(obj.Y)),
+						Assets:   l.levelAssets,
+						CSprites: &collisonSprites,
+						PSprites: &platformSprites,
+					}
+					sprite, err := sprites.NewPlayer(newPlayer)
 					if err != nil {
 						return err
 					}
@@ -70,10 +78,12 @@ func (l *LevelData) loadTiles() error {
 					return err
 				}
 
-				if strings.Contains(layer.Name, "BG") ||
-					strings.Contains(layer.Name, "FG") {
+				switch layer.Name {
+				case "BG", "FG":
 					l.AddSpriteGroup(sprite, "all")
-				} else {
+				case "Platforms":
+					l.AddSpriteGroup(sprite, "all", "platform")
+				default:
 					l.AddSpriteGroup(sprite, "all", "collision")
 				}
 			}

@@ -33,6 +33,10 @@ func NewSprite(image string, pos rl.Vector2, a Assets) (Sprite, error) {
 		pos.X, pos.Y,
 		float32(src.Width), float32(src.Height),
 	)
+	sprite.oldRect = rects.NewRectangle(
+		pos.X, pos.Y,
+		float32(src.Width), float32(src.Height),
+	)
 
 	return sprite, nil
 }

@@ -11,8 +11,16 @@ type Sprite interface {
 
 	// returns the SpriteRect interface
 	Rect() SpriteRect
+	OldRect() SpriteRect
 	// returns an an underlying raylib Rectangle
 	HitBox() SpriteRect
+}
+
+type NewPlayerParams struct {
+	Pos      rl.Vector2
+	Assets   Assets
+	CSprites *[]Sprite
+	PSprites *[]Sprite
 }
 
 type SpriteRect interface {

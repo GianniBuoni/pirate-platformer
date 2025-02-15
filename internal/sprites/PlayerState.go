@@ -5,15 +5,17 @@ import rl "github.com/gen2brain/raylib-go/raylib"
 type PlayerState string
 
 const (
-	airAttack PlayerState = "air_attack"
-	attack    PlayerState = "attack"
-	canAttack PlayerState = "can_attack"
-	fall      PlayerState = "fall"
-	hit       PlayerState = "hit"
-	idle      PlayerState = "idle"
-	jump      PlayerState = "jump"
-	run       PlayerState = "run"
-	wall      PlayerState = "wall"
+	airAttack   PlayerState = "air_attack"
+	attack      PlayerState = "attack"
+	canAttack   PlayerState = "can_attack"
+	fall        PlayerState = "fall"
+	hit         PlayerState = "hit"
+	idle        PlayerState = "idle"
+	jump        PlayerState = "jump"
+	platform    PlayerState = "platform"
+	canPlatform PlayerState = "can_platform"
+	run         PlayerState = "run"
+	wall        PlayerState = "wall"
 )
 
 func (p *PlayerData) getState() PlayerState {
