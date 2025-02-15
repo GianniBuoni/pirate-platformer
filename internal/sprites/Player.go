@@ -15,7 +15,7 @@ type PlayerData struct {
 	mu               sync.RWMutex
 	hitbox           SpriteRect
 	collisionSprites *[]Sprite
-	actions          map[string]bool
+	actions          map[PlayerState]bool
 	frameCount       int
 	frameIndex       float32
 	frameSize        float32
@@ -47,10 +47,12 @@ func NewPlayer(pos rl.Vector2, a Assets, s *[]Sprite) (Sprite, error) {
 	p.flip = 1
 
 	// INIT ACTION MAP
-	p.actions = map[string]bool{
-		"jump": false,
-		"run":  true,
-		"wall": false,
+	p.actions = map[PlayerState]bool{
+		attack:    false,
+		canAttack: true,
+		fall:      false,
+		run:       true,
+		wall:      false,
 	}
 
 	// INIT RECT DATA

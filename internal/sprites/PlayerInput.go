@@ -14,7 +14,7 @@ func (p *PlayerData) input() {
 
 	// X direction is inverted by wall jumping
 	// the Player.wallJump() method toggles this boolean
-	if p.actions["run"] {
+	if p.actions[run] {
 		direction = 1
 	} else {
 		direction = -1
@@ -46,6 +46,6 @@ func (p *PlayerData) input() {
 	}
 
 	if rl.IsKeyPressed(rl.KeyF) {
-		p.attack(collision)
+		p.attack()
 	}
 }

@@ -1,6 +1,7 @@
 package sprites
 
 import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -55,20 +56,30 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 
 	for _, s := range *p.collisionSprites {
 		if rl.CheckCollisionRecs(floorRect, s.HitBox().Rect()) {
-			p.actions["wall"] = false
+			p.actions[wall] = false
 			return floor
 		}
 		if rl.CheckCollisionRecs(leftRect, s.HitBox().Rect()) &&
-			p.actions["wall"] {
+			p.actions[wall] {
 			p.SetGravity(false)
 			return left
 		}
 		if rl.CheckCollisionRecs(rightRect, s.HitBox().Rect()) &&
-			p.actions["wall"] {
+			p.actions[wall] {
 			p.SetGravity(false)
 			return right
 		}
 	}
 	p.SetGravity(true)
 	return air
+}
+
+func (p *PlayerData) SetGravity(b bool) {
+	switch b {
+	case true:
+		p.gravity = Gravity
+	case false:
+		p.direction.Y = 0
+		p.gravity = Gravity * 0.8
+	}
 }

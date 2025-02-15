@@ -10,7 +10,6 @@ import (
 func (p *PlayerData) Update() {
 	p.input()
 	p.move()
-	p.animate()
 	p.rect.Set(
 		rects.Top(p.hitbox.Top()-TileSize),
 		rects.Left(p.hitbox.Left()-p.hitboxOffset),
@@ -22,11 +21,12 @@ func (p *PlayerData) Update() {
 }
 
 func (p *PlayerData) Draw(a Assets) error {
+	p.image = string(p.getState())
 	src, err := a.GetImage(PlayerLib, p.image)
 	if err != nil {
 		return err
 	}
-	p.frameCount = int(float32(src.Width) / p.frameSize)
+	p.animate(src)
 
 	if p.direction.X > 0 {
 		p.flip = 1

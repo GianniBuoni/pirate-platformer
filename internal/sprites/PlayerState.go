@@ -7,6 +7,7 @@ type PlayerState string
 const (
 	airAttack PlayerState = "air_attack"
 	attack    PlayerState = "attack"
+	canAttack PlayerState = "can_attack"
 	fall      PlayerState = "fall"
 	hit       PlayerState = "hit"
 	idle      PlayerState = "idle"
@@ -18,6 +19,9 @@ const (
 func (p *PlayerData) getState() PlayerState {
 	switch p.checkCollisonSide() {
 	case floor:
+		if p.actions[attack] {
+			return attack
+		}
 		if p.direction == (rl.Vector2{}) {
 			return idle
 		} else {
@@ -26,7 +30,10 @@ func (p *PlayerData) getState() PlayerState {
 	case left, right:
 		return wall
 	case air:
-		if p.actions["jump"] {
+		if p.actions[attack] {
+			return airAttack
+		}
+		if p.actions[jump] {
 			return jump
 		}
 		return fall

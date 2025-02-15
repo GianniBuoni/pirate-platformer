@@ -24,16 +24,31 @@ func (p *PlayerData) move() {
 	p.collision("y")
 }
 
+func (p *PlayerData) attack() {
+	if p.actions[canAttack] {
+		p.mu.Lock()
+		defer p.mu.Unlock()
+		p.actions[attack] = true
+		p.actions[canAttack] = false
+		p.frameIndex = 0
+		go func() {
+			atkTimeout := time.NewTimer(400 * time.Millisecond)
+			<-atkTimeout.C
+			p.actions[canAttack] = true
+		}()
+	}
+}
+
 func (p *PlayerData) jump() {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 	p.direction.Y -= JumpDist
-	p.actions["jump"] = true
+	p.actions[jump] = true
 	p.frameIndex = 0
 	go func() {
 		wallTimeout := time.NewTimer(400 * time.Millisecond)
 		<-wallTimeout.C
-		p.actions["wall"] = true
+		p.actions[wall] = true
 	}()
 }
 
@@ -42,20 +57,10 @@ func (p *PlayerData) wallJump(direction float32) {
 	defer p.mu.Unlock()
 	p.direction.Y -= JumpDist
 	p.direction.X = direction
-	p.actions["run"] = false
+	p.actions[run] = false
 	go func() {
 		runTimeout := time.NewTimer(100 * time.Millisecond)
 		<-runTimeout.C
-		p.actions["run"] = true
+		p.actions[run] = true
 	}()
-}
-
-func (p *PlayerData) SetGravity(b bool) {
-	switch b {
-	case true:
-		p.gravity = Gravity
-	case false:
-		p.direction.Y = 0
-		p.gravity = Gravity * 0.8
-	}
 }
