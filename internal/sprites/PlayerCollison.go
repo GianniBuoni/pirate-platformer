@@ -48,10 +48,10 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 		p.hitbox.Left()+2, p.hitbox.Bottom(), p.hitbox.Rect().Width-4, 2,
 	)
 	leftRect := rl.NewRectangle(
-		p.hitbox.Left()-2, p.hitbox.Top()+2, 2, p.hitbox.Rect().Height-4,
+		p.hitbox.Left()-2, p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
 	)
 	rightRect := rl.NewRectangle(
-		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height-4,
+		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
 	)
 
 	for _, s := range *p.collisionSprites {

@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"fmt"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -14,7 +12,6 @@ func (p *PlayerData) animate(src rl.Texture2D) {
 	case string(jump):
 		p.animateOnce(jump)
 	case string(attack), string(airAttack):
-		fmt.Println(p.image)
 		p.animateOnce(attack)
 	}
 }
