@@ -36,6 +36,11 @@ func (g *GameData) loadAssets() {
 		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
 		os.Exit(1)
 	}
+	err = g.levelAssets.ImportImages(ImageLib, "graphics", "animated_objects")
+	if err != nil {
+		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
+		os.Exit(1)
+	}
 	err = g.levelAssets.ImportImages(PlayerLib, "graphics", "player")
 	if err != nil {
 		fmt.Printf("❌: Game.loadAssets(), player: %s", err.Error())

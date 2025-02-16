@@ -29,16 +29,16 @@ func (p *PlayerData) Draw(a Assets) error {
 	p.animate(src)
 
 	if p.direction.X > 0 {
-		p.flip = 1
+		p.flipH = 1
 	}
 	if p.direction.X < 0 {
-		p.flip = -1
+		p.flipH = -1
 	}
 
 	srcRect := rl.NewRectangle(
 		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
-		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
-		p.frameSize*p.flip,
+		0,
+		p.frameSize*p.flipH,
 		p.frameSize,
 	)
 

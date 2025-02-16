@@ -14,7 +14,8 @@ type BasicSprite struct {
 	oldRect   SpriteRect
 	direction rl.Vector2
 	speed     float32
-	flip      float32
+	flipH     float32
+	flipV     float32
 }
 
 func NewSprite(image string, pos rl.Vector2, a Assets) (Sprite, error) {

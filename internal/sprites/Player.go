@@ -10,21 +10,15 @@ import (
 )
 
 type PlayerData struct {
-	BasicSprite
+	AnimatedSprite
 	mu               sync.RWMutex
-	hitbox           SpriteRect
 	collisionSprites *[]Sprite
 	platformSprites  *[]Sprite
 	actions          map[PlayerState]bool
-	frameCount       int
-	frameIndex       float32
-	frameSize        float32
-	frameSpeed       float32
 	gravity          float32
-	hitboxOffset     float32
 }
 
-func NewPlayer(args NewPlayerParams) (Sprite, error) {
+func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	state := "idle"
 	src, err := args.Assets.GetImage(PlayerLib, state)
 	if err != nil {
@@ -37,15 +31,15 @@ func NewPlayer(args NewPlayerParams) (Sprite, error) {
 	p := &PlayerData{
 		collisionSprites: args.CSprites,
 		platformSprites:  args.PSprites,
-		frameSize:        96,
-		frameSpeed:       FrameSpeed,
 		gravity:          Gravity,
 	}
 
 	// INIT ANIMATION DATA
+	p.frameSize = 96
+	p.frameSpeed = FrameSpeed
 	p.frameCount = int(float32(src.Width) / p.frameSize)
 	p.speed = PlayerSpeed
-	p.flip = 1
+	p.flipH = 1
 
 	// INIT ACTION MAP
 	p.actions = map[PlayerState]bool{
