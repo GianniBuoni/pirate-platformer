@@ -45,10 +45,12 @@ func (p *PlayerData) collision(axis string) {
 
 func (p *PlayerData) platformCollision() {
 	for _, s := range *p.platformSprites {
-		if rl.CheckCollisionRecs(p.hitbox.Rect(), s.HitBox().Rect()) {
+		if rl.CheckCollisionRecs(p.hitbox.Rect(), s.HitBox().Rect()) &&
+			p.actions[canPlatform] {
 			if p.hitbox.Bottom() >= s.HitBox().Top() &&
 				p.oldRect.Bottom() <= s.OldRect().Top() {
 				p.hitbox.Set(rects.Bottom(s.HitBox().Top()))
+				p.direction.Y = 0
 			}
 		}
 	}
@@ -80,7 +82,14 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 			return right
 		}
 	}
-	// check for platform here
+	for _, plat := range *p.platformSprites {
+		if rl.CheckCollisionRecs(floorRect, plat.HitBox().Rect()) &&
+			p.actions[canPlatform] {
+			p.actions[wall] = false
+			p.actions[platform] = true
+			return floor
+		}
+	}
 	p.SetGravity(true)
 	return air
 }

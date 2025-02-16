@@ -32,8 +32,6 @@ func (p *PlayerData) input() {
 	}
 	p.direction.X = x
 
-	// Player.wallJump() params manually set since p.direction.X has
-	// a chance of being 0.
 	if rl.IsKeyPressed(rl.KeySpace) {
 		switch collision {
 		case floor:
@@ -48,4 +46,12 @@ func (p *PlayerData) input() {
 	if rl.IsKeyPressed(rl.KeyF) {
 		p.attack()
 	}
+
+	downInput := []int32{rl.KeyDown, rl.KeyJ, rl.KeyS}
+	for _, key := range downInput {
+		if rl.IsKeyPressed(key) && p.actions[platform] {
+			p.phaseThrough()
+		}
+	}
+
 }

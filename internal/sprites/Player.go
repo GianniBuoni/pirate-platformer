@@ -49,11 +49,12 @@ func NewPlayer(args NewPlayerParams) (Sprite, error) {
 
 	// INIT ACTION MAP
 	p.actions = map[PlayerState]bool{
-		attack:    false,
-		canAttack: true,
-		fall:      false,
-		run:       true,
-		wall:      false,
+		attack:      false,
+		canAttack:   true,
+		canPlatform: true,
+		fall:        false,
+		run:         true,
+		wall:        false,
 	}
 
 	// INIT RECT DATA
