@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -14,14 +13,14 @@ func (l *LevelData) Load() error {
 	if err != nil {
 		return err
 	}
-	err = l.loadPlayer()
+	err = l.loadObjects()
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func (l *LevelData) loadPlayer() error {
+func (l *LevelData) loadObjects() error {
 	collisonSprites, ok := l.groups["collision"]
 	if !ok {
 		return errors.New(
@@ -35,6 +34,21 @@ func (l *LevelData) loadPlayer() error {
 		)
 	}
 	for _, objGroup := range l.mapData.ObjectGroups {
+		if objGroup.Name == "BG details" {
+			for _, obj := range objGroup.Objects {
+				if obj.Type == "static" {
+					s, err := sprites.NewSprite(
+						obj.Name,
+						rl.NewVector2(float32(obj.X), float32(obj.Y)),
+						l.levelAssets,
+					)
+					if err != nil {
+						return err
+					}
+					l.AddSpriteGroup(s, "all")
+				}
+			}
+		}
 		if objGroup.Name == "Objects" {
 			for _, obj := range objGroup.Objects {
 				if obj.Name == "player" {
@@ -49,42 +63,6 @@ func (l *LevelData) loadPlayer() error {
 						return err
 					}
 					l.AddPlayer(sprite)
-				}
-			}
-		}
-	}
-	return nil
-}
-
-func (l *LevelData) loadTiles() error {
-	for _, layer := range l.mapData.Layers {
-		for i, tile := range layer.Tiles {
-			if !tile.IsNil() {
-				tilePos := rl.Vector2{
-					X: float32(i%l.mapData.Width) * TileSize,
-					Y: float32(i/l.mapData.Width) * TileSize,
-				}
-				srcRect := tile.GetTileRect()
-				srcPos := rl.Vector2{
-					X: float32(srcRect.Min.X),
-					Y: float32(srcRect.Min.Y),
-				}
-				srcKey := GetAssetKey(tile.Tileset.Image.Source)
-
-				sprite, err := sprites.NewTileSprite(
-					srcKey, tilePos, srcPos, l.levelAssets,
-				)
-				if err != nil {
-					return err
-				}
-
-				switch layer.Name {
-				case "BG", "FG":
-					l.AddSpriteGroup(sprite, "all")
-				case "Platforms":
-					l.AddSpriteGroup(sprite, "all", "platform")
-				default:
-					l.AddSpriteGroup(sprite, "all", "collision")
 				}
 			}
 		}

@@ -59,7 +59,7 @@ func NewPlayer(args NewPlayerParams) (Sprite, error) {
 
 	// INIT RECT DATA
 	p.rect = rects.NewRectangle(
-		args.Pos.X, args.Pos.Y-p.frameSize*2,
+		args.Pos.X, args.Pos.Y,
 		p.frameSize*2, p.frameSize*2,
 	)
 	var hitboxW float32

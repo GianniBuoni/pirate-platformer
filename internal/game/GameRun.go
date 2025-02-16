@@ -22,7 +22,7 @@ func (g *GameData) draw() {
 	// draw onto render texture
 	rl.BeginTextureMode(g.window.renderTexture)
 	rl.BeginMode2D(g.window.camera)
-	rl.ClearBackground(rl.Pink)
+	rl.ClearBackground(rl.Black)
 	err := g.levelCurrent.Draw()
 	if err != nil {
 		fmt.Printf("Game.draw(), %s", err.Error())
