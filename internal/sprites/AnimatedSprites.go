@@ -20,7 +20,7 @@ type AnimatedSprite struct {
 }
 
 func NewAnimatedSprite(
-	image string, pos rl.Vector2, a Assets, flipH, flipV bool,
+	image string, pos rl.Vector2, a Assets, opts ...func(*AnimatedOpts),
 ) (*AnimatedSprite, error) {
 	src, err := a.GetImage(ImageLib, image)
 	if err != nil {
@@ -29,10 +29,19 @@ func NewAnimatedSprite(
 			image, err,
 		)
 	}
+
+	spriteOpts := AnimatedOpts{
+		frameSize: TileSize,
+	}
+
+	for _, f := range opts {
+		f(&spriteOpts)
+	}
+
 	as := &AnimatedSprite{
 		frameSpeed: FrameSpeed,
-		frameSize:  TileSize, // TODO find a dynamic way to set this field
-		frameCount: int(float32(src.Width) / TileSize),
+		frameSize:  spriteOpts.frameSize,
+		frameCount: int(float32(src.Width) / spriteOpts.frameSize),
 	}
 	as.image = image
 	as.rect = rects.NewRectangle(
@@ -41,12 +50,12 @@ func NewAnimatedSprite(
 	as.oldRect = rects.NewRectangle(
 		pos.X, pos.Y, as.frameSize, float32(src.Height),
 	)
-	if flipH {
+	if spriteOpts.flipH {
 		as.flipH = -1
 	} else {
 		as.flipH = 1
 	}
-	if flipV {
+	if spriteOpts.flipV {
 		as.flipH = -1
 	} else {
 		as.flipV = 1

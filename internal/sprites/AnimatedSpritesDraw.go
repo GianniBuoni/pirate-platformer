@@ -17,7 +17,7 @@ func (as *AnimatedSprite) Draw(assets Assets) error {
 		as.frameSize*float32(int(as.frameIndex)%as.frameCount),
 		0,
 		as.frameSize*as.flipH,
-		as.frameSize*as.flipV,
+		float32(src.Height)*as.flipV,
 	)
 	rl.DrawTexturePro(
 		src, srcRect, as.rect.Rect(), rl.Vector2{}, 0, rl.White,

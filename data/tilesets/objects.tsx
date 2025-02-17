@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.1" name="objects" tilewidth="156" tileheight="186" tilecount="28" columns="0" objectalignment="topleft">
+<tileset version="1.10" tiledversion="1.11.1" name="objects" tilewidth="156" tileheight="186" tilecount="30" columns="0" objectalignment="topleft">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../../graphics/objects/barrel.png" width="46" height="50"/>
  </tile>
  <tile id="1">
-  <image source="../../graphics/objects/bg_palm_1.png" width="128" height="128"/>
+  <image source="../../graphics/objects/palm_bg.png" width="128" height="128"/>
  </tile>
  <tile id="2">
   <image source="../../graphics/objects/crate.png" width="50" height="36"/>
@@ -13,14 +13,8 @@
  <tile id="3">
   <image source="../../graphics/objects/flag.png" width="68" height="186"/>
  </tile>
- <tile id="4">
-  <image source="../../graphics/objects/large_1.png" width="78" height="136"/>
- </tile>
  <tile id="5">
   <image source="../../graphics/objects/ship.png" width="156" height="44"/>
- </tile>
- <tile id="6">
-  <image source="../../graphics/objects/small_1.png" width="80" height="103"/>
  </tile>
  <tile id="7">
   <image source="../../graphics/player/fall.png" width="96" height="96"/>
@@ -38,25 +32,25 @@
   <image source="../../graphics/objects/spike_ball.png" width="64" height="64"/>
  </tile>
  <tile id="12">
-  <image source="../../graphics/objects/bg_palm_left.png" width="104" height="106"/>
+  <image source="../../graphics/objects/palm_bg_left.png" width="104" height="106"/>
  </tile>
  <tile id="13">
-  <image source="../../graphics/objects/bg_palm_right.png" width="104" height="106"/>
+  <image source="../../graphics/objects/palm_bg_right.png" width="104" height="106"/>
  </tile>
  <tile id="14">
   <image source="../../graphics/objects/bg_crate.png" width="42" height="32"/>
  </tile>
- <tile id="15">
-  <image source="../../graphics/objects/candle.png" width="64" height="64"/>
+ <tile id="15" x="0" y="0" width="64" height="64">
+  <image source="../../graphics/objects/candle.png" width="384" height="64"/>
  </tile>
  <tile id="16">
   <image source="../../graphics/objects/window.png" width="64" height="64"/>
  </tile>
- <tile id="17">
-  <image source="../../graphics/objects/big_chain.png" width="64" height="116"/>
+ <tile id="17" x="0" y="0" width="64" height="128">
+  <image source="../../graphics/objects/big_chain.png" width="512" height="128"/>
  </tile>
- <tile id="18">
-  <image source="../../graphics/objects/small_chain.png" width="64" height="62"/>
+ <tile id="18" x="0" y="0" width="64" height="64">
+  <image source="../../graphics/objects/small_chain.png" width="512" height="64"/>
  </tile>
  <tile id="19">
   <image source="../../graphics/objects/green_bottle1.png" width="14" height="34"/>
@@ -84,5 +78,17 @@
  </tile>
  <tile id="27">
   <image source="../../graphics/objects/door.png" width="82" height="98"/>
+ </tile>
+ <tile id="29" x="0" y="0" width="96" height="64">
+  <image source="../../graphics/objects/palm.png" width="384" height="64"/>
+ </tile>
+ <tile id="30">
+  <image source="../../graphics/objects/palm_bent.png" width="128" height="64"/>
+ </tile>
+ <tile id="31">
+  <image source="../../graphics/objects/palm_long.png" width="64" height="128"/>
+ </tile>
+ <tile id="32">
+  <image source="../../graphics/objects/palm_short.png" width="64" height="64"/>
  </tile>
 </tileset>

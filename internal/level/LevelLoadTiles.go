@@ -1,12 +1,30 @@
 package level
 
 import (
+	"strings"
+
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/lafriks/go-tiled"
 )
 
-func (l *LevelData) loadTiles() error {
+func (l *LevelData) loadTiles(objs []*tiled.Object) error {
+	// bg palms are zero index
+	for _, obj := range objs {
+		if strings.Contains(obj.Name, "palm") {
+			s, err := sprites.NewSprite(
+				obj.Name,
+				rl.NewVector2(float32(obj.X), float32(obj.Y)),
+				l.levelAssets,
+			)
+			if err != nil {
+				return err
+			}
+			l.AddSpriteGroup(s, "all")
+		}
+	}
+	// all tile layers loaded together
 	for _, layer := range l.mapData.Layers {
 		for i, tile := range layer.Tiles {
 			if !tile.IsNil() {

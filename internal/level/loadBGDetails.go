@@ -1,6 +1,8 @@
 package level
 
 import (
+	"strings"
+
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
@@ -11,14 +13,14 @@ func (l *LevelData) loadBGDetails(objs []*tiled.Object) error {
 		if obj.Name == "candle" {
 			s, err := sprites.NewAnimatedSprite(
 				"candle_light", rl.NewVector2(float32(obj.X), float32(obj.Y)),
-				l.levelAssets, false, false,
+				l.levelAssets,
 			)
 			if err != nil {
 				return err
 			}
 			l.AddSpriteGroup(s, "all")
 		}
-		if obj.Type == "static" {
+		if obj.Type == "static" && !strings.Contains(obj.Name, "palm") {
 			s, err := sprites.NewSprite(
 				obj.Name,
 				rl.NewVector2(float32(obj.X), float32(obj.Y)),
@@ -28,10 +30,10 @@ func (l *LevelData) loadBGDetails(objs []*tiled.Object) error {
 				return err
 			}
 			l.AddSpriteGroup(s, "all")
-		} else {
+		} else if !strings.Contains(obj.Name, "palm") {
 			s, err := sprites.NewAnimatedSprite(
 				obj.Name, rl.NewVector2(float32(obj.X), float32(obj.Y)),
-				l.levelAssets, false, false,
+				l.levelAssets,
 			)
 			if err != nil {
 				return err
