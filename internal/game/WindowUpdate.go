@@ -2,9 +2,8 @@ package game
 
 import rl "github.com/gen2brain/raylib-go/raylib"
 
-func (w *WindowData) Update(playerPos rl.Vector2) {
+func (w *WindowData) Update() {
 	w.getWindowScale()
-	w.getCameraTarget(playerPos)
 }
 
 func (w *WindowData) getWindowScale() {

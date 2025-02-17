@@ -13,15 +13,7 @@ func (l *LevelData) loadTiles(objs []*tiled.Object) error {
 	// bg palms are zero index
 	for _, obj := range objs {
 		if strings.Contains(obj.Name, "palm") {
-			s, err := sprites.NewSprite(
-				obj.Name,
-				rl.NewVector2(float32(obj.X), float32(obj.Y)),
-				l.levelAssets,
-			)
-			if err != nil {
-				return err
-			}
-			l.AddSpriteGroup(s, "all")
+			// load static palms
 		}
 	}
 	// all tile layers loaded together

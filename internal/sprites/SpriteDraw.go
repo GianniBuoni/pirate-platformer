@@ -13,10 +13,14 @@ func (s *BasicSprite) Draw(a Assets) error {
 		return err
 	}
 
-	rl.DrawTextureV(
-		src,
-		rl.Vector2{X: s.rect.Left(), Y: s.rect.Top()},
-		rl.White,
+	srcRect := rl.NewRectangle(
+		s.imgRect.X, s.imgRect.Y,
+		s.imgRect.Width*s.flipH,
+		s.imgRect.Height*s.flipV,
+	)
+
+	rl.DrawTexturePro(
+		src, srcRect, s.rect.Rect(), rl.Vector2{}, 0, rl.White,
 	)
 	return nil
 }

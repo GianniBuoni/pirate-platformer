@@ -21,15 +21,7 @@ func (l *LevelData) loadBGDetails(objs []*tiled.Object) error {
 			l.AddSpriteGroup(s, "all")
 		}
 		if obj.Type == "static" && !strings.Contains(obj.Name, "palm") {
-			s, err := sprites.NewSprite(
-				obj.Name,
-				rl.NewVector2(float32(obj.X), float32(obj.Y)),
-				l.levelAssets,
-			)
-			if err != nil {
-				return err
-			}
-			l.AddSpriteGroup(s, "all")
+			// load static sprites
 		} else if !strings.Contains(obj.Name, "palm") {
 			s, err := sprites.NewAnimatedSprite(
 				obj.Name, rl.NewVector2(float32(obj.X), float32(obj.Y)),
