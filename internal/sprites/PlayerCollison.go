@@ -2,7 +2,6 @@ package sprites
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -22,20 +21,20 @@ func (p *PlayerData) collision(axis string) {
 			case "x":
 				if p.hitbox.Left() <= s.HitBox().Right() &&
 					p.oldRect.Left() >= s.HitBox().Right() {
-					p.hitbox.Set(rects.Left(s.HitBox().Right()))
+					p.hitbox.Set(Left(s.HitBox().Right()))
 				}
 				if p.hitbox.Right() >= s.HitBox().Left() &&
 					p.oldRect.Right() <= s.HitBox().Left() {
-					p.hitbox.Set(rects.Right(s.HitBox().Left()))
+					p.hitbox.Set(Right(s.HitBox().Left()))
 				}
 			case "y":
 				if p.hitbox.Top() <= s.HitBox().Bottom() &&
 					p.oldRect.Top() >= s.HitBox().Bottom() {
-					p.hitbox.Set(rects.Top(s.HitBox().Bottom()))
+					p.hitbox.Set(Top(s.HitBox().Bottom()))
 				}
 				if p.hitbox.Bottom() >= s.HitBox().Top() &&
 					p.oldRect.Bottom() <= s.HitBox().Top() {
-					p.hitbox.Set(rects.Bottom(s.HitBox().Top()))
+					p.hitbox.Set(Bottom(s.HitBox().Top()))
 				}
 				p.direction.Y = 0
 			}
@@ -49,7 +48,7 @@ func (p *PlayerData) platformCollision() {
 			p.actions[canPlatform] {
 			if p.hitbox.Bottom() >= s.HitBox().Top() &&
 				p.oldRect.Bottom() <= s.OldRect().Top() {
-				p.hitbox.Set(rects.Bottom(s.HitBox().Top()))
+				p.hitbox.Set(Bottom(s.HitBox().Top()))
 				p.direction.Y = 0
 			}
 		}

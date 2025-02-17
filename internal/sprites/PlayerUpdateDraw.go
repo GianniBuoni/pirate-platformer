@@ -3,7 +3,6 @@ package sprites
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -11,12 +10,12 @@ func (p *PlayerData) Update() {
 	p.input()
 	p.move()
 	p.rect.Set(
-		rects.Top(p.hitbox.Top()-TileSize),
-		rects.Left(p.hitbox.Left()-p.hitboxOffset),
+		Top(p.hitbox.Top()-TileSize),
+		Left(p.hitbox.Left()-p.hitboxOffset),
 	)
 	p.oldRect.Set(
-		rects.Top(p.hitbox.Top()),
-		rects.Left(p.hitbox.Left()),
+		Top(p.hitbox.Top()),
+		Left(p.hitbox.Left()),
 	)
 }
 

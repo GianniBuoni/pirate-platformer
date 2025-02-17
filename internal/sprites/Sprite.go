@@ -3,16 +3,15 @@ package sprites
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/rects"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type BasicSprite struct {
 	image        string
 	imgRect      rl.Rectangle
-	rect         SpriteRect
-	oldRect      SpriteRect
-	hitbox       SpriteRect
+	rect         *Rect
+	oldRect      *Rect
+	hitbox       *Rect
 	assetLib     AssetLibrary
 	direction    rl.Vector2
 	hitboxOffset float32
@@ -41,7 +40,7 @@ func NewSprite(
 		return &BasicSprite{}, err
 	}
 	// rects calculated
-	s.rect = rects.NewRectangle(
+	s.rect = NewRectangle(
 		pos.X, pos.Y,
 		s.imgRect.Width, s.imgRect.Height,
 	)

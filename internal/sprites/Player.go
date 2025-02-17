@@ -6,8 +6,15 @@ import (
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/rects"
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
+
+type NewPlayerParams struct {
+	Pos      rl.Vector2
+	Assets   Assets
+	CSprites *[]Sprite
+	PSprites *[]Sprite
+}
 
 type PlayerData struct {
 	AnimatedSprite
@@ -52,19 +59,19 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	}
 
 	// INIT RECT DATA
-	p.rect = rects.NewRectangle(
+	p.rect = NewRectangle(
 		args.Pos.X, args.Pos.Y,
 		p.frameSize*2, p.frameSize*2,
 	)
 	var hitboxW float32
 	hitboxW = 48
 	p.hitboxOffset = TileSize + (TileSize-hitboxW)/2
-	p.hitbox = rects.NewRectangle(
+	p.hitbox = NewRectangle(
 		p.rect.Left()+p.hitboxOffset,
 		p.rect.Top()+TileSize,
 		hitboxW, TileSize,
 	)
-	p.oldRect = rects.NewRectangle(
+	p.oldRect = NewRectangle(
 		p.hitbox.Left(), p.hitbox.Top(),
 		p.hitbox.Rect().Width, p.hitbox.Rect().Height,
 	)

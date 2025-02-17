@@ -3,7 +3,6 @@ package level
 import (
 	"errors"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
@@ -26,7 +25,7 @@ func (l *LevelData) loadObjects(objs []*tiled.Object) error {
 			)
 		}
 		if obj.Name == "player" {
-			newPlayer := NewPlayerParams{
+			newPlayer := sprites.NewPlayerParams{
 				Pos:      rl.NewVector2(float32(obj.X), float32(obj.Y)),
 				Assets:   l.levelAssets,
 				CSprites: &collisonSprites,

@@ -1,6 +1,8 @@
-package rects
+package lib
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 type Rect rl.Rectangle
 
@@ -58,6 +60,13 @@ func (r *Rect) Set(opts ...func(*Rect)) {
 	if r.Height != new.Height {
 		r.Height = new.Height
 	}
+}
+
+func (r *Rect) Copy(s *Rect) {
+	r.X = s.X
+	r.Y = s.Y
+	r.Width = s.Width
+	r.Height = s.Height
 }
 
 func Top(y float32) func(*Rect) {
