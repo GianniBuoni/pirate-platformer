@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.1" name="objects" tilewidth="156" tileheight="186" tilecount="30" columns="0" objectalignment="topleft">
+<tileset version="1.10" tiledversion="1.11.1" name="objects" tilewidth="156" tileheight="256" tilecount="30" columns="0" objectalignment="topleft">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../../graphics/objects/barrel.png" width="46" height="50"/>
@@ -9,9 +9,6 @@
  </tile>
  <tile id="2">
   <image source="../../graphics/objects/crate.png" width="50" height="36"/>
- </tile>
- <tile id="3">
-  <image source="../../graphics/objects/flag.png" width="68" height="186"/>
  </tile>
  <tile id="5">
   <image source="../../graphics/objects/ship.png" width="156" height="44"/>
@@ -25,7 +22,7 @@
  <tile id="9">
   <image source="../../graphics/objects/tooth.png" width="48" height="46"/>
  </tile>
- <tile id="10">
+ <tile id="10" x="0" y="32" width="64" height="32">
   <image source="../../graphics/objects/floor_spikes.png" width="64" height="64"/>
  </tile>
  <tile id="11">
@@ -90,5 +87,8 @@
  </tile>
  <tile id="32">
   <image source="../../graphics/objects/palm_short.png" width="64" height="64"/>
+ </tile>
+ <tile id="33" x="0" y="0" width="128" height="256">
+  <image source="../../graphics/objects/flag.png" width="1152" height="256"/>
  </tile>
 </tileset>

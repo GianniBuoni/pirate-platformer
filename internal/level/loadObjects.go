@@ -12,14 +12,6 @@ import (
 func (l *LevelData) loadObjects(objs []*tiled.Object) error {
 	for _, obj := range objs {
 		if obj.Name == "palm" {
-			s, err := sprites.NewAnimatedSprite(
-				"palm", rl.NewVector2(float32(obj.X), float32(obj.Y)),
-				l.levelAssets, sprites.WithFrameSize(float32(obj.Width)),
-			)
-			if err != nil {
-				return err
-			}
-			l.AddSpriteGroup(s, "all", "platform")
 		}
 		collisonSprites, ok := l.groups["collision"]
 		if !ok {

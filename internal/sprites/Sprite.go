@@ -8,16 +8,17 @@ import (
 )
 
 type BasicSprite struct {
-	image     string
-	imgRect   rl.Rectangle
-	rect      SpriteRect
-	oldRect   SpriteRect
-	hitbox    SpriteRect
-	assetLib  AssetLibrary
-	direction rl.Vector2
-	speed     float32
-	flipH     float32
-	flipV     float32
+	image        string
+	imgRect      rl.Rectangle
+	rect         SpriteRect
+	oldRect      SpriteRect
+	hitbox       SpriteRect
+	assetLib     AssetLibrary
+	direction    rl.Vector2
+	hitboxOffset float32
+	speed        float32
+	flipH        float32
+	flipV        float32
 }
 
 func NewSprite(
@@ -73,5 +74,21 @@ func WithImgHeight(h float32) func(*BasicSprite) {
 func WithAssetLib(al AssetLibrary) func(*BasicSprite) {
 	return func(bs *BasicSprite) {
 		bs.assetLib = al
+	}
+}
+
+func WithFlipV(b bool) func(*BasicSprite) {
+	return func(bs *BasicSprite) {
+		if b {
+			bs.flipV = -1
+		}
+	}
+}
+
+func WithFlipH(b bool) func(*BasicSprite) {
+	return func(bs *BasicSprite) {
+		if b {
+			bs.flipH = -1
+		}
 	}
 }

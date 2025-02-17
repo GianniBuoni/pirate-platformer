@@ -12,20 +12,12 @@ func (l *LevelData) Load() error {
 				return err
 			}
 		}
-		/*
-			if objGroup.Name == "BG details" {
-				err = l.loadBGDetails(objGroup.Objects)
-				if err != nil {
-					return err
-				}
+		if objGroup.Name == "static details" {
+			err := l.loadStaticDetails(objGroup.Objects)
+			if err != nil {
+				return err
 			}
-			if objGroup.Name == "Objects" {
-				err := l.loadObjects(objGroup.Objects)
-				if err != nil {
-					return err
-				}
-			}
-		*/
+		}
 	}
 	return nil
 }
