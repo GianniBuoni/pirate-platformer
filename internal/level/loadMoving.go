@@ -27,11 +27,21 @@ func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 		if err != nil {
 			return err
 		}
-		// set path of object
-		path := NewRectangle(
-			float32(obj.X), float32(obj.Y), float32(obj.Width), float32(obj.Height),
-		)
-		s.SetPath(path)
+
+		// define movement pattern (radial or ortholinear)
+		if obj.Properties.GetInt("radius") > 0 {
+			s.SetRadialMove(
+				float64(obj.Properties.GetInt("radius")),
+				float64(obj.Properties.GetInt("end_angle")),
+			)
+		} else {
+			path := NewRectangle(
+				float32(obj.X), float32(obj.Y),
+				float32(obj.Width), float32(obj.Height),
+			)
+			s.SetPath(path)
+		}
+
 		// set groups
 		groups := []string{"all", "moving"}
 		if obj.Properties.GetBool("platform") {

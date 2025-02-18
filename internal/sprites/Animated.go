@@ -13,9 +13,12 @@ type AnimatedOpts interface {
 type AnimatedSprite struct {
 	BasicSprite
 	pathRect   *Rect
+	frameCount int
+	radius     float64
+	angle      float64
+	endAngle   float64
 	frameIndex float32
 	frameSpeed float32
-	frameCount int
 }
 
 func NewAnimatedSprite(
@@ -55,4 +58,9 @@ func (as *AnimatedSprite) SetFrameSpeed(fs float32) {
 
 func (as *AnimatedSprite) SetPath(r *Rect) {
 	as.pathRect = r
+}
+
+func (as *AnimatedSprite) SetRadialMove(radius, endAngle float64) {
+	as.radius = radius
+	as.endAngle = endAngle
 }
