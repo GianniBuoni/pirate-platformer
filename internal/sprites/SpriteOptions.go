@@ -29,3 +29,15 @@ func WithAssetLib(al AssetLibrary) func(*BasicSprite) {
 		bs.assetLib = al
 	}
 }
+
+func WithSpeed(f float32) func(*BasicSprite) {
+	return func(bs *BasicSprite) {
+		bs.speed = f
+	}
+}
+
+func WithDirection(v rl.Vector2) func(*BasicSprite) {
+	return func(bs *BasicSprite) {
+		bs.direction = v
+	}
+}

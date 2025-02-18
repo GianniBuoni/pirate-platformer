@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -22,7 +23,7 @@ func (g *GameData) draw() {
 	// draw onto render texture
 	rl.BeginTextureMode(g.window.renderTexture)
 	rl.BeginMode2D(g.window.camera)
-	rl.ClearBackground(rl.Black)
+	rl.ClearBackground(BgColor)
 	err := g.levelCurrent.Draw()
 	if err != nil {
 		fmt.Printf("Game.draw(), %s", err.Error())

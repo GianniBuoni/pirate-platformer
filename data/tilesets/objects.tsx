@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.1" name="objects" tilewidth="156" tileheight="256" tilecount="30" columns="0" objectalignment="topleft">
+<tileset version="1.10" tiledversion="1.11.2" name="objects" tilewidth="156" tileheight="256" tilecount="30" columns="0" objectalignment="topleft">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../../graphics/objects/barrel.png" width="46" height="50"/>
@@ -17,13 +17,13 @@
   <image source="../../graphics/player/fall.png" width="96" height="96"/>
  </tile>
  <tile id="8">
-  <image source="../../graphics/objects/shell.png" width="76" height="46"/>
+  <image source="../../graphics/objects/shell.png" width="96" height="48"/>
  </tile>
  <tile id="9">
   <image source="../../graphics/objects/tooth.png" width="48" height="46"/>
  </tile>
- <tile id="10" x="0" y="32" width="64" height="32">
-  <image source="../../graphics/objects/floor_spikes.png" width="64" height="64"/>
+ <tile id="10" x="0" y="0" width="64" height="32">
+  <image source="../../graphics/objects/floor_spikes.png" width="256" height="32"/>
  </tile>
  <tile id="11">
   <image source="../../graphics/objects/spike_ball.png" width="64" height="64"/>

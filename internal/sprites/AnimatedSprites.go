@@ -12,6 +12,7 @@ type AnimatedOpts interface {
 
 type AnimatedSprite struct {
 	BasicSprite
+	pathRect   *Rect
 	frameIndex float32
 	frameSpeed float32
 	frameCount int

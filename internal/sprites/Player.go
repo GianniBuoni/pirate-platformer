@@ -27,17 +27,17 @@ type PlayerData struct {
 func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	if _, ok := args.Groups["collision"]; !ok {
 		return nil, errors.New(
-			"error making new player: collision sprite group is nil",
+			"error making new player: collision sprite group is nil\n",
 		)
 	}
 	if _, ok := args.Groups["platform"]; !ok {
 		return nil, errors.New(
-			"error making new player: platform sprite group is nil",
+			"error making new player: platform sprite group is nil\n",
 		)
 	}
 	if _, ok := args.Groups["damage"]; !ok {
 		return nil, errors.New(
-			"error making new player: damage sprite group is nil",
+			"error making new player: damage sprite group is nil\n",
 		)
 	}
 	state := "idle"

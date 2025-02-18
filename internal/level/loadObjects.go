@@ -16,6 +16,10 @@ func (l *LevelData) loadObjects(objs []*tiled.Object) error {
 			sprites.WithImgWidth(float32(obj.Width)),
 			sprites.WithImgHeight(float32(obj.Height)),
 		)
+		if err != nil {
+			return err
+		}
+		groups := []string{"all"}
 		switch obj.Name {
 		case "palm":
 			speed, err := RandInt(-2, 2)
@@ -23,12 +27,14 @@ func (l *LevelData) loadObjects(objs []*tiled.Object) error {
 				return err
 			}
 			s.SetFrameSpeed(FrameSpeed + float32(speed))
-			l.AddSpriteGroup(s, "platform")
+			groups = append(groups, "platform")
+		case "floor_spikes":
+			if obj.Properties.GetBool("inverted") {
+				s.FlipV()
+			}
+			groups = append(groups, "damage")
 		}
-		if err != nil {
-			return err
-		}
-		l.AddSpriteGroup(s, "all")
+		l.AddSpriteGroup(s, groups...)
 	}
 	return nil
 }
