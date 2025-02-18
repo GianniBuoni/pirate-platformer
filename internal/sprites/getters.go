@@ -2,6 +2,7 @@ package sprites
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func (s *BasicSprite) Rect() *Rect {
@@ -22,6 +23,18 @@ func (s *BasicSprite) FlipV() {
 
 func (s *BasicSprite) FlipH() {
 	s.flipH *= -1
+}
+
+func (s *BasicSprite) SetHitbox(
+	offset rl.Vector2, width, height float32,
+) {
+	s.hitboxOffset = offset
+	s.hitbox = NewRectangle(
+		s.rect.X+offset.X, s.rect.Y+offset.Y,
+		width, height,
+	)
+	s.oldRect = &Rect{}
+	s.oldRect.Copy(s.hitbox)
 }
 
 func (s *PlayerData) IsAttacking() bool {

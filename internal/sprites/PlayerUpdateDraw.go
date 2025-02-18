@@ -32,7 +32,7 @@ func (p *PlayerData) Draw(a Assets) error {
 	}
 
 	srcRect := rl.NewRectangle(
-		p.imgRect.X*float32(int(p.frameIndex)%p.frameCount),
+		p.imgRect.Width*float32(int(p.frameIndex)%p.frameCount),
 		0,
 		p.imgRect.Width*p.flipH,
 		p.imgRect.Height,

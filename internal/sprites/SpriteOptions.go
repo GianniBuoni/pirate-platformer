@@ -2,7 +2,6 @@ package sprites
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -28,17 +27,5 @@ func WithImgHeight(h float32) func(*BasicSprite) {
 func WithAssetLib(al AssetLibrary) func(*BasicSprite) {
 	return func(bs *BasicSprite) {
 		bs.assetLib = al
-	}
-}
-
-func WithHitbox(
-	offset rl.Vector2, width, height float32,
-) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		bs.hitboxOffset = offset
-		bs.hitbox = NewRectangle(
-			bs.rect.X+offset.X, bs.rect.Y+offset.Y,
-			width, height,
-		)
 	}
 }

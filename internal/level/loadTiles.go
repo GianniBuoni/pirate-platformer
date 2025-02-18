@@ -35,6 +35,7 @@ func (l *LevelData) loadTiles() error {
 				case "bg", "fg":
 					l.AddSpriteGroup(sprite, "all")
 				case "platforms":
+					sprite.SetHitbox(rl.Vector2{}, TileSize, TileSize/4)
 					l.AddSpriteGroup(sprite, "all", "platform")
 				default:
 					l.AddSpriteGroup(sprite, "all", "collision")
