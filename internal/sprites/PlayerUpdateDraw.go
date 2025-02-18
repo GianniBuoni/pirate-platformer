@@ -7,13 +7,13 @@ import (
 )
 
 func (p *PlayerData) Update() {
+	p.oldRect.Copy(p.hitbox)
 	p.input()
 	p.move()
 	p.rect.Set(
 		Top(p.hitbox.Top()-p.hitboxOffset.Y),
 		Left(p.hitbox.Left()-p.hitboxOffset.X),
 	)
-	p.oldRect.Copy(p.hitbox)
 }
 
 func (p *PlayerData) Draw(a Assets) error {

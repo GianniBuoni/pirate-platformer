@@ -18,24 +18,30 @@ func (p *PlayerData) move() {
 	p.hitbox.Y += p.direction.Y * dt
 	p.collision("y")
 	p.platformCollision()
+	if p.platform != nil {
+		if vert := p.platform.Movement(p.hitbox); vert {
+			p.hitbox.Set(Bottom(p.platform.HitBox().Top()))
+		}
+	}
 }
 
 func (p *PlayerData) attack() {
 	if p.actions[canAttack] {
+		p.frameIndex = 0
 		p.mu.Lock()
 		defer p.mu.Unlock()
-		p.frameIndex = 0
 		p.actions[attack] = true // end of animation toggles this to false
-		go p.timeout(canAttack, 400)
+		p.timeout(canAttack, 400)
 	}
 }
 
 func (p *PlayerData) jump() {
+	p.platform = nil
+	p.direction.Y -= JumpDist
+	p.frameIndex = 0
 	p.mu.Lock()
 	defer p.mu.Unlock()
-	p.direction.Y -= JumpDist
 	p.actions[jump] = true
-	p.frameIndex = 0
 	go func() {
 		wallTimeout := time.NewTimer(400 * time.Millisecond)
 		<-wallTimeout.C
@@ -44,23 +50,25 @@ func (p *PlayerData) jump() {
 }
 
 func (p *PlayerData) wallJump(direction float32) {
-	p.mu.Lock()
-	defer p.mu.Unlock()
 	p.direction.Y -= JumpDist
 	p.direction.X = direction
-	go p.timeout(run, 100)
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	p.timeout(run, 100)
 }
 
 func (p *PlayerData) phaseThrough() {
+	p.platform = nil
 	p.mu.Lock()
 	defer p.mu.Unlock()
-	p.actions[platform] = false
-	go p.timeout(canPlatform, 200)
+	p.timeout(canPlatform, 200)
 }
 
 func (p *PlayerData) timeout(state PlayerState, ms time.Duration) {
 	p.actions[state] = !p.actions[state]
-	timer := time.NewTimer(ms * time.Millisecond)
-	<-timer.C
-	p.actions[state] = !p.actions[state]
+	go func() {
+		timer := time.NewTimer(ms * time.Millisecond)
+		<-timer.C
+		p.actions[state] = !p.actions[state]
+	}()
 }

@@ -1,7 +1,5 @@
 package sprites
 
-import rl "github.com/gen2brain/raylib-go/raylib"
-
 type PlayerState string
 
 const (
@@ -12,7 +10,6 @@ const (
 	hit         PlayerState = "hit"
 	idle        PlayerState = "idle"
 	jump        PlayerState = "jump"
-	platform    PlayerState = "platform"
 	canPlatform PlayerState = "can_platform"
 	run         PlayerState = "run"
 	wall        PlayerState = "wall"
@@ -24,7 +21,7 @@ func (p *PlayerData) getState() PlayerState {
 		if p.actions[attack] {
 			return attack
 		}
-		if p.direction == (rl.Vector2{}) {
+		if p.direction.X == 0 {
 			return idle
 		} else {
 			return run

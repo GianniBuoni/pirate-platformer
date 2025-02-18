@@ -42,7 +42,8 @@ func NewAnimatedSprite(
 		as.imgRect.Width, as.imgRect.Height,
 	)
 	as.hitbox = as.rect
-	as.oldRect = as.rect
+	as.oldRect = &Rect{}
+	as.oldRect.Copy(as.hitbox)
 	// calc frame count
 	as.frameCount = int(float32(src.Width) / as.imgRect.Width)
 	return &as, nil

@@ -18,10 +18,11 @@ type NewPlayerParams struct {
 
 type PlayerData struct {
 	AnimatedSprite
-	mu      sync.RWMutex
-	groups  map[string][]Sprite
-	actions map[PlayerState]bool
-	gravity float32
+	mu       sync.RWMutex
+	platform Sprite
+	groups   map[string][]Sprite
+	actions  map[PlayerState]bool
+	gravity  float32
 }
 
 func NewPlayer(args NewPlayerParams) (*PlayerData, error) {

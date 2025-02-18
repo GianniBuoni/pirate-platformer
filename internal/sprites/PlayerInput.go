@@ -49,7 +49,7 @@ func (p *PlayerData) input() {
 
 	downInput := []int32{rl.KeyDown, rl.KeyJ, rl.KeyS}
 	for _, key := range downInput {
-		if rl.IsKeyPressed(key) && p.actions[platform] {
+		if rl.IsKeyPressed(key) && p.platform != nil {
 			p.phaseThrough()
 		}
 	}

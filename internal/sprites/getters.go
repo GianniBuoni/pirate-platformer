@@ -17,6 +17,16 @@ func (s *BasicSprite) OldRect() *Rect {
 	return s.oldRect
 }
 
+func (s *BasicSprite) Movement(r *Rect) bool {
+	dt := rl.GetFrameTime()
+	r.X += s.direction.X * s.speed * dt
+	r.Y += s.direction.Y * s.speed * dt
+	if s.direction.Y != 0 {
+		return true
+	}
+	return false
+}
+
 func (s *BasicSprite) FlipV() {
 	s.flipV *= -1
 }
