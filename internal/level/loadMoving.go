@@ -24,13 +24,15 @@ func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 			sprites.WithDirection(dir),
 			sprites.WithSpeed(float32(obj.Properties.GetInt("speed"))),
 		)
+		if err != nil {
+			return err
+		}
+		// set path of object
 		path := NewRectangle(
 			float32(obj.X), float32(obj.Y), float32(obj.Width), float32(obj.Height),
 		)
 		s.SetPath(path)
-		if err != nil {
-			return err
-		}
+		// set groups
 		groups := []string{"all", "moving"}
 		if obj.Properties.GetBool("platform") {
 			groups = append(groups, "platform")

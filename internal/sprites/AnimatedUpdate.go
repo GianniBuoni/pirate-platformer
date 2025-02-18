@@ -12,9 +12,11 @@ func (as *AnimatedSprite) constrain() {
 	case 0:
 		if as.rect.X <= as.pathRect.Left() {
 			as.direction.X = 1
+			as.flipH = 1
 		}
 		if as.rect.X >= as.pathRect.Right() {
 			as.direction.X = -1
+			as.flipH = -1
 		}
 	default:
 		if as.rect.Y <= as.pathRect.Top() {
