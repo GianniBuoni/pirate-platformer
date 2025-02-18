@@ -1,6 +1,7 @@
 package level
 
 import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
@@ -23,10 +24,14 @@ func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 			sprites.WithDirection(dir),
 			sprites.WithSpeed(float32(obj.Properties.GetInt("speed"))),
 		)
+		path := NewRectangle(
+			float32(obj.X), float32(obj.Y), float32(obj.Width), float32(obj.Height),
+		)
+		s.SetPath(path)
 		if err != nil {
 			return err
 		}
-		groups := []string{"all"}
+		groups := []string{"all", "moving"}
 		if obj.Properties.GetBool("platform") {
 			groups = append(groups, "platform")
 		}

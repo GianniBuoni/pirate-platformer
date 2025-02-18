@@ -51,3 +51,7 @@ func NewAnimatedSprite(
 func (as *AnimatedSprite) SetFrameSpeed(fs float32) {
 	as.frameSpeed = fs
 }
+
+func (as *AnimatedSprite) SetPath(r *Rect) {
+	as.pathRect = r
+}

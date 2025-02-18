@@ -11,7 +11,7 @@
   <image source="../../graphics/objects/crate.png" width="50" height="36"/>
  </tile>
  <tile id="5">
-  <image source="../../graphics/objects/ship.png" width="156" height="44"/>
+  <image source="../../graphics/objects/boat.png" width="156" height="44"/>
  </tile>
  <tile id="7">
   <image source="../../graphics/player/fall.png" width="96" height="96"/>
@@ -19,14 +19,14 @@
  <tile id="8">
   <image source="../../graphics/objects/shell.png" width="96" height="48"/>
  </tile>
- <tile id="9">
-  <image source="../../graphics/objects/tooth.png" width="48" height="46"/>
+ <tile id="9" x="0" y="0" width="64" height="64">
+  <image source="../../graphics/objects/tooth.png" width="384" height="64"/>
  </tile>
  <tile id="10" x="0" y="0" width="64" height="32">
   <image source="../../graphics/objects/floor_spikes.png" width="256" height="32"/>
  </tile>
  <tile id="11">
-  <image source="../../graphics/objects/spike_ball.png" width="64" height="64"/>
+  <image source="../../graphics/objects/spike.png" width="64" height="64"/>
  </tile>
  <tile id="12">
   <image source="../../graphics/objects/palm_bg_left.png" width="104" height="106"/>
