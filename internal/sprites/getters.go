@@ -16,6 +16,14 @@ func (s *BasicSprite) OldRect() *Rect {
 	return s.oldRect
 }
 
+func (s *BasicSprite) FlipV() {
+	s.flipV *= -1
+}
+
+func (s *BasicSprite) FlipH() {
+	s.flipH *= -1
+}
+
 func (s *PlayerData) IsAttacking() bool {
 	return s.actions[attack]
 }

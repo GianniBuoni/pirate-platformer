@@ -14,31 +14,33 @@ type BasicSprite struct {
 	hitbox       *Rect
 	assetLib     AssetLibrary
 	direction    rl.Vector2
-	hitboxOffset float32
+	hitboxOffset rl.Vector2
 	speed        float32
 	flipH        float32
 	flipV        float32
 }
 
+var spriteDefaults BasicSprite = BasicSprite{
+	imgRect:  rl.NewRectangle(0, 0, TileSize, TileSize),
+	flipH:    1,
+	flipV:    1,
+	assetLib: ImageLib,
+}
+
 func NewSprite(
 	img string, pos rl.Vector2, a Assets, opts ...func(*BasicSprite),
 ) (*BasicSprite, error) {
-	// default values
-	s := &BasicSprite{
-		image:    img,
-		imgRect:  rl.NewRectangle(0, 0, TileSize, TileSize),
-		flipH:    1,
-		flipV:    1,
-		assetLib: ImageLib,
-	}
+	// copy default values
+	s := spriteDefaults
 	// override default values with passed options
 	for _, f := range opts {
-		f(s)
+		f(&s)
 	}
 	// check if image string is valid
 	if _, err := a.GetImage(s.assetLib, img); err != nil {
-		return &BasicSprite{}, err
+		return nil, err
 	}
+	s.image = img
 	// rects calculated
 	s.rect = NewRectangle(
 		pos.X, pos.Y,
@@ -48,46 +50,5 @@ func NewSprite(
 	s.hitbox = s.rect
 	s.oldRect = s.rect
 
-	return s, nil
-}
-
-func WithImgPos(pos rl.Vector2) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		bs.imgRect.X = pos.X
-		bs.imgRect.Y = pos.Y
-	}
-}
-
-func WithImgWidth(w float32) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		bs.imgRect.Width = w
-	}
-}
-
-func WithImgHeight(h float32) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		bs.imgRect.Height = h
-	}
-}
-
-func WithAssetLib(al AssetLibrary) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		bs.assetLib = al
-	}
-}
-
-func WithFlipV(b bool) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		if b {
-			bs.flipV = -1
-		}
-	}
-}
-
-func WithFlipH(b bool) func(*BasicSprite) {
-	return func(bs *BasicSprite) {
-		if b {
-			bs.flipH = -1
-		}
-	}
+	return &s, nil
 }

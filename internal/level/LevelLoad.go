@@ -18,6 +18,18 @@ func (l *LevelData) Load() error {
 				return err
 			}
 		}
+		if objGroup.Name == "objects" {
+			err := l.loadObjects(objGroup.Objects)
+			if err != nil {
+				return err
+			}
+		}
+		if objGroup.Name == "player" {
+			err := l.loadPlayer(objGroup.Objects[0])
+			if err != nil {
+				return err
+			}
+		}
 	}
 	return nil
 }

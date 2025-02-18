@@ -10,16 +10,12 @@ import (
 func (p *PlayerData) move() {
 	dt := rl.GetFrameTime()
 	// horizontan check
-	p.hitbox.Set(Left(
-		p.hitbox.Left() + p.direction.X*p.speed*dt,
-	))
+	p.hitbox.X += p.direction.X * p.speed * dt
 	p.collision("x")
 
 	// vertical check
 	p.direction.Y += p.gravity
-	p.hitbox.Set(Top(
-		p.hitbox.Top() + p.direction.Y*dt,
-	))
+	p.hitbox.Y += p.direction.Y * dt
 	p.collision("y")
 	p.platformCollision()
 }

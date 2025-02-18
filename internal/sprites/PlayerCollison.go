@@ -15,7 +15,7 @@ const (
 )
 
 func (p *PlayerData) collision(axis string) {
-	for _, s := range *p.collisionSprites {
+	for _, s := range p.groups["collision"] {
 		if rl.CheckCollisionRecs(s.HitBox().Rect(), p.hitbox.Rect()) {
 			switch axis {
 			case "x":
@@ -43,7 +43,7 @@ func (p *PlayerData) collision(axis string) {
 }
 
 func (p *PlayerData) platformCollision() {
-	for _, s := range *p.platformSprites {
+	for _, s := range p.groups["platform"] {
 		if rl.CheckCollisionRecs(p.hitbox.Rect(), s.HitBox().Rect()) &&
 			p.actions[canPlatform] {
 			if p.hitbox.Bottom() >= s.HitBox().Top() &&
@@ -65,7 +65,7 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 	rightRect := rl.NewRectangle(
 		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
 	)
-	for _, s := range *p.collisionSprites {
+	for _, s := range p.groups["collision"] {
 		if rl.CheckCollisionRecs(floorRect, s.HitBox().Rect()) {
 			p.actions[wall] = false
 			return floor
@@ -81,7 +81,7 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 			return right
 		}
 	}
-	for _, plat := range *p.platformSprites {
+	for _, plat := range p.groups["platform"] {
 		if rl.CheckCollisionRecs(floorRect, plat.HitBox().Rect()) &&
 			p.actions[canPlatform] {
 			p.actions[wall] = false

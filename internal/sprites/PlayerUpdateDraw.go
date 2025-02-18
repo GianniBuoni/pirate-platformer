@@ -10,13 +10,10 @@ func (p *PlayerData) Update() {
 	p.input()
 	p.move()
 	p.rect.Set(
-		Top(p.hitbox.Top()-TileSize),
-		Left(p.hitbox.Left()-p.hitboxOffset),
+		Top(p.hitbox.Top()-p.hitboxOffset.Y),
+		Left(p.hitbox.Left()-p.hitboxOffset.X),
 	)
-	p.oldRect.Set(
-		Top(p.hitbox.Top()),
-		Left(p.hitbox.Left()),
-	)
+	p.oldRect.Copy(p.hitbox)
 }
 
 func (p *PlayerData) Draw(a Assets) error {
@@ -35,10 +32,10 @@ func (p *PlayerData) Draw(a Assets) error {
 	}
 
 	srcRect := rl.NewRectangle(
-		p.frameSize*float32(int(p.frameIndex)%p.frameCount),
+		p.imgRect.X*float32(int(p.frameIndex)%p.frameCount),
 		0,
-		p.frameSize*p.flipH,
-		p.frameSize,
+		p.imgRect.Width*p.flipH,
+		p.imgRect.Height,
 	)
 
 	rl.DrawTexturePro(

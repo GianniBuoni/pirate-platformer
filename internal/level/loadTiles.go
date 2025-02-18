@@ -32,9 +32,9 @@ func (l *LevelData) loadTiles() error {
 				}
 
 				switch layer.Name {
-				case "BG", "FG":
+				case "bg", "fg":
 					l.AddSpriteGroup(sprite, "all")
-				case "Platforms":
+				case "platforms":
 					l.AddSpriteGroup(sprite, "all", "platform")
 				default:
 					l.AddSpriteGroup(sprite, "all", "collision")

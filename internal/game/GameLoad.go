@@ -23,7 +23,7 @@ func (g *GameData) Load() {
 		fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
 		os.Exit(2)
 	}
-	//g.window.loadCam(g.levelCurrent.PlayerPos())
+	g.window.loadCam(g.levelCurrent.PlayerPos())
 }
 
 func (g *GameData) loadAssets() {

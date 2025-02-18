@@ -29,7 +29,7 @@ func NewLevel(assets Assets, mapPath string) (Level, error) {
 }
 
 func (l *LevelData) Update() {
-	//l.player.Update()
+	l.player.Update()
 }
 
 func (l *LevelData) Draw() error {

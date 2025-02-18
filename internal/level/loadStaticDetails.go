@@ -16,10 +16,12 @@ func (l *LevelData) loadStaticDetails(objs []*tiled.Object) error {
 				l.levelAssets,
 				sprites.WithImgPos(rl.NewVector2(0, 32)),
 				sprites.WithImgHeight(32),
-				sprites.WithFlipV(obj.Properties.GetBool("inverted")),
 			)
 			if err != nil {
 				return err
+			}
+			if obj.Properties.GetBool("inverted") {
+				s.FlipV()
 			}
 		} else {
 			s, err = sprites.NewSprite(

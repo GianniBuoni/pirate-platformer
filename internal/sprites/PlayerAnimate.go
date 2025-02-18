@@ -6,7 +6,7 @@ import (
 
 func (p *PlayerData) animate(src rl.Texture2D) {
 	dt := rl.GetFrameTime()
-	p.frameCount = int(float32(src.Width) / p.frameSize)
+	p.frameCount = int(float32(src.Width) / p.imgRect.Width)
 	p.frameIndex += p.frameSpeed * dt
 	switch p.image {
 	case string(jump):

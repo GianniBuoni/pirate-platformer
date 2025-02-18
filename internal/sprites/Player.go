@@ -1,6 +1,7 @@
 package sprites
 
 import (
+	"errors"
 	"fmt"
 	"sync"
 
@@ -10,22 +11,35 @@ import (
 )
 
 type NewPlayerParams struct {
-	Pos      rl.Vector2
-	Assets   Assets
-	CSprites *[]Sprite
-	PSprites *[]Sprite
+	Assets Assets
+	Pos    rl.Vector2
+	Groups map[string][]Sprite
 }
 
 type PlayerData struct {
 	AnimatedSprite
-	mu               sync.RWMutex
-	collisionSprites *[]Sprite
-	platformSprites  *[]Sprite
-	actions          map[PlayerState]bool
-	gravity          float32
+	mu      sync.RWMutex
+	groups  map[string][]Sprite
+	actions map[PlayerState]bool
+	gravity float32
 }
 
 func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
+	if _, ok := args.Groups["collision"]; !ok {
+		return nil, errors.New(
+			"error making new player: collision sprite group is nil",
+		)
+	}
+	if _, ok := args.Groups["platform"]; !ok {
+		return nil, errors.New(
+			"error making new player: platform sprite group is nil",
+		)
+	}
+	if _, ok := args.Groups["damage"]; !ok {
+		return nil, errors.New(
+			"error making new player: damage sprite group is nil",
+		)
+	}
 	state := "idle"
 	src, err := args.Assets.GetImage(PlayerLib, state)
 	if err != nil {
@@ -36,15 +50,14 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	}
 	// INIT CONSTANTS AND ARGUMENTS
 	p := &PlayerData{
-		collisionSprites: args.CSprites,
-		platformSprites:  args.PSprites,
-		gravity:          Gravity,
+		gravity: Gravity,
+		groups:  args.Groups,
 	}
 
 	// INIT ANIMATION DATA
-	p.frameSize = 96
+	p.imgRect = rl.NewRectangle(0, 0, 96, 96)
 	p.frameSpeed = FrameSpeed
-	p.frameCount = int(float32(src.Width) / p.frameSize)
+	p.frameCount = int(float32(src.Width) / p.imgRect.Width)
 	p.speed = PlayerSpeed
 	p.flipH = 1
 
@@ -61,19 +74,20 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	// INIT RECT DATA
 	p.rect = NewRectangle(
 		args.Pos.X, args.Pos.Y,
-		p.frameSize*2, p.frameSize*2,
+		p.imgRect.Width*2, p.imgRect.Width*2,
 	)
 	var hitboxW float32
 	hitboxW = 48
-	p.hitboxOffset = TileSize + (TileSize-hitboxW)/2
+	p.hitboxOffset = rl.NewVector2(
+		TileSize+(TileSize-hitboxW)/2,
+		TileSize,
+	)
 	p.hitbox = NewRectangle(
-		p.rect.Left()+p.hitboxOffset,
-		p.rect.Top()+TileSize,
+		p.rect.X+p.hitboxOffset.X,
+		p.rect.Y+p.hitboxOffset.Y,
 		hitboxW, TileSize,
 	)
-	p.oldRect = NewRectangle(
-		p.hitbox.Left(), p.hitbox.Top(),
-		p.hitbox.Rect().Width, p.hitbox.Rect().Height,
-	)
+	p.oldRect = &Rect{}
+	p.oldRect.Copy(p.hitbox)
 	return p, nil
 }
