@@ -29,6 +29,8 @@ func (p *PlayerData) move() {
 func (p *PlayerData) attack() {
 	if p.actions[canAttack] {
 		p.frameIndex = 0
+		p.mu.RLock()
+		defer p.mu.RUnlock()
 		p.actions[attack] = true // end of animation toggles this to false
 		p.timeout(canAttack, 400)
 	}
@@ -38,6 +40,8 @@ func (p *PlayerData) jump() {
 	p.platform = nil
 	p.direction.Y -= JumpDist
 	p.frameIndex = 0
+	p.mu.RLock()
+	defer p.mu.RUnlock()
 	p.actions[jump] = true
 	go func() {
 		wallTimeout := time.NewTimer(400 * time.Millisecond)
@@ -49,11 +53,15 @@ func (p *PlayerData) jump() {
 func (p *PlayerData) wallJump(direction float32) {
 	p.direction.Y -= JumpDist
 	p.direction.X = direction
+	p.mu.RLock()
+	defer p.mu.RUnlock()
 	p.timeout(run, 100)
 }
 
 func (p *PlayerData) phaseThrough() {
 	p.platform = nil
+	p.mu.RLock()
+	defer p.mu.RUnlock()
 	p.timeout(canPlatform, 200)
 }
 

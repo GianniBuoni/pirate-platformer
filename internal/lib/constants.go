@@ -6,9 +6,9 @@ const (
 	WindowW     float32 = 1280
 	WindowH     float32 = 720
 	TileSize    float32 = 64
-	Gravity     float32 = 1000
+	Gravity     float32 = 1200
 	PlayerSpeed float32 = 300
-	JumpDist    float32 = 650
+	JumpDist    float32 = 700
 	PlatHitbox  float32 = 13
 	FrameSpeed          = 6
 	Title               = "Pirate Platformer 💀!"
