@@ -20,6 +20,7 @@ type PlayerData struct {
 	AnimatedSprite
 	mu       sync.RWMutex
 	platform Sprite
+	cRects   map[CollisionSide]*Rect
 	groups   map[string][]Sprite
 	actions  map[PlayerState]bool
 	gravity  float32
@@ -52,6 +53,7 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	// INIT CONSTANTS AND ARGUMENTS
 	p := &PlayerData{
 		gravity: Gravity,
+		cRects:  map[CollisionSide]*Rect{},
 		groups:  args.Groups,
 	}
 
@@ -90,5 +92,16 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 	)
 	p.oldRect = &Rect{}
 	p.oldRect.Copy(p.hitbox)
+
+	p.cRects[floor] = NewRectangle(
+		p.hitbox.Left(), p.hitbox.Bottom(),
+		p.hitbox.Rect().Width, 10,
+	)
+	p.cRects[left] = NewRectangle(
+		p.hitbox.Left()-2, p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
+	)
+	p.cRects[right] = NewRectangle(
+		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
+	)
 	return p, nil
 }

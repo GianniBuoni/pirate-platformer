@@ -29,10 +29,10 @@ func NewLevel(assets Assets, mapPath string) (Level, error) {
 }
 
 func (l *LevelData) Update() {
-	l.player.Update()
 	for _, mSprite := range l.groups["moving"] {
 		mSprite.Update()
 	}
+	l.player.Update()
 }
 
 func (l *LevelData) Draw() error {

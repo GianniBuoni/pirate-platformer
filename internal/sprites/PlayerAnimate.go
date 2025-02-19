@@ -24,9 +24,3 @@ func (p *PlayerData) animateOnce(state PlayerState) {
 		p.actions[state] = false
 	}
 }
-
-// call this func in the draw method to debug any hitbox and rect issues
-func (p *PlayerData) drawRects() {
-	rl.DrawRectangleRec(p.rect.Rect(), rl.ColorAlpha(rl.Black, .25))
-	rl.DrawRectangleRec(p.hitbox.Rect(), rl.ColorAlpha(rl.Green, .5))
-}

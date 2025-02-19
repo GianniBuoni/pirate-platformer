@@ -2,19 +2,8 @@ package sprites
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
-
-func (p *PlayerData) Update() {
-	p.oldRect.Copy(p.hitbox)
-	p.input()
-	p.move()
-	p.rect.Set(
-		Top(p.hitbox.Top()-p.hitboxOffset.Y),
-		Left(p.hitbox.Left()-p.hitboxOffset.X),
-	)
-}
 
 func (p *PlayerData) Draw(a Assets) error {
 	p.image = string(p.getState())
@@ -46,6 +35,7 @@ func (p *PlayerData) Draw(a Assets) error {
 		0,
 		rl.White,
 	)
-	//p.drawRects()
+	//p.drawRects(rl.Green)
+	//rl.DrawRectangleRec(p.cRects[floor].Rect(), rl.ColorAlpha(rl.Blue, .5))
 	return nil
 }

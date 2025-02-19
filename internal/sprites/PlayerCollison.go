@@ -58,34 +58,26 @@ func (p *PlayerData) platformCollision() {
 }
 
 func (p *PlayerData) checkCollisonSide() CollisionSide {
-	floorRect := rl.NewRectangle(
-		p.hitbox.Left()+2, p.hitbox.Bottom(), p.hitbox.Rect().Width-4, 4,
-	)
-	leftRect := rl.NewRectangle(
-		p.hitbox.Left()-2, p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
-	)
-	rightRect := rl.NewRectangle(
-		p.hitbox.Right(), p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
-	)
+	p.mu.Lock()
+	defer p.mu.Unlock()
 	for _, s := range p.groups["collision"] {
-		if rl.CheckCollisionRecs(floorRect, s.HitBox().Rect()) {
+		if rl.CheckCollisionRecs(p.cRects[floor].Rect(), s.HitBox().Rect()) {
 			p.actions[wall] = false
 			return floor
 		}
-		if rl.CheckCollisionRecs(leftRect, s.HitBox().Rect()) &&
+		if rl.CheckCollisionRecs(p.cRects[left].Rect(), s.HitBox().Rect()) &&
 			p.actions[wall] {
 			p.SetGravity(false)
 			return left
 		}
-		if rl.CheckCollisionRecs(rightRect, s.HitBox().Rect()) &&
+		if rl.CheckCollisionRecs(p.cRects[right].Rect(), s.HitBox().Rect()) &&
 			p.actions[wall] {
 			p.SetGravity(false)
 			return right
 		}
 	}
-	if p.platform != nil && p.actions[canPlatform] {
-		if rl.CheckCollisionRecs(floorRect, p.platform.HitBox().Rect()) {
-			p.actions[wall] = false
+	if p.platform != nil {
+		if rl.CheckCollisionRecs(p.cRects[floor].Rect(), p.platform.HitBox().Rect()) {
 			return floor
 		} else {
 			p.platform = nil
@@ -93,14 +85,4 @@ func (p *PlayerData) checkCollisonSide() CollisionSide {
 	}
 	p.SetGravity(true)
 	return air
-}
-
-func (p *PlayerData) SetGravity(b bool) {
-	switch b {
-	case true:
-		p.gravity = Gravity
-	case false:
-		p.direction.Y = 0
-		p.gravity = Gravity * 0.8
-	}
 }

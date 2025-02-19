@@ -9,18 +9,22 @@ import (
 
 func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 	for _, obj := range objs {
+		// dermine move axis for object
 		dir := rl.Vector2{}
 		if obj.Width > obj.Height {
 			dir.X = 1
 		} else {
 			dir.Y = 1
 		}
+
+		// init sprite
+		width := float32(obj.Properties.GetInt("width"))
+		height := float32(obj.Properties.GetInt("height"))
 		s, err := sprites.NewAnimatedSprite(
 			obj.Name,
 			rl.NewVector2(float32(obj.X), float32(obj.Y)),
 			l.levelAssets,
-			sprites.WithImgWidth(float32(obj.Properties.GetInt("width"))),
-			sprites.WithImgHeight(float32(obj.Properties.GetInt("height"))),
+			sprites.WithImgWidth(width), sprites.WithImgHeight(height),
 			sprites.WithDirection(dir),
 			sprites.WithSpeed(float32(obj.Properties.GetInt("speed"))),
 		)
@@ -42,11 +46,24 @@ func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 			s.SetPath(path)
 		}
 
-		// set groups
+		// init groups
 		groups := []string{"all", "moving"}
-		if obj.Properties.GetBool("platform") {
+
+		// add extra options/hitboxes
+		switch obj.Name {
+		case "saw":
+			groups = append(groups, "damage")
+		case "spike":
+			groups = append(groups, "damage")
+			s.SetHitbox(rl.NewVector2(10, 10), width-20, height-20)
+		case "helicopter":
 			groups = append(groups, "platform")
+			s.SetHitbox(
+				rl.NewVector2(PlatHitbox, 0), width-PlatHitbox*2, height,
+			)
 		}
+
+		// add groups
 		l.AddSpriteGroup(s, groups...)
 	}
 	return nil

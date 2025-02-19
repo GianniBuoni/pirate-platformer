@@ -95,7 +95,7 @@ func Right(x float32) func(*Rect) {
 
 func Center(x, y float32) func(*Rect) {
 	return func(r *Rect) {
-		r.X = x + (r.Width / 2)
-		r.Y = y + (r.Height / 2)
+		r.X = x - (r.Width / 2)
+		r.Y = y - (r.Height / 2)
 	}
 }

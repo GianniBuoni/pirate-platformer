@@ -14,8 +14,9 @@ func (p *PlayerData) move() {
 	p.collision("x")
 
 	// vertical check
-	p.direction.Y += p.gravity
+	p.direction.Y += p.gravity * dt
 	p.hitbox.Y += p.direction.Y * dt
+
 	p.collision("y")
 	p.platformCollision()
 	if p.platform != nil {
@@ -28,8 +29,6 @@ func (p *PlayerData) move() {
 func (p *PlayerData) attack() {
 	if p.actions[canAttack] {
 		p.frameIndex = 0
-		p.mu.Lock()
-		defer p.mu.Unlock()
 		p.actions[attack] = true // end of animation toggles this to false
 		p.timeout(canAttack, 400)
 	}
@@ -39,8 +38,6 @@ func (p *PlayerData) jump() {
 	p.platform = nil
 	p.direction.Y -= JumpDist
 	p.frameIndex = 0
-	p.mu.Lock()
-	defer p.mu.Unlock()
 	p.actions[jump] = true
 	go func() {
 		wallTimeout := time.NewTimer(400 * time.Millisecond)
@@ -52,15 +49,11 @@ func (p *PlayerData) jump() {
 func (p *PlayerData) wallJump(direction float32) {
 	p.direction.Y -= JumpDist
 	p.direction.X = direction
-	p.mu.Lock()
-	defer p.mu.Unlock()
 	p.timeout(run, 100)
 }
 
 func (p *PlayerData) phaseThrough() {
 	p.platform = nil
-	p.mu.Lock()
-	defer p.mu.Unlock()
 	p.timeout(canPlatform, 200)
 }
 

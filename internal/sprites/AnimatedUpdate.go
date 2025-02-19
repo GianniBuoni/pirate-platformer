@@ -17,6 +17,7 @@ func (as *AnimatedSprite) Update() {
 }
 
 func (as *AnimatedSprite) orthoMove() {
+	as.Movement(as.hitbox)
 	as.Movement(as.rect)
 	as.orthoConstrain()
 }
@@ -26,11 +27,15 @@ func (as *AnimatedSprite) radialMove() {
 	// load moving sets direction.Y to 1 by default
 	as.angle += float64(as.direction.Y * as.speed * dt)
 	as.radialConstrain()
-	x := float64(as.oldRect.Center().X) + math.Cos(as.angle)*as.radius
-	y := float64(as.oldRect.Center().Y) + math.Sin(as.angle)*as.radius
-	as.rect.Set(lib.Center(
-		float32(x), float32(y),
-	))
+
+	// calc center point of sprite
+	radian := as.angle * math.Pi / 180
+	x := float64(as.oldRect.Center().X) + math.Cos(radian)*as.radius
+	y := float64(as.oldRect.Center().Y) + math.Sin(radian)*as.radius
+
+	// update rects
+	as.hitbox.Set(lib.Center(float32(x), float32(y)))
+	as.rect.Set(lib.Center(float32(x), float32(y)))
 }
 
 func (as *AnimatedSprite) orthoConstrain() {

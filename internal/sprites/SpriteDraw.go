@@ -20,5 +20,11 @@ func (s *BasicSprite) Draw(a Assets) error {
 	rl.DrawTexturePro(
 		src, srcRect, s.rect.Rect(), rl.Vector2{}, 0, rl.White,
 	)
+	//s.drawRects(rl.Blue)
 	return nil
+}
+
+// call this func in the draw method to debug any hitbox and rect issues
+func (s *BasicSprite) drawRects(c rl.Color) {
+	rl.DrawRectangleRec(s.hitbox.Rect(), rl.ColorAlpha(c, .5))
 }

@@ -22,5 +22,6 @@ func (as *AnimatedSprite) Draw(assets Assets) error {
 	rl.DrawTexturePro(
 		src, srcRect, as.rect.Rect(), rl.Vector2{}, 0, rl.White,
 	)
+	//as.drawRects(rl.Red)
 	return nil
 }
