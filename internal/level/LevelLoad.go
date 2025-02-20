@@ -25,7 +25,11 @@ func (l *LevelData) Load() error {
 			}
 		}
 		if objGroup.Name == "moving" {
-			err := l.loadMoving(objGroup.Objects)
+			err := l.loadMovingDetails(objGroup.Objects)
+			if err != nil {
+				return err
+			}
+			err = l.loadMoving(objGroup.Objects)
 			if err != nil {
 				return err
 			}
