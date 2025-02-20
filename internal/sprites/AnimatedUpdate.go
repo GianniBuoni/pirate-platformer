@@ -43,19 +43,19 @@ func (as *AnimatedSprite) orthoConstrain() {
 	switch as.direction.Y {
 	// horizontal check
 	case 0:
-		if as.hitbox.X <= as.pathRect.Left() {
+		if as.hitbox.Left() <= as.pathRect.Left() {
 			as.direction.X = 1
 			as.flipH = 1
 		}
-		if as.hitbox.X >= as.pathRect.Right() {
+		if as.hitbox.Right() >= as.pathRect.Right() {
 			as.direction.X = -1
 			as.flipH = -1
 		}
 	default:
-		if as.hitbox.Y <= as.pathRect.Top() {
+		if as.hitbox.Top() <= as.pathRect.Top() {
 			as.direction.Y = 1
 		}
-		if as.hitbox.Y >= as.pathRect.Bottom() {
+		if as.hitbox.Bottom() >= as.pathRect.Bottom() {
 			as.direction.Y = -1
 		}
 	}
