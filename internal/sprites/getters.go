@@ -38,7 +38,6 @@ func (s *BasicSprite) FlipH() {
 func (s *BasicSprite) SetHitbox(
 	offset rl.Vector2, width, height float32,
 ) {
-	s.hitboxOffset = offset
 	s.hitbox = NewRectangle(
 		s.rect.X+offset.X, s.rect.Y+offset.Y,
 		width, height,

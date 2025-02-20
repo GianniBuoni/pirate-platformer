@@ -7,10 +7,7 @@ func (p *PlayerData) Update() {
 	p.input()
 	p.move()
 	p.updateCRects()
-	p.rect.Set(
-		Top(p.hitbox.Top()-p.hitboxOffset.Y),
-		Left(p.hitbox.Left()-p.hitboxOffset.X),
-	)
+	p.rect.Set(Center(p.hitbox.Center().X, p.hitbox.Center().Y))
 }
 
 func (p *PlayerData) updateCRects() {

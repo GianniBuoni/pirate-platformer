@@ -7,17 +7,16 @@ import (
 )
 
 type BasicSprite struct {
-	image        string
-	imgRect      rl.Rectangle
-	rect         *Rect
-	oldRect      *Rect
-	hitbox       *Rect
-	assetLib     AssetLibrary
-	direction    rl.Vector2
-	hitboxOffset rl.Vector2
-	speed        float32
-	flipH        float32
-	flipV        float32
+	image     string
+	imgRect   rl.Rectangle
+	rect      *Rect
+	oldRect   *Rect
+	hitbox    *Rect
+	assetLib  AssetLibrary
+	direction rl.Vector2
+	speed     float32
+	flipH     float32
+	flipV     float32
 }
 
 var spriteDefaults BasicSprite = BasicSprite{

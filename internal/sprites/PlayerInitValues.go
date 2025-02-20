@@ -11,11 +11,10 @@ import (
 var initalPlayer = PlayerData{
 	AnimatedSprite: AnimatedSprite{
 		BasicSprite: BasicSprite{
-			imgRect:      rl.NewRectangle(0, 0, 96, 96),
-			oldRect:      &Rect{},
-			speed:        PlayerSpeed,
-			flipH:        1,
-			hitboxOffset: rl.NewVector2(TileSize+(TileSize-hitboxW)/2, TileSize),
+			imgRect: rl.NewRectangle(0, 0, 96, 96),
+			oldRect: &Rect{},
+			speed:   PlayerSpeed,
+			flipH:   1,
 		},
 		frameSpeed: FrameSpeed,
 	},

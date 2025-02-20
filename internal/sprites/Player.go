@@ -41,16 +41,13 @@ func NewPlayer(args NewPlayerParams) (*PlayerData, error) {
 		args.Pos.X, args.Pos.Y,
 		p.imgRect.Width*2, p.imgRect.Width*2,
 	)
-	p.hitbox = NewRectangle(
-		p.rect.X+p.hitboxOffset.X,
-		p.rect.Y+p.hitboxOffset.Y,
-		hitboxW, TileSize,
-	)
+	p.hitbox = NewRectangle(0, 0, hitboxW, TileSize)
+	p.hitbox.Set(Center(p.rect.Center().X, p.rect.Center().Y))
 	p.oldRect.Copy(p.hitbox)
 
 	p.cRects[floor] = NewRectangle(
 		p.hitbox.Left(), p.hitbox.Bottom(),
-		p.hitbox.Rect().Width, 10,
+		p.hitbox.Rect().Width, 2,
 	)
 	p.cRects[left] = NewRectangle(
 		p.hitbox.Left()-2, p.hitbox.Top()+2, 2, p.hitbox.Rect().Height/2,
