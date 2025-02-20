@@ -13,6 +13,8 @@ func (p *PlayerData) animate(src rl.Texture2D) {
 		p.animateOnce(jump)
 	case string(attack), string(airAttack):
 		p.animateOnce(attack)
+	case string(hit):
+		p.animateOnce(hit)
 	}
 }
 

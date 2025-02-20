@@ -16,6 +16,9 @@ const (
 )
 
 func (p *PlayerData) getState() PlayerState {
+	if p.actions[hit] {
+		return hit
+	}
 	switch p.checkCollisonSide() {
 	case floor:
 		if p.actions[attack] {

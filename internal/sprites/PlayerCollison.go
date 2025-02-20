@@ -57,6 +57,19 @@ func (p *PlayerData) platformCollision() {
 	}
 }
 
+func (p *PlayerData) hitCollision() {
+	if !p.actions[hit] {
+		for _, ds := range p.groups["damage"] {
+			if rl.CheckCollisionRecs(p.HitBox().Rect(), ds.HitBox().Rect()) {
+				p.mu.RLock()
+				defer p.mu.RUnlock()
+				p.actions[hit] = true
+				p.frameIndex = 0
+			}
+		}
+	}
+}
+
 func (p *PlayerData) checkCollisonSide() CollisionSide {
 	p.mu.Lock()
 	defer p.mu.Unlock()
