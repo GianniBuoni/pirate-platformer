@@ -11,6 +11,14 @@ func (p *PlayerData) Update() {
 }
 
 func (p *PlayerData) updateCRects() {
+	if p.platform == nil {
+		p.cRects[floor].Height = 2
+	} else {
+		// it seems necessary to make the floor rect taller to avoid
+		// a bug where the player sprite falls when a vertical moving
+		// platform moves down
+		p.cRects[floor].Height = 10
+	}
 	p.cRects[floor].Set(
 		Top(p.HitBox().Bottom()), Left(p.HitBox().Left()),
 	)
