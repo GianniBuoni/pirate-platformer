@@ -11,7 +11,9 @@ type Sprite interface {
 	// returns the SpriteRect interface
 	Rect() *Rect
 	OldRect() *Rect
-	Movement(*Rect) bool
 	// returns an an underlying raylib Rectangle
 	HitBox() *Rect
+	Movement(*Rect) bool
+
+	IsAttacking() bool
 }

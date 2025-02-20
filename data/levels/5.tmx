@@ -190,7 +190,7 @@
   <object id="25" name="silver" gid="52" x="704" y="192" width="64" height="64"/>
   <object id="26" name="skull" gid="53" x="576" y="192" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Enemies" visible="0">
+ <objectgroup id="6" name="enemies">
   <object id="38" name="tooth" gid="226" x="1408" y="192" width="64" height="64"/>
   <object id="65" name="saw" x="64" y="576" width="64" height="64">
    <properties>

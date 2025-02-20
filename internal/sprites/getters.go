@@ -46,6 +46,10 @@ func (s *BasicSprite) SetHitbox(
 	s.oldRect.Copy(s.hitbox)
 }
 
+func (s *BasicSprite) IsAttacking() bool {
+	return false
+}
+
 func (s *PlayerData) IsAttacking() bool {
 	return s.actions[attack]
 }
