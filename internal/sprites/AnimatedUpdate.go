@@ -14,11 +14,13 @@ func (as *AnimatedSprite) Update() {
 	} else {
 		as.radialMove()
 	}
+	as.rect.Set(lib.Center(
+		as.hitbox.Center().X, as.hitbox.Center().Y,
+	))
 }
 
 func (as *AnimatedSprite) orthoMove() {
 	as.Movement(as.hitbox)
-	as.Movement(as.rect)
 	as.orthoConstrain()
 }
 
@@ -33,28 +35,27 @@ func (as *AnimatedSprite) radialMove() {
 	x := float64(as.oldRect.Center().X) + math.Cos(radian)*as.radius
 	y := float64(as.oldRect.Center().Y) + math.Sin(radian)*as.radius
 
-	// update rects
+	// update hitbox
 	as.hitbox.Set(lib.Center(float32(x), float32(y)))
-	as.rect.Set(lib.Center(float32(x), float32(y)))
 }
 
 func (as *AnimatedSprite) orthoConstrain() {
 	switch as.direction.Y {
 	// horizontal check
 	case 0:
-		if as.rect.X <= as.pathRect.Left() {
+		if as.hitbox.X <= as.pathRect.Left() {
 			as.direction.X = 1
 			as.flipH = 1
 		}
-		if as.rect.X >= as.pathRect.Right() {
+		if as.hitbox.X >= as.pathRect.Right() {
 			as.direction.X = -1
 			as.flipH = -1
 		}
 	default:
-		if as.rect.Y <= as.pathRect.Top() {
+		if as.hitbox.Y <= as.pathRect.Top() {
 			as.direction.Y = 1
 		}
-		if as.rect.Y >= as.pathRect.Bottom() {
+		if as.hitbox.Y >= as.pathRect.Bottom() {
 			as.direction.Y = -1
 		}
 	}

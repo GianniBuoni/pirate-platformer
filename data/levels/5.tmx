@@ -134,7 +134,7 @@
    <properties>
     <property name="height" type="int" value="44"/>
     <property name="platform" value="true"/>
-    <property name="speed" type="int" value="60"/>
+    <property name="speed" type="int" value="120"/>
     <property name="width" type="int" value="156"/>
    </properties>
   </object>

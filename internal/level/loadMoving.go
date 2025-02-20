@@ -61,6 +61,8 @@ func (l *LevelData) loadMoving(objs []*tiled.Object) error {
 			s.SetHitbox(
 				rl.NewVector2(PlatHitbox, 0), width-PlatHitbox*2, height,
 			)
+		case "boat":
+			groups = append(groups, "platform")
 		}
 
 		// add groups
