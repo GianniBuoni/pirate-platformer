@@ -1,53 +1,53 @@
 package level
 
-import "github.com/GianniBuoni/pirate-platformer/internal/sprites"
+import (
+	"fmt"
+
+	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	"github.com/lafriks/go-tiled"
+)
 
 func (l *LevelData) Load() error {
+	layerFuncs := map[string]func([]*tiled.Object) error{
+		"static details": l.loadStaticDetails,
+		"objects":        l.loadObjects,
+		"items":          l.loadItems,
+		"enemies":        l.loadEnemies,
+	}
 	for _, objGroup := range l.mapData.ObjectGroups {
-		if objGroup.Name == "zero index" {
-			err := l.loadZero(objGroup.Objects)
-			if err != nil {
+		switch objGroup.Name {
+		case "zero index":
+			if err := l.loadZero(objGroup.Objects); err != nil {
 				return err
 			}
-			err = l.loadTiles()
-			if err != nil {
+			if err := l.loadTiles(); err != nil {
 				return err
 			}
-		}
-		if objGroup.Name == "static details" {
-			err := l.loadStaticDetails(objGroup.Objects)
-			if err != nil {
+		case "moving":
+			if err := l.loadMovingDetails(objGroup.Objects); err != nil {
 				return err
 			}
-		}
-		if objGroup.Name == "objects" {
-			err := l.loadObjects(objGroup.Objects)
-			if err != nil {
+			if err := l.loadMoving(objGroup.Objects); err != nil {
 				return err
 			}
-		}
-		if objGroup.Name == "moving" {
-			err := l.loadMovingDetails(objGroup.Objects)
-			if err != nil {
-				return err
+		case "player":
+			if objGroup.Name == "player" {
+				if err := l.loadPlayer(objGroup.Objects[0]); err != nil {
+					return err
+				}
 			}
-			err = l.loadMoving(objGroup.Objects)
-			if err != nil {
-				return err
-			}
-		}
-		if objGroup.Name == "enemies" {
-			if err := l.loadEnemies(objGroup.Objects); err != nil {
-				return err
-			}
-		}
-		if objGroup.Name == "player" {
-			err := l.loadPlayer(objGroup.Objects[0])
-			if err != nil {
-				return err
+		default:
+			loadFunc, ok := layerFuncs[objGroup.Name]
+			if ok {
+				if err := loadFunc(objGroup.Objects); err != nil {
+					return err
+				}
+			} else {
+				fmt.Printf("objGroup.Name: %s not yet implemented\n", objGroup.Name)
 			}
 		}
 	}
+
 	for _, sprite := range l.groups["shell"] {
 		shell, ok := sprite.(*sprites.ShellSprite)
 		if ok {
