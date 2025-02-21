@@ -1,6 +1,7 @@
 package assets
 
 import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -10,20 +11,21 @@ const (
 	ImageLib AssetLibrary = iota
 	PlayerLib
 	TilesetLib
-	FrameLib
 )
 
 type Assets struct {
-	Images   map[string]rl.Texture2D
-	Player   map[string]rl.Texture2D
-	Tilesets map[string]rl.Texture2D
+	Images      map[string]rl.Texture2D
+	Player      map[string]rl.Texture2D
+	Tilesets    map[string]rl.Texture2D
+	TilesetData map[string]Tileset
 }
 
 func NewAssets() *Assets {
 	return &Assets{
-		Images:   map[string]rl.Texture2D{},
-		Player:   map[string]rl.Texture2D{},
-		Tilesets: map[string]rl.Texture2D{},
+		Images:      map[string]rl.Texture2D{},
+		Player:      map[string]rl.Texture2D{},
+		Tilesets:    map[string]rl.Texture2D{},
+		TilesetData: map[string]Tileset{},
 	}
 }
 

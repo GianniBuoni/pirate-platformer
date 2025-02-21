@@ -1,8 +1,10 @@
 package assets
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -53,4 +55,27 @@ func (a *Assets) GetImage(
 		)
 	}
 	return image, nil
+}
+
+func (a *Assets) ImportTilesetData(root ...string) error {
+	paths := lib.GetFilePaths(root...)
+	for _, path := range paths {
+		if !strings.Contains(path, "json") {
+			continue
+		}
+		key := lib.GetAssetKey(path)
+
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		tsd := lib.Tileset{}
+		err = json.Unmarshal(data, &tsd)
+		if err != nil {
+			return err
+		}
+		a.TilesetData[key] = tsd
+
+	}
+	return nil
 }

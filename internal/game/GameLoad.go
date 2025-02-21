@@ -53,4 +53,9 @@ func (g *GameData) loadAssets() {
 		fmt.Printf("❌: Game.loadAssets(), tilesets: %s", err.Error())
 		os.Exit(1)
 	}
+	err = g.levelAssets.ImportTilesetData("data", "tilesets")
+	if err != nil {
+		fmt.Printf("❌: Game.loadAssets(), tileset data: %s", err.Error())
+		os.Exit(1)
+	}
 }
