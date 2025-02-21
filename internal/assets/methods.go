@@ -6,12 +6,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-func (a *AssetData) ImportImages(
+func (a *Assets) ImportImages(
 	aLib AssetLibrary,
 	root ...string,
 ) error {
@@ -33,7 +32,7 @@ func (a *AssetData) ImportImages(
 	return nil
 }
 
-func (a *AssetData) GetImage(
+func (a *Assets) GetImage(
 	aLib AssetLibrary, key string,
 ) (rl.Texture2D, error) {
 	var (

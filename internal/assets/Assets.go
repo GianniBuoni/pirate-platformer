@@ -1,25 +1,33 @@
 package assets
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/interfaces"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type AssetData struct {
+type AssetLibrary uint
+
+const (
+	ImageLib AssetLibrary = iota
+	PlayerLib
+	TilesetLib
+	FrameLib
+)
+
+type Assets struct {
 	Images   map[string]rl.Texture2D
 	Player   map[string]rl.Texture2D
 	Tilesets map[string]rl.Texture2D
 }
 
-func NewAssets() interfaces.Assets {
-	return &AssetData{
+func NewAssets() Assets {
+	return Assets{
 		Images:   map[string]rl.Texture2D{},
 		Player:   map[string]rl.Texture2D{},
 		Tilesets: map[string]rl.Texture2D{},
 	}
 }
 
-func (a *AssetData) Unload() {
+func (a *Assets) Unload() {
 	for _, image := range a.Images {
 		rl.UnloadTexture(image)
 	}

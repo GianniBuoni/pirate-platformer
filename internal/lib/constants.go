@@ -3,15 +3,22 @@ package lib
 import rl "github.com/gen2brain/raylib-go/raylib"
 
 const (
-	WindowW     float32 = 1280
-	WindowH     float32 = 720
-	TileSize    float32 = 64
+	// GAME
+	WindowW  float32 = 1280
+	WindowH  float32 = 720
+	TileSize float32 = 64
+	Title            = "Pirate Platformer 💀!"
+
+	// BASIC SPRITES
+	PlatHitbox float32 = 13
+
+	// ANIMATED SPRITES
+	FrameSpeed int = 6
+
+	// PLAYER
 	Gravity     float32 = 1200
 	PlayerSpeed float32 = 300
 	JumpDist    float32 = 700
-	PlatHitbox  float32 = 13
-	FrameSpeed          = 6
-	Title               = "Pirate Platformer 💀!"
 )
 
 var (
