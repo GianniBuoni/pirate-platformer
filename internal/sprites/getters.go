@@ -18,12 +18,6 @@ func (s *BasicSprite) OldRect() *Rect {
 }
 
 func (s *BasicSprite) Movement(r *Rect) bool {
-	dt := rl.GetFrameTime()
-	r.X += s.direction.X * s.speed * dt
-	r.Y += s.direction.Y * s.speed * dt
-	if s.direction.Y != 0 {
-		return true
-	}
 	return false
 }
 
@@ -48,8 +42,4 @@ func (s *BasicSprite) SetHitbox(
 
 func (s *BasicSprite) IsAttacking() bool {
 	return false
-}
-
-func (s *PlayerData) IsAttacking() bool {
-	return s.actions[attack]
 }

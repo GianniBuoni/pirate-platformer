@@ -1,0 +1,45 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "properties": [
+    ],
+    "propertyTypes": [
+        {
+            "id": 2,
+            "name": "asset_library",
+            "storageType": "int",
+            "type": "enum",
+            "values": [
+                "ImageLib",
+                "PlayerLib",
+                "TileLib"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "asset_lib",
+                    "propertyType": "asset_library",
+                    "type": "int",
+                    "value": 2
+                }
+            ],
+            "name": "tile_sprite",
+            "type": "class",
+            "useAs": [
+                "property",
+                "layer"
+            ]
+        }
+    ]
+}

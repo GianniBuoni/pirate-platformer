@@ -19,8 +19,8 @@ type Assets struct {
 	Tilesets map[string]rl.Texture2D
 }
 
-func NewAssets() Assets {
-	return Assets{
+func NewAssets() *Assets {
+	return &Assets{
 		Images:   map[string]rl.Texture2D{},
 		Player:   map[string]rl.Texture2D{},
 		Tilesets: map[string]rl.Texture2D{},

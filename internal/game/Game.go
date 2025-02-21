@@ -3,13 +3,14 @@ package game
 import (
 	"strconv"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	"github.com/GianniBuoni/pirate-platformer/internal/assets"
+	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	"github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
 type GameData struct {
-	levelAssets  Assets
-	levelCurrent Level
+	levelAssets  *assets.Assets
+	levelCurrent *level.LevelData
 	levelMaps    map[int]string
 	stats        *Stats
 	window       *WindowData

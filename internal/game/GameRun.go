@@ -16,7 +16,6 @@ func (g *GameData) Run() {
 func (g *GameData) update() {
 	g.Running = !rl.WindowShouldClose()
 	g.levelCurrent.Update()
-	g.window.Update(g.levelCurrent.PlayerPos())
 }
 
 func (g *GameData) draw() {

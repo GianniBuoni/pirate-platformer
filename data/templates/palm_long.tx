@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tilesets/objects.tsx"/>
+ <object name="palm_long" gid="32" width="64" height="128"/>
+</template>

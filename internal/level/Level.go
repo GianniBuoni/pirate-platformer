@@ -1,50 +1,62 @@
 package level
 
 import (
-	"fmt"
+	"encoding/json"
+	"os"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/interfaces"
+	"github.com/GianniBuoni/pirate-platformer/internal/assets"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/lafriks/go-tiled"
 )
 
 type LevelData struct {
+	Layers      []Layer `json:"layers"`
+	tiles       []*tiled.Layer
+	levelAssets *assets.Assets
 	player      Sprite
-	levelAssets Assets
-	mapData     *tiled.Map
 	groups      map[string][]Sprite
+	Height      float32 `json:"height"`
+	Width       float32 `json:"width"`
 }
 
-func NewLevel(assets Assets, mapPath string) (Level, error) {
-	mapData, err := tiled.LoadFile(mapPath)
+func NewLevel(assets *assets.Assets, mapPath string) (*LevelData, error) {
+	data, err := os.ReadFile(mapPath)
 	if err != nil {
-		return nil,
-			fmt.Errorf("error loading map: %s, %w", mapPath, err)
+		return nil, err
 	}
-	return &LevelData{
-		levelAssets: assets,
-		mapData:     mapData,
-		groups:      map[string][]Sprite{},
-	}, nil
+	tiledData, err := tiled.LoadFile(mapPath)
+	if err != nil {
+		return nil, err
+	}
+	l := LevelData{levelAssets: assets}
+
+	json.Unmarshal(data, &l)
+	l.tiles = tiledData.Layers
+	return &l, nil
 }
 
 func (l *LevelData) Update() {
-	for _, mSprite := range l.groups["moving"] {
-		mSprite.Update()
-	}
-	l.player.Update()
+	/*
+		for _, mSprite := range l.groups["moving"] {
+			mSprite.Update()
+		}
+		l.player.Update()
+	*/
 }
 
 func (l *LevelData) Draw() error {
-	allSprites, ok := l.groups["all"]
-	if ok {
-		for _, sprite := range allSprites {
-			err := sprite.Draw(l.levelAssets)
-			if err != nil {
-				return err
+	/*
+		allSprites, ok := l.groups["all"]
+		if ok {
+			for _, sprite := range allSprites {
+				err := sprite.Draw(l.levelAssets)
+				if err != nil {
+					return err
+				}
 			}
 		}
-	}
+	*/
 	return nil
 }
 
