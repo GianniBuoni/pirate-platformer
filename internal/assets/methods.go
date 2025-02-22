@@ -72,10 +72,9 @@ func (a *Assets) ImportTilesetData(root ...string) error {
 		tsd := lib.Tileset{}
 		err = json.Unmarshal(data, &tsd)
 		if err != nil {
-			return err
+			return fmt.Errorf("%s, %w", path, err)
 		}
 		a.TilesetData[key] = tsd
-
 	}
 	return nil
 }

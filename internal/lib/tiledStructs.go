@@ -8,6 +8,8 @@ type Layer struct {
 	Name    string   `json:"name"`
 }
 
+// Basic positional data provided by the Tiled Map
+// Properties also stored user defined data.
 type Object struct {
 	Properties Properties `json:"properties,omitempty"`
 	Image      string     `json:"name"`
@@ -23,6 +25,9 @@ type Properties struct {
 	FlipV  float32 `json:"flipV"`
 }
 
+// Level Maps gloabl into about a tileset.
+// This is not the tileset itself, but rather
+// a collection of data of how a tileset relates to a level.
 type TileRefs struct {
 	TileRef []TileRef `json:"tilesets"`
 }
@@ -32,6 +37,7 @@ type TileRef struct {
 	FirstGID int    `json:"firstgid"`
 }
 
+// Data about a single tile
 type Tile struct {
 	Image string
 	X     float32
@@ -40,12 +46,29 @@ type Tile struct {
 	ImgY  float32
 }
 
+// Stores the first and last GID's
+// that an associated tileset contains.
+// Useful for figuring out if a GID belongs to
+// a specific tileset.
 type GIDRange struct {
 	FirstGID int
 	LastGID  int
 }
 
+// Tileset Data
 type Tileset struct {
-	Count   int `json:"tilecount"`
-	Columns int `json:"columns"`
+	Count   int      `json:"tilecount"`
+	Columns int      `json:"columns"`
+	Tiles   []TsTile `json:"tiles,omitempty"`
+}
+
+// Data about a single tile from a tileset file.
+// Only emmited by tilesets made of multiple images.
+type TsTile struct {
+	Image       string      `json:"image"`
+	ObjectGroup ObjectGroup `json:"objectgroup,omitempty"`
+}
+
+type ObjectGroup struct {
+	Hitboxes []Object `json:"objects"`
 }
