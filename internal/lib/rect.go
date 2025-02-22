@@ -12,12 +12,6 @@ func NewRectangle(x, y, width, height float32) *Rect {
 	}
 }
 
-func (r *Rect) Rect() rl.Rectangle {
-	return rl.NewRectangle(
-		r.X, r.Y, r.Width, r.Height,
-	)
-}
-
 func (r *Rect) Top() float32 {
 	return r.Y
 }

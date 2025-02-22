@@ -3,41 +3,40 @@ package sprites
 import (
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type BasicSprite struct {
-	image    string
-	rect     *Rect
-	oldRect  *Rect
-	hitbox   *Rect
-	assets   *assets.Assets
-	assetLib assets.AssetLibrary
-	flipH    float32
-	flipV    float32
+type ObjectSprite struct {
+	ID
+	Pos
 }
 
-var spriteDefaults BasicSprite = BasicSprite{
-	flipH:    1,
-	flipV:    1,
-	assetLib: assets.ImageLib,
-}
-
-func NewSprite(obj Object, a *assets.Assets) (*BasicSprite, error) {
-	// copy default values
-	s := spriteDefaults
-
-	// check if image string is valid
-	if _, err := a.GetImage(s.assetLib, obj.Image); err != nil {
+func NewSprite(obj Object, a *assets.Assets) (Sprite, error) {
+	id, err := newId(obj.Image, assets.ImageLib, a)
+	if err != nil {
 		return nil, err
 	}
-	s.image = obj.Image
-
-	// rects calculated
-	s.rect = NewRectangle(obj.X, obj.Y, obj.Width, obj.Height)
-
-	// by default old rect and hitbox are pointers to the destRect
-	s.hitbox = s.rect
-	s.oldRect = s.rect
-
+	s := ObjectSprite{
+		ID:  id,
+		Pos: newPos(obj.X, obj.Y, obj.Width, obj.Height),
+	}
 	return &s, nil
+}
+
+func (s *ObjectSprite) Update()      {}
+func (s *ObjectSprite) IsAttacking() {}
+
+func (s *ObjectSprite) Draw() error {
+	src, err := s.assets.GetImage(s.assetLib, s.image)
+	if err != nil {
+		return err
+	}
+	rl.DrawTexturePro(
+		src,
+		rl.NewRectangle(0, 0, s.rect.Width, s.rect.Height),
+		rl.Rectangle(*s.Rect()),
+		rl.Vector2{}, 0, rl.White,
+	)
+	//s.pos.drawRects(rl.Blue)
+	return nil
 }

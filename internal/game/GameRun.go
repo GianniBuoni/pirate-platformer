@@ -15,6 +15,7 @@ func (g *GameData) Run() {
 
 func (g *GameData) update() {
 	g.Running = !rl.WindowShouldClose()
+	g.window.Update(rl.NewVector2(WindowW/2, WindowH/2))
 	g.levelCurrent.Update()
 }
 

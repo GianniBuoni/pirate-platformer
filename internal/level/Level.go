@@ -2,7 +2,6 @@ package level
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"os"
 
@@ -49,36 +48,7 @@ func NewLevel(assets *assets.Assets, mapPath string) (*LevelData, error) {
 		}
 		l.tileRefs[key] = name
 	}
-	fmt.Printf("l: %v\n", l)
 	return &l, nil
-}
-
-func (l *LevelData) GetImageRect(gid int) (x, y float32, err error) {
-	var (
-		name     string
-		firstGID int
-	)
-
-	for k, v := range l.tileRefs {
-		if k.FirstGID <= gid && k.LastGID >= gid {
-			name = v
-			firstGID = k.FirstGID
-		}
-	}
-	if name == "" {
-		return 0, 0, fmt.Errorf("gid: %d\n not found in tileset refs.", gid)
-	}
-	tileset := l.levelAssets.TilesetData[name]
-
-	idx := firstGID - gid
-	if idx > tileset.Count {
-		fmt.Printf("index: %d out of range of tileset '%s'.\n", idx, name)
-		return 0, 0,
-			errors.New("Check if there are rotation flags on tile gid")
-	}
-	x = float32(idx%tileset.Columns) * TileSize
-	y = float32(idx/tileset.Columns) * TileSize
-	return x, y, nil
 }
 
 func (l *LevelData) Update() {
@@ -91,17 +61,15 @@ func (l *LevelData) Update() {
 }
 
 func (l *LevelData) Draw() error {
-	/*
-		allSprites, ok := l.groups["all"]
-		if ok {
-			for _, sprite := range allSprites {
-				err := sprite.Draw(l.levelAssets)
-				if err != nil {
-					return err
-				}
+	allSprites, ok := l.groups["all"]
+	if ok {
+		for _, sprite := range allSprites {
+			err := sprite.Draw()
+			if err != nil {
+				return err
 			}
 		}
-	*/
+	}
 	return nil
 }
 

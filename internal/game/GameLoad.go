@@ -19,17 +19,11 @@ func (g *GameData) Load() {
 		fmt.Printf("❌: Game.Load(), could not init level %s", err.Error())
 		os.Exit(2)
 	}
+	err = g.levelCurrent.Load()
 	if err != nil {
-		fmt.Errorf("err: %w\n", err)
+		fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
+		os.Exit(2)
 	}
-
-	/*
-		err = g.levelCurrent.Load()
-		if err != nil {
-			fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
-			os.Exit(2)
-		}
-	*/
 	g.window.loadCam(rl.NewVector2(lib.WindowW/2, lib.WindowH/2))
 }
 

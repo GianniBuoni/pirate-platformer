@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json1",
+         "target":"5.json"
+        }
+    },
  "height":15,
  "infinite":false,
  "layers":[
@@ -8,142 +16,44 @@
          "name":"zero",
          "objects":[
                 {
-                 "gid":229,
-                 "height":106,
                  "id":43,
-                 "name":"palm_bg_left",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":104,
+                 "template":"..\/templates\/palm_bg_left.tx",
                  "x":268,
                  "y":425
                 }, 
                 {
-                 "gid":218,
-                 "height":128,
                  "id":27,
-                 "name":"palm_bg",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
+                 "template":"..\/templates\/palm_bg.tx",
                  "x":792,
                  "y":353
                 }, 
                 {
-                 "gid":230,
-                 "height":106,
                  "id":44,
-                 "name":"palm_bg_right",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":104,
+                 "template":"..\/templates\/palm_bg_right.tx",
                  "x":848,
                  "y":383
                 }, 
                 {
-                 "gid":248,
-                 "height":128,
                  "id":82,
-                 "name":"palm_long",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
+                 "template":"..\/templates\/palm_long.tx",
                  "x":326,
                  "y":432
                 }, 
                 {
-                 "gid":249,
-                 "height":64,
                  "id":84,
-                 "name":"palm_short",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
+                 "template":"..\/templates\/palm_short.tx",
                  "x":1226,
                  "y":239
                 }, 
                 {
-                 "gid":249,
-                 "height":64,
                  "id":85,
-                 "name":"palm_short",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
+                 "template":"..\/templates\/palm_short.tx",
                  "x":1263,
                  "y":222
                 }, 
                 {
-                 "gid":249,
-                 "height":64,
                  "id":83,
-                 "name":"palm_short",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
+                 "template":"..\/templates\/palm_short.tx",
                  "x":1097,
                  "y":231
                 }],
@@ -407,22 +317,8 @@
                  "y":428
                 }, 
                 {
-                 "gid":217,
-                 "height":50,
                  "id":97,
-                 "name":"barrel",
-                 "properties":
-                    {
-                     "loader":"object"
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":46,
+                 "template":"..\/templates\/barrel.tx",
                  "x":530,
                  "y":464
                 }],
@@ -529,14 +425,12 @@
                  "height":32,
                  "id":69,
                  "name":"floor_spikes",
-                 "properties":
-                    {
-                     "inverted":"false"
-                    },
-                 "propertytypes":
-                    {
-                     "inverted":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"inverted",
+                         "type":"string",
+                         "value":"false"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -548,14 +442,12 @@
                  "height":32,
                  "id":71,
                  "name":"floor_spikes",
-                 "properties":
-                    {
-                     "inverted":"true"
-                    },
-                 "propertytypes":
-                    {
-                     "inverted":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"inverted",
+                         "type":"string",
+                         "value":"true"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -578,20 +470,27 @@
                  "height":38,
                  "id":66,
                  "name":"boat",
-                 "properties":
-                    {
-                     "height":44,
-                     "platform":"true",
-                     "speed":120,
-                     "width":156
-                    },
-                 "propertytypes":
-                    {
-                     "height":"int",
-                     "platform":"string",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":44
+                        }, 
+                        {
+                         "name":"platform",
+                         "type":"string",
+                         "value":"true"
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":120
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":156
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -603,22 +502,32 @@
                  "height":10,
                  "id":67,
                  "name":"saw",
-                 "properties":
-                    {
-                     "flip":"false",
-                     "height":76,
-                     "platform":"false",
-                     "speed":60,
-                     "width":76
-                    },
-                 "propertytypes":
-                    {
-                     "flip":"string",
-                     "height":"int",
-                     "platform":"string",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"flip",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":76
+                        }, 
+                        {
+                         "name":"platform",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":60
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":76
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -630,22 +539,32 @@
                  "height":320,
                  "id":68,
                  "name":"saw",
-                 "properties":
-                    {
-                     "flip":"false",
-                     "height":76,
-                     "platform":"false",
-                     "speed":100,
-                     "width":76
-                    },
-                 "propertytypes":
-                    {
-                     "flip":"string",
-                     "height":"int",
-                     "platform":"string",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"flip",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":76
+                        }, 
+                        {
+                         "name":"platform",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":76
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -657,24 +576,37 @@
                  "height":64,
                  "id":73,
                  "name":"spike",
-                 "properties":
-                    {
-                     "end_angle":0,
-                     "height":64,
-                     "platform":"false",
-                     "radius":100,
-                     "speed":100,
-                     "width":64
-                    },
-                 "propertytypes":
-                    {
-                     "end_angle":"int",
-                     "height":"int",
-                     "platform":"string",
-                     "radius":"int",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"end_angle",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":64
+                        }, 
+                        {
+                         "name":"platform",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":64
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -686,20 +618,27 @@
                  "height":320,
                  "id":74,
                  "name":"helicopter",
-                 "properties":
-                    {
-                     "flip":"false",
-                     "height":20,
-                     "speed":100,
-                     "width":64
-                    },
-                 "propertytypes":
-                    {
-                     "flip":"string",
-                     "height":"int",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"flip",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":20
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":64
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -711,20 +650,27 @@
                  "height":10,
                  "id":75,
                  "name":"helicopter",
-                 "properties":
-                    {
-                     "flip":"false",
-                     "height":20,
-                     "speed":60,
-                     "width":64
-                    },
-                 "propertytypes":
-                    {
-                     "flip":"string",
-                     "height":"int",
-                     "speed":"int",
-                     "width":"int"
-                    },
+                 "properties":[
+                        {
+                         "name":"flip",
+                         "type":"string",
+                         "value":"false"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":20
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"int",
+                         "value":60
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":64
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -846,14 +792,12 @@
                  "height":64,
                  "id":65,
                  "name":"saw",
-                 "properties":
-                    {
-                     "speed":"0"
-                    },
-                 "propertytypes":
-                    {
-                     "speed":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"speed",
+                         "type":"string",
+                         "value":"0"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -942,24 +886,37 @@
                  "height":64,
                  "id":28,
                  "name":"Data",
-                 "properties":
-                    {
-                     "bg":"Green",
-                     "bottom_limit":"200",
-                     "death_border_bottom":"0",
-                     "horizon_line":"600",
-                     "level_unlock":"4",
-                     "top_limit":"0"
-                    },
-                 "propertytypes":
-                    {
-                     "bg":"string",
-                     "bottom_limit":"string",
-                     "death_border_bottom":"string",
-                     "horizon_line":"string",
-                     "level_unlock":"string",
-                     "top_limit":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"bg",
+                         "type":"string",
+                         "value":"Green"
+                        }, 
+                        {
+                         "name":"bottom_limit",
+                         "type":"string",
+                         "value":"200"
+                        }, 
+                        {
+                         "name":"death_border_bottom",
+                         "type":"string",
+                         "value":"0"
+                        }, 
+                        {
+                         "name":"horizon_line",
+                         "type":"string",
+                         "value":"600"
+                        }, 
+                        {
+                         "name":"level_unlock",
+                         "type":"string",
+                         "value":"4"
+                        }, 
+                        {
+                         "name":"top_limit",
+                         "type":"string",
+                         "value":"0"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1010,6 +967,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":1.1,
+ "version":"1.10",
  "width":40
 }

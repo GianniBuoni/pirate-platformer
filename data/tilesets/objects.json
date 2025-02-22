@@ -6,57 +6,224 @@
      "width":1
     },
  "margin":0,
- "name":"map objects",
+ "name":"objects",
+ "objectalignment":"topleft",
  "spacing":0,
- "tilecount":7,
+ "tilecount":30,
  "tiledversion":"1.11.2",
- "tileheight":128,
+ "tileheight":256,
  "tiles":
     {
      "0":
         {
-         "image":"..\/..\/graphics\/map\/objects\/palm.png",
-         "imageheight":128,
-         "imagewidth":100
+         "image":"..\/..\/graphics\/objects\/barrel.png",
+         "imageheight":50,
+         "imagewidth":46
         },
      "1":
         {
-         "image":"..\/..\/graphics\/map\/objects\/grass1.png",
-         "imageheight":24,
-         "imagewidth":39
+         "image":"..\/..\/graphics\/objects\/palm_bg.png",
+         "imageheight":128,
+         "imagewidth":128
+        },
+     "10":
+        {
+         "height":32,
+         "image":"..\/..\/graphics\/objects\/floor_spikes.png",
+         "imageheight":32,
+         "imagewidth":256,
+         "width":64,
+         "x":0,
+         "y":0
+        },
+     "11":
+        {
+         "image":"..\/..\/graphics\/objects\/spike.png",
+         "imageheight":64,
+         "imagewidth":64
+        },
+     "12":
+        {
+         "image":"..\/..\/graphics\/objects\/palm_bg_left.png",
+         "imageheight":106,
+         "imagewidth":104
+        },
+     "13":
+        {
+         "image":"..\/..\/graphics\/objects\/palm_bg_right.png",
+         "imageheight":106,
+         "imagewidth":104
+        },
+     "14":
+        {
+         "image":"..\/..\/graphics\/objects\/bg_crate.png",
+         "imageheight":32,
+         "imagewidth":42
+        },
+     "15":
+        {
+         "height":64,
+         "image":"..\/..\/graphics\/objects\/candle.png",
+         "imageheight":64,
+         "imagewidth":384,
+         "width":64,
+         "x":0,
+         "y":0
+        },
+     "16":
+        {
+         "image":"..\/..\/graphics\/objects\/window.png",
+         "imageheight":64,
+         "imagewidth":64
+        },
+     "17":
+        {
+         "height":128,
+         "image":"..\/..\/graphics\/objects\/big_chain.png",
+         "imageheight":128,
+         "imagewidth":512,
+         "width":64,
+         "x":0,
+         "y":0
+        },
+     "18":
+        {
+         "height":64,
+         "image":"..\/..\/graphics\/objects\/small_chain.png",
+         "imageheight":64,
+         "imagewidth":512,
+         "width":64,
+         "x":0,
+         "y":0
+        },
+     "19":
+        {
+         "image":"..\/..\/graphics\/objects\/green_bottle1.png",
+         "imageheight":34,
+         "imagewidth":14
         },
      "2":
         {
-         "image":"..\/..\/graphics\/map\/objects\/grass2.png",
-         "imageheight":16,
-         "imagewidth":28
+         "image":"..\/..\/graphics\/objects\/crate.png",
+         "imageheight":36,
+         "imagewidth":50
         },
-     "3":
+     "20":
         {
-         "image":"..\/..\/graphics\/map\/objects\/grass3.png",
-         "imageheight":20,
-         "imagewidth":28
+         "image":"..\/..\/graphics\/objects\/green_bottle2.png",
+         "imageheight":14,
+         "imagewidth":30
         },
-     "4":
+     "21":
         {
-         "image":"..\/..\/graphics\/map\/objects\/grass4.png",
-         "imageheight":20,
-         "imagewidth":32
+         "image":"..\/..\/graphics\/objects\/blue_bottle1.png",
+         "imageheight":28,
+         "imagewidth":14
+        },
+     "22":
+        {
+         "image":"..\/..\/graphics\/objects\/blue_bottle2.png",
+         "imageheight":14,
+         "imagewidth":24
+        },
+     "23":
+        {
+         "image":"..\/..\/graphics\/objects\/bg_barrel.png",
+         "imageheight":44,
+         "imagewidth":42
+        },
+     "24":
+        {
+         "image":"..\/..\/graphics\/objects\/bg_barrel_2.png",
+         "imageheight":44,
+         "imagewidth":42
+        },
+     "25":
+        {
+         "image":"..\/..\/graphics\/objects\/curtain1.png",
+         "imageheight":178,
+         "imagewidth":52
+        },
+     "26":
+        {
+         "image":"..\/..\/graphics\/objects\/curtain2.png",
+         "imageheight":178,
+         "imagewidth":52
+        },
+     "27":
+        {
+         "image":"..\/..\/graphics\/objects\/door.png",
+         "imageheight":98,
+         "imagewidth":82
+        },
+     "29":
+        {
+         "height":64,
+         "image":"..\/..\/graphics\/objects\/palm.png",
+         "imageheight":64,
+         "imagewidth":384,
+         "width":96,
+         "x":0,
+         "y":0
+        },
+     "30":
+        {
+         "image":"..\/..\/graphics\/objects\/palm_bent.png",
+         "imageheight":64,
+         "imagewidth":128
+        },
+     "31":
+        {
+         "image":"..\/..\/graphics\/objects\/palm_long.png",
+         "imageheight":128,
+         "imagewidth":64
+        },
+     "32":
+        {
+         "image":"..\/..\/graphics\/objects\/palm_short.png",
+         "imageheight":64,
+         "imagewidth":64
+        },
+     "33":
+        {
+         "height":256,
+         "image":"..\/..\/graphics\/objects\/flag.png",
+         "imageheight":256,
+         "imagewidth":1152,
+         "width":128,
+         "x":0,
+         "y":0
         },
      "5":
         {
-         "image":"..\/..\/graphics\/map\/objects\/grass5.png",
-         "imageheight":20,
-         "imagewidth":36
+         "image":"..\/..\/graphics\/objects\/boat.png",
+         "imageheight":44,
+         "imagewidth":156
         },
-     "6":
+     "7":
         {
-         "image":"..\/..\/graphics\/overworld\/objects\/stone.png",
-         "imageheight":52,
-         "imagewidth":56
+         "image":"..\/..\/graphics\/player\/fall.png",
+         "imageheight":96,
+         "imagewidth":96
+        },
+     "8":
+        {
+         "image":"..\/..\/graphics\/objects\/shell.png",
+         "imageheight":48,
+         "imagewidth":96
+        },
+     "9":
+        {
+         "height":64,
+         "image":"..\/..\/graphics\/objects\/tooth.png",
+         "imageheight":64,
+         "imagewidth":384,
+         "width":64,
+         "x":0,
+         "y":0
         }
     },
- "tilewidth":100,
+ "tilewidth":156,
  "type":"tileset",
  "version":1.1
 }

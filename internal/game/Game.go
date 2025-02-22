@@ -2,6 +2,7 @@ package game
 
 import (
 	"strconv"
+	"strings"
 
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
@@ -43,6 +44,9 @@ func GetMaps() map[int]string {
 	levelMaps := map[int]string{}
 	mapPaths := lib.GetFilePaths("data", "levels")
 	for _, path := range mapPaths {
+		if !strings.Contains(path, "json") {
+			continue
+		}
 		strKey := lib.GetAssetKey(path)
 		key, err := strconv.ParseInt(strKey, 10, 0)
 		if err != nil {
