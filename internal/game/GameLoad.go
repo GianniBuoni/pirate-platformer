@@ -14,14 +14,15 @@ func (g *GameData) Load() {
 	g.window = NewWindow()
 	g.loadAssets()
 	var err error
-	g.levelCurrent, err = level.NewLevel(g.levelAssets, g.levelMaps[g.stats.currentLevel])
+	mapPath := g.levelMaps[g.stats.currentLevel]
+	g.levelCurrent, err = level.NewLevel(g.levelAssets, mapPath)
 	if err != nil {
-		fmt.Printf("❌: Game.Load(), could not init level %s", err.Error())
+		fmt.Printf("❌: Game.Load(), could not init level %s\n", err.Error())
 		os.Exit(2)
 	}
-	err = g.levelCurrent.Load()
+	err = g.levelCurrent.Load(g.loaders)
 	if err != nil {
-		fmt.Printf("❌: Game.Load(), could not load level %s", err.Error())
+		fmt.Printf("❌: Game.Load(), could not load level %s\n", err.Error())
 		os.Exit(2)
 	}
 	g.window.loadCam(rl.NewVector2(lib.WindowW/2, lib.WindowH/2))
@@ -32,24 +33,22 @@ func (g *GameData) loadAssets() {
 	g.levelAssets = assets.NewAssets()
 
 	// load all assets
-	err := g.levelAssets.ImportImages(assets.ImageLib, "graphics", "objects")
-	if err != nil {
-		fmt.Printf("❌: Game.loadAssets(), images: %s", err.Error())
-		os.Exit(1)
+	assetMap := map[string]assets.AssetLibrary{
+		"tilesets": assets.TilesetLib,
+		"objects":  assets.ImageLib,
+		"player":   assets.PlayerLib,
 	}
-	err = g.levelAssets.ImportImages(assets.PlayerLib, "graphics", "player")
-	if err != nil {
-		fmt.Printf("❌: Game.loadAssets(), player: %s", err.Error())
-		os.Exit(1)
+
+	for k, v := range assetMap {
+		err := g.levelAssets.ImportImages(v, "graphics", k)
+		if err != nil {
+			fmt.Printf("❌: Game.loadAssets(), %s: %s\n", k, err.Error())
+			os.Exit(2)
+		}
 	}
-	err = g.levelAssets.ImportImages(assets.TilesetLib, "graphics", "tilesets")
+	err := g.levelAssets.ImportTilesetData("data", "tilesets")
 	if err != nil {
-		fmt.Printf("❌: Game.loadAssets(), tilesets: %s", err.Error())
-		os.Exit(1)
-	}
-	err = g.levelAssets.ImportTilesetData("data", "tilesets")
-	if err != nil {
-		fmt.Printf("❌: Game.loadAssets(), tileset data: %s", err.Error())
-		os.Exit(1)
+		fmt.Printf("❌: Game.loadAssets(), tileset data: %s\n", err.Error())
+		os.Exit(2)
 	}
 }

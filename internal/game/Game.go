@@ -13,6 +13,7 @@ type GameData struct {
 	levelAssets  *assets.Assets
 	levelCurrent *level.LevelData
 	levelMaps    map[int]string
+	loaders      *level.Loaders
 	stats        *Stats
 	window       *WindowData
 	Running      bool
@@ -27,6 +28,7 @@ type Stats struct {
 func NewGame() *GameData {
 	return &GameData{
 		levelMaps: GetMaps(),
+		loaders:   level.NewLoaders(),
 		stats:     NewStats(),
 		Running:   true,
 	}

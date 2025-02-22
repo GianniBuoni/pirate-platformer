@@ -6,7 +6,24 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
-func (l *LevelData) GetTileData(gid int) (
+func parseTile(idx, gid int, l *LevelData) (Tile, error) {
+	t := Tile{}
+
+	// parse image data
+	var err error
+	t.ImgX, t.ImgY, t.Image, err = parseTileGID(gid, l)
+	if err != nil {
+		return Tile{}, err
+	}
+
+	// parse tile position
+	t.X = float32(idx%l.Width) * TileSize
+	t.Y = float32(idx/l.Width) * TileSize
+
+	return t, nil
+}
+
+func parseTileGID(gid int, l *LevelData) (
 	x, y float32, name string, err error,
 ) {
 	var firstGID int

@@ -6,14 +6,17 @@ import (
 )
 
 var bgTileLoader = Loader[[]int]{
+	Key: "bg",
 	Run: tileLoaderMiddleware(loadBGTile),
 }
 
 var cTileLoader = Loader[[]int]{
+	Key: "collision",
 	Run: tileLoaderMiddleware(loadCTile),
 }
 
 var pTileLoader = Loader[[]int]{
+	Key: "platform",
 	Run: tileLoaderMiddleware(loadPTile),
 }
 
@@ -29,23 +32,6 @@ func loadPTile(s Sprite, l *LevelData) {
 	l.AddSpriteGroup(s, "all", "platform")
 }
 
-func parseTile(idx, gid int, l *LevelData) (*Tile, error) {
-	t := Tile{}
-
-	// parse image data
-	var err error
-	t.ImgX, t.ImgY, t.Image, err = l.GetTileData(gid)
-	if err != nil {
-		return nil, err
-	}
-
-	// parse tile position
-	t.X = float32(idx%l.Width) * TileSize
-	t.Y = float32(idx/l.Width) * TileSize
-
-	return &t, nil
-}
-
 func tileLoaderMiddleware(f func(Sprite, *LevelData)) func([]int, *LevelData) error {
 	return func(data []int, l *LevelData) error {
 		for idx, id := range data {
@@ -56,7 +42,7 @@ func tileLoaderMiddleware(f func(Sprite, *LevelData)) func([]int, *LevelData) er
 			if err != nil {
 				return err
 			}
-			ts, err := sprites.NewTileSprite(*t, l.levelAssets)
+			ts, err := sprites.NewTileSprite(t, l.levelAssets)
 			if err != nil {
 				return err
 			}

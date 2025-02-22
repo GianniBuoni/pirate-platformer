@@ -2,28 +2,12 @@ package level
 
 import (
 	"fmt"
-
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
-type Loader[T any] struct {
-	Run func(T, *LevelData) error
-}
-
-var tileLoaders = map[string]Loader[[]int]{
-	"bg":        bgTileLoader,
-	"collision": cTileLoader,
-	"platform":  pTileLoader,
-}
-
-var objectLoaders = map[string]Loader[Object]{
-	"object": objectLoader,
-}
-
-func (l *LevelData) Load() error {
+func (l *LevelData) Load(loader *Loaders) error {
 	for _, layer := range l.Layers {
 		if len(layer.Data) > 0 {
-			loader, ok := tileLoaders[layer.Name]
+			loader, ok := loader.tiles[layer.Name]
 			if !ok {
 				fmt.Printf("loader %s not yet implemented.\n", layer.Name)
 				continue
@@ -42,7 +26,7 @@ func (l *LevelData) Load() error {
 				)
 				continue
 			}
-			loader, ok := objectLoaders[loadKey]
+			loader, ok := loader.object[loadKey]
 			if !ok {
 				fmt.Printf("loader '%s' not yet implemented\n", loadKey)
 				continue
