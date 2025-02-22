@@ -23,8 +23,11 @@ var objectLoaders = map[string]Loader[Object]{
 func (l *LevelData) Load() error {
 	for _, layer := range l.Layers {
 		if len(layer.Data) > 0 {
-			fmt.Printf("loading tiles: %s\n", layer.Name)
-			loader := tileLoaders["bg"]
+			loader, ok := tileLoaders[layer.Name]
+			if !ok {
+				fmt.Printf("loader %s not yet implemented.\n", layer.Name)
+				continue
+			}
 			err := loader.Run(layer.Data, l)
 			if err != nil {
 				return err
@@ -34,14 +37,14 @@ func (l *LevelData) Load() error {
 			loadKey := obj.Properties.Loader
 			if loadKey == "" {
 				fmt.Printf(
-					"obj '%s' does not yet have a loader assigned in tiled\n",
+					"obj '%s' does not have a loader assigned in tiled\n",
 					obj.Image,
 				)
 				continue
 			}
 			loader, ok := objectLoaders[loadKey]
 			if !ok {
-				fmt.Printf("loader: '%s' is not yet implemented\n", loadKey)
+				fmt.Printf("loader '%s' not yet implemented\n", loadKey)
 				continue
 			}
 			err := loader.Run(obj, l)
