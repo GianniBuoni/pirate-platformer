@@ -16,10 +16,20 @@ type Pos struct {
 	flipV   float32
 }
 
-func newPos(x, y, width, height float32) Pos {
+func newPos(obj Object) Pos {
 	p := Pos{
-		rect:    NewRectangle(x, y, width, height),
-		oldRect: NewRectangle(x, y, width, height),
+		rect:    NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
+		oldRect: NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
+	}
+	if obj.Properties.FlipH == 0 {
+		p.flipH = 1
+	} else {
+		p.flipH = obj.Properties.FlipH
+	}
+	if obj.Properties.FlipV == 0 {
+		p.flipV = 1
+	} else {
+		p.flipV = obj.Properties.FlipV
 	}
 	p.hitbox = p.rect
 	return p

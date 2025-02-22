@@ -9,221 +9,465 @@
  "name":"objects",
  "objectalignment":"topleft",
  "spacing":0,
- "tilecount":30,
+ "tilecount":32,
  "tiledversion":"1.11.2",
  "tileheight":256,
- "tiles":
-    {
-     "0":
+ "tiles":[
         {
+         "id":0,
          "image":"..\/..\/graphics\/objects\/barrel.png",
          "imageheight":50,
          "imagewidth":46
-        },
-     "1":
+        }, 
         {
+         "id":1,
          "image":"..\/..\/graphics\/objects\/palm_bg.png",
          "imageheight":128,
          "imagewidth":128
-        },
-     "10":
+        }, 
+        {
+         "id":2,
+         "image":"..\/..\/graphics\/objects\/crate.png",
+         "imageheight":36,
+         "imagewidth":50,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "name":"",
+             "objects":[
+                    {
+                     "height":10,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":24,
+                     "x":13,
+                     "y":0
+                    }, 
+                    {
+                     "height":26,
+                     "id":2,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":10,
+                     "x":0,
+                     "y":5
+                    }, 
+                    {
+                     "height":26,
+                     "id":4,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":10,
+                     "x":40,
+                     "y":5
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            }
+        }, 
+        {
+         "id":5,
+         "image":"..\/..\/graphics\/objects\/boat.png",
+         "imageheight":44,
+         "imagewidth":156
+        }, 
+        {
+         "id":7,
+         "image":"..\/..\/graphics\/player\/fall.png",
+         "imageheight":192,
+         "imagewidth":192,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":58,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":32,
+                     "x":80,
+                     "y":70
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            }
+        }, 
+        {
+         "id":8,
+         "image":"..\/..\/graphics\/objects\/shell.png",
+         "imageheight":48,
+         "imagewidth":192,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":10,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":24,
+                     "x":84,
+                     "y":6
+                    }, 
+                    {
+                     "height":20,
+                     "id":2,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":10,
+                     "x":118,
+                     "y":20
+                    }, 
+                    {
+                     "height":20,
+                     "id":3,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":10,
+                     "x":64,
+                     "y":20
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            }
+        }, 
+        {
+         "height":64,
+         "id":9,
+         "image":"..\/..\/graphics\/objects\/tooth.png",
+         "imageheight":64,
+         "imagewidth":384,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":50,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":32,
+                     "x":16,
+                     "y":14
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            },
+         "width":64,
+         "x":0,
+         "y":0
+        }, 
         {
          "height":32,
+         "id":10,
          "image":"..\/..\/graphics\/objects\/floor_spikes.png",
          "imageheight":32,
          "imagewidth":256,
          "width":64,
          "x":0,
          "y":0
-        },
-     "11":
+        }, 
         {
+         "id":11,
          "image":"..\/..\/graphics\/objects\/spike.png",
          "imageheight":64,
-         "imagewidth":64
-        },
-     "12":
+         "imagewidth":64,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":32,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":32,
+                     "x":16,
+                     "y":16
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            }
+        }, 
         {
+         "id":12,
          "image":"..\/..\/graphics\/objects\/palm_bg_left.png",
          "imageheight":106,
          "imagewidth":104
-        },
-     "13":
+        }, 
         {
+         "id":13,
          "image":"..\/..\/graphics\/objects\/palm_bg_right.png",
          "imageheight":106,
          "imagewidth":104
-        },
-     "14":
+        }, 
         {
+         "id":14,
          "image":"..\/..\/graphics\/objects\/bg_crate.png",
          "imageheight":32,
          "imagewidth":42
-        },
-     "15":
+        }, 
         {
          "height":64,
+         "id":15,
          "image":"..\/..\/graphics\/objects\/candle.png",
          "imageheight":64,
          "imagewidth":384,
          "width":64,
          "x":0,
          "y":0
-        },
-     "16":
+        }, 
         {
+         "id":16,
          "image":"..\/..\/graphics\/objects\/window.png",
          "imageheight":64,
          "imagewidth":64
-        },
-     "17":
+        }, 
         {
          "height":128,
+         "id":17,
          "image":"..\/..\/graphics\/objects\/big_chain.png",
          "imageheight":128,
          "imagewidth":512,
          "width":64,
          "x":0,
          "y":0
-        },
-     "18":
+        }, 
         {
          "height":64,
+         "id":18,
          "image":"..\/..\/graphics\/objects\/small_chain.png",
          "imageheight":64,
          "imagewidth":512,
          "width":64,
          "x":0,
          "y":0
-        },
-     "19":
+        }, 
         {
+         "id":19,
          "image":"..\/..\/graphics\/objects\/green_bottle1.png",
          "imageheight":34,
          "imagewidth":14
-        },
-     "2":
+        }, 
         {
-         "image":"..\/..\/graphics\/objects\/crate.png",
-         "imageheight":36,
-         "imagewidth":50
-        },
-     "20":
-        {
+         "id":20,
          "image":"..\/..\/graphics\/objects\/green_bottle2.png",
          "imageheight":14,
          "imagewidth":30
-        },
-     "21":
+        }, 
         {
+         "id":21,
          "image":"..\/..\/graphics\/objects\/blue_bottle1.png",
          "imageheight":28,
          "imagewidth":14
-        },
-     "22":
+        }, 
         {
+         "id":22,
          "image":"..\/..\/graphics\/objects\/blue_bottle2.png",
          "imageheight":14,
          "imagewidth":24
-        },
-     "23":
+        }, 
         {
+         "id":23,
          "image":"..\/..\/graphics\/objects\/bg_barrel.png",
          "imageheight":44,
          "imagewidth":42
-        },
-     "24":
+        }, 
         {
-         "image":"..\/..\/graphics\/objects\/bg_barrel_2.png",
+         "id":24,
+         "image":"..\/..\/graphics\/objects\/bg_barrel2.png",
          "imageheight":44,
          "imagewidth":42
-        },
-     "25":
+        }, 
         {
+         "id":25,
          "image":"..\/..\/graphics\/objects\/curtain1.png",
          "imageheight":178,
          "imagewidth":52
-        },
-     "26":
+        }, 
         {
+         "id":26,
          "image":"..\/..\/graphics\/objects\/curtain2.png",
          "imageheight":178,
          "imagewidth":52
-        },
-     "27":
+        }, 
         {
+         "id":27,
          "image":"..\/..\/graphics\/objects\/door.png",
          "imageheight":98,
          "imagewidth":82
-        },
-     "29":
+        }, 
         {
          "height":64,
+         "id":29,
          "image":"..\/..\/graphics\/objects\/palm.png",
          "imageheight":64,
          "imagewidth":384,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "name":"",
+             "objects":[
+                    {
+                     "height":10,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":38,
+                     "x":28,
+                     "y":0
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            },
          "width":96,
          "x":0,
          "y":0
-        },
-     "30":
+        }, 
         {
+         "id":30,
          "image":"..\/..\/graphics\/objects\/palm_bent.png",
          "imageheight":64,
          "imagewidth":128
-        },
-     "31":
+        }, 
         {
+         "id":31,
          "image":"..\/..\/graphics\/objects\/palm_long.png",
          "imageheight":128,
          "imagewidth":64
-        },
-     "32":
+        }, 
         {
+         "id":32,
          "image":"..\/..\/graphics\/objects\/palm_short.png",
          "imageheight":64,
          "imagewidth":64
-        },
-     "33":
+        }, 
         {
          "height":256,
+         "id":33,
          "image":"..\/..\/graphics\/objects\/flag.png",
          "imageheight":256,
          "imagewidth":1152,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":186,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":10,
+                     "x":41,
+                     "y":30
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            },
          "width":128,
          "x":0,
          "y":0
-        },
-     "5":
+        }, 
         {
-         "image":"..\/..\/graphics\/objects\/boat.png",
-         "imageheight":44,
-         "imagewidth":156
-        },
-     "7":
+         "height":76,
+         "id":34,
+         "image":"..\/..\/graphics\/objects\/saw.png",
+         "imageheight":76,
+         "imagewidth":608,
+         "objectgroup":
+            {
+             "draworder":"index",
+             "id":2,
+             "name":"",
+             "objects":[
+                    {
+                     "height":48,
+                     "id":1,
+                     "name":"",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":48,
+                     "x":14,
+                     "y":14
+                    }],
+             "opacity":1,
+             "type":"objectgroup",
+             "visible":true,
+             "x":0,
+             "y":0
+            },
+         "width":76,
+         "x":0,
+         "y":0
+        }, 
         {
-         "image":"..\/..\/graphics\/player\/fall.png",
-         "imageheight":96,
-         "imagewidth":96
-        },
-     "8":
-        {
-         "image":"..\/..\/graphics\/objects\/shell.png",
-         "imageheight":48,
-         "imagewidth":96
-        },
-     "9":
-        {
-         "height":64,
-         "image":"..\/..\/graphics\/objects\/tooth.png",
-         "imageheight":64,
-         "imagewidth":384,
+         "height":20,
+         "id":35,
+         "image":"..\/..\/graphics\/objects\/helicopter.png",
+         "imageheight":20,
+         "imagewidth":256,
          "width":64,
          "x":0,
          "y":0
-        }
-    },
- "tilewidth":156,
+        }],
+ "tilewidth":192,
  "type":"tileset",
- "version":1.1
+ "version":"1.10"
 }

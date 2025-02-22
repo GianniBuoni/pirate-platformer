@@ -18,7 +18,7 @@ func NewSprite(obj Object, a *assets.Assets) (Sprite, error) {
 	}
 	s := ObjectSprite{
 		ID:  id,
-		Pos: newPos(obj.X, obj.Y, obj.Width, obj.Height),
+		Pos: newPos(obj),
 	}
 	return &s, nil
 }
@@ -32,7 +32,7 @@ func (s *ObjectSprite) Draw() error {
 	}
 	rl.DrawTexturePro(
 		src,
-		rl.NewRectangle(0, 0, s.rect.Width, s.rect.Height),
+		rl.NewRectangle(0, 0, s.rect.Width*s.flipH, s.rect.Height*s.flipV),
 		rl.Rectangle(*s.Rect()),
 		rl.Vector2{}, 0, rl.White,
 	)

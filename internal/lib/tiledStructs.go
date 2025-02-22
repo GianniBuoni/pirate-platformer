@@ -18,7 +18,9 @@ type Object struct {
 }
 
 type Properties struct {
-	Loader string `json:"loader"`
+	Loader string  `json:"loader"`
+	FlipH  float32 `json:"flipH"`
+	FlipV  float32 `json:"flipV"`
 }
 
 type TileRefs struct {

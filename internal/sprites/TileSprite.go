@@ -20,9 +20,13 @@ func NewTileSprite(tile Tile, a *assets.Assets) (
 		return nil, err
 	}
 
+	obj := Object{
+		X: tile.X, Y: tile.Y, Width: TileSize, Height: TileSize,
+	}
+
 	ts := TileSprite{
 		ID:     id,
-		Pos:    newPos(tile.X, tile.Y, TileSize, TileSize),
+		Pos:    newPos(obj),
 		imgPos: rl.NewVector2(tile.ImgX, tile.ImgY),
 	}
 	return &ts, nil

@@ -19,7 +19,7 @@ func NewPlayer(obj Object, a *assets.Assets) (Sprite, error) {
 	}
 	p := Player{
 		ID:  id,
-		Pos: newPos(obj.X, obj.Y, obj.Width, obj.Height),
+		Pos: newPos(obj),
 	}
 	return &p, nil
 }
@@ -32,7 +32,7 @@ func (p *Player) Draw() error {
 	}
 	rl.DrawTexturePro(
 		src,
-		rl.NewRectangle(0, 0, float32(src.Width), float32(src.Height)),
+		rl.NewRectangle(0, 0, p.rect.Width*p.flipH, p.rect.Height),
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
