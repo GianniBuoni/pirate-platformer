@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tilesets/objects.json"/>
+ <object name="curtain2" gid="27" width="52" height="178">
+  <properties>
+   <property name="loader" value="object"/>
+  </properties>
+ </object>
+</template>

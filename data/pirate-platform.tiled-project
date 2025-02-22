@@ -1,6 +1,16 @@
 {
     "automappingRulesFile": "",
     "commands": [
+        {
+            "arguments": "",
+            "command": "",
+            "enabled": true,
+            "name": "add object loader",
+            "saveBeforeExecute": true,
+            "shortcut": null,
+            "showOutput": true,
+            "workingDirectory": ""
+        }
     ],
     "compatibilityVersion": 1100,
     "extensionsPath": "extensions",

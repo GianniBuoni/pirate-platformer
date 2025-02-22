@@ -6,6 +6,7 @@ import (
 )
 
 var objectLoader = Loader[Object]{
+	Key: "object",
 	Run: loadObject,
 }
 

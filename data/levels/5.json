@@ -264,9 +264,18 @@
          "name":"static details",
          "objects":[
                 {
+                 "gid":233,
                  "height":64,
-                 "id":51,
+                 "id":98,
                  "name":"window",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -275,9 +284,18 @@
                  "y":384
                 }, 
                 {
+                 "gid":233,
                  "height":64,
                  "id":52,
                  "name":"window",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -286,42 +304,18 @@
                  "y":384
                 }, 
                 {
-                 "height":34,
-                 "id":55,
-                 "name":"green_bottle1",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":14,
-                 "x":1392,
-                 "y":538
-                }, 
-                {
-                 "height":28,
-                 "id":57,
-                 "name":"blue_bottle1",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":14,
-                 "x":1328,
-                 "y":544
-                }, 
-                {
-                 "height":14,
-                 "id":58,
-                 "name":"blue_bottle2",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":1264,
-                 "y":560
-                }, 
-                {
+                 "gid":240,
                  "height":44,
-                 "id":59,
+                 "id":103,
                  "name":"bg_barrel",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -330,81 +324,24 @@
                  "y":528
                 }, 
                 {
+                 "gid":241,
                  "height":44,
-                 "id":60,
-                 "name":"bg_barrel_2",
+                 "id":104,
+                 "name":"bg_barrel2",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":42,
                  "x":1600,
                  "y":528
-                }, 
-                {
-                 "height":14,
-                 "id":56,
-                 "name":"green_bottle2",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":30,
-                 "x":1584,
-                 "y":560
-                }, 
-                {
-                 "height":178,
-                 "id":61,
-                 "name":"curtain1",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":52,
-                 "x":1509,
-                 "y":320
-                }, 
-                {
-                 "height":178,
-                 "id":62,
-                 "name":"curtain2",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":52,
-                 "x":1253,
-                 "y":320
-                }, 
-                {
-                 "height":98,
-                 "id":63,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":82,
-                 "x":1104,
-                 "y":480.667
-                }, 
-                {
-                 "height":36,
-                 "id":6,
-                 "name":"crate",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":50,
-                 "x":496,
-                 "y":477
-                }, 
-                {
-                 "height":36,
-                 "id":7,
-                 "name":"crate",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":50,
-                 "x":528,
-                 "y":428
                 }, 
                 {
                  "gid":217,
@@ -425,6 +362,186 @@
                  "width":46,
                  "x":530,
                  "y":464
+                }, 
+                {
+                 "gid":236,
+                 "height":34,
+                 "id":99,
+                 "name":"green_bottle1",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14,
+                 "x":1392,
+                 "y":542
+                }, 
+                {
+                 "gid":237,
+                 "height":14,
+                 "id":100,
+                 "name":"green_bottle2",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30,
+                 "x":1584,
+                 "y":560
+                }, 
+                {
+                 "gid":238,
+                 "height":28,
+                 "id":101,
+                 "name":"blue_bottle1",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14,
+                 "x":1330,
+                 "y":548
+                }, 
+                {
+                 "gid":239,
+                 "height":14,
+                 "id":102,
+                 "name":"blue_bottle2",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":1264,
+                 "y":562
+                }, 
+                {
+                 "gid":242,
+                 "height":178,
+                 "id":105,
+                 "name":"curtain1",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":52,
+                 "x":1510,
+                 "y":320
+                }, 
+                {
+                 "gid":243,
+                 "height":178,
+                 "id":107,
+                 "name":"curtain2",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":52,
+                 "x":1254,
+                 "y":320
+                }, 
+                {
+                 "gid":244,
+                 "height":98,
+                 "id":108,
+                 "name":"door",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":82,
+                 "x":1111,
+                 "y":478
+                }, 
+                {
+                 "gid":219,
+                 "height":36,
+                 "id":110,
+                 "name":"crate",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":50,
+                 "x":526,
+                 "y":430
+                }, 
+                {
+                 "gid":219,
+                 "height":36,
+                 "id":109,
+                 "name":"crate",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":50,
+                 "x":496,
+                 "y":477
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -895,9 +1012,18 @@
          "name":"player",
          "objects":[
                 {
+                 "gid":224,
                  "height":192,
-                 "id":77,
-                 "name":"player",
+                 "id":111,
+                 "name":"fall",
+                 "properties":
+                    {
+                     "loader":"player"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -907,7 +1033,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -974,7 +1100,7 @@
          "y":0
         }],
  "nextlayerid":17,
- "nextobjectid":98,
+ "nextobjectid":112,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

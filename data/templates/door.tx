@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tilesets/objects.json"/>
+ <object name="door" gid="28" width="82" height="98">
+  <properties>
+   <property name="loader" value="object"/>
+  </properties>
+ </object>
+</template>
