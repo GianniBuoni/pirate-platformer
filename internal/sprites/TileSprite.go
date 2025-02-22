@@ -13,7 +13,7 @@ type TileSprite struct {
 }
 
 func NewTileSprite(tile Tile, a *assets.Assets) (
-	*TileSprite, error,
+	Sprite, error,
 ) {
 	id, err := newId(tile.Image, assets.TilesetLib, a)
 	if err != nil {
@@ -28,8 +28,7 @@ func NewTileSprite(tile Tile, a *assets.Assets) (
 	return &ts, nil
 }
 
-func (ts *TileSprite) Update()      {}
-func (ts *TileSprite) IsAttacking() {}
+func (ts *TileSprite) Update() {}
 
 func (ts *TileSprite) Draw() error {
 	src, err := ts.assets.GetImage(ts.assetLib, ts.image)

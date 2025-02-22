@@ -555,20 +555,18 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":64,
-                 "id":79,
-                 "name":"palm",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":96,
-                 "x":1081,
-                 "y":167
-                }, 
-                {
+                 "gid":246,
                  "height":64,
                  "id":80,
                  "name":"palm",
+                 "properties":
+                    {
+                     "loader":"platform"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -577,9 +575,18 @@
                  "y":158
                 }, 
                 {
+                 "gid":246,
                  "height":64,
                  "id":81,
                  "name":"palm",
+                 "properties":
+                    {
+                     "loader":"platform"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -588,9 +595,18 @@
                  "y":175
                 }, 
                 {
+                 "gid":246,
                  "height":64,
                  "id":78,
                  "name":"palm",
+                 "properties":
+                    {
+                     "loader":"platform"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -599,9 +615,18 @@
                  "y":400
                 }, 
                 {
+                 "gid":232,
                  "height":64,
                  "id":50,
                  "name":"candle",
+                 "properties":
+                    {
+                     "loader":"animated"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -610,9 +635,18 @@
                  "y":384
                 }, 
                 {
-                 "height":116,
+                 "gid":234,
+                 "height":128,
                  "id":53,
                  "name":"big_chain",
+                 "properties":
+                    {
+                     "loader":"animated"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -621,9 +655,18 @@
                  "y":320
                 }, 
                 {
-                 "height":62,
+                 "gid":235,
+                 "height":64,
                  "id":54,
                  "name":"small_chain",
+                 "properties":
+                    {
+                     "loader":"animated"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -632,9 +675,18 @@
                  "y":320
                 }, 
                 {
+                 "gid":250,
                  "height":256,
                  "id":87,
                  "name":"flag",
+                 "properties":
+                    {
+                     "loader":"animated"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -679,10 +731,30 @@
                  "width":64,
                  "x":64,
                  "y":64
+                }, 
+                {
+                 "gid":246,
+                 "height":64,
+                 "id":112,
+                 "name":"palm",
+                 "properties":
+                    {
+                     "loader":"platform"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":96,
+                 "x":1079,
+                 "y":169
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1100,7 +1172,7 @@
          "y":0
         }],
  "nextlayerid":17,
- "nextobjectid":112,
+ "nextobjectid":118,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

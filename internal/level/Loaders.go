@@ -1,30 +1,40 @@
 package level
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+import (
+	"github.com/GianniBuoni/pirate-platformer/internal/assets"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+)
 
 type Loaders struct {
-	tiles  map[string]Loader[[]int]
+	tiles  map[string]Loader[Tile]
 	object map[string]Loader[Object]
 }
+
 type Loader[T any] struct {
-	Key string
-	Run func(T, *LevelData) error
+	key     string
+	builder func(T, *assets.Assets) (Sprite, error)
+	groups  []string
+}
+
+func (l *Loader[T]) Run(t T, level *LevelData) error {
+	s, err := l.builder(t, level.levelAssets)
+	if err != nil {
+		return err
+	}
+	level.AddSpriteGroup(s, l.groups...)
+	return nil
 }
 
 func NewLoaders() *Loaders {
-	// registered loaders
-	tiles := []Loader[[]int]{bgTileLoader, cTileLoader, pTileLoader}
-	object := []Loader[Object]{objectLoader}
-
 	l := Loaders{
-		tiles:  map[string]Loader[[]int]{},
+		tiles:  map[string]Loader[Tile]{},
 		object: map[string]Loader[Object]{},
 	}
-	for _, loader := range tiles {
-		l.tiles[loader.Key] = loader
+	for _, loader := range tileLoaders {
+		l.tiles[loader.key] = loader
 	}
-	for _, loader := range object {
-		l.object[loader.Key] = loader
+	for _, loader := range objectLoaders {
+		l.object[loader.key] = loader
 	}
 	return &l
 }

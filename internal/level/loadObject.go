@@ -5,16 +5,33 @@ import (
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var objectLoader = Loader[Object]{
-	Key: "object",
-	Run: loadObject,
+var objectLoaders = []Loader[Object]{
+	animatedLoader,
+	objectLoader,
+	platformLoader,
+	playerLoader,
 }
 
-func loadObject(obj Object, l *LevelData) error {
-	s, err := sprites.NewSprite(obj, l.levelAssets)
-	if err != nil {
-		return err
-	}
-	l.AddSpriteGroup(s, "all")
-	return nil
+var objectLoader = Loader[Object]{
+	key:     "object",
+	builder: sprites.NewSprite,
+	groups:  []string{"all"},
+}
+
+var playerLoader = Loader[Object]{
+	key:     "player",
+	builder: sprites.NewPlayer,
+	groups:  []string{"all"},
+}
+
+var platformLoader = Loader[Object]{
+	key:     "platform",
+	builder: sprites.NewSprite,
+	groups:  []string{"all", "moving", "platform"},
+}
+
+var animatedLoader = Loader[Object]{
+	key:     "animated",
+	builder: sprites.NewSprite,
+	groups:  []string{"all"},
 }

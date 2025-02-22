@@ -12,9 +12,18 @@ func (l *LevelData) Load(loader *Loaders) error {
 				fmt.Printf("loader %s not yet implemented.\n", layer.Name)
 				continue
 			}
-			err := loader.Run(layer.Data, l)
-			if err != nil {
-				return err
+			for idx, id := range layer.Data {
+				if id == 0 {
+					continue
+				}
+				tile, err := parseTile(idx, id, l)
+				if err != nil {
+					return err
+				}
+				err = loader.Run(tile, l)
+				if err != nil {
+					return err
+				}
 			}
 		}
 		for _, obj := range layer.Objects {

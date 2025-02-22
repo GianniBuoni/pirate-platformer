@@ -23,8 +23,7 @@ func NewSprite(obj Object, a *assets.Assets) (Sprite, error) {
 	return &s, nil
 }
 
-func (s *ObjectSprite) Update()      {}
-func (s *ObjectSprite) IsAttacking() {}
+func (s *ObjectSprite) Update() {}
 
 func (s *ObjectSprite) Draw() error {
 	src, err := s.assets.GetImage(s.assetLib, s.image)
