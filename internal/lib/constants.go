@@ -13,7 +13,7 @@ const (
 	PlatHitbox float32 = 13
 
 	// ANIMATED SPRITES
-	FrameSpeed int = 6
+	FrameSpeed float32 = 6
 
 	// PLAYER
 	Gravity     float32 = 1200
