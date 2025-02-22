@@ -16,8 +16,8 @@ type LevelData struct {
 	player      Sprite
 	groups      map[string][]Sprite
 	tileRefs    map[GIDRange]string
-	Height      float32 `json:"height"`
-	Width       float32 `json:"width"`
+	Width       int `json:"width"`
+	Height      int `json:"height"`
 }
 
 func NewLevel(assets *assets.Assets, mapPath string) (*LevelData, error) {

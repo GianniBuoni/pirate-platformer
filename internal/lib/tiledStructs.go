@@ -30,6 +30,14 @@ type TileRef struct {
 	FirstGID int    `json:"firstgid"`
 }
 
+type Tile struct {
+	Image string
+	X     float32
+	Y     float32
+	ImgX  float32
+	ImgY  float32
+}
+
 type GIDRange struct {
 	FirstGID int
 	LastGID  int
