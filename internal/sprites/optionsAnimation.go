@@ -11,21 +11,16 @@ type Animation struct {
 	frameSpeed float32
 }
 
-func NewAnimation() Animation {
+func newAnimation() Animation {
 	return Animation{
 		frameSpeed: FrameSpeed,
 	}
 }
 
-func (a *Animation) animate(dt float32) {
+func (a *Animation) animate(rect *Rect, src rl.Texture2D) {
+	a.frameCount = int(float32(src.Width) / rect.Width)
+	dt := rl.GetFrameTime()
 	a.frameIndex += a.frameSpeed * dt
-}
-
-// Call A.animateEx() if A.frameCount is variable.
-// Most likely to be needed if sprite canges states.
-func (a *Animation) animateEx(dt, objWidth float32, src rl.Texture2D) {
-	a.frameCount = int(float32(src.Width) / objWidth)
-	a.animate(dt)
 }
 
 // Call after A.animate() or A.animateEx()

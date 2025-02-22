@@ -26,12 +26,12 @@ var playerLoader = Loader[Object]{
 
 var platformLoader = Loader[Object]{
 	key:     "platform",
-	builder: sprites.NewSprite,
+	builder: sprites.NewAnimatedSprite,
 	groups:  []string{"all", "moving", "platform"},
 }
 
 var animatedLoader = Loader[Object]{
 	key:     "animated",
-	builder: sprites.NewSprite,
+	builder: sprites.NewAnimatedSprite,
 	groups:  []string{"all"},
 }
