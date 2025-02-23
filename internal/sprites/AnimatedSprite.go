@@ -19,7 +19,7 @@ func NewAnimatedSprite(obj Object, a *assets.Assets) (Sprite, error) {
 	}
 	as := AnimatedSprite{
 		ID:        id,
-		Pos:       newPos(obj),
+		Pos:       newPos(obj, a),
 		Animation: newAnimation(),
 	}
 	return &as, nil
@@ -43,5 +43,6 @@ func (as *AnimatedSprite) Draw() error {
 	rl.DrawTexturePro(
 		src, srcRect, rl.Rectangle(*as.rect), rl.Vector2{}, 0, rl.White,
 	)
+	drawRect(as.hitbox, rl.Blue)
 	return nil
 }

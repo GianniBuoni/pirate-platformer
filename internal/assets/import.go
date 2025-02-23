@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -16,7 +16,7 @@ func (a *Assets) ImportImages(
 	aLib AssetLibrary,
 	root ...string,
 ) error {
-	paths := lib.GetFilePaths(root...)
+	paths := GetFilePaths(root...)
 
 	for _, path := range paths {
 		key := strings.Split(filepath.Base(path), ".")[0]
@@ -34,47 +34,40 @@ func (a *Assets) ImportImages(
 	return nil
 }
 
-func (a *Assets) GetImage(
-	aLib AssetLibrary, key string,
-) (rl.Texture2D, error) {
-	var (
-		ok    bool
-		image rl.Texture2D
-	)
-	switch aLib {
-	case ImageLib:
-		image, ok = a.Images[key]
-	case PlayerLib:
-		image, ok = a.Player[key]
-	case TilesetLib:
-		image, ok = a.Tilesets[key]
-	}
-	if !ok {
-		return rl.Texture2D{}, fmt.Errorf(
-			"error getting asset: '%s', make sure it is loaded", key,
-		)
-	}
-	return image, nil
-}
-
 func (a *Assets) ImportTilesetData(root ...string) error {
-	paths := lib.GetFilePaths(root...)
+	// Inital import of raw data
+	paths := GetFilePaths(root...)
 	for _, path := range paths {
 		if !strings.Contains(path, "json") {
 			continue
 		}
-		key := lib.GetAssetKey(path)
+		key := GetAssetKey(path)
 
 		data, err := os.ReadFile(path)
 		if err != nil {
 			return err
 		}
-		tsd := lib.Tileset{}
+		tsd := Tileset{}
 		err = json.Unmarshal(data, &tsd)
 		if err != nil {
 			return fmt.Errorf("%s, %w", path, err)
 		}
 		a.TilesetData[key] = tsd
+
+		// Further parsing of tile data into map of hitboxes
+		if len(tsd.Tiles) > 0 {
+			for _, tile := range tsd.Tiles {
+				if len(tile.ObjectGroup.Hitboxes) > 0 {
+					key := GetAssetKey(tile.Image)
+					if len(tile.ObjectGroup.Hitboxes) > 1 {
+						return fmt.Errorf("'%s' has more than one hitbox defined!", key)
+					}
+					hitbox := tile.ObjectGroup.Hitboxes[0]
+					rect := NewRectangle(hitbox.X, hitbox.Y, hitbox.Width, hitbox.Height)
+					a.Hitboxes[key] = *rect
+				}
+			}
+		}
 	}
 	return nil
 }

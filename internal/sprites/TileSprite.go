@@ -26,7 +26,7 @@ func NewTileSprite(tile Tile, a *assets.Assets) (
 
 	ts := TileSprite{
 		ID:     id,
-		Pos:    newPos(obj),
+		Pos:    newPos(obj, a),
 		imgPos: rl.NewVector2(tile.ImgX, tile.ImgY),
 	}
 	return &ts, nil
@@ -46,5 +46,6 @@ func (ts *TileSprite) Draw() error {
 		src, srcRect, rl.Rectangle(*ts.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
+	drawRect(ts.hitbox, rl.Red)
 	return nil
 }

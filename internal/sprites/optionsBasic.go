@@ -3,7 +3,6 @@ package sprites
 import (
 	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 // The most basic sprite option.
@@ -16,7 +15,7 @@ type Pos struct {
 	flipV   float32
 }
 
-func newPos(obj Object) Pos {
+func newPos(obj Object, a *assets.Assets) Pos {
 	p := Pos{
 		rect:    NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
 		oldRect: NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
@@ -31,21 +30,16 @@ func newPos(obj Object) Pos {
 	} else {
 		p.flipV = obj.Properties.FlipV
 	}
-	p.hitbox = p.rect
+	hitbox, ok := a.Hitboxes[obj.Image]
+	if !ok {
+		p.hitbox = p.rect
+	} else {
+		p.hitbox = NewRectangle(
+			p.rect.X+hitbox.X, p.rect.Y+hitbox.Y,
+			hitbox.Width, hitbox.Height,
+		)
+	}
 	return p
-}
-
-func (p *Pos) SetHitbox(width, height float32) {
-	p.hitbox = NewRectangle(0, 0, width, height)
-	p.hitbox.Set(Center(p.rect.Center().X, p.rect.Center().Y))
-	p.oldRect.Copy(p.hitbox)
-}
-
-// call this func in the draw method to debug any hitbox and rect issues
-func (p *Pos) drawHitbox(c rl.Color) {
-	rl.DrawRectangleRec(
-		rl.Rectangle(*p.hitbox), rl.ColorAlpha(c, .5),
-	)
 }
 
 func (p *Pos) Rect() *Rect {

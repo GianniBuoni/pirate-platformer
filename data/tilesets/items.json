@@ -1,17 +1,23 @@
-{ "columns":2,
- "image":"..\/..\/graphics\/tilesets\/items.png",
- "imageheight":192,
- "imagewidth":128,
+{ "columns":0,
+ "grid":
+    {
+     "height":1,
+     "orientation":"orthogonal",
+     "width":1
+    },
  "margin":0,
  "name":"items",
- "objectalignment":"topleft",
  "spacing":0,
- "tilecount":6,
+ "tilecount":5,
  "tiledversion":"1.11.2",
  "tileheight":64,
  "tiles":[
         {
+         "height":64,
          "id":0,
+         "image":"..\/..\/graphics\/objects\/skull.png",
+         "imageheight":64,
+         "imagewidth":512,
          "objectgroup":
             {
              "draworder":"index",
@@ -26,7 +32,7 @@
                      "visible":true,
                      "width":22,
                      "x":21,
-                     "y":21
+                     "y":26
                     }],
              "opacity":1,
              "type":"objectgroup",
@@ -34,14 +40,19 @@
              "x":0,
              "y":0
             },
-         "type":"gold"
+         "width":64,
+         "x":0,
+         "y":0
         }, 
         {
+         "height":64,
          "id":1,
+         "image":"..\/..\/graphics\/objects\/silver.png",
+         "imageheight":64,
+         "imagewidth":256,
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -61,14 +72,19 @@
              "x":0,
              "y":0
             },
-         "type":"silver"
+         "width":64,
+         "x":0,
+         "y":0
         }, 
         {
+         "height":64,
          "id":2,
+         "image":"..\/..\/graphics\/objects\/gold.png",
+         "imageheight":64,
+         "imagewidth":256,
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -88,14 +104,19 @@
              "x":0,
              "y":0
             },
-         "type":"skull"
+         "width":64,
+         "x":0,
+         "y":0
         }, 
         {
+         "height":64,
          "id":3,
+         "image":"..\/..\/graphics\/objects\/diamond.png",
+         "imageheight":64,
+         "imagewidth":256,
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -115,14 +136,19 @@
              "x":0,
              "y":0
             },
-         "type":"diamond"
+         "width":64,
+         "x":0,
+         "y":0
         }, 
         {
+         "height":64,
          "id":4,
+         "image":"..\/..\/graphics\/objects\/potion.png",
+         "imageheight":64,
+         "imagewidth":448,
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -142,7 +168,9 @@
              "x":0,
              "y":0
             },
-         "type":"potion"
+         "width":64,
+         "x":0,
+         "y":0
         }],
  "tilewidth":64,
  "type":"tileset",

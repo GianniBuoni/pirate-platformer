@@ -19,7 +19,7 @@ func NewPlayer(obj Object, a *assets.Assets) (Sprite, error) {
 	}
 	p := Player{
 		ID:        id,
-		Pos:       newPos(obj),
+		Pos:       newPos(obj, a),
 		Animation: newAnimation(),
 	}
 	return &p, nil
@@ -45,5 +45,6 @@ func (p *Player) Draw() error {
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
+	drawRect(p.hitbox, rl.Green)
 	return nil
 }

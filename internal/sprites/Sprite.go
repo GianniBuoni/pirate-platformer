@@ -18,7 +18,7 @@ func NewSprite(obj Object, a *assets.Assets) (Sprite, error) {
 	}
 	s := ObjectSprite{
 		ID:  id,
-		Pos: newPos(obj),
+		Pos: newPos(obj, a),
 	}
 	return &s, nil
 }
@@ -36,6 +36,6 @@ func (s *ObjectSprite) Draw() error {
 		rl.Rectangle(*s.Rect()),
 		rl.Vector2{}, 0, rl.White,
 	)
-	//s.pos.drawRects(rl.Blue)
+	drawRect(s.hitbox, rl.Blue)
 	return nil
 }

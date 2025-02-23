@@ -18,6 +18,7 @@ type Assets struct {
 	Player      map[string]rl.Texture2D
 	Tilesets    map[string]rl.Texture2D
 	TilesetData map[string]Tileset
+	Hitboxes    map[string]Rect
 }
 
 func NewAssets() *Assets {
@@ -26,6 +27,7 @@ func NewAssets() *Assets {
 		Player:      map[string]rl.Texture2D{},
 		Tilesets:    map[string]rl.Texture2D{},
 		TilesetData: map[string]Tileset{},
+		Hitboxes:    map[string]Rect{},
 	}
 }
 
