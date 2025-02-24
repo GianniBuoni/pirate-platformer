@@ -36,10 +36,15 @@ func (p *Player) Update() {
 }
 
 func (p *Player) Draw() error {
-	p.image = "idle"
+	p.getState()
 	src, err := p.assets.GetImage(p.assetLib, p.image)
 	if err != nil {
 		return err
+	}
+	if p.direction.X < 0 {
+		p.flipH = -1
+	} else {
+		p.flipH = 1
 	}
 	p.animate(p.rect, src)
 
