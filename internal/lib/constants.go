@@ -16,9 +16,8 @@ const (
 	FrameSpeed float32 = 6
 
 	// PLAYER
-	Gravity     float32 = 1200
-	PlayerSpeed float32 = 300
-	JumpDist    float32 = 700
+	Gravity  float32 = 1200
+	JumpDist float32 = 700
 )
 
 var (

@@ -4,6 +4,8 @@
  <object name="fall" gid="8" width="192" height="192">
   <properties>
    <property name="loader" value="player"/>
+   <property name="speedX" type="float" value="300"/>
+   <property name="speedY" type="float" value="1"/>
   </properties>
  </object>
 </template>

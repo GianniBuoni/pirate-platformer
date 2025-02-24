@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"fmt"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -12,6 +10,7 @@ type Player struct {
 	Pos
 	Movement
 	Animation
+	Groups map[string][]Sprite
 }
 
 func NewPlayer(obj Object, a *Assets) (Sprite, error) {
@@ -25,17 +24,17 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 		Movement:  newMovement(obj),
 		Animation: newAnimation(),
 	}
-	p.speed = PlayerSpeed
-
+	p.SetGravity(true, 1)
 	return &p, nil
 }
 
 func (p *Player) Update() {
-	fmt.Println("\"updating player\"")
 	dt := rl.GetFrameTime()
-	p.SetGravity(true, 1)
 	p.MoveX(p.hitbox, dt)
+	p.collison("x")
 	p.MoveY(p.hitbox, dt)
+	p.collison("y")
+	p.Pos.Update()
 }
 
 func (p *Player) Draw() error {

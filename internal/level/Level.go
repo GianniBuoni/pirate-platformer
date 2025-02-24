@@ -51,13 +51,12 @@ func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 }
 
 func (l *LevelData) Update() {
-	player := l.groups["player"][0]
-	player.Update()
 	/*
 		for _, mSprite := range l.groups["moving"] {
 			mSprite.Update()
 		}
 	*/
+	l.player.Update()
 }
 
 func (l *LevelData) Draw() error {

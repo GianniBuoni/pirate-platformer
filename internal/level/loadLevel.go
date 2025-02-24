@@ -1,7 +1,10 @@
 package level
 
 import (
+	"errors"
 	"fmt"
+
+	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 func (l *LevelData) Load(loader *Loaders) error {
@@ -46,5 +49,13 @@ func (l *LevelData) Load(loader *Loaders) error {
 			}
 		}
 	}
+	// add additional data to player
+	playerSprite, ok := l.groups["player"]
+	if !ok {
+		return errors.New("player not defined in tiled")
+	}
+	player, ok := playerSprite[0].(*sprites.Player)
+	player.Groups = l.groups
+	l.player = player
 	return nil
 }

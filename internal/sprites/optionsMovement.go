@@ -8,7 +8,7 @@ import (
 type Movement struct {
 	pathRect  *Rect
 	direction rl.Vector2
-	speed     float32
+	speed     rl.Vector2
 	gravity   float32
 }
 
@@ -18,17 +18,20 @@ func newMovement(obj Object) Movement {
 			X: obj.Properties.DirX,
 			Y: obj.Properties.DirY,
 		},
-		speed: obj.Properties.Speed,
+		speed: rl.NewVector2(
+			obj.Properties.SpeedX,
+			obj.Properties.SpeedY,
+		),
 	}
 }
 
 func (m *Movement) MoveX(r *Rect, dt float32) {
-	r.X += m.direction.X * m.speed * dt
+	r.X += m.direction.X * m.speed.X * dt
 }
 
 func (m *Movement) MoveY(r *Rect, dt float32) bool {
 	m.direction.Y += m.gravity * dt
-	r.Y += m.direction.Y * m.speed * dt
+	r.Y += m.direction.Y * m.speed.Y * dt
 	if m.direction.Y != 0 {
 		return true
 	}
