@@ -510,7 +510,7 @@
                  "name":"crate",
                  "properties":
                     {
-                     "loader":"object"
+                     "loader":"collision"
                     },
                  "propertytypes":
                     {
@@ -530,7 +530,7 @@
                  "name":"crate",
                  "properties":
                     {
-                     "loader":"object"
+                     "loader":"collision"
                     },
                  "propertytypes":
                     {

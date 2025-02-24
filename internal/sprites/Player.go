@@ -30,10 +30,8 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 
 func (p *Player) Update() {
 	dt := rl.GetFrameTime()
-	p.MoveX(p.hitbox, dt)
-	p.collison("x")
-	p.MoveY(p.hitbox, dt)
-	p.collison("y")
+	p.input()
+	p.move(dt)
 	p.Pos.Update()
 }
 
