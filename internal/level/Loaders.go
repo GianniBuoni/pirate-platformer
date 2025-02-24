@@ -1,7 +1,6 @@
 package level
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
@@ -12,7 +11,7 @@ type Loaders struct {
 
 type Loader[T any] struct {
 	key     string
-	builder func(T, *assets.Assets) (Sprite, error)
+	builder func(T, *Assets) (Sprite, error)
 	groups  []string
 }
 

@@ -1,7 +1,6 @@
 package sprites
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -11,8 +10,8 @@ type ObjectSprite struct {
 	Pos
 }
 
-func NewSprite(obj Object, a *assets.Assets) (Sprite, error) {
-	id, err := newId(obj.Image, assets.ImageLib, a)
+func NewSprite(obj Object, a *Assets) (Sprite, error) {
+	id, err := newId(obj.Image, ImageLib, a)
 	if err != nil {
 		return nil, err
 	}

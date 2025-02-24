@@ -1,7 +1,6 @@
-package assets
+package lib
 
 import (
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 

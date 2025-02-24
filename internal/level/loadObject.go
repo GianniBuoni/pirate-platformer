@@ -21,7 +21,7 @@ var objectLoader = Loader[Object]{
 var playerLoader = Loader[Object]{
 	key:     "player",
 	builder: sprites.NewPlayer,
-	groups:  []string{"all"},
+	groups:  []string{"player", "all"},
 }
 
 var platformLoader = Loader[Object]{

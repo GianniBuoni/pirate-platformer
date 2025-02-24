@@ -1,7 +1,6 @@
 package sprites
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
@@ -15,7 +14,7 @@ type Pos struct {
 	flipV   float32
 }
 
-func newPos(obj Object, a *assets.Assets) Pos {
+func newPos(obj Object, a *Assets) Pos {
 	p := Pos{
 		rect:    NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
 		oldRect: NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
@@ -57,12 +56,12 @@ func (p *Pos) OldRect() *Rect {
 // Sprite info that identifies asset metadata
 type ID struct {
 	image    string
-	assets   *assets.Assets
-	assetLib assets.AssetLibrary
+	assets   *Assets
+	assetLib AssetLibrary
 }
 
 func newId(
-	image string, aLib assets.AssetLibrary, a *assets.Assets,
+	image string, aLib AssetLibrary, a *Assets,
 ) (ID, error) {
 	if _, err := a.GetImage(aLib, image); err != nil {
 		return ID{}, err

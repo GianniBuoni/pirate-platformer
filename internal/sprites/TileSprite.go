@@ -1,7 +1,6 @@
 package sprites
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -12,10 +11,10 @@ type TileSprite struct {
 	imgPos rl.Vector2
 }
 
-func NewTileSprite(tile Tile, a *assets.Assets) (
+func NewTileSprite(tile Tile, a *Assets) (
 	Sprite, error,
 ) {
-	id, err := newId(tile.Image, assets.TilesetLib, a)
+	id, err := newId(tile.Image, TilesetLib, a)
 	if err != nil {
 		return nil, err
 	}

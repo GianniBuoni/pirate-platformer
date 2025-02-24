@@ -1,4 +1,4 @@
-package assets
+package lib
 
 import (
 	"encoding/json"
@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 

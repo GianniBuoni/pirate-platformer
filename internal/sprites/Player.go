@@ -1,7 +1,8 @@
 package sprites
 
 import (
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
+	"fmt"
+
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -9,23 +10,34 @@ import (
 type Player struct {
 	ID
 	Pos
+	Movement
 	Animation
 }
 
-func NewPlayer(obj Object, a *assets.Assets) (Sprite, error) {
-	id, err := newId(obj.Image, assets.PlayerLib, a)
+func NewPlayer(obj Object, a *Assets) (Sprite, error) {
+	id, err := newId(obj.Image, PlayerLib, a)
 	if err != nil {
 		return nil, err
 	}
 	p := Player{
 		ID:        id,
 		Pos:       newPos(obj, a),
+		Movement:  newMovement(obj),
 		Animation: newAnimation(),
 	}
+	p.speed = PlayerSpeed
+
 	return &p, nil
 }
 
-func (p *Player) Update() {}
+func (p *Player) Update() {
+	fmt.Println("\"updating player\"")
+	dt := rl.GetFrameTime()
+	p.SetGravity(true, 1)
+	p.MoveX(p.hitbox, dt)
+	p.MoveY(p.hitbox, dt)
+}
+
 func (p *Player) Draw() error {
 	p.image = "idle"
 	src, err := p.assets.GetImage(p.assetLib, p.image)

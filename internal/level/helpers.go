@@ -37,7 +37,10 @@ func parseTileGID(gid int, l *LevelData) (
 	if name == "" {
 		return 0, 0, "", fmt.Errorf("gid: %d\n not found in tileset refs.", gid)
 	}
-	tileset := l.levelAssets.TilesetData[name]
+	tileset, err := l.levelAssets.GetTileset(name)
+	if err != nil {
+		return 0, 0, "", err
+	}
 
 	idx := gid - firstGID
 	if idx > tileset.Count {

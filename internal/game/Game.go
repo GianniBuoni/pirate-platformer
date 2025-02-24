@@ -4,13 +4,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
 type GameData struct {
-	levelAssets  *assets.Assets
+	levelAssets  *Assets
 	levelCurrent *level.LevelData
 	levelMaps    map[int]string
 	loaders      *level.Loaders
@@ -44,12 +43,12 @@ func NewStats() *Stats {
 
 func GetMaps() map[int]string {
 	levelMaps := map[int]string{}
-	mapPaths := lib.GetFilePaths("data", "levels")
+	mapPaths := GetFilePaths("data", "levels")
 	for _, path := range mapPaths {
 		if !strings.Contains(path, "json") {
 			continue
 		}
-		strKey := lib.GetAssetKey(path)
+		strKey := GetAssetKey(path)
 		key, err := strconv.ParseInt(strKey, 10, 0)
 		if err != nil {
 			continue

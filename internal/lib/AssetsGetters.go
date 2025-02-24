@@ -1,4 +1,4 @@
-package assets
+package lib
 
 import (
 	"fmt"
@@ -27,4 +27,21 @@ func (a *Assets) GetImage(
 		)
 	}
 	return image, nil
+}
+
+func (a *Assets) GetTileset(key string) (Tileset, error) {
+	tileset, ok := a.TilesetData[key]
+	if !ok {
+		return Tileset{},
+			fmt.Errorf("tileset key: %s not found, make sure it's loaded\n", key)
+	}
+	return tileset, nil
+}
+
+func (a *Assets) GetHitbox(key string) (Rect, bool) {
+	hitbox, ok := a.Hitboxes[key]
+	if !ok {
+		return Rect{}, false
+	}
+	return hitbox, true
 }

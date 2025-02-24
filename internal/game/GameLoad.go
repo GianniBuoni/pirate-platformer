@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
-	"github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -25,18 +24,18 @@ func (g *GameData) Load() {
 		fmt.Printf("❌: Game.Load(), could not load level %s\n", err.Error())
 		os.Exit(2)
 	}
-	g.window.loadCam(rl.NewVector2(lib.WindowW/2, lib.WindowH/2))
+	g.window.loadCam(rl.NewVector2(WindowW/2, WindowH/2))
 }
 
 func (g *GameData) loadAssets() {
 	// init assets
-	g.levelAssets = assets.NewAssets()
+	g.levelAssets = NewAssets()
 
 	// load all assets
-	assetMap := map[string]assets.AssetLibrary{
-		"tilesets": assets.TilesetLib,
-		"objects":  assets.ImageLib,
-		"player":   assets.PlayerLib,
+	assetMap := map[string]AssetLibrary{
+		"tilesets": TilesetLib,
+		"objects":  ImageLib,
+		"player":   PlayerLib,
 	}
 
 	for k, v := range assetMap {

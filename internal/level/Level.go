@@ -5,14 +5,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/GianniBuoni/pirate-platformer/internal/assets"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type LevelData struct {
 	Layers      []Layer `json:"layers"`
-	levelAssets *assets.Assets
+	levelAssets *Assets
 	player      Sprite
 	groups      map[string][]Sprite
 	tileRefs    map[GIDRange]string
@@ -20,7 +19,7 @@ type LevelData struct {
 	Height      int `json:"height"`
 }
 
-func NewLevel(assets *assets.Assets, mapPath string) (*LevelData, error) {
+func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 	data, err := os.ReadFile(mapPath)
 	if err != nil {
 		return nil, err
@@ -52,11 +51,12 @@ func NewLevel(assets *assets.Assets, mapPath string) (*LevelData, error) {
 }
 
 func (l *LevelData) Update() {
+	player := l.groups["player"][0]
+	player.Update()
 	/*
 		for _, mSprite := range l.groups["moving"] {
 			mSprite.Update()
 		}
-		l.player.Update()
 	*/
 }
 
