@@ -73,5 +73,8 @@ func (l *LevelData) Draw() error {
 }
 
 func (l *LevelData) PlayerPos() rl.Vector2 {
+	if l.player == nil {
+		return rl.NewVector2(WindowW/2, WindowH/2)
+	}
 	return l.player.HitBox().Center()
 }

@@ -6,7 +6,6 @@ import (
 
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func (g *GameData) Load() {
@@ -24,7 +23,7 @@ func (g *GameData) Load() {
 		fmt.Printf("❌: Game.Load(), could not load level %s\n", err.Error())
 		os.Exit(2)
 	}
-	g.window.loadCam(rl.NewVector2(WindowW/2, WindowH/2))
+	g.window.loadCam(g.levelCurrent.PlayerPos())
 }
 
 func (g *GameData) loadAssets() {
