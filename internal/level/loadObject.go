@@ -7,6 +7,8 @@ import (
 
 var objectLoaders = []Loader[Object]{
 	animatedLoader,
+	itemLoader,
+	movingLoader,
 	objectLoader,
 	objectCollide,
 	platformLoader,
@@ -25,6 +27,12 @@ var objectCollide = Loader[Object]{
 	groups:  []string{"all", "collision"},
 }
 
+var movingLoader = Loader[Object]{
+	key:     "moving",
+	builder: sprites.NewAnimatedSprite,
+	groups:  []string{"all", "moving"},
+}
+
 var playerLoader = Loader[Object]{
 	key:     "player",
 	builder: sprites.NewPlayer,
@@ -41,4 +49,10 @@ var animatedLoader = Loader[Object]{
 	key:     "animated",
 	builder: sprites.NewAnimatedSprite,
 	groups:  []string{"all"},
+}
+
+var itemLoader = Loader[Object]{
+	key:     "item",
+	builder: sprites.NewAnimatedSprite,
+	groups:  []string{"all", "item"},
 }

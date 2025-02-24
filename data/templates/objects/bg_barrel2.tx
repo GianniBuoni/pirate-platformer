@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../tilesets/objects.json"/>
- <object name="green_bottle1" gid="20" width="14" height="34">
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
+ <object name="bg_barrel2" gid="25" width="42" height="44">
   <properties>
    <property name="loader" value="object"/>
   </properties>

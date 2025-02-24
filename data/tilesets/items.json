@@ -7,6 +7,7 @@
     },
  "margin":0,
  "name":"items",
+ "objectalignment":"topleft",
  "spacing":0,
  "tilecount":5,
  "tiledversion":"1.11.2",

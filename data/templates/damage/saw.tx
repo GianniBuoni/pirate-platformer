@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
+ <object name="saw" gid="35" width="76" height="76">
+  <properties>
+   <property name="dirX" type="float" value="1"/>
+   <property name="dirY" type="float" value="0"/>
+   <property name="loader" value="moving"/>
+   <property name="speedX" type="float" value="60"/>
+   <property name="speedY" type="float" value="0"/>
+  </properties>
+ </object>
+</template>

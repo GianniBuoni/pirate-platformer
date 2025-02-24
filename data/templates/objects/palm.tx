@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../tilesets/objects.json"/>
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
  <object name="palm" gid="30" width="96" height="64">
   <properties>
    <property name="loader" value="platform"/>

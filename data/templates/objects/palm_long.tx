@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <tileset firstgid="1" source="../tilesets/objects.json"/>
- <object name="palm_short" gid="33" width="64" height="64">
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
+ <object name="palm_long" gid="32" width="64" height="128">
   <properties>
    <property name="loader" value="object"/>
   </properties>
