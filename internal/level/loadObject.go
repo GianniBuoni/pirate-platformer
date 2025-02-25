@@ -12,6 +12,7 @@ var objectLoaders = []Loader[Object]{
 	objectLoader,
 	objectCollide,
 	pathLoader,
+	radialLoader,
 	platformLoader,
 	playerLoader,
 }

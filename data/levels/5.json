@@ -1026,11 +1026,19 @@
                  "name":"spike",
                  "properties":
                     {
-                     "loader":"damage"
+                     "dirX":100,
+                     "dirY":1,
+                     "loader":"radial",
+                     "speedX":100,
+                     "speedY":0
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "dirX":"float",
+                     "dirY":"float",
+                     "loader":"string",
+                     "speedX":"float",
+                     "speedY":"float"
                     },
                  "rotation":0,
                  "type":"",
