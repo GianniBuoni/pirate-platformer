@@ -11,6 +11,7 @@ var objectLoaders = []Loader[Object]{
 	movingLoader,
 	objectLoader,
 	objectCollide,
+	pathLoader,
 	platformLoader,
 	playerLoader,
 }
@@ -29,7 +30,7 @@ var objectCollide = Loader[Object]{
 
 var movingLoader = Loader[Object]{
 	key:     "moving",
-	builder: sprites.NewAnimatedSprite,
+	builder: sprites.NewMovingSprite,
 	groups:  []string{"all", "moving"},
 }
 
@@ -41,7 +42,7 @@ var playerLoader = Loader[Object]{
 
 var platformLoader = Loader[Object]{
 	key:     "platform",
-	builder: sprites.NewAnimatedSprite,
+	builder: sprites.NewMovingSprite,
 	groups:  []string{"all", "moving", "platform"},
 }
 
@@ -55,4 +56,10 @@ var itemLoader = Loader[Object]{
 	key:     "item",
 	builder: sprites.NewAnimatedSprite,
 	groups:  []string{"all", "item"},
+}
+
+var pathLoader = Loader[Object]{
+	key:     "path",
+	builder: sprites.NewPath,
+	groups:  []string{"path"},
 }

@@ -15,6 +15,7 @@ type LevelData struct {
 	player      Sprite
 	groups      map[string][]Sprite
 	tileRefs    map[GIDRange]string
+	pathRects   map[int]*Rect
 	Width       int `json:"width"`
 	Height      int `json:"height"`
 }
@@ -28,7 +29,9 @@ func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 	l := LevelData{
 		levelAssets: assets,
 		tileRefs:    map[GIDRange]string{},
-		groups:      map[string][]Sprite{}}
+		groups:      map[string][]Sprite{},
+		pathRects:   map[int]*Rect{},
+	}
 	t := TileRefs{}
 
 	json.Unmarshal(data, &l)
@@ -51,11 +54,9 @@ func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 }
 
 func (l *LevelData) Update() {
-	/*
-		for _, mSprite := range l.groups["moving"] {
-			mSprite.Update()
-		}
-	*/
+	for _, mSprite := range l.groups["moving"] {
+		mSprite.Update()
+	}
 	l.player.Update()
 }
 

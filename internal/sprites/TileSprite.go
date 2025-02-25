@@ -14,13 +14,14 @@ type TileSprite struct {
 func NewTileSprite(tile Tile, a *Assets) (
 	Sprite, error,
 ) {
-	id, err := newId(tile.Image, TilesetLib, a)
-	if err != nil {
-		return nil, err
+	obj := Object{
+		Image: tile.Image,
+		X:     tile.X, Y: tile.Y, Width: TileSize, Height: TileSize,
 	}
 
-	obj := Object{
-		X: tile.X, Y: tile.Y, Width: TileSize, Height: TileSize,
+	id, err := newId(obj, TilesetLib, a)
+	if err != nil {
+		return nil, err
 	}
 
 	ts := TileSprite{

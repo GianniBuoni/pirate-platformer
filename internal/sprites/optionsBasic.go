@@ -66,18 +66,20 @@ func (p *Pos) Update() {
 // Sprite info that identifies asset metadata
 type ID struct {
 	image    string
+	id       int
 	assets   *Assets
 	assetLib AssetLibrary
 }
 
 func newId(
-	image string, aLib AssetLibrary, a *Assets,
+	obj Object, aLib AssetLibrary, a *Assets,
 ) (ID, error) {
-	if _, err := a.GetImage(aLib, image); err != nil {
+	if _, err := a.GetImage(aLib, obj.Image); err != nil {
 		return ID{}, err
 	}
 	return ID{
-		image:    image,
+		image:    obj.Image,
+		id:       obj.Id,
 		assets:   a,
 		assetLib: aLib,
 	}, nil

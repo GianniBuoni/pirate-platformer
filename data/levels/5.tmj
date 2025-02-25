@@ -526,6 +526,27 @@
                 }, 
                 {
                  "id":125,
+                 "properties":[
+                        {
+                         "name":"dirX",
+                         "type":"float",
+                         "value":0
+                        }, 
+                        {
+                         "name":"dirY",
+                         "type":"float",
+                         "value":-1
+                        }, 
+                        {
+                         "name":"speedX",
+                         "type":"float",
+                         "value":0
+                        }, 
+                        {
+                         "name":"speedY",
+                         "type":"float",
+                         "value":60
+                        }],
                  "template":"..\/templates\/damage\/saw.tx",
                  "x":192,
                  "y":832

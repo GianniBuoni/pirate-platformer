@@ -974,11 +974,11 @@
                  "name":"saw",
                  "properties":
                     {
-                     "dirX":1,
-                     "dirY":0,
+                     "dirX":0,
+                     "dirY":-1,
                      "loader":"moving",
-                     "speedX":60,
-                     "speedY":0
+                     "speedX":0,
+                     "speedY":60
                     },
                  "propertytypes":
                     {

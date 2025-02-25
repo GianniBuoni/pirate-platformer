@@ -49,6 +49,25 @@ func (l *LevelData) Load(loader *Loaders) error {
 			}
 		}
 	}
+	// set path rects for moving rects
+	for _, sprite := range l.groups["path"] {
+		path, ok := sprite.(*sprites.ObjectSprite)
+		if ok {
+			path.SetPaths(l.pathRects)
+		}
+	}
+	for _, sprite := range l.groups["moving"] {
+		moving, ok := sprite.(*sprites.MovingSprite)
+		if ok {
+			moving.GetPath(l.pathRects)
+		}
+	}
+	for _, sprite := range l.groups["platform"] {
+		moving, ok := sprite.(*sprites.MovingSprite)
+		if ok {
+			moving.GetPath(l.pathRects)
+		}
+	}
 	// add additional data to player
 	playerSprite, ok := l.groups["player"]
 	if !ok {

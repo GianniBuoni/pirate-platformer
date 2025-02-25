@@ -21,7 +21,7 @@ type Player struct {
 }
 
 func NewPlayer(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj.Image, PlayerLib, a)
+	id, err := newId(obj, PlayerLib, a)
 	if err != nil {
 		return nil, err
 	}

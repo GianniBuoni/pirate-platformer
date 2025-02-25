@@ -11,7 +11,7 @@ type ObjectSprite struct {
 }
 
 func NewSprite(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj.Image, ImageLib, a)
+	id, err := newId(obj, ImageLib, a)
 	if err != nil {
 		return nil, err
 	}
