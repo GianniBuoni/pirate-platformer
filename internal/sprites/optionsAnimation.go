@@ -27,9 +27,13 @@ func (a *Animation) animate(rect *Rect, src rl.Texture2D) {
 // to prevent animation from looping.
 // Passed in function is also responsible for
 // toggling the current animation state to an new one.
-func (a *Animation) animateOnce(f func()) {
-	if int(a.frameIndex) > a.frameCount {
-		a.frameIndex = 0
-		f()
+func (a *Animation) animateOnce(
+	image string, toggleFunc func(string), states ...string,
+) {
+	for _, state := range states {
+		if image == state && int(a.frameIndex) >= a.frameCount-1 {
+			a.frameIndex = 0
+			toggleFunc(state)
+		}
 	}
 }

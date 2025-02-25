@@ -20,19 +20,36 @@ const (
 )
 
 var defaultStates = map[PlayerState]bool{
-	run:         true,
+	canAttack:   true,
 	canPlatform: true,
+	run:         true,
 }
 
 func (p *Player) getState(side CollisionSide) PlayerState {
+	if p.actions[hit] {
+		p.actions[attack] = false
+		p.actions[jump] = false
+		return hit
+	}
+
+	if p.actions[attack] {
+		p.actions[jump] = false
+	}
+
+	if p.actions[jump] {
+		return jump
+	}
+
 	switch side {
 	case floor:
 		p.actions[wall] = false
-		if p.direction.X == 0 {
-			return idle
-		} else {
+		if p.actions[attack] {
+			return attack
+		}
+		if p.direction.X != 0 {
 			return run
 		}
+		return idle
 	case left, right:
 		if p.actions[wall] {
 			p.SetGravity(false, .8)
@@ -42,6 +59,9 @@ func (p *Player) getState(side CollisionSide) PlayerState {
 	case air:
 		p.SetGravity(true, 1)
 		p.platform = nil
+		if p.actions[attack] {
+			return airAttack
+		}
 		return fall
 	default:
 		return idle
@@ -57,4 +77,11 @@ func (p *Player) timeout(state PlayerState, ms time.Duration) {
 		<-timer.C
 		p.actions[state] = true
 	}()
+}
+
+func (p *Player) toggleState(state string) {
+	if state == string(airAttack) {
+		state = string(attack)
+	}
+	p.actions[PlayerState(state)] = false
 }

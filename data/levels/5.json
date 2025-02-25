@@ -827,7 +827,7 @@
                  "properties":
                     {
                      "flipV":1,
-                     "loader":"animated"
+                     "loader":"damage"
                     },
                  "propertytypes":
                     {
@@ -849,7 +849,7 @@
                  "properties":
                     {
                      "flipV":-1,
-                     "loader":"animated"
+                     "loader":"damage"
                     },
                  "propertytypes":
                     {
@@ -948,7 +948,7 @@
                     {
                      "dirX":1,
                      "dirY":0,
-                     "loader":"moving",
+                     "loader":"damage",
                      "speedX":60,
                      "speedY":0
                     },
@@ -976,7 +976,7 @@
                     {
                      "dirX":0,
                      "dirY":-1,
-                     "loader":"moving",
+                     "loader":"damage",
                      "speedX":0,
                      "speedY":60
                     },
@@ -1026,7 +1026,7 @@
                  "name":"spike",
                  "properties":
                     {
-                     "loader":"moving"
+                     "loader":"damage"
                     },
                  "propertytypes":
                     {
@@ -1169,7 +1169,7 @@
                  "properties":
                     {
                      "dirX":1,
-                     "loader":"moving",
+                     "loader":"damage",
                      "speedX":150
                     },
                  "propertytypes":

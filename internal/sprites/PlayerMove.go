@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"time"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
@@ -13,6 +11,7 @@ func (p *Player) move(dt float32) {
 	p.collison("y")
 	p.patformCollision()
 	p.platformMove(dt)
+	p.damageCollision()
 }
 
 func (p *Player) platformMove(dt float32) {
@@ -28,16 +27,9 @@ func (p *Player) platformMove(dt float32) {
 func (p *Player) jump() {
 	p.platform = nil
 	p.direction.Y = -1
-	refX := p.hitbox.X
-	go func() {
-		p.mu.Lock()
-		defer p.mu.Unlock()
-		timer := time.NewTimer(200 * time.Millisecond)
-		<-timer.C
-		if p.hitbox.X != refX {
-			p.actions[wall] = true
-		}
-	}()
+	p.frameIndex = 0
+	p.actions[jump] = true
+	p.timeout(wall, 200)
 }
 
 func (p *Player) wallJump(dir float32) {
@@ -45,6 +37,14 @@ func (p *Player) wallJump(dir float32) {
 		p.direction.X = dir
 		p.direction.Y -= 1
 		p.timeout(run, 100)
+	}
+}
+
+func (p *Player) attack() {
+	if p.actions[canAttack] {
+		p.frameIndex = 0
+		p.actions[attack] = true
+		p.timeout(canAttack, 600)
 	}
 }
 

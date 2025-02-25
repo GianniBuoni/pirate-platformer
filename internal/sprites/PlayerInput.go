@@ -37,4 +37,8 @@ func (p *Player) input(side CollisionSide) {
 			p.phasePlatform()
 		}
 	}
+
+	if rl.IsKeyPressed(rl.KeyF) {
+		p.attack()
+	}
 }

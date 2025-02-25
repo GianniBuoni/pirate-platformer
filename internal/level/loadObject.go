@@ -7,8 +7,8 @@ import (
 
 var objectLoaders = []Loader[Object]{
 	animatedLoader,
+	damageLoader,
 	itemLoader,
-	movingLoader,
 	objectLoader,
 	objectCollide,
 	pathLoader,
@@ -26,12 +26,6 @@ var objectCollide = Loader[Object]{
 	key:     "collision",
 	builder: sprites.NewSprite,
 	groups:  []string{"all", "collision"},
-}
-
-var movingLoader = Loader[Object]{
-	key:     "moving",
-	builder: sprites.NewMovingSprite,
-	groups:  []string{"all", "moving"},
 }
 
 var playerLoader = Loader[Object]{
@@ -62,4 +56,10 @@ var pathLoader = Loader[Object]{
 	key:     "path",
 	builder: sprites.NewPath,
 	groups:  []string{"path"},
+}
+
+var damageLoader = Loader[Object]{
+	key:     "damage",
+	builder: sprites.NewMovingSprite,
+	groups:  []string{"all", "moving", "damage"},
 }

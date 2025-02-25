@@ -4,7 +4,7 @@
  <object name="floor_spikes" gid="11" width="64" height="32">
   <properties>
    <property name="flipV" type="int" value="1"/>
-   <property name="loader" value="animated"/>
+   <property name="loader" value="damage"/>
   </properties>
  </object>
 </template>

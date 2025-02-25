@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="../../tilesets/objects.json"/>
  <object name="spike" gid="12" width="64" height="64">
   <properties>
-   <property name="loader" value="moving"/>
+   <property name="loader" value="damage"/>
   </properties>
  </object>
 </template>

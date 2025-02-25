@@ -4,7 +4,7 @@
  <object name="tooth" gid="10" width="64" height="64">
   <properties>
    <property name="dirX" type="float" value="1"/>
-   <property name="loader" value="moving"/>
+   <property name="loader" value="damage"/>
    <property name="speedX" type="float" value="150"/>
   </properties>
  </object>

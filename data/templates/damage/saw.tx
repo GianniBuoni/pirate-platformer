@@ -5,7 +5,7 @@
   <properties>
    <property name="dirX" type="float" value="1"/>
    <property name="dirY" type="float" value="0"/>
-   <property name="loader" value="moving"/>
+   <property name="loader" value="damage"/>
    <property name="speedX" type="float" value="60"/>
    <property name="speedY" type="float" value="0"/>
   </properties>

@@ -60,6 +60,9 @@ func (p *Player) Draw() error {
 		p.flipH = 1
 	}
 	p.animate(p.rect, src)
+	p.animateOnce(
+		p.image, p.toggleState, "air_attack", "attack", "hit", "jump",
+	)
 
 	srcRect := rl.NewRectangle(
 		p.rect.Width*float32(int(p.frameIndex)%p.frameCount),
