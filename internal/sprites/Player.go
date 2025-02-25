@@ -1,16 +1,23 @@
 package sprites
 
 import (
+	"sync"
+
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type Player struct {
-	ID
 	Pos
+	ID
 	Movement
 	Animation
-	Groups map[string][]Sprite
+	platform Sprite
+	mu       sync.Mutex
+	Groups   map[string][]Sprite
+	actions  map[PlayerState]bool
+	cRects   map[CollisionSide]*Rect
+	cSide    CollisionSide
 }
 
 func NewPlayer(obj Object, a *Assets) (Sprite, error) {
@@ -23,27 +30,32 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 		Pos:       newPos(obj, a),
 		Movement:  newMovement(obj),
 		Animation: newAnimation(),
+		actions:   defaultStates,
+		cRects:    map[CollisionSide]*Rect{},
 	}
-	p.SetGravity(true, 1)
+	p.getCRects()
 	return &p, nil
 }
 
 func (p *Player) Update() {
 	dt := rl.GetFrameTime()
-	p.input()
+	p.input(p.cSide)
 	p.move(dt)
 	p.Pos.Update()
+	p.updateCRects()
+	p.cSide = p.checkCollisionSide()
+	p.image = string(p.getState(p.cSide))
 }
 
 func (p *Player) Draw() error {
-	p.getState()
 	src, err := p.assets.GetImage(p.assetLib, p.image)
 	if err != nil {
 		return err
 	}
 	if p.direction.X < 0 {
 		p.flipH = -1
-	} else {
+	}
+	if p.direction.X > 0 {
 		p.flipH = 1
 	}
 	p.animate(p.rect, src)
@@ -59,6 +71,9 @@ func (p *Player) Draw() error {
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(p.hitbox, rl.Green)
+	for _, rect := range p.cRects {
+		drawRect(rect, rl.Blue)
+	}
+	//drawRect(p.hitbox, rl.Green)
 	return nil
 }

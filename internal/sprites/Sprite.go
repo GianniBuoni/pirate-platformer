@@ -35,6 +35,6 @@ func (s *ObjectSprite) Draw() error {
 		rl.Rectangle(*s.Rect()),
 		rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(s.hitbox, rl.Blue)
+	//drawRect(s.hitbox, rl.Blue)
 	return nil
 }

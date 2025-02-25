@@ -2,27 +2,32 @@ package sprites
 
 import rl "github.com/gen2brain/raylib-go/raylib"
 
-func (p *Player) input() {
+func (p *Player) input(side CollisionSide) {
 	var x float32
-	var dir float32
-	dir = 1
 
 	leftInput := []int32{rl.KeyLeft, rl.KeyH, rl.KeyA}
 	rightInput := []int32{rl.KeyRight, rl.KeyL, rl.KeyD}
 
 	for _, key := range leftInput {
 		if rl.IsKeyDown(key) {
-			x -= dir
+			x -= 1
 		}
 	}
 	for _, key := range rightInput {
 		if rl.IsKeyDown(key) {
-			x += dir
+			x += 1
 		}
 	}
-	p.direction.X = x
+	if p.actions[run] {
+		p.direction.X = x
+	}
 
 	if rl.IsKeyPressed(rl.KeySpace) {
-		p.jump()
+		switch side {
+		case floor:
+			p.jump()
+		case left, right:
+			p.wallJump(x * -1)
+		}
 	}
 }

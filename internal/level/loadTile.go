@@ -18,7 +18,7 @@ var bgTileLoader = Loader[Tile]{
 var cTileLoader = Loader[Tile]{
 	key:     "collision",
 	builder: sprites.NewTileSprite,
-	groups:  []string{"all", "collision"},
+	groups:  []string{"all", "collision", "wall"},
 }
 
 var pTileLoader = Loader[Tile]{

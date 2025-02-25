@@ -42,6 +42,6 @@ func (as *AnimatedSprite) Draw() error {
 	rl.DrawTexturePro(
 		src, srcRect, rl.Rectangle(*as.rect), rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(as.hitbox, rl.Blue)
+	//drawRect(as.hitbox, rl.Blue)
 	return nil
 }
