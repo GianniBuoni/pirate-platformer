@@ -1168,11 +1168,15 @@
                  "name":"tooth",
                  "properties":
                     {
-                     "loader":"animated"
+                     "dirX":1,
+                     "loader":"moving",
+                     "speedX":150
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "dirX":"float",
+                     "loader":"string",
+                     "speedX":"float"
                     },
                  "rotation":0,
                  "type":"",

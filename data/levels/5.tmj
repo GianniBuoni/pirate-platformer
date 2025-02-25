@@ -626,6 +626,7 @@
                 {
                  "id":134,
                  "template":"..\/templates\/damage\/shell.tx",
+                 "visible":true,
                  "x":128,
                  "y":336
                 }, 

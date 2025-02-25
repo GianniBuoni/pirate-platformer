@@ -3,7 +3,9 @@
  <tileset firstgid="1" source="../../tilesets/objects.json"/>
  <object name="tooth" gid="10" width="64" height="64">
   <properties>
-   <property name="loader" value="animated"/>
+   <property name="dirX" type="float" value="1"/>
+   <property name="loader" value="moving"/>
+   <property name="speedX" type="float" value="150"/>
   </properties>
  </object>
 </template>
