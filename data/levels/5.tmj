@@ -514,6 +514,7 @@
                 {
                  "id":123,
                  "template":"..\/templates\/objects\/helicopter.tx",
+                 "visible":true,
                  "x":384,
                  "y":128
                 }, 
@@ -538,6 +539,7 @@
                 {
                  "id":132,
                  "template":"..\/templates\/damage\/spike.tx",
+                 "visible":true,
                  "x":384,
                  "y":256
                 }],
@@ -596,6 +598,7 @@
                 {
                  "id":38,
                  "template":"..\/templates\/damage\/tooth.tx",
+                 "visible":true,
                  "x":1408,
                  "y":192
                 }, 

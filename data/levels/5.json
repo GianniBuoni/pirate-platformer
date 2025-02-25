@@ -892,7 +892,7 @@
                     {
                      "dirX":0,
                      "dirY":1,
-                     "loader":"moving",
+                     "loader":"platform",
                      "speedX":0,
                      "speedY":100
                     },
@@ -920,7 +920,7 @@
                     {
                      "dirX":1,
                      "dirY":0,
-                     "loader":"moving",
+                     "loader":"platform",
                      "speedX":100,
                      "speedY":0
                     },
@@ -1003,7 +1003,7 @@
                  "properties":
                     {
                      "dirX":1,
-                     "loader":"moving",
+                     "loader":"platform",
                      "speedX":120
                     },
                  "propertytypes":
@@ -1168,7 +1168,7 @@
                  "name":"tooth",
                  "properties":
                     {
-                     "loader":"object"
+                     "loader":"animated"
                     },
                  "propertytypes":
                     {
@@ -1245,7 +1245,7 @@
                     {
                      "loader":"player",
                      "speedX":300,
-                     "speedY":1
+                     "speedY":600
                     },
                  "propertytypes":
                     {

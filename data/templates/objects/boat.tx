@@ -4,7 +4,7 @@
  <object name="boat" gid="6" width="156" height="44">
   <properties>
    <property name="dirX" type="float" value="1"/>
-   <property name="loader" value="moving"/>
+   <property name="loader" value="platform"/>
    <property name="speedX" type="float" value="120"/>
   </properties>
  </object>

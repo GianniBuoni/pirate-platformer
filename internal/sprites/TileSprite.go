@@ -28,6 +28,11 @@ func NewTileSprite(tile Tile, a *Assets) (
 		Pos:    newPos(obj, a),
 		imgPos: rl.NewVector2(tile.ImgX, tile.ImgY),
 	}
+	if tile.Image == "platforms" {
+		ts.hitbox = NewRectangle(
+			tile.X, tile.Y, TileSize, 10,
+		)
+	}
 	return &ts, nil
 }
 
@@ -45,6 +50,6 @@ func (ts *TileSprite) Draw() error {
 		src, srcRect, rl.Rectangle(*ts.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(ts.hitbox, rl.Red)
+	//drawRect(ts.hitbox, rl.Red)
 	return nil
 }
