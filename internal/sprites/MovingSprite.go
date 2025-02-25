@@ -43,6 +43,7 @@ func (ms *MovingSprite) GetPath(src map[int]*Rect) {
 
 func (ms *MovingSprite) Update() {
 	dt := rl.GetFrameTime()
+	ms.oldRect.Copy(ms.hitbox)
 	ms.MoveX(ms.hitbox, dt)
 	ms.MoveY(ms.hitbox, dt)
 	if ms.pathRect != nil {
@@ -68,6 +69,6 @@ func (ms *MovingSprite) Draw() error {
 	rl.DrawTexturePro(
 		src, srcRect, rl.Rectangle(*ms.rect), rl.Vector2{}, 0, rl.White,
 	)
-	//drawRect(ms.hitbox, rl.Blue)
+	drawRect(ms.oldRect, rl.Blue)
 	return nil
 }

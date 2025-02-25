@@ -45,7 +45,7 @@ func (p *Player) checkCollisionSide() CollisionSide {
 }
 
 func (p *Player) getCRects() {
-	p.cRects[floor] = NewRectangle(0, 0, p.hitbox.Width, 2)
+	p.cRects[floor] = NewRectangle(0, 0, p.hitbox.Width, 4)
 	p.cRects[left] = NewRectangle(0, 0, 2, p.hitbox.Height-4)
 	p.cRects[right] = NewRectangle(0, 0, 2, p.hitbox.Height-4)
 }

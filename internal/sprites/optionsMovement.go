@@ -29,13 +29,9 @@ func (m *Movement) MoveX(r *Rect, dt float32) {
 	r.X += m.direction.X * m.speed.X * dt
 }
 
-func (m *Movement) MoveY(r *Rect, dt float32) bool {
+func (m *Movement) MoveY(r *Rect, dt float32) {
 	m.direction.Y += m.gravity * dt
 	r.Y += m.direction.Y * m.speed.Y * dt
-	if m.direction.Y != 0 {
-		return true
-	}
-	return false
 }
 
 func (m *Movement) SetGravity(b bool, multiplier float32) {

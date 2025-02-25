@@ -40,6 +40,7 @@ func (p *Player) getState(side CollisionSide) PlayerState {
 		return fall
 	case air:
 		p.SetGravity(true, 1)
+		p.platform = nil
 		return fall
 	default:
 		return idle

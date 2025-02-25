@@ -39,6 +39,7 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 
 func (p *Player) Update() {
 	dt := rl.GetFrameTime()
+	p.oldRect.Copy(p.hitbox)
 	p.input(p.cSide)
 	p.move(dt)
 	p.Pos.Update()
@@ -71,9 +72,6 @@ func (p *Player) Draw() error {
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	for _, rect := range p.cRects {
-		drawRect(rect, rl.Blue)
-	}
-	//drawRect(p.hitbox, rl.Green)
+	drawRect(p.oldRect, rl.Gray)
 	return nil
 }

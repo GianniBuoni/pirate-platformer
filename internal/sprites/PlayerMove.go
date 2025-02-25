@@ -1,6 +1,10 @@
 package sprites
 
-import "time"
+import (
+	"time"
+
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+)
 
 func (p *Player) move(dt float32) {
 	p.MoveX(p.hitbox, dt)
@@ -8,9 +12,21 @@ func (p *Player) move(dt float32) {
 	p.MoveY(p.hitbox, dt)
 	p.collison("y")
 	p.patformCollision()
+	p.platformMove(dt)
+}
+
+func (p *Player) platformMove(dt float32) {
+	platform, ok := p.platform.(*MovingSprite)
+	if ok {
+		platform.MoveX(p.hitbox, dt)
+		if platform.direction.Y != 0 {
+			p.hitbox.Set(Bottom(platform.hitbox.Top()))
+		}
+	}
 }
 
 func (p *Player) jump() {
+	p.platform = nil
 	p.direction.Y = -1
 	refX := p.hitbox.X
 	go func() {

@@ -60,7 +60,6 @@ func (p *Pos) OldRect() *Rect {
 func (p *Pos) Update() {
 	p.rect.X = p.hitbox.X - p.hitboxOffset.X
 	p.rect.Y = p.hitbox.Y - p.hitboxOffset.Y
-	p.oldRect.Copy(p.hitbox)
 }
 
 // Sprite info that identifies asset metadata
