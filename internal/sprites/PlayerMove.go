@@ -47,3 +47,8 @@ func (p *Player) wallJump(dir float32) {
 		p.timeout(run, 100)
 	}
 }
+
+func (p *Player) phasePlatform() {
+	p.platform = nil
+	p.timeout(canPlatform, 200)
+}

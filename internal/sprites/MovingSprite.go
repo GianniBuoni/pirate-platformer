@@ -69,6 +69,5 @@ func (ms *MovingSprite) Draw() error {
 	rl.DrawTexturePro(
 		src, srcRect, rl.Rectangle(*ms.rect), rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(ms.oldRect, rl.Blue)
 	return nil
 }

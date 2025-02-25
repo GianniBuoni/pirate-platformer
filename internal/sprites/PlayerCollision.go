@@ -39,7 +39,7 @@ func (p *Player) patformCollision() {
 	for _, pl := range p.Groups["platform"] {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*pl.HitBox()),
-		) {
+		) && p.actions[canPlatform] {
 			if p.hitbox.Bottom() >= pl.HitBox().Top() &&
 				p.oldRect.Bottom() <= pl.OldRect().Top() {
 				p.hitbox.Set(Bottom(pl.HitBox().Top()))

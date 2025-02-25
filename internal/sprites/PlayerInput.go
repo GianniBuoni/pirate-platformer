@@ -7,6 +7,7 @@ func (p *Player) input(side CollisionSide) {
 
 	leftInput := []int32{rl.KeyLeft, rl.KeyH, rl.KeyA}
 	rightInput := []int32{rl.KeyRight, rl.KeyL, rl.KeyD}
+	downInput := []int32{rl.KeyDown, rl.KeyJ, rl.KeyS}
 
 	for _, key := range leftInput {
 		if rl.IsKeyDown(key) {
@@ -28,6 +29,12 @@ func (p *Player) input(side CollisionSide) {
 			p.jump()
 		case left, right:
 			p.wallJump(x * -1)
+		}
+	}
+
+	for _, key := range downInput {
+		if rl.IsKeyPressed(key) {
+			p.phasePlatform()
 		}
 	}
 }

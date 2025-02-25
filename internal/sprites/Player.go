@@ -72,6 +72,5 @@ func (p *Player) Draw() error {
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	drawRect(p.oldRect, rl.Gray)
 	return nil
 }

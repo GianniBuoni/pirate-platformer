@@ -20,7 +20,8 @@ const (
 )
 
 var defaultStates = map[PlayerState]bool{
-	run: true,
+	run:         true,
+	canPlatform: true,
 }
 
 func (p *Player) getState(side CollisionSide) PlayerState {
