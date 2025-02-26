@@ -28,20 +28,24 @@ func NewShell(obj Object, a *Assets) (Sprite, error) {
 }
 
 func (s *Shell) Update() {
-	pDist := s.Player.HitBox().Center().X - s.HitBox().Center().X
-	switch s.flipH {
-	case 1:
-		if pDist < s.attackRange && pDist > s.flipH {
-			s.fire()
-			return
-		}
-	case -1:
-		if pDist > s.attackRange && pDist < s.flipH {
-			s.fire()
-			return
-		}
+	if s.playerInFront() {
+		s.fire()
+		return
 	}
 	s.stop()
+}
+
+func (s *Shell) playerInFront() bool {
+	pDist := s.Player.HitBox().Center().X - s.HitBox().Center().X
+	pY := s.Player.HitBox().Center().Y
+	pAlignedY := pY < s.HitBox().Bottom() && pY > s.HitBox().Top()
+
+	switch s.flipH {
+	case 1:
+		return pDist < s.attackRange && pDist > s.flipH && pAlignedY
+	default:
+		return pDist > s.attackRange && pDist < s.flipH && pAlignedY
+	}
 }
 
 func (s *Shell) fire() {
