@@ -15,6 +15,7 @@ var objectLoaders = []Loader[Object]{
 	radialLoader,
 	platformLoader,
 	playerLoader,
+	sawPathLoader,
 }
 
 var objectLoader = Loader[Object]{

@@ -329,14 +329,14 @@
                         {
                          "name":"loader",
                          "type":"string",
-                         "value":"path"
+                         "value":"sawPath"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":256,
                  "x":0,
-                 "y":512
+                 "y":550
                 }, 
                 {
                  "height":320,
@@ -346,13 +346,13 @@
                         {
                          "name":"loader",
                          "type":"string",
-                         "value":"path"
+                         "value":"sawPath"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":10,
-                 "x":192,
+                 "x":230,
                  "y":576
                 }, 
                 {

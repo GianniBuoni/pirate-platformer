@@ -579,7 +579,7 @@
                  "name":"124",
                  "properties":
                     {
-                     "loader":"path"
+                     "loader":"sawPath"
                     },
                  "propertytypes":
                     {
@@ -590,7 +590,7 @@
                  "visible":true,
                  "width":256,
                  "x":0,
-                 "y":512
+                 "y":550
                 }, 
                 {
                  "height":320,
@@ -598,7 +598,7 @@
                  "name":"125",
                  "properties":
                     {
-                     "loader":"path"
+                     "loader":"sawPath"
                     },
                  "propertytypes":
                     {
@@ -608,7 +608,7 @@
                  "type":"",
                  "visible":true,
                  "width":10,
-                 "x":192,
+                 "x":230,
                  "y":576
                 }, 
                 {

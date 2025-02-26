@@ -7,11 +7,11 @@ import (
 
 var radialLoader = Loader[Object]{
 	key:     "radial",
-	builder: spikeChainBuilder(sprites.NewRadialSprite),
+	builder: spikeMiddleware(sprites.NewRadialSprite),
 	groups:  []string{"all", "moving"},
 }
 
-func spikeChainBuilder(
+func spikeMiddleware(
 	f func(Object, *Assets) (Sprite, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
