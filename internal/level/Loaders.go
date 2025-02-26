@@ -11,16 +11,18 @@ type Loaders struct {
 
 type Loader[T any] struct {
 	key     string
-	builder func(T, *Assets) (Sprite, error)
+	builder func(T, *LevelData) ([]Sprite, error)
 	groups  []string
 }
 
 func (l *Loader[T]) Run(t T, level *LevelData) error {
-	s, err := l.builder(t, level.levelAssets)
+	sprites, err := l.builder(t, level)
 	if err != nil {
 		return err
 	}
-	level.AddSpriteGroup(s, l.groups...)
+	for _, s := range sprites {
+		level.AddSpriteGroup(s, l.groups...)
+	}
 	return nil
 }
 
