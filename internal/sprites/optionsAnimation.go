@@ -38,7 +38,7 @@ func (a *Animation) animateOnce(
 	}
 }
 
-func (a *Animation) draw(id ID, pos Pos) error {
+func (a *Animation) Draw(id *ID, pos *Pos) error {
 	src, err := id.assets.GetImage(id.assetLib, id.image)
 	if err != nil {
 		return err

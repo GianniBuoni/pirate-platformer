@@ -48,7 +48,7 @@ func (p *Player) Update() {
 	p.image = string(p.getState(p.cSide))
 }
 
-func (p *Player) Draw() error {
+func (p *Player) Draw(id *ID, pos *Pos) error {
 	src, err := p.assets.GetImage(p.assetLib, p.image)
 	if err != nil {
 		return err

@@ -65,7 +65,7 @@ func (l *LevelData) Draw() error {
 	allSprites, ok := l.groups["all"]
 	if ok {
 		for _, sprite := range allSprites {
-			err := sprite.Draw()
+			err := sprite.Draw(sprite.GetID(), sprite.GetPos())
 			if err != nil {
 				return err
 			}

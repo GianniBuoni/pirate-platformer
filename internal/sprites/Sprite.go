@@ -24,7 +24,7 @@ func NewSprite(obj Object, a *Assets) (Sprite, error) {
 
 func (s *ObjectSprite) Update() {}
 
-func (s *ObjectSprite) Draw() error {
+func (s *ObjectSprite) Draw(id *ID, pos *Pos) error {
 	src, err := s.assets.GetImage(s.assetLib, s.image)
 	if err != nil {
 		return err

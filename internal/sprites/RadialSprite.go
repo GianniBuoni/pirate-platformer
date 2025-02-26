@@ -29,7 +29,7 @@ func (rs *RadialSprite) Update() {
 	rs.Pos.Update()
 }
 
-func (rs *RadialSprite) Draw() error {
+func (rs *RadialSprite) Draw(id *ID, pos *Pos) error {
 	src, err := rs.assets.GetImage(rs.assetLib, rs.image)
 	if err != nil {
 		return err

@@ -44,14 +44,6 @@ func (s *Shell) Update() {
 	s.stop()
 }
 
-func (s *Shell) Draw() error {
-	err := s.Animation.draw(s.ID, s.Pos)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
 func (s *Shell) fire() {
 	if s.canAttack {
 		s.attack = true

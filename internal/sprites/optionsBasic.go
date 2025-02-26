@@ -45,6 +45,10 @@ func newPos(obj Object, a *Assets) Pos {
 	return p
 }
 
+func (p *Pos) GetPos() *Pos {
+	return p
+}
+
 func (p *Pos) Rect() *Rect {
 	return p.rect
 }
@@ -82,4 +86,8 @@ func newId(
 		assets:   a,
 		assetLib: aLib,
 	}, nil
+}
+
+func (id *ID) GetID() *ID {
+	return id
 }
