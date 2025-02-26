@@ -1166,6 +1166,41 @@
         }, 
         {
          "draworder":"topdown",
+         "id":16,
+         "name":"player",
+         "objects":[
+                {
+                 "gid":223,
+                 "height":192,
+                 "id":119,
+                 "name":"fall",
+                 "properties":
+                    {
+                     "loader":"player",
+                     "speedX":300,
+                     "speedY":600
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string",
+                     "speedX":"float",
+                     "speedY":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":704,
+                 "y":256
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":6,
          "name":"enemies",
          "objects":[
@@ -1200,11 +1235,13 @@
                  "name":"shell",
                  "properties":
                     {
+                     "dirX":160,
                      "flipH":1,
-                     "loader":"object"
+                     "loader":"shell"
                     },
                  "propertytypes":
                     {
+                     "dirX":"float",
                      "flipH":"float",
                      "loader":"string"
                     },
@@ -1222,11 +1259,13 @@
                  "name":"shell",
                  "properties":
                     {
+                     "dirX":160,
                      "flipH":1,
-                     "loader":"object"
+                     "loader":"shell"
                     },
                  "propertytypes":
                     {
+                     "dirX":"float",
                      "flipH":"float",
                      "loader":"string"
                     },
@@ -1234,43 +1273,8 @@
                  "type":"",
                  "visible":true,
                  "width":192,
-                 "x":528,
+                 "x":512,
                  "y":400
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":16,
-         "name":"player",
-         "objects":[
-                {
-                 "gid":223,
-                 "height":192,
-                 "id":119,
-                 "name":"fall",
-                 "properties":
-                    {
-                     "loader":"player",
-                     "speedX":300,
-                     "speedY":600
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string",
-                     "speedX":"float",
-                     "speedY":"float"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":192,
-                 "x":640,
-                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",

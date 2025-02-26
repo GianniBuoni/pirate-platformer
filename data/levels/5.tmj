@@ -613,6 +613,24 @@
         }, 
         {
          "draworder":"topdown",
+         "id":16,
+         "name":"player",
+         "objects":[
+                {
+                 "id":119,
+                 "template":"..\/templates\/player.tx",
+                 "visible":true,
+                 "x":704,
+                 "y":256
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":6,
          "name":"enemies",
          "objects":[
@@ -626,33 +644,14 @@
                 {
                  "id":134,
                  "template":"..\/templates\/damage\/shell.tx",
-                 "visible":true,
                  "x":128,
                  "y":336
                 }, 
                 {
                  "id":135,
                  "template":"..\/templates\/damage\/shell.tx",
-                 "x":528,
+                 "x":512,
                  "y":400
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":16,
-         "name":"player",
-         "objects":[
-                {
-                 "id":119,
-                 "template":"..\/templates\/player.tx",
-                 "visible":true,
-                 "x":640,
-                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",

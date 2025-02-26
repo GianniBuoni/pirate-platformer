@@ -16,6 +16,7 @@ var objectLoaders = []Loader[Object]{
 	platformLoader,
 	playerLoader,
 	sawPathLoader,
+	shellLoader,
 }
 
 var objectLoader = Loader[Object]{
