@@ -20,8 +20,10 @@ func (l *Loader[T]) Run(t T, level *LevelData) error {
 	if err != nil {
 		return err
 	}
-	for _, s := range sprites {
-		level.AddSpriteGroup(s, l.groups...)
+	if sprites != nil {
+		for _, s := range sprites {
+			level.AddSpriteGroup(s, l.groups...)
+		}
 	}
 	return nil
 }

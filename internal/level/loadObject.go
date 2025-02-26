@@ -29,18 +29,6 @@ var objectCollide = Loader[Object]{
 	groups:  []string{"all", "collision"},
 }
 
-var playerLoader = Loader[Object]{
-	key:     "player",
-	builder: objectMiddleWare(sprites.NewPlayer),
-	groups:  []string{"player", "all"},
-}
-
-var platformLoader = Loader[Object]{
-	key:     "platform",
-	builder: objectMiddleWare(sprites.NewMovingSprite),
-	groups:  []string{"all", "moving", "platform"},
-}
-
 var animatedLoader = Loader[Object]{
 	key:     "animated",
 	builder: objectMiddleWare(sprites.NewAnimatedSprite),
@@ -51,18 +39,6 @@ var itemLoader = Loader[Object]{
 	key:     "item",
 	builder: objectMiddleWare(sprites.NewAnimatedSprite),
 	groups:  []string{"all", "item"},
-}
-
-var pathLoader = Loader[Object]{
-	key:     "path",
-	builder: objectMiddleWare(sprites.NewPath),
-	groups:  []string{"path"},
-}
-
-var damageLoader = Loader[Object]{
-	key:     "damage",
-	builder: objectMiddleWare(sprites.NewMovingSprite),
-	groups:  []string{"all", "moving", "damage"},
 }
 
 func objectMiddleWare(
