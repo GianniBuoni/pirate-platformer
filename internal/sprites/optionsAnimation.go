@@ -23,17 +23,19 @@ func (a *Animation) animate(rect *Rect, src rl.Texture2D) {
 	a.frameIndex += a.frameSpeed * dt
 }
 
-// Call after A.animate() or A.animateEx()
-// to prevent animation from looping.
+// Call after A.animate() to prevent animation from looping.
 // Passed in function is also responsible for
 // toggling the current animation state to an new one.
 func (a *Animation) animateOnce(
-	image string, toggleFunc func(string), states ...string,
+	image string, toggleFunc func(PlayerAction, bool), states ...PlayerAction,
 ) {
 	for _, state := range states {
-		if image == state && int(a.frameIndex) >= a.frameCount-1 {
+		if image == string(state) && int(a.frameIndex) >= a.frameCount-1 {
 			a.frameIndex = 0
-			toggleFunc(state)
+			if state == airAttack {
+				state = attack
+			}
+			toggleFunc(state, false)
 		}
 	}
 }

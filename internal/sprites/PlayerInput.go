@@ -19,7 +19,7 @@ func (p *Player) input(side CollisionSide) {
 			x += 1
 		}
 	}
-	if p.actions[run] {
+	if p.state.CheckState(run) {
 		p.direction.X = x
 	}
 

@@ -28,27 +28,27 @@ func (p *Player) jump() {
 	p.platform = nil
 	p.direction.Y = -1
 	p.frameIndex = 0
-	p.actions[jump] = true
-	p.timeout(wall, 200)
+	p.state.ToggleState(jump, true)
+	p.state.Timeout(wall, 200)
 }
 
 func (p *Player) wallJump(dir float32) {
-	if p.actions[wall] {
+	if p.state.CheckState(wall) {
 		p.direction.X = dir
 		p.direction.Y -= 1
-		p.timeout(run, 100)
+		p.state.Timeout(run, 100)
 	}
 }
 
 func (p *Player) attack() {
-	if p.actions[canAttack] {
+	if p.state.CheckState(canAttack) {
 		p.frameIndex = 0
-		p.actions[attack] = true
-		p.timeout(canAttack, 600)
+		p.state.ToggleState(attack, true)
+		p.state.Timeout(canAttack, 600)
 	}
 }
 
 func (p *Player) phasePlatform() {
 	p.platform = nil
-	p.timeout(canPlatform, 200)
+	p.state.Timeout(canPlatform, 200)
 }

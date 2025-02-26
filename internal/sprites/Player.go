@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"sync"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -13,9 +11,8 @@ type Player struct {
 	Movement
 	Animation
 	platform Sprite
-	mu       sync.Mutex
+	state    PlayerState
 	Groups   map[string][]Sprite
-	actions  map[PlayerState]bool
 	cRects   map[CollisionSide]*Rect
 	cSide    CollisionSide
 }
@@ -30,7 +27,7 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 		Pos:       newPos(obj, a),
 		Movement:  newMovement(obj),
 		Animation: newAnimation(),
-		actions:   defaultStates,
+		state:     newStateData(),
 		cRects:    map[CollisionSide]*Rect{},
 	}
 	p.getCRects()
@@ -45,7 +42,7 @@ func (p *Player) Update() {
 	p.Pos.Update()
 	p.updateCRects()
 	p.cSide = p.checkCollisionSide()
-	p.image = string(p.getState(p.cSide))
+	p.image = string(p.getState())
 }
 
 func (p *Player) Draw(id *ID, pos *Pos) error {
@@ -61,7 +58,7 @@ func (p *Player) Draw(id *ID, pos *Pos) error {
 	}
 	p.animate(p.rect, src)
 	p.animateOnce(
-		p.image, p.toggleState, "air_attack", "attack", "hit", "jump",
+		p.image, p.state.ToggleState, airAttack, attack, hit, jump,
 	)
 
 	srcRect := rl.NewRectangle(

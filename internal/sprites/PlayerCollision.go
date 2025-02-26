@@ -39,7 +39,7 @@ func (p *Player) patformCollision() {
 	for _, pl := range p.Groups["platform"] {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*pl.HitBox()),
-		) && p.actions[canPlatform] {
+		) && p.state.CheckState(canPlatform) {
 			if p.hitbox.Bottom() >= pl.HitBox().Top() &&
 				p.oldRect.Bottom() <= pl.OldRect().Top() {
 				p.hitbox.Set(Bottom(pl.HitBox().Top()))
@@ -51,13 +51,13 @@ func (p *Player) patformCollision() {
 }
 
 func (p *Player) damageCollision() {
-	if !p.actions[hit] {
+	if !p.state.CheckState(hit) {
 		for _, s := range p.Groups["damage"] {
 			if rl.CheckCollisionRecs(
 				rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
 			) {
 				p.frameIndex = 0
-				p.actions[hit] = true
+				p.state.ToggleState(hit, true)
 			}
 		}
 	}
