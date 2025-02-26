@@ -4,6 +4,7 @@
  <object name="silver" gid="2" width="64" height="64">
   <properties>
    <property name="loader" value="item"/>
+   <property name="value" type="int" value="5"/>
   </properties>
  </object>
 </template>

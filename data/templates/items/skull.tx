@@ -4,6 +4,7 @@
  <object name="skull" gid="1" width="64" height="64">
   <properties>
    <property name="loader" value="item"/>
+   <property name="value" type="int" value="1"/>
   </properties>
  </object>
 </template>

@@ -39,7 +39,7 @@ var animatedLoader = Loader[Object]{
 
 var itemLoader = Loader[Object]{
 	key:     "item",
-	builder: objectMiddleWare(NewAnimatedSprite),
+	builder: objectMiddleWare(NewItem),
 	groups:  []string{"all", "item"},
 }
 

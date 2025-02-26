@@ -1089,11 +1089,13 @@
                  "name":"potion",
                  "properties":
                     {
-                     "loader":"item"
+                     "loader":"item",
+                     "value":1
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "loader":"string",
+                     "value":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1109,11 +1111,13 @@
                  "name":"skull",
                  "properties":
                     {
-                     "loader":"item"
+                     "loader":"item",
+                     "value":1
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "loader":"string",
+                     "value":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1129,11 +1133,13 @@
                  "name":"silver",
                  "properties":
                     {
-                     "loader":"item"
+                     "loader":"item",
+                     "value":5
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "loader":"string",
+                     "value":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1149,11 +1155,13 @@
                  "name":"gold",
                  "properties":
                     {
-                     "loader":"item"
+                     "loader":"item",
+                     "value":20
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "loader":"string",
+                     "value":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -1169,11 +1177,13 @@
                  "name":"diamond",
                  "properties":
                     {
-                     "loader":"item"
+                     "loader":"item",
+                     "value":50
                     },
                  "propertytypes":
                     {
-                     "loader":"string"
+                     "loader":"string",
+                     "value":"int"
                     },
                  "rotation":0,
                  "type":"",

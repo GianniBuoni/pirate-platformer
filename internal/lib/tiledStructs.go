@@ -22,6 +22,7 @@ type Object struct {
 
 type Properties struct {
 	Loader string  `json:"loader"`
+	Value  int     `json:"value"`
 	SpeedX float32 `json:"speedX"`
 	SpeedY float32 `json:"speedY"`
 	DirX   float32 `json:"dirX"`
