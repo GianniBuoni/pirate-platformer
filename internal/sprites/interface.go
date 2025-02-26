@@ -1,4 +1,6 @@
-package lib
+package sprites
+
+import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
 
 type Sprite interface {
 	Update()

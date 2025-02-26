@@ -2,12 +2,12 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var shellLoader = Loader[Object]{
 	key:     "shell",
-	builder: shellMiddlware(sprites.NewShell),
+	builder: shellMiddlware(NewShell),
 	groups:  []string{"all", "moving", "collision"},
 }
 
@@ -19,7 +19,7 @@ func shellMiddlware(
 		if err != nil {
 			return nil, err
 		}
-		shell, ok := s.(*sprites.Shell)
+		shell, ok := s.(*Shell)
 		if ok {
 			shell.Player = ld.player
 		}

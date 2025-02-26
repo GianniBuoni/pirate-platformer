@@ -1,6 +1,6 @@
 package level
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+import . "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 
 func (l *LevelData) AddPlayer(s Sprite) {
 	l.player = s

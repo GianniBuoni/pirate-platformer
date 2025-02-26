@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var playerLoader = Loader[Object]{
 	key:     "player",
-	builder: playerMiddleware(sprites.NewPlayer),
+	builder: playerMiddleware(NewPlayer),
 }
 
 func playerMiddleware(
@@ -20,7 +20,7 @@ func playerMiddleware(
 		if err != nil {
 			return nil, err
 		}
-		player, ok := s.(*sprites.Player)
+		player, ok := s.(*Player)
 		if !ok {
 			return nil, fmt.Errorf(
 				"error building player: %s, is a Player Sprite",

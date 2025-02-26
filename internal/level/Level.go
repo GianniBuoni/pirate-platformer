@@ -6,6 +6,7 @@ import (
 	"os"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 

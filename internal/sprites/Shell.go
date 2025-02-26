@@ -1,9 +1,6 @@
 package sprites
 
-import (
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	rl "github.com/gen2brain/raylib-go/raylib"
-)
+import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
 
 type Shell struct {
 	Pos
@@ -47,6 +44,14 @@ func (s *Shell) Update() {
 	s.stop()
 }
 
+func (s *Shell) Draw() error {
+	err := s.Animation.draw(s.ID, s.Pos)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (s *Shell) fire() {
 	if s.canAttack {
 		s.attack = true
@@ -62,22 +67,4 @@ func (s *Shell) stop() {
 		s.image = "shell"
 		s.canAttack = true
 	}
-}
-
-func (s *Shell) Draw() error {
-	src, err := s.assets.GetImage(s.assetLib, s.image)
-	if err != nil {
-		return err
-	}
-	s.animate(s.rect, src)
-
-	srcRect := rl.NewRectangle(
-		s.rect.Width*float32(int(s.frameIndex)%s.frameCount),
-		0, s.rect.Width*s.flipH, s.rect.Height,
-	)
-	rl.DrawTexturePro(
-		src, srcRect, rl.Rectangle(*s.rect),
-		rl.Vector2{}, 0, rl.White,
-	)
-	return nil
 }

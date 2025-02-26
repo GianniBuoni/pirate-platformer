@@ -2,23 +2,23 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var pathLoader = Loader[Object]{
 	key:     "path",
-	builder: pathMiddleware(sprites.NewPath),
+	builder: pathMiddleware(NewPath),
 }
 
 var damageLoader = Loader[Object]{
 	key:     "damage",
-	builder: movingMiddleware(sprites.NewMovingSprite),
+	builder: movingMiddleware(NewMovingSprite),
 	groups:  []string{"all", "moving", "damage"},
 }
 
 var platformLoader = Loader[Object]{
 	key:     "platform",
-	builder: movingMiddleware(sprites.NewMovingSprite),
+	builder: movingMiddleware(NewMovingSprite),
 	groups:  []string{"all", "moving", "platform"},
 }
 
@@ -30,7 +30,7 @@ func pathMiddleware(
 		if err != nil {
 			return nil, err
 		}
-		path, ok := s.(*sprites.ObjectSprite)
+		path, ok := s.(*ObjectSprite)
 		if ok {
 			err = path.SetPaths(ld.pathRects)
 			if err != nil {
@@ -49,7 +49,7 @@ func movingMiddleware(
 		if err != nil {
 			return nil, err
 		}
-		moving, ok := s.(*sprites.MovingSprite)
+		moving, ok := s.(*MovingSprite)
 		if ok {
 			moving.GetPath(ld.pathRects)
 		}

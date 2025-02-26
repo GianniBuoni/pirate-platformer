@@ -2,12 +2,12 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var radialLoader = Loader[Object]{
 	key:     "radial",
-	builder: spikeMiddleware(sprites.NewRadialSprite),
+	builder: spikeMiddleware(NewRadialSprite),
 	groups:  []string{"all", "moving"},
 }
 

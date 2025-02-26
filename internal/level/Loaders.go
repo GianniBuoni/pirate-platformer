@@ -2,6 +2,7 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 type Loaders struct {

@@ -37,3 +37,23 @@ func (a *Animation) animateOnce(
 		}
 	}
 }
+
+func (a *Animation) draw(id ID, pos Pos) error {
+	src, err := id.assets.GetImage(id.assetLib, id.image)
+	if err != nil {
+		return err
+	}
+	a.animate(pos.rect, src)
+
+	srcRect := rl.NewRectangle(
+		pos.rect.Width*float32(int(a.frameIndex)%a.frameCount),
+		0,
+		pos.rect.Width*pos.flipH,
+		pos.rect.Height*pos.flipV,
+	)
+	rl.DrawTexturePro(
+		src, srcRect, rl.Rectangle(*pos.rect),
+		rl.Vector2{}, 0, rl.White,
+	)
+	return nil
+}

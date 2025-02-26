@@ -2,7 +2,7 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var objectLoaders = []Loader[Object]{
@@ -21,25 +21,25 @@ var objectLoaders = []Loader[Object]{
 
 var objectLoader = Loader[Object]{
 	key:     "object",
-	builder: objectMiddleWare(sprites.NewSprite),
+	builder: objectMiddleWare(NewSprite),
 	groups:  []string{"all"},
 }
 
 var objectCollide = Loader[Object]{
 	key:     "collision",
-	builder: objectMiddleWare(sprites.NewSprite),
+	builder: objectMiddleWare(NewSprite),
 	groups:  []string{"all", "collision"},
 }
 
 var animatedLoader = Loader[Object]{
 	key:     "animated",
-	builder: objectMiddleWare(sprites.NewAnimatedSprite),
+	builder: objectMiddleWare(NewAnimatedSprite),
 	groups:  []string{"all"},
 }
 
 var itemLoader = Loader[Object]{
 	key:     "item",
-	builder: objectMiddleWare(sprites.NewAnimatedSprite),
+	builder: objectMiddleWare(NewAnimatedSprite),
 	groups:  []string{"all", "item"},
 }
 

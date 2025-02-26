@@ -2,12 +2,12 @@ package level
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 var sawPathLoader = Loader[Object]{
 	key:     "sawPath",
-	builder: sawPathMiddleware(sprites.NewPath, sprites.NewSprite),
+	builder: sawPathMiddleware(NewPath, NewSprite),
 	groups:  []string{"all"},
 }
 
@@ -21,7 +21,7 @@ func sawPathMiddleware(
 		if err != nil {
 			return nil, err
 		}
-		path, ok := s.(*sprites.ObjectSprite)
+		path, ok := s.(*ObjectSprite)
 		if ok {
 			err = path.SetPaths(ld.pathRects)
 			if err != nil {
