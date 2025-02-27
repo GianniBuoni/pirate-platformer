@@ -1,0 +1,26 @@
+{ "object":
+    {
+     "gid":38,
+     "height":30,
+     "id":137,
+     "name":"particle",
+     "properties":
+        {
+         "loader":"particle"
+        },
+     "propertytypes":
+        {
+         "loader":"string"
+        },
+     "rotation":0,
+     "type":"",
+     "visible":true,
+     "width":30
+    },
+ "tileset":
+    {
+     "firstgid":1,
+     "source":"..\/..\/tilesets\/objects.json"
+    },
+ "type":"template"
+}

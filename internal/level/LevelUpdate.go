@@ -1,21 +1,16 @@
 package level
 
-import (
-	"fmt"
-	"os"
-)
-
-func (l *LevelData) Update() {
+func (l *LevelData) Update() error {
 	for _, mSprite := range l.groups["moving"] {
 		mSprite.Update()
 	}
 	l.player.Update()
 	err := l.checkShells()
 	if err != nil {
-		fmt.Printf("%s", err.Error())
-		os.Exit(2)
+		return err
 	}
 	l.cleanup("all", "moving", "damage")
+	return nil
 }
 
 func (l *LevelData) cleanup(groups ...string) {

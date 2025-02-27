@@ -61,6 +61,10 @@ func (p *Pos) OldRect() *Rect {
 	return p.oldRect
 }
 
+func (p *Pos) Facing() float32 {
+	return p.flipH
+}
+
 func (p *Pos) Update() {
 	p.rect.X = p.hitbox.X - p.hitboxOffset.X
 	p.rect.Y = p.hitbox.Y - p.hitboxOffset.Y

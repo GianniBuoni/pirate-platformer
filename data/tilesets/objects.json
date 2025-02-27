@@ -9,7 +9,7 @@
  "name":"objects",
  "objectalignment":"topleft",
  "spacing":0,
- "tilecount":32,
+ "tilecount":34,
  "tiledversion":"1.11.2",
  "tileheight":256,
  "tiles":[
@@ -73,7 +73,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -393,6 +392,22 @@
          "imageheight":20,
          "imagewidth":256,
          "width":64,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "id":36,
+         "image":"..\/..\/graphics\/objects\/pearl.png",
+         "imageheight":14,
+         "imagewidth":14
+        }, 
+        {
+         "height":30,
+         "id":37,
+         "image":"..\/..\/graphics\/objects\/particle.png",
+         "imageheight":30,
+         "imagewidth":90,
+         "width":30,
          "x":0,
          "y":0
         }],
