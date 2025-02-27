@@ -15,6 +15,7 @@ func (l *LevelData) Update() error {
 	if err != nil {
 		return err
 	}
+	l.itemCollisions()
 	l.checkPearls()
 	l.cleanup("all", "moving", "damage", "pearl")
 	return nil
