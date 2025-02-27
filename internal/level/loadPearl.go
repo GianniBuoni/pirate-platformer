@@ -1,7 +1,6 @@
 package level
 
 import (
-	"fmt"
 	"time"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
@@ -28,27 +27,6 @@ func (l *LevelData) spawnPearl(s Sprite) error {
 	}
 	obj.Y = s.HitBox().Center().Y
 	pearlLoader.Run(obj, l)
-	return nil
-}
-
-func (l *LevelData) checkShells() error {
-	for _, s := range l.groups["shell"] {
-		shell, ok := s.(*Shell)
-		if !ok {
-			return fmt.Errorf(
-				"Sprite %s, in sprite group \"shell\" is not a shell sprite",
-				s.Name(),
-			)
-		}
-		if shell.SpawnFrame() {
-			err := l.spawnPearl(shell)
-			if err != nil {
-				return err
-			}
-			shell.Attack = false
-			return nil
-		}
-	}
 	return nil
 }
 

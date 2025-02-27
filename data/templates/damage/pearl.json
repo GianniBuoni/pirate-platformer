@@ -1,34 +1,32 @@
-{ "object":
-    {
-     "gid":37,
-     "height":14,
-     "id":138,
-     "name":"pearl",
-     "properties":
-        {
-         "dirX":1,
-         "flipH":1,
-         "lifetime":10,
-         "loader":"particle",
-         "speedX":120
-        },
-     "propertytypes":
-        {
-         "dirX":"float",
-         "flipH":"float",
-         "lifetime":"float",
-         "loader":"string",
-         "speedX":"float"
-        },
-     "rotation":0,
-     "type":"",
-     "visible":true,
-     "width":14
+{
+  "object": {
+    "gid": 37,
+    "height": 14,
+    "id": 138,
+    "name": "pearl",
+    "properties": {
+      "dirX": 1,
+      "flipH": 1,
+      "lifetime": 10,
+      "loader": "particle",
+      "speedX": 300
     },
- "tileset":
-    {
-     "firstgid":1,
-     "source":"..\/..\/tilesets\/objects.json"
+    "propertytypes": {
+      "dirX": "float",
+      "flipH": "float",
+      "lifetime": "float",
+      "loader": "string",
+      "speedX": "float"
     },
- "type":"template"
+    "rotation": 0,
+    "type": "",
+    "visible": true,
+    "width": 14
+  },
+  "tileset": {
+    "firstgid": 1,
+    "source": "../../tilesets/objects.json"
+  },
+  "type": "template"
 }
+
