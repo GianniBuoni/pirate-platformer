@@ -1,9 +1,6 @@
 package game
 
 import (
-	"fmt"
-	"os"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -15,7 +12,10 @@ func (g *GameData) Run() {
 
 func (g *GameData) update() {
 	g.Running = !rl.WindowShouldClose()
-	g.levelCurrent.Update()
+	err := g.levelCurrent.Update()
+	if err != nil {
+		g.Quit(1, err)
+	}
 	g.window.Update(g.levelCurrent.PlayerPos())
 }
 
@@ -26,8 +26,7 @@ func (g *GameData) draw() {
 	rl.ClearBackground(BgColor)
 	err := g.levelCurrent.Draw()
 	if err != nil {
-		fmt.Printf("Game.draw(), %s", err.Error())
-		os.Exit(2)
+		g.Quit(1, err)
 	}
 	rl.EndMode2D()
 	rl.EndTextureMode()

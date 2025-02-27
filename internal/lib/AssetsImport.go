@@ -70,3 +70,25 @@ func (a *Assets) ImportTilesetData(root ...string) error {
 	}
 	return nil
 }
+
+func (a *Assets) ImportSpawnIn(root ...string) error {
+	paths := GetFilePaths(root...)
+	for _, path := range paths {
+		if !strings.Contains(path, "json") {
+			continue
+		}
+		key := GetAssetKey(path)
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		template := Template{}
+		err = json.Unmarshal(data, &template)
+		if err != nil {
+			return fmt.Errorf("%s, %w", path, err)
+		}
+		obj := template.Objects
+		a.SpawnIn[key] = obj
+	}
+	return nil
+}

@@ -21,14 +21,15 @@ type Object struct {
 }
 
 type Properties struct {
-	Loader string  `json:"loader"`
-	Value  int     `json:"value"`
-	SpeedX float32 `json:"speedX"`
-	SpeedY float32 `json:"speedY"`
-	DirX   float32 `json:"dirX"`
-	DirY   float32 `json:"dirY"`
-	FlipH  float32 `json:"flipH"`
-	FlipV  float32 `json:"flipV"`
+	Loader   string  `json:"loader"`
+	Value    int     `json:"value"`
+	SpeedX   float32 `json:"speedX"`
+	SpeedY   float32 `json:"speedY"`
+	DirX     float32 `json:"dirX"`
+	DirY     float32 `json:"dirY"`
+	FlipH    float32 `json:"flipH"`
+	FlipV    float32 `json:"flipV"`
+	Lifetime float32 `json:"lifetime"`
 }
 
 // Level Maps gloabl into about a tileset.
@@ -77,4 +78,8 @@ type TsTile struct {
 
 type ObjectGroup struct {
 	Hitboxes []Object `json:"objects"`
+}
+
+type Template struct {
+	Objects Object `json:"object"`
 }

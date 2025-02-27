@@ -29,6 +29,18 @@ func (a *Assets) GetImage(
 	return image, nil
 }
 
+func (a *Assets) GetObject(key string) (Object, error) {
+	obj, ok := a.SpawnIn[key]
+	if !ok {
+		return Object{},
+			fmt.Errorf(
+				"spawn in asset key: %s not found, make sure it's loaded\n",
+				key,
+			)
+	}
+	return obj, nil
+}
+
 func (a *Assets) GetTileset(key string) (Tileset, error) {
 	tileset, ok := a.TilesetData[key]
 	if !ok {
