@@ -11,6 +11,7 @@ type Pearl struct {
 	Pos
 	ID
 	Movement
+	Groups   map[string][]Sprite
 	Lifetime time.Duration
 }
 
@@ -34,6 +35,7 @@ func NewPearl(o Object, a *Assets) (*Pearl, error) {
 func (p *Pearl) Update() {
 	dt := rl.GetFrameTime()
 	p.MoveX(p.rect, dt)
+	p.collision()
 }
 
 func (p *Pearl) Draw(id *ID, pos *Pos) error {
@@ -48,4 +50,14 @@ func (p *Pearl) Draw(id *ID, pos *Pos) error {
 		rl.Vector2{}, 0, rl.White,
 	)
 	return nil
+}
+
+func (p *Pearl) collision() {
+	for _, s := range p.Groups["collision"] {
+		if rl.CheckCollisionRecs(
+			rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
+		) {
+			p.Kill()
+		}
+	}
 }

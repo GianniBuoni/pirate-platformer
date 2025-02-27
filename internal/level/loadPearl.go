@@ -38,6 +38,7 @@ func pearlMiddleware(
 		if err != nil {
 			return nil, err
 		}
+		p.Groups = ld.groups
 		go func() {
 			killTimer := time.NewTimer(p.Lifetime)
 			<-killTimer.C

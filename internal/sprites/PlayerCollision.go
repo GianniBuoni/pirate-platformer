@@ -49,16 +49,3 @@ func (p *Player) patformCollision() {
 		}
 	}
 }
-
-func (p *Player) damageCollision() {
-	if !p.state.CheckState(hit) {
-		for _, s := range p.Groups["damage"] {
-			if rl.CheckCollisionRecs(
-				rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
-			) {
-				p.frameIndex = 0
-				p.state.ToggleState(hit, true)
-			}
-		}
-	}
-}
