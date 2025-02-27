@@ -72,6 +72,7 @@ type ID struct {
 	id       int
 	assets   *Assets
 	assetLib AssetLibrary
+	kill     bool
 }
 
 func newId(
@@ -88,6 +89,18 @@ func newId(
 	}, nil
 }
 
+func (id *ID) Name() string {
+	return id.image
+}
+
 func (id *ID) GetID() *ID {
 	return id
+}
+
+func (id *ID) Kill() {
+	id.kill = true
+}
+
+func (id *ID) GetKill() bool {
+	return id.kill
 }

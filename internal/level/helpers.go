@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 func parseTile(idx, gid int, l *LevelData) (Tile, error) {
@@ -51,4 +52,9 @@ func parseTileGID(gid int, l *LevelData) (
 	x = float32(idx%tileset.Columns) * TileSize
 	y = float32(idx/tileset.Columns) * TileSize
 	return x, y, name, nil
+}
+
+func removeSprite(i int, group []Sprite) []Sprite {
+	group[i] = group[len(group)-1]
+	return group[:len(group)-1]
 }

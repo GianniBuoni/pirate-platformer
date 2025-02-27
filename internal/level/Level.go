@@ -54,13 +54,6 @@ func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 	return &l, nil
 }
 
-func (l *LevelData) Update() {
-	for _, mSprite := range l.groups["moving"] {
-		mSprite.Update()
-	}
-	l.player.Update()
-}
-
 func (l *LevelData) Draw() error {
 	allSprites, ok := l.groups["all"]
 	if ok {

@@ -643,6 +643,12 @@
          "objects":[
                 {
                  "id":134,
+                 "properties":[
+                        {
+                         "name":"flipH",
+                         "type":"float",
+                         "value":-1
+                        }],
                  "template":"..\/templates\/damage\/shell.tx",
                  "x":128,
                  "y":336

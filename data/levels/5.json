@@ -1246,7 +1246,7 @@
                  "properties":
                     {
                      "dirX":160,
-                     "flipH":1,
+                     "flipH":-1,
                      "loader":"shell"
                     },
                  "propertytypes":

@@ -8,7 +8,7 @@ import (
 var shellLoader = Loader[Object]{
 	key:     "shell",
 	builder: shellMiddlware(NewShell),
-	groups:  []string{"all", "moving", "collision"},
+	groups:  []string{"all", "moving", "collision", "shell"},
 }
 
 func shellMiddlware(

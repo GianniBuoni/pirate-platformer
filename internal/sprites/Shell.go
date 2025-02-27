@@ -1,6 +1,8 @@
 package sprites
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+)
 
 type Shell struct {
 	Pos
@@ -9,7 +11,7 @@ type Shell struct {
 	Player      Sprite
 	attackRange float32
 	canAttack   bool
-	attack      bool
+	Attack      bool
 }
 
 func NewShell(obj Object, a *Assets) (Sprite, error) {
@@ -30,7 +32,6 @@ func NewShell(obj Object, a *Assets) (Sprite, error) {
 func (s *Shell) Update() {
 	if s.playerInFront() {
 		s.fire()
-		return
 	}
 	s.stop()
 }
@@ -44,22 +45,27 @@ func (s *Shell) playerInFront() bool {
 	case 1:
 		return pDist < s.attackRange && pDist > s.flipH && pAlignedY
 	default:
-		return pDist > s.attackRange && pDist < s.flipH && pAlignedY
+		return pDist > s.attackRange*s.flipH && pDist < s.flipH && pAlignedY
 	}
+}
+
+func (s *Shell) SpawnFrame() bool {
+	return s.image == "shell_fire" &&
+		int(s.frameIndex)%s.frameCount == 4 &&
+		s.Attack == true
 }
 
 func (s *Shell) fire() {
 	if s.canAttack {
-		s.attack = true
-		s.frameIndex = 0
 		s.image = "shell_fire"
+		s.frameIndex = 0
 		s.canAttack = false
+		s.Attack = true
 	}
 }
 
 func (s *Shell) stop() {
 	if int(s.frameIndex) >= s.frameCount {
-		s.attack = false
 		s.image = "shell"
 		s.canAttack = true
 	}
