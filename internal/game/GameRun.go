@@ -16,7 +16,7 @@ func (g *GameData) update() {
 	if err != nil {
 		g.Quit(1, err)
 	}
-	g.window.Update(g.levelCurrent.PlayerPos())
+	g.window.Update(g.levelCurrent.CameraPos())
 }
 
 func (g *GameData) draw() {

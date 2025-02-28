@@ -14,7 +14,8 @@ type LevelData struct {
 	MapProps    MapProps `json:"properties"`
 	Layers      []Layer  `json:"layers"`
 	levelAssets *Assets
-	player      Sprite
+	camera      *CameraRect
+	player      *Player
 	groups      map[string][]Sprite
 	tileRefs    map[GIDRange]string
 	pathRects   map[int]*Rect
@@ -68,9 +69,9 @@ func (l *LevelData) Draw() error {
 	return nil
 }
 
-func (l *LevelData) PlayerPos() rl.Vector2 {
+func (l *LevelData) CameraPos() rl.Vector2 {
 	if l.player == nil {
 		return rl.NewVector2(WindowW/2, WindowH/2)
 	}
-	return l.player.HitBox().Center()
+	return l.camera.CamTarget
 }

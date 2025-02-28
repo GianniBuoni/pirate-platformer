@@ -18,7 +18,7 @@ func (g *GameData) Load() {
 	if err != nil {
 		g.Quit(1, err)
 	}
-	g.window.loadCam(g.levelCurrent.PlayerPos())
+	g.window.loadCam(g.levelCurrent.CameraPos())
 }
 
 func (g *GameData) loadAssets() {

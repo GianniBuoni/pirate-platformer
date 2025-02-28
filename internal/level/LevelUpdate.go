@@ -11,6 +11,7 @@ func (l *LevelData) Update() error {
 		mSprite.Update()
 	}
 	l.player.Update()
+	l.camera.Update()
 	err := l.checkShells()
 	if err != nil {
 		return err
