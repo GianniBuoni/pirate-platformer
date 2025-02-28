@@ -16,7 +16,7 @@
         {
          "height":64,
          "id":0,
-         "image":"..\/..\/graphics\/objects\/skull.png",
+         "image":"..\/..\/graphics\/level\/items\/skull.png",
          "imageheight":64,
          "imagewidth":512,
          "objectgroup":
@@ -48,7 +48,7 @@
         {
          "height":64,
          "id":1,
-         "image":"..\/..\/graphics\/objects\/silver.png",
+         "image":"..\/..\/graphics\/level\/items\/silver.png",
          "imageheight":64,
          "imagewidth":256,
          "objectgroup":
@@ -80,7 +80,7 @@
         {
          "height":64,
          "id":2,
-         "image":"..\/..\/graphics\/objects\/gold.png",
+         "image":"..\/..\/graphics\/level\/items\/gold.png",
          "imageheight":64,
          "imagewidth":256,
          "objectgroup":
@@ -112,7 +112,7 @@
         {
          "height":64,
          "id":3,
-         "image":"..\/..\/graphics\/objects\/diamond.png",
+         "image":"..\/..\/graphics\/level\/items\/diamond.png",
          "imageheight":64,
          "imagewidth":256,
          "objectgroup":
@@ -144,7 +144,7 @@
         {
          "height":64,
          "id":4,
-         "image":"..\/..\/graphics\/objects\/potion.png",
+         "image":"..\/..\/graphics\/level\/items\/potion.png",
          "imageheight":64,
          "imagewidth":448,
          "objectgroup":

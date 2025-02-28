@@ -15,25 +15,25 @@
  "tiles":[
         {
          "id":0,
-         "image":"..\/..\/graphics\/objects\/barrel.png",
+         "image":"..\/..\/graphics\/level\/objects\/barrel.png",
          "imageheight":50,
          "imagewidth":46
         }, 
         {
          "id":1,
-         "image":"..\/..\/graphics\/objects\/palm_bg.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_bg.png",
          "imageheight":128,
          "imagewidth":128
         }, 
         {
          "id":2,
-         "image":"..\/..\/graphics\/objects\/crate.png",
+         "image":"..\/..\/graphics\/level\/objects\/crate.png",
          "imageheight":36,
          "imagewidth":50
         }, 
         {
          "id":5,
-         "image":"..\/..\/graphics\/objects\/boat.png",
+         "image":"..\/..\/graphics\/level\/objects\/boat.png",
          "imageheight":44,
          "imagewidth":156
         }, 
@@ -67,7 +67,7 @@
         }, 
         {
          "id":8,
-         "image":"..\/..\/graphics\/objects\/shell.png",
+         "image":"..\/..\/graphics\/level\/damage\/shell.png",
          "imageheight":48,
          "imagewidth":192,
          "objectgroup":
@@ -96,7 +96,7 @@
         {
          "height":64,
          "id":9,
-         "image":"..\/..\/graphics\/objects\/tooth.png",
+         "image":"..\/..\/graphics\/level\/damage\/tooth.png",
          "imageheight":64,
          "imagewidth":384,
          "objectgroup":
@@ -128,7 +128,7 @@
         {
          "height":32,
          "id":10,
-         "image":"..\/..\/graphics\/objects\/floor_spikes.png",
+         "image":"..\/..\/graphics\/level\/damage\/floor_spikes.png",
          "imageheight":32,
          "imagewidth":256,
          "width":64,
@@ -137,7 +137,7 @@
         }, 
         {
          "id":11,
-         "image":"..\/..\/graphics\/objects\/spike.png",
+         "image":"..\/..\/graphics\/level\/damage\/spike.png",
          "imageheight":64,
          "imagewidth":64,
          "objectgroup":
@@ -165,26 +165,26 @@
         }, 
         {
          "id":12,
-         "image":"..\/..\/graphics\/objects\/palm_bg_left.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_bg_left.png",
          "imageheight":106,
          "imagewidth":104
         }, 
         {
          "id":13,
-         "image":"..\/..\/graphics\/objects\/palm_bg_right.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_bg_right.png",
          "imageheight":106,
          "imagewidth":104
         }, 
         {
          "id":14,
-         "image":"..\/..\/graphics\/objects\/bg_crate.png",
+         "image":"..\/..\/graphics\/level\/objects\/bg_crate.png",
          "imageheight":32,
          "imagewidth":42
         }, 
         {
          "height":64,
          "id":15,
-         "image":"..\/..\/graphics\/objects\/candle.png",
+         "image":"..\/..\/graphics\/level\/objects\/candle.png",
          "imageheight":64,
          "imagewidth":384,
          "width":64,
@@ -193,14 +193,14 @@
         }, 
         {
          "id":16,
-         "image":"..\/..\/graphics\/objects\/window.png",
+         "image":"..\/..\/graphics\/level\/objects\/window.png",
          "imageheight":64,
          "imagewidth":64
         }, 
         {
          "height":128,
          "id":17,
-         "image":"..\/..\/graphics\/objects\/big_chain.png",
+         "image":"..\/..\/graphics\/level\/objects\/big_chain.png",
          "imageheight":128,
          "imagewidth":512,
          "width":64,
@@ -210,7 +210,7 @@
         {
          "height":64,
          "id":18,
-         "image":"..\/..\/graphics\/objects\/small_chain.png",
+         "image":"..\/..\/graphics\/level\/objects\/small_chain.png",
          "imageheight":64,
          "imagewidth":512,
          "width":64,
@@ -219,62 +219,62 @@
         }, 
         {
          "id":19,
-         "image":"..\/..\/graphics\/objects\/green_bottle1.png",
+         "image":"..\/..\/graphics\/level\/objects\/green_bottle1.png",
          "imageheight":34,
          "imagewidth":14
         }, 
         {
          "id":20,
-         "image":"..\/..\/graphics\/objects\/green_bottle2.png",
+         "image":"..\/..\/graphics\/level\/objects\/green_bottle2.png",
          "imageheight":14,
          "imagewidth":30
         }, 
         {
          "id":21,
-         "image":"..\/..\/graphics\/objects\/blue_bottle1.png",
+         "image":"..\/..\/graphics\/level\/objects\/blue_bottle1.png",
          "imageheight":28,
          "imagewidth":14
         }, 
         {
          "id":22,
-         "image":"..\/..\/graphics\/objects\/blue_bottle2.png",
+         "image":"..\/..\/graphics\/level\/objects\/blue_bottle2.png",
          "imageheight":14,
          "imagewidth":24
         }, 
         {
          "id":23,
-         "image":"..\/..\/graphics\/objects\/bg_barrel.png",
+         "image":"..\/..\/graphics\/level\/objects\/bg_barrel.png",
          "imageheight":44,
          "imagewidth":42
         }, 
         {
          "id":24,
-         "image":"..\/..\/graphics\/objects\/bg_barrel2.png",
+         "image":"..\/..\/graphics\/level\/objects\/bg_barrel2.png",
          "imageheight":44,
          "imagewidth":42
         }, 
         {
          "id":25,
-         "image":"..\/..\/graphics\/objects\/curtain1.png",
+         "image":"..\/..\/graphics\/level\/objects\/curtain1.png",
          "imageheight":178,
          "imagewidth":52
         }, 
         {
          "id":26,
-         "image":"..\/..\/graphics\/objects\/curtain2.png",
+         "image":"..\/..\/graphics\/level\/objects\/curtain2.png",
          "imageheight":178,
          "imagewidth":52
         }, 
         {
          "id":27,
-         "image":"..\/..\/graphics\/objects\/door.png",
+         "image":"..\/..\/graphics\/level\/objects\/door.png",
          "imageheight":98,
          "imagewidth":82
         }, 
         {
          "height":64,
          "id":29,
-         "image":"..\/..\/graphics\/objects\/palm.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm.png",
          "imageheight":64,
          "imagewidth":384,
          "objectgroup":
@@ -305,26 +305,26 @@
         }, 
         {
          "id":30,
-         "image":"..\/..\/graphics\/objects\/palm_bent.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_bent.png",
          "imageheight":64,
          "imagewidth":128
         }, 
         {
          "id":31,
-         "image":"..\/..\/graphics\/objects\/palm_long.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_long.png",
          "imageheight":128,
          "imagewidth":64
         }, 
         {
          "id":32,
-         "image":"..\/..\/graphics\/objects\/palm_short.png",
+         "image":"..\/..\/graphics\/level\/objects\/palm_short.png",
          "imageheight":64,
          "imagewidth":64
         }, 
         {
          "height":256,
          "id":33,
-         "image":"..\/..\/graphics\/objects\/flag.png",
+         "image":"..\/..\/graphics\/level\/objects\/flag.png",
          "imageheight":256,
          "imagewidth":1152,
          "objectgroup":
@@ -356,7 +356,7 @@
         {
          "height":76,
          "id":34,
-         "image":"..\/..\/graphics\/objects\/saw.png",
+         "image":"..\/..\/graphics\/level\/damage\/saw.png",
          "imageheight":76,
          "imagewidth":608,
          "objectgroup":
@@ -388,7 +388,7 @@
         {
          "height":20,
          "id":35,
-         "image":"..\/..\/graphics\/objects\/helicopter.png",
+         "image":"..\/..\/graphics\/level\/objects\/helicopter.png",
          "imageheight":20,
          "imagewidth":256,
          "width":64,
@@ -397,14 +397,14 @@
         }, 
         {
          "id":36,
-         "image":"..\/..\/graphics\/objects\/pearl.png",
+         "image":"..\/..\/graphics\/level\/damage\/pearl.png",
          "imageheight":14,
          "imagewidth":14
         }, 
         {
          "height":30,
          "id":37,
-         "image":"..\/..\/graphics\/objects\/particle.png",
+         "image":"..\/..\/graphics\/level\/damage\/particle.png",
          "imageheight":30,
          "imagewidth":90,
          "width":30,

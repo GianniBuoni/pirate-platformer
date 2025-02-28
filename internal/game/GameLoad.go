@@ -28,7 +28,7 @@ func (g *GameData) loadAssets() {
 	// load all assets
 	assetMap := map[string]AssetLibrary{
 		"tilesets": TilesetLib,
-		"objects":  ImageLib,
+		"level":    ImageLib,
 		"player":   PlayerLib,
 	}
 
