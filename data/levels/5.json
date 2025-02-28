@@ -1300,7 +1300,15 @@
                 {
                  "height":320,
                  "id":2,
-                 "name":"water",
+                 "name":"water_body",
+                 "properties":
+                    {
+                     "loader":"water"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1310,7 +1318,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

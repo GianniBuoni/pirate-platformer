@@ -17,6 +17,7 @@ var objectLoaders = []Loader[Object]{
 	playerLoader,
 	sawPathLoader,
 	shellLoader,
+	waterLoader,
 }
 
 var objectLoader = Loader[Object]{
