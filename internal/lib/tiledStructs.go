@@ -1,6 +1,6 @@
 package lib
 
-type MapProperties struct {
+type MapProps struct {
 	Bg          string `json:"bg"`
 	DeathBorder int    `json:"death border"`
 	Horizon     int    `json:"horizon"`

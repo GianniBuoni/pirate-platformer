@@ -5,6 +5,12 @@ import (
 )
 
 func (l *LevelData) Load(loader *Loaders) error {
+	for _, props := range loader.props {
+		err := props.Run(l.MapProps, l)
+		if err != nil {
+			return err
+		}
+	}
 	for _, layer := range l.Layers {
 		if len(layer.Data) > 0 {
 			loader, ok := loader.tiles[layer.Name]
