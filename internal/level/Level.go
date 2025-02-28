@@ -11,14 +11,15 @@ import (
 )
 
 type LevelData struct {
-	Layers      []Layer `json:"layers"`
-	levelAssets *Assets
-	player      Sprite
-	groups      map[string][]Sprite
-	tileRefs    map[GIDRange]string
-	pathRects   map[int]*Rect
-	Width       int `json:"width"`
-	Height      int `json:"height"`
+	MapProperties MapProperties `json:"properties"`
+	Layers        []Layer       `json:"layers"`
+	levelAssets   *Assets
+	player        Sprite
+	groups        map[string][]Sprite
+	tileRefs      map[GIDRange]string
+	pathRects     map[int]*Rect
+	Width         int `json:"width"`
+	Height        int `json:"height"`
 }
 
 func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {

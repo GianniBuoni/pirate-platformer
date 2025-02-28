@@ -1321,50 +1321,26 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":8,
-         "name":"Data",
-         "objects":[
-                {
-                 "height":64,
-                 "id":28,
-                 "name":"Data",
-                 "properties":
-                    {
-                     "bg":"Green",
-                     "bottom_limit":"200",
-                     "death_border_bottom":"0",
-                     "horizon_line":"600",
-                     "level_unlock":"4",
-                     "top_limit":"0"
-                    },
-                 "propertytypes":
-                    {
-                     "bg":"string",
-                     "bottom_limit":"string",
-                     "death_border_bottom":"string",
-                     "horizon_line":"string",
-                     "level_unlock":"string",
-                     "top_limit":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":0,
-                 "y":0
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":false,
-         "x":0,
-         "y":0
         }],
  "nextlayerid":17,
  "nextobjectid":139,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "bg":"bg_green",
+     "death border":15,
+     "horizon":9,
+     "next level":1,
+     "top limit":-2
+    },
+ "propertytypes":
+    {
+     "bg":"string",
+     "death border":"int",
+     "horizon":"int",
+     "next level":"int",
+     "top limit":"int"
+    },
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
  "tileheight":64,

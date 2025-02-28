@@ -693,63 +693,36 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":8,
-         "name":"Data",
-         "objects":[
-                {
-                 "height":64,
-                 "id":28,
-                 "name":"Data",
-                 "properties":[
-                        {
-                         "name":"bg",
-                         "type":"string",
-                         "value":"Green"
-                        }, 
-                        {
-                         "name":"bottom_limit",
-                         "type":"string",
-                         "value":"200"
-                        }, 
-                        {
-                         "name":"death_border_bottom",
-                         "type":"string",
-                         "value":"0"
-                        }, 
-                        {
-                         "name":"horizon_line",
-                         "type":"string",
-                         "value":"600"
-                        }, 
-                        {
-                         "name":"level_unlock",
-                         "type":"string",
-                         "value":"4"
-                        }, 
-                        {
-                         "name":"top_limit",
-                         "type":"string",
-                         "value":"0"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":0,
-                 "y":0
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":false,
-         "x":0,
-         "y":0
         }],
  "nextlayerid":17,
  "nextobjectid":139,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"bg",
+         "type":"string",
+         "value":"bg_green"
+        }, 
+        {
+         "name":"death border",
+         "type":"int",
+         "value":15
+        }, 
+        {
+         "name":"horizon",
+         "type":"int",
+         "value":9
+        }, 
+        {
+         "name":"next level",
+         "type":"int",
+         "value":1
+        }, 
+        {
+         "name":"top limit",
+         "type":"int",
+         "value":-2
+        }],
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
  "tileheight":64,

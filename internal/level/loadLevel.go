@@ -25,6 +25,7 @@ func (l *LevelData) Load(loader *Loaders) error {
 					return err
 				}
 			}
+			continue
 		}
 		for _, obj := range layer.Objects {
 			loadKey := obj.Properties.Loader
