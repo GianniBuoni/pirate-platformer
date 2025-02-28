@@ -14,7 +14,7 @@ type WindowData struct {
 
 func NewWindow() *WindowData {
 	rl.SetConfigFlags(rl.FlagWindowResizable | rl.FlagVsyncHint)
-	rl.InitWindow(int32(WindowW), int32(WindowH), Title)
+	rl.InitWindow(int32(WindowW*2), int32(WindowH*2), Title)
 	rl.SetWindowMinSize(int(WindowW), int(WindowH))
 
 	target := rl.LoadRenderTexture(int32(WindowW), int32(WindowH))
