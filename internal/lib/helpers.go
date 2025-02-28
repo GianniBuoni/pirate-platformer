@@ -2,8 +2,8 @@ package lib
 
 import (
 	"errors"
+	"fmt"
 	"io/fs"
-	"log"
 	"math/rand"
 	"path/filepath"
 	"strings"
@@ -16,7 +16,7 @@ func GetFilePaths(args ...string) (paths []string) {
 		root,
 		func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
-				log.Fatalf("issue walking through dir: %v", err)
+				return fmt.Errorf("Issue walking through path: %w", err)
 			}
 
 			if !info.IsDir() {
@@ -35,7 +35,7 @@ func GetAssetKey(fullPath string) string {
 func RandInt(min, max int) (n int, err error) {
 	if max < min || max == min {
 		return 0, errors.New(
-			"error generating random range: max < min, or max == min",
+			"Invalid random number range: max < min, or max == min",
 		)
 	}
 	return rand.Intn(max-min) + min, nil

@@ -24,6 +24,6 @@ func NewParticle(o Object, a *Assets) (Sprite, error) {
 
 func (p *Particle) Update() {
 	if int(p.frameIndex) >= 3 {
-		p.Kill()
+		p.GetID().Kill = true
 	}
 }

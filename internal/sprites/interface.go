@@ -10,12 +10,8 @@ type Sprite interface {
 	Rect() *Rect
 	HitBox() *Rect
 	OldRect() *Rect
-	Facing() float32
 	GetPos() *Pos
 
 	// ID
 	GetID() *ID
-	Name() string
-	Kill()
-	GetKill() bool
 }

@@ -41,7 +41,7 @@ func (a *Animation) animateOnce(
 }
 
 func (a *Animation) Draw(id *ID, pos *Pos) error {
-	src, err := id.assets.GetImage(id.assetLib, id.image)
+	src, err := id.assets.GetImage(id.assetLib, id.Image)
 	if err != nil {
 		return err
 	}
@@ -50,8 +50,8 @@ func (a *Animation) Draw(id *ID, pos *Pos) error {
 	srcRect := rl.NewRectangle(
 		pos.rect.Width*float32(int(a.frameIndex)%a.frameCount),
 		0,
-		pos.rect.Width*pos.flipH,
-		pos.rect.Height*pos.flipV,
+		pos.rect.Width*pos.FlipH,
+		pos.rect.Height*pos.FlipV,
 	)
 	rl.DrawTexturePro(
 		src, srcRect, rl.Rectangle(*pos.rect),

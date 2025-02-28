@@ -5,23 +5,23 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var tileLoaders = []Loader[Tile]{
+var tileLoaders = []Loader[[]int]{
 	bgTileLoader, cTileLoader, pTileLoader,
 }
 
-var bgTileLoader = Loader[Tile]{
+var bgTileLoader = Loader[[]int]{
 	key:     "bg",
 	builder: tileMiddleware(NewTileSprite),
 	groups:  []string{"all"},
 }
 
-var cTileLoader = Loader[Tile]{
+var cTileLoader = Loader[[]int]{
 	key:     "collision",
 	builder: tileMiddleware(NewTileSprite),
 	groups:  []string{"all", "collision", "wall"},
 }
 
-var pTileLoader = Loader[Tile]{
+var pTileLoader = Loader[[]int]{
 	key:     "platform",
 	builder: tileMiddleware(NewTileSprite),
 	groups:  []string{"all", "platform"},
@@ -29,12 +29,23 @@ var pTileLoader = Loader[Tile]{
 
 func tileMiddleware(
 	f func(Tile, *Assets) (Sprite, error),
-) func(Tile, *LevelData) ([]Sprite, error) {
-	return func(t Tile, ld *LevelData) ([]Sprite, error) {
-		s, err := f(t, ld.levelAssets)
-		if err != nil {
-			return nil, err
+) func([]int, *LevelData) ([]Sprite, error) {
+	return func(data []int, ld *LevelData) ([]Sprite, error) {
+		out := []Sprite{}
+		for idx, id := range data {
+			if id == 0 {
+				continue
+			}
+			tile, err := parseTile(idx, id, ld)
+			if err != nil {
+				return nil, err
+			}
+			s, err := f(tile, ld.levelAssets)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, s)
 		}
-		return []Sprite{s}, nil
+		return out, nil
 	}
 }

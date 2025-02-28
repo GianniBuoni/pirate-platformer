@@ -39,7 +39,7 @@ func (p *Pearl) Update() {
 }
 
 func (p *Pearl) Draw(id *ID, pos *Pos) error {
-	src, err := p.assets.GetImage(p.assetLib, p.image)
+	src, err := p.assets.GetImage(p.assetLib, p.Image)
 	if err != nil {
 		return err
 	}
@@ -57,7 +57,7 @@ func (p *Pearl) collision() {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
 		) {
-			p.Kill()
+			p.GetID().Kill = true
 		}
 	}
 }

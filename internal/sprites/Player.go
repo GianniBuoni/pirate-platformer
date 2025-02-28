@@ -42,29 +42,29 @@ func (p *Player) Update() {
 	p.Pos.Update()
 	p.updateCRects()
 	p.cSide = p.checkCollisionSide()
-	p.image = string(p.getState())
+	p.Image = string(p.getState())
 }
 
 func (p *Player) Draw(id *ID, pos *Pos) error {
-	src, err := p.assets.GetImage(p.assetLib, p.image)
+	src, err := p.assets.GetImage(p.assetLib, p.Image)
 	if err != nil {
 		return err
 	}
 	if p.direction.X < 0 {
-		p.flipH = -1
+		p.FlipH = -1
 	}
 	if p.direction.X > 0 {
-		p.flipH = 1
+		p.FlipH = 1
 	}
 	p.animate(p.rect, src)
 	p.animateOnce(
-		p.image, p.state.ToggleState, airAttack, attack, hit, jump,
+		p.Image, p.state.ToggleState, airAttack, attack, hit, jump,
 	)
 
 	srcRect := rl.NewRectangle(
 		p.rect.Width*float32(int(p.frameIndex)%p.frameCount),
 		0,
-		p.rect.Width*p.flipH,
+		p.rect.Width*p.FlipH,
 		p.rect.Height,
 	)
 	rl.DrawTexturePro(

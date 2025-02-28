@@ -12,10 +12,10 @@ func (l *LevelData) itemCollisions() {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*sprite.HitBox()), rl.Rectangle(*l.player.HitBox()),
 		) {
-			if !sprite.GetKill() {
+			if !sprite.GetID().Kill {
 				item := sprite.(*sprites.Item)
 				fmt.Printf("%s: %v\n", item.Name(), item.Value)
-				item.Kill()
+				item.GetID().Kill = true
 				l.spawnParticle(item)
 			}
 		}

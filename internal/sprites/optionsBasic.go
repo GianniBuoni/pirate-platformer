@@ -12,8 +12,8 @@ type Pos struct {
 	oldRect      *Rect
 	hitbox       *Rect
 	hitboxOffset rl.Vector2
-	flipH        float32
-	flipV        float32
+	FlipH        float32
+	FlipV        float32
 }
 
 func newPos(obj Object, a *Assets) Pos {
@@ -22,14 +22,14 @@ func newPos(obj Object, a *Assets) Pos {
 		oldRect: NewRectangle(obj.X, obj.Y, obj.Width, obj.Height),
 	}
 	if obj.Properties.FlipH == 0 {
-		p.flipH = 1
+		p.FlipH = 1
 	} else {
-		p.flipH = obj.Properties.FlipH
+		p.FlipH = obj.Properties.FlipH
 	}
 	if obj.Properties.FlipV == 0 {
-		p.flipV = 1
+		p.FlipV = 1
 	} else {
-		p.flipV = obj.Properties.FlipV
+		p.FlipV = obj.Properties.FlipV
 	}
 	hitbox, ok := a.Hitboxes[obj.Image]
 	if !ok {
@@ -62,7 +62,7 @@ func (p *Pos) OldRect() *Rect {
 }
 
 func (p *Pos) Facing() float32 {
-	return p.flipH
+	return p.FlipH
 }
 
 func (p *Pos) Update() {
@@ -72,11 +72,11 @@ func (p *Pos) Update() {
 
 // Sprite info that identifies asset metadata
 type ID struct {
-	image    string
-	id       int
+	Image    string
+	GID      int
 	assets   *Assets
 	assetLib AssetLibrary
-	kill     bool
+	Kill     bool
 }
 
 func newId(
@@ -86,25 +86,17 @@ func newId(
 		return ID{}, err
 	}
 	return ID{
-		image:    obj.Image,
-		id:       obj.Id,
+		Image:    obj.Image,
+		GID:      obj.Id,
 		assets:   a,
 		assetLib: aLib,
 	}, nil
 }
 
 func (id *ID) Name() string {
-	return id.image
+	return id.Image
 }
 
 func (id *ID) GetID() *ID {
 	return id
-}
-
-func (id *ID) Kill() {
-	id.kill = true
-}
-
-func (id *ID) GetKill() bool {
-	return id.kill
 }

@@ -7,7 +7,7 @@ import (
 
 type Loaders struct {
 	props  []Loader[MapProps]
-	tiles  map[string]Loader[Tile]
+	tiles  map[string]Loader[[]int]
 	object map[string]Loader[Object]
 }
 
@@ -33,7 +33,7 @@ func (l *Loader[T]) Run(t T, level *LevelData) error {
 func NewLoaders() *Loaders {
 	l := Loaders{
 		props:  propsLoaders,
-		tiles:  map[string]Loader[Tile]{},
+		tiles:  map[string]Loader[[]int]{},
 		object: map[string]Loader[Object]{},
 	}
 	for _, loader := range tileLoaders {

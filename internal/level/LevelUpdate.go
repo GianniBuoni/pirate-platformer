@@ -27,7 +27,7 @@ func (l *LevelData) checkShells() error {
 		if !ok {
 			return fmt.Errorf(
 				"Sprite %s, in sprite group \"shell\" is not a shell sprite",
-				s.Name(),
+				s.GetID().Image,
 			)
 		}
 		if shell.SpawnFrame() {
@@ -44,7 +44,7 @@ func (l *LevelData) checkShells() error {
 
 func (l *LevelData) checkPearls() {
 	for _, p := range l.groups["pearl"] {
-		if p.GetKill() {
+		if p.GetID().Kill {
 			l.spawnParticle(p)
 		}
 	}
@@ -53,7 +53,7 @@ func (l *LevelData) checkPearls() {
 func (l *LevelData) cleanup(groups ...string) {
 	for _, group := range groups {
 		for i, sprite := range l.groups[group] {
-			if sprite.GetKill() {
+			if sprite.GetID().Kill {
 				l.groups[group] = removeSprite(i, l.groups[group])
 			}
 		}

@@ -18,7 +18,7 @@ func (l *LevelData) spawnPearl(s Sprite) error {
 	if err != nil {
 		return err
 	}
-	switch s.Facing() {
+	switch s.GetPos().FlipH {
 	case -1:
 		obj.X = s.HitBox().Left()
 		obj.Properties.DirX = -1
@@ -42,7 +42,7 @@ func pearlMiddleware(
 		go func() {
 			killTimer := time.NewTimer(p.Lifetime)
 			<-killTimer.C
-			p.Kill()
+			p.GetID().Kill = true
 		}()
 		return []Sprite{p}, err
 	}

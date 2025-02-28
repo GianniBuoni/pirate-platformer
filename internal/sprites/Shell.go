@@ -41,23 +41,23 @@ func (s *Shell) playerInFront() bool {
 	pY := s.Player.HitBox().Center().Y
 	pAlignedY := pY < s.HitBox().Bottom() && pY > s.HitBox().Top()
 
-	switch s.flipH {
+	switch s.FlipH {
 	case 1:
-		return pDist < s.attackRange && pDist > s.flipH && pAlignedY
+		return pDist < s.attackRange && pDist > s.FlipH && pAlignedY
 	default:
-		return pDist > s.attackRange*s.flipH && pDist < s.flipH && pAlignedY
+		return pDist > s.attackRange*s.FlipH && pDist < s.FlipH && pAlignedY
 	}
 }
 
 func (s *Shell) SpawnFrame() bool {
-	return s.image == "shell_fire" &&
+	return s.Image == "shell_fire" &&
 		int(s.frameIndex)%s.frameCount == 4 &&
 		s.Attack == true
 }
 
 func (s *Shell) fire() {
 	if s.canAttack {
-		s.image = "shell_fire"
+		s.Image = "shell_fire"
 		s.frameIndex = 0
 		s.canAttack = false
 		s.Attack = true
@@ -66,7 +66,7 @@ func (s *Shell) fire() {
 
 func (s *Shell) stop() {
 	if int(s.frameIndex) >= s.frameCount {
-		s.image = "shell"
+		s.Image = "shell"
 		s.canAttack = true
 	}
 }

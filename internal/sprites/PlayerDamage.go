@@ -15,11 +15,11 @@ func (p *Player) damageCollision() {
 						break
 					}
 					p.setHit()
-					sprite.Kill()
+					sprite.GetID().Kill = true
 				case *MovingSprite:
-					if sprite.image == "tooth" && p.state.CheckState(attack) {
+					if sprite.Image == "tooth" && p.state.CheckState(attack) {
 						sprite.direction.X *= -1
-						sprite.flipH *= -1
+						sprite.FlipH *= -1
 						break
 					}
 					p.setHit()

@@ -25,13 +25,13 @@ func NewSprite(obj Object, a *Assets) (Sprite, error) {
 func (s *ObjectSprite) Update() {}
 
 func (s *ObjectSprite) Draw(id *ID, pos *Pos) error {
-	src, err := s.assets.GetImage(s.assetLib, s.image)
+	src, err := s.assets.GetImage(s.assetLib, s.Image)
 	if err != nil {
 		return err
 	}
 	rl.DrawTexturePro(
 		src,
-		rl.NewRectangle(0, 0, s.rect.Width*s.flipH, s.rect.Height*s.flipV),
+		rl.NewRectangle(0, 0, s.rect.Width*s.FlipH, s.rect.Height*s.FlipV),
 		rl.Rectangle(*s.Rect()),
 		rl.Vector2{}, 0, rl.White,
 	)

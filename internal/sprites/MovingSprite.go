@@ -34,7 +34,7 @@ func NewMovingSprite(obj Object, a *Assets) (Sprite, error) {
 }
 
 func (ms *MovingSprite) GetPath(src map[int]*Rect) {
-	path, ok := src[ms.id]
+	path, ok := src[ms.GID]
 	if !ok {
 		return
 	}
@@ -47,7 +47,7 @@ func (ms *MovingSprite) Update() {
 	ms.MoveX(ms.hitbox, dt)
 	ms.MoveY(ms.hitbox, dt)
 	if ms.pathRect != nil {
-		ms.flipH = ms.Movement.PathConstrain(ms.hitbox, ms.flipH)
+		ms.FlipH = ms.Movement.PathConstrain(ms.hitbox, ms.FlipH)
 	}
 	ms.Pos.Update()
 }

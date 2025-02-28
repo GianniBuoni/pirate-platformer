@@ -9,7 +9,7 @@ import (
 func NewPath(obj Object, a *Assets) (Sprite, error) {
 	s := ObjectSprite{
 		ID: ID{
-			image: obj.Image,
+			Image: obj.Image,
 		},
 		Pos: newPos(obj, a),
 	}
@@ -17,7 +17,7 @@ func NewPath(obj Object, a *Assets) (Sprite, error) {
 }
 
 func (s *ObjectSprite) SetPaths(dest map[int]*Rect) error {
-	key, err := strconv.ParseInt(s.image, 10, 64)
+	key, err := strconv.ParseInt(s.Image, 10, 64)
 	if err != nil {
 		return err
 	}

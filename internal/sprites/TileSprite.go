@@ -40,7 +40,7 @@ func NewTileSprite(tile Tile, a *Assets) (
 func (ts *TileSprite) Update() {}
 
 func (ts *TileSprite) Draw(id *ID, pos *Pos) error {
-	src, err := ts.assets.GetImage(ts.assetLib, ts.image)
+	src, err := ts.assets.GetImage(ts.assetLib, ts.Image)
 	if err != nil {
 		return err
 	}
