@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
+ <object name="blue_bottle1" gid="22" width="14" height="28">
+  <properties>
+   <property name="loader" value="object"/>
+  </properties>
+ </object>
+</template>

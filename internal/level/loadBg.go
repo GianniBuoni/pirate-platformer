@@ -7,10 +7,6 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var propsLoaders = []Loader[MapProps]{
-	loadBg,
-}
-
 var loadBg = Loader[MapProps]{
 	builder: bgMiddleware(NewTileSprite),
 	groups:  []string{"all"},

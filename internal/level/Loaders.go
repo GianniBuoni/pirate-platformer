@@ -32,7 +32,7 @@ func (l *Loader[T]) Run(t T, level *LevelData) error {
 
 func NewLoaders() *Loaders {
 	l := Loaders{
-		props:  propsLoaders,
+		props:  []Loader[MapProps]{loadBg, loadSky},
 		tiles:  map[string]Loader[[]int]{},
 		object: map[string]Loader[Object]{},
 	}

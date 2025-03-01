@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../../tilesets/objects.json"/>
+ <object name="palm_bent" gid="31" width="128" height="64">
+  <properties>
+   <property name="flipH" type="float" value="1"/>
+   <property name="loader" value="object"/>
+  </properties>
+ </object>
+</template>

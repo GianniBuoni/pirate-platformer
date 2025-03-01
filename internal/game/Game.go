@@ -35,7 +35,7 @@ func NewGame() *GameData {
 
 func NewStats() *Stats {
 	return &Stats{
-		currentLevel:  5,
+		currentLevel:  1,
 		unlockedLevel: 4,
 		playerHealth:  5,
 	}

@@ -1,11 +1,10 @@
 package lib
 
 type MapProps struct {
-	Bg          string `json:"bg"`
-	DeathBorder int    `json:"death border"`
-	Horizon     int    `json:"horizon"`
-	NextLevel   int    `json:"next level"`
-	TopLimit    int    `json:"top limit"`
+	Bg        string `json:"bg"`
+	Horizon   int    `json:"horizon"`
+	NextLevel int    `json:"next level"`
+	TopLimit  int    `json:"top limit"`
 }
 
 // Stores layer data: Data (a tile layer)
