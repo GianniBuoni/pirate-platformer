@@ -20,5 +20,6 @@ const (
 )
 
 var (
-	BgColor rl.Color = rl.NewColor(221, 198, 161, 255)
+	BgColor    rl.Color = rl.NewColor(221, 198, 161, 255)
+	WaterColor rl.Color = rl.NewColor(146, 169, 206, 255)
 )

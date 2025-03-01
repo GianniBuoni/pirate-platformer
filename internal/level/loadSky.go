@@ -3,32 +3,38 @@ package level
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 var loadSky = Loader[MapProps]{
-	builder: skyboxMiddleware(NewMovingSprite),
-	groups:  []string{"all", "moving"},
+	builder: skyboxMiddleware(NewRectSrite),
+	groups:  []string{"all"},
 }
 
 func skyboxMiddleware(
-	f func(Object, *Assets) (Sprite, error),
+	f func(Object, rl.Color, rl.Color, *Assets) (Sprite, error),
 ) func(MapProps, *LevelData) ([]Sprite, error) {
 	return func(mp MapProps, ld *LevelData) ([]Sprite, error) {
 		// check if valid map props
-		if mp.Bg == "" {
+		if mp.Bg != "" {
 			return nil, nil
 		}
 
 		// PROCESS MAP DATA HERE
 		out := []Sprite{}
+
+		// water rect
 		o := Object{}
+		o.Y = mp.Horizon * TileSize
+		o.Width = float32(ld.Width) * TileSize
+		o.Height = (float32(ld.Height) - mp.Horizon) * TileSize
 
 		// call builder function
-		s, err := f(o, ld.levelAssets)
+		s, err := f(o, WaterColor, rl.White, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}
 		out = append(out, s)
-		return nil, nil
+		return out, nil
 	}
 }

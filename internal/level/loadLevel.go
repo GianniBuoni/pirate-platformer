@@ -10,6 +10,7 @@ func (l *LevelData) Load(loader *Loaders) error {
 		if err != nil {
 			return err
 		}
+		continue
 	}
 	for _, layer := range l.Layers {
 		if len(layer.Data) > 0 {

@@ -3284,14 +3284,14 @@
  "properties":
     {
      "bg":"",
-     "horizon":25,
+     "horizon":24.5,
      "level_unlock":2,
      "top limit":0
     },
  "propertytypes":
     {
      "bg":"string",
-     "horizon":"int",
+     "horizon":"float",
      "level_unlock":"int",
      "top limit":"int"
     },

@@ -9,7 +9,10 @@ func (w *WindowData) Draw() {
 	// Draw render texture to screen, properly scaled
 	rl.DrawTexturePro(
 		w.renderTexture.Texture,
-		rl.Rectangle{Width: float32(w.renderTexture.Texture.Width), Height: float32(-w.renderTexture.Texture.Height)},
+		rl.Rectangle{
+			Width:  float32(w.renderTexture.Texture.Width),
+			Height: float32(-w.renderTexture.Texture.Height),
+		},
 		rl.Rectangle{
 			X:      (float32(rl.GetScreenWidth()) - w.gameScreen.Width*w.scale) * 0.5,
 			Y:      (float32(rl.GetScreenHeight()) - w.gameScreen.Height*w.scale) * 0.5,
