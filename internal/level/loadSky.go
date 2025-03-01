@@ -7,12 +7,13 @@ import (
 )
 
 var loadSky = Loader[MapProps]{
-	builder: skyboxMiddleware(NewRectSrite),
-	groups:  []string{"all"},
+	builder: skyboxMiddleware(NewRectSrite, NewMovingSprite),
+	groups:  []string{"all", "moving", "clouds large"},
 }
 
 func skyboxMiddleware(
-	f func(Object, rl.Color, rl.Color, *Assets) (Sprite, error),
+	f func(Object, rl.Color, *Assets) (Sprite, error),
+	g func(Object, *Assets) (Sprite, error),
 ) func(MapProps, *LevelData) ([]Sprite, error) {
 	return func(mp MapProps, ld *LevelData) ([]Sprite, error) {
 		// check if valid map props
@@ -30,11 +31,26 @@ func skyboxMiddleware(
 		o.Height = (float32(ld.Height) - mp.Horizon) * TileSize
 
 		// call builder function
-		s, err := f(o, WaterColor, rl.White, ld.levelAssets)
+		s, err := f(o, WaterColor, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}
 		out = append(out, s)
+
+		// sky
+		for i := range 3 {
+			cloud, err := ld.levelAssets.GetObject("large_cloud")
+			if err != nil {
+				return nil, err
+			}
+			s, err = g(cloud, ld.levelAssets)
+			if err != nil {
+				return nil, err
+			}
+			s.Rect().Set(Bottom(mp.Horizon * TileSize))
+			s.Rect().Set(Left(float32(i) * s.Rect().Width))
+			out = append(out, s)
+		}
 		return out, nil
 	}
 }

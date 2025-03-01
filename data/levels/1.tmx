@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="16" nextobjectid="287">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="16" nextobjectid="291">
  <editorsettings>
   <export target="1.json" format="json1"/>
  </editorsettings>
@@ -16,6 +16,7 @@
  <tileset firstgid="125" source="../tilesets/inside.json"/>
  <tileset firstgid="221" source="../tilesets/objects.json"/>
  <tileset firstgid="259" source="../tilesets/platforms.json"/>
+ <tileset firstgid="267" source="../tilesets/clouds.json"/>
  <objectgroup id="12" name="zero" class="window">
   <object id="27" template="../templates/objects/palm_bg.tx" x="272" y="1376"/>
   <object id="80" template="../templates/objects/palm_long.tx" x="551" y="1363"/>

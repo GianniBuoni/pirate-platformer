@@ -3279,7 +3279,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":287,
+ "nextobjectid":291,
  "orientation":"orthogonal",
  "properties":
     {
@@ -3326,6 +3326,10 @@
         {
          "firstgid":259,
          "source":"..\/tilesets\/platforms.json"
+        }, 
+        {
+         "firstgid":267,
+         "source":"..\/tilesets\/clouds.json"
         }],
  "tilewidth":64,
  "type":"map",

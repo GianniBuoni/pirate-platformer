@@ -17,7 +17,11 @@ func (l *LevelData) Update() error {
 		return err
 	}
 	l.itemCollisions()
+	// TODO: make unloader for each loader?
+	// use id to remove from groups?
+	// rework groups to create faster lookups?
 	l.checkPearls()
+	l.checkClouds()
 	l.cleanup("all", "moving", "damage", "pearl")
 	return nil
 }
@@ -47,6 +51,17 @@ func (l *LevelData) checkPearls() {
 	for _, p := range l.groups["pearl"] {
 		if p.GetID().Kill {
 			l.spawnParticle(p)
+		}
+	}
+}
+
+func (l *LevelData) checkClouds() {
+	_, ok := l.groups["clouds large"]
+	if ok && l.groups["clouds large"][1].Rect().Right() <= 0 {
+		for i, s := range l.groups["clouds large"] {
+			if i > 0 {
+				s.Rect().X += s.Rect().Width
+			}
 		}
 	}
 }

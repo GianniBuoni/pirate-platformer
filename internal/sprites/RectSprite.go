@@ -7,17 +7,15 @@ import (
 
 type RectSprite struct {
 	Pos
-	color       rl.Color
-	borderColor rl.Color
+	color rl.Color
 }
 
 func NewRectSrite(
-	obj Object, color, border rl.Color, a *Assets,
+	obj Object, color rl.Color, a *Assets,
 ) (Sprite, error) {
 	rs := &RectSprite{
-		Pos:         newPos(obj, a),
-		color:       color,
-		borderColor: border,
+		Pos:   newPos(obj, a),
+		color: color,
 	}
 	return rs, nil
 }
@@ -26,13 +24,6 @@ func (rs *RectSprite) Draw(*ID, *Pos) error {
 	rl.DrawRectangleRec(
 		rl.Rectangle(*rs.rect), rs.color,
 	)
-	if rs.borderColor != (rl.Color{}) {
-		rl.DrawLineEx(
-			rl.NewVector2(rs.rect.X, rs.rect.Y),
-			rl.NewVector2(rs.rect.Right(), rs.rect.Y),
-			2, rs.borderColor,
-		)
-	}
 	return nil
 }
 

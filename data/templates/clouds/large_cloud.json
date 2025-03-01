@@ -1,0 +1,26 @@
+{
+  "object": {
+    "gid": 1,
+    "height": 404,
+    "id": 290,
+    "name": "large_cloud",
+    "properties": {
+      "dirX": -1,
+      "speedX": 60
+    },
+    "propertytypes": {
+      "dirX": "float",
+      "speedX": "float"
+    },
+    "rotation": 0,
+    "type": "",
+    "visible": true,
+    "width": 1792
+  },
+  "tileset": {
+    "firstgid": 1,
+    "source": "../../tilesets/clouds.json"
+  },
+  "type": "template"
+}
+
