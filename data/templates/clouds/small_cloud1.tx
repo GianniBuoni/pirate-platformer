@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../../tilesets/clouds.json"/>
+ <object name="small_cloud1" gid="3" width="532" height="140">
+  <properties>
+   <property name="dirX" type="float" value="-1"/>
+   <property name="lifetime" type="float" value="40"/>
+   <property name="loader" value="cloud"/>
+   <property name="speedX" type="float" value="100"/>
+  </properties>
+ </object>
+</template>

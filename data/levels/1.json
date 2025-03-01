@@ -3,9 +3,437 @@
  "infinite":false,
  "layers":[
         {
+         "draworder":"topdown",
+         "id":16,
+         "name":"clouds",
+         "objects":[
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":291,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":640,
+                 "y":608
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":292,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":1740,
+                 "y":1056
+                }, 
+                {
+                 "gid":269,
+                 "height":140,
+                 "id":293,
+                 "name":"small_cloud1",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":532,
+                 "x":1264,
+                 "y":608
+                }, 
+                {
+                 "gid":270,
+                 "height":156,
+                 "id":294,
+                 "name":"small_cloud2",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":64,
+                 "y":224
+                }, 
+                {
+                 "gid":269,
+                 "height":140,
+                 "id":295,
+                 "name":"small_cloud1",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":532,
+                 "x":12,
+                 "y":1056
+                }, 
+                {
+                 "gid":269,
+                 "height":140,
+                 "id":296,
+                 "name":"small_cloud1",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":532,
+                 "x":364,
+                 "y":1056
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":297,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":496,
+                 "y":224
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":298,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":1088,
+                 "y":224
+                }, 
+                {
+                 "gid":269,
+                 "height":140,
+                 "id":299,
+                 "name":"small_cloud1",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":532,
+                 "x":1280,
+                 "y":224
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":300,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":2160,
+                 "y":224
+                }, 
+                {
+                 "gid":270,
+                 "height":156,
+                 "id":301,
+                 "name":"small_cloud2",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":1680,
+                 "y":608
+                }, 
+                {
+                 "gid":270,
+                 "height":156,
+                 "id":302,
+                 "name":"small_cloud2",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":-240,
+                 "y":608
+                }, 
+                {
+                 "gid":270,
+                 "height":156,
+                 "id":303,
+                 "name":"small_cloud2",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":-356,
+                 "y":1056
+                }, 
+                {
+                 "gid":270,
+                 "height":156,
+                 "id":304,
+                 "name":"small_cloud2",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":2108,
+                 "y":1056
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":305,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":1100,
+                 "y":1056
+                }, 
+                {
+                 "gid":268,
+                 "height":96,
+                 "id":306,
+                 "name":"small_cloud0",
+                 "properties":
+                    {
+                     "dirX":-1,
+                     "lifetime":40,
+                     "loader":"cloud",
+                     "speedX":100
+                    },
+                 "propertytypes":
+                    {
+                     "dirX":"float",
+                     "lifetime":"float",
+                     "loader":"string",
+                     "speedX":"float"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":296,
+                 "x":2432,
+                 "y":608
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "class":"window",
          "draworder":"topdown",
          "id":12,
+         "locked":true,
          "name":"zero",
          "objects":[
                 {
@@ -189,6 +617,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":30,
          "id":9,
+         "locked":true,
          "name":"bg",
          "opacity":1,
          "type":"tilelayer",
@@ -230,6 +659,7 @@
             0, 0, 89, 90, 90, 90, 90, 90, 91, 0, 0, 0, 89, 90, 91, 0, 89, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 91, 0],
          "height":30,
          "id":1,
+         "locked":true,
          "name":"collision",
          "opacity":1,
          "type":"tilelayer",
@@ -325,6 +755,7 @@
         {
          "draworder":"topdown",
          "id":13,
+         "locked":true,
          "name":"paths",
          "objects":[
                 {
@@ -488,6 +919,7 @@
         {
          "draworder":"topdown",
          "id":4,
+         "locked":true,
          "name":"objects",
          "objects":[
                 {
@@ -1323,6 +1755,7 @@
         {
          "draworder":"topdown",
          "id":15,
+         "locked":true,
          "name":"damage",
          "objects":[
                 {
@@ -2252,6 +2685,7 @@
         {
          "draworder":"topdown",
          "id":7,
+         "locked":true,
          "name":"items",
          "objects":[
                 {
@@ -3047,6 +3481,7 @@
         {
          "draworder":"topdown",
          "id":6,
+         "locked":true,
          "name":"shells",
          "objects":[
                 {
@@ -3278,8 +3713,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":16,
- "nextobjectid":291,
+ "nextlayerid":17,
+ "nextobjectid":307,
  "orientation":"orthogonal",
  "properties":
     {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="16" nextobjectid="291">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="307">
  <editorsettings>
   <export target="1.json" format="json1"/>
  </editorsettings>
@@ -17,7 +17,25 @@
  <tileset firstgid="221" source="../tilesets/objects.json"/>
  <tileset firstgid="259" source="../tilesets/platforms.json"/>
  <tileset firstgid="267" source="../tilesets/clouds.json"/>
- <objectgroup id="12" name="zero" class="window">
+ <objectgroup id="16" name="clouds">
+  <object id="291" template="../templates/clouds/small_cloud0.tx" x="640" y="608"/>
+  <object id="292" template="../templates/clouds/small_cloud0.tx" x="1740" y="1056"/>
+  <object id="293" template="../templates/clouds/small_cloud1.tx" x="1264" y="608"/>
+  <object id="294" template="../templates/clouds/small_cloud2.tx" x="64" y="224"/>
+  <object id="295" template="../templates/clouds/small_cloud1.tx" x="12" y="1056"/>
+  <object id="296" template="../templates/clouds/small_cloud1.tx" x="364" y="1056"/>
+  <object id="297" template="../templates/clouds/small_cloud0.tx" x="496" y="224"/>
+  <object id="298" template="../templates/clouds/small_cloud0.tx" x="1088" y="224"/>
+  <object id="299" template="../templates/clouds/small_cloud1.tx" x="1280" y="224"/>
+  <object id="300" template="../templates/clouds/small_cloud0.tx" x="2160" y="224"/>
+  <object id="301" template="../templates/clouds/small_cloud2.tx" x="1680" y="608"/>
+  <object id="302" template="../templates/clouds/small_cloud2.tx" x="-240" y="608"/>
+  <object id="303" template="../templates/clouds/small_cloud2.tx" x="-356" y="1056"/>
+  <object id="304" template="../templates/clouds/small_cloud2.tx" x="2108" y="1056"/>
+  <object id="305" template="../templates/clouds/small_cloud0.tx" x="1100" y="1056"/>
+  <object id="306" template="../templates/clouds/small_cloud0.tx" x="2432" y="608"/>
+ </objectgroup>
+ <objectgroup id="12" name="zero" class="window" locked="1">
   <object id="27" template="../templates/objects/palm_bg.tx" x="272" y="1376"/>
   <object id="80" template="../templates/objects/palm_long.tx" x="551" y="1363"/>
   <object id="79" template="../templates/objects/palm_long.tx" x="510" y="1306"/>
@@ -30,7 +48,7 @@
   </object>
   <object id="43" template="../templates/objects/palm_bg_left.tx" x="105.333" y="1530"/>
  </objectgroup>
- <layer id="9" name="bg" width="40" height="30">
+ <layer id="9" name="bg" width="40" height="30" locked="1">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -64,7 +82,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="1" name="collision" width="40" height="30">
+ <layer id="1" name="collision" width="40" height="30" locked="1">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,125,126,127,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -166,7 +184,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="13" name="paths">
+ <objectgroup id="13" name="paths" locked="1">
   <object id="68" name="270" x="832" y="448" width="10" height="384">
    <properties>
     <property name="loader" value="sawPath"/>
@@ -208,7 +226,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="4" name="objects">
+ <objectgroup id="4" name="objects" locked="1">
   <object id="4" template="../templates/objects/flag.tx" x="1869" y="296"/>
   <object id="6" template="../templates/objects/crate.tx" x="1406" y="1501"/>
   <object id="7" template="../templates/objects/crate.tx" x="1872" y="1501"/>
@@ -257,7 +275,7 @@
   <object id="181" template="../templates/objects/green_bottle2.tx" x="1808" y="1523"/>
   <object id="285" template="../templates/objects/helicopter.tx" x="2176" y="704"/>
  </objectgroup>
- <objectgroup id="15" name="damage">
+ <objectgroup id="15" name="damage" locked="1">
   <object id="154" template="../templates/damage/saw.tx" x="1658" y="762">
    <properties>
     <property name="dirX" type="float" value="0"/>
@@ -385,7 +403,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7" name="items">
+ <objectgroup id="7" name="items" locked="1">
   <object id="25" template="../templates/items/silver.tx" x="640" y="448"/>
   <object id="26" template="../templates/items/skull.tx" x="2496" y="576"/>
   <object id="87" template="../templates/items/silver.tx" x="384" y="704"/>
@@ -424,7 +442,7 @@
  <objectgroup id="14" name="player" locked="1">
   <object id="265" template="../templates/player.tx" x="128" y="1280"/>
  </objectgroup>
- <objectgroup id="6" name="shells">
+ <objectgroup id="6" name="shells" locked="1">
   <object id="245" template="../templates/damage/shell.tx" x="64" y="400"/>
   <object id="246" template="../templates/damage/shell.tx" x="64" y="592"/>
   <object id="247" template="../templates/damage/shell.tx" x="64" y="784"/>

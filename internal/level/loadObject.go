@@ -7,6 +7,7 @@ import (
 
 var objectLoaders = []Loader[Object]{
 	animatedLoader,
+	cloudLoader,
 	damageLoader,
 	itemLoader,
 	objectLoader,
@@ -42,6 +43,12 @@ var itemLoader = Loader[Object]{
 	key:     "item",
 	builder: objectMiddleWare(NewItem),
 	groups:  []string{"all", "item"},
+}
+
+var cloudLoader = Loader[Object]{
+	key:     "cloud",
+	builder: objectMiddleWare(NewCloud),
+	groups:  []string{"all", "moving"},
 }
 
 func objectMiddleWare(
