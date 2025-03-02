@@ -9,8 +9,8 @@ type Item struct {
 	Value int
 }
 
-func NewItem(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj, ImageLib, a)
+func NewItem(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
+	id, err := newId(obj, aLib, a)
 	if err != nil {
 		return nil, err
 	}

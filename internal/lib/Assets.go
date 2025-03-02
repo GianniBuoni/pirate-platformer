@@ -10,6 +10,7 @@ const (
 	ImageLib AssetLibrary = iota
 	PlayerLib
 	TilesetLib
+	UiLib
 	TileData
 	SpawnInLib
 )
@@ -19,6 +20,7 @@ type Assets struct {
 	Images   map[string]rl.Texture2D
 	Player   map[string]rl.Texture2D
 	Tilesets map[string]rl.Texture2D
+	UI       map[string]rl.Texture2D
 	// DATA
 	TilesetData map[string]Tileset
 	SpawnIn     map[string]Object
@@ -30,6 +32,7 @@ func NewAssets() *Assets {
 		Images:      map[string]rl.Texture2D{},
 		Player:      map[string]rl.Texture2D{},
 		Tilesets:    map[string]rl.Texture2D{},
+		UI:          map[string]rl.Texture2D{},
 		TilesetData: map[string]Tileset{},
 		SpawnIn:     map[string]Object{},
 		Hitboxes:    map[string]Rect{},

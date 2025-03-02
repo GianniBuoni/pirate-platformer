@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"errors"
 	"fmt"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -20,6 +21,11 @@ func (a *Assets) GetImage(
 		image, ok = a.Player[key]
 	case TilesetLib:
 		image, ok = a.Tilesets[key]
+	case UiLib:
+		image, ok = a.UI[key]
+	default:
+		return rl.Texture2D{},
+			errors.New("passed in asset library getter not implemented.")
 	}
 	if !ok {
 		return rl.Texture2D{}, fmt.Errorf(

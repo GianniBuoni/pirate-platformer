@@ -12,7 +12,7 @@ type Cloud struct {
 	spawnX float32
 }
 
-func NewCloud(obj Object, a *Assets) (Sprite, error) {
+func NewCloud(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
 	id, err := newId(obj, ImageLib, a)
 	if err != nil {
 		return nil, err

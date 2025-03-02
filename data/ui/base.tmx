@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="9">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="18">
+ <editorsettings>
+  <export target="base.json" format="json1"/>
+ </editorsettings>
  <tileset firstgid="1" source="../tilesets/ui.json"/>
  <objectgroup id="2" name="base">
-  <object id="7" gid="2" x="32" y="32" width="64" height="64"/>
-  <object id="8" gid="3" x="48" y="96" width="32" height="32"/>
+  <object id="8" name="coin" gid="3" x="32" y="64" width="32" height="32"/>
+  <object id="12" name="heart" gid="2" x="32" y="24" width="32" height="32"/>
  </objectgroup>
 </map>

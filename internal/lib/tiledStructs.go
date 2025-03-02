@@ -3,12 +3,17 @@ package lib
 type MapProps struct {
 	Bg        string  `json:"bg"`
 	Horizon   float32 `json:"horizon"`
+	Id        int     `json:"id"`
 	NextLevel int     `json:"next level"`
 	TopLimit  int     `json:"top limit"`
 }
 
 // Stores layer data: Data (a tile layer)
 // or Objects.
+type Layers struct {
+	Layers []Layer `json:"layers"`
+}
+
 type Layer struct {
 	Data    []int    `json:"data"`
 	Objects []Object `json:"objects,omitempty"`

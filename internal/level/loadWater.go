@@ -12,7 +12,7 @@ var waterLoader = Loader[Object]{
 }
 
 func waterMiddleware(
-	f, g func(Object, *Assets) (Sprite, error),
+	f, g func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
 		width := o.Width / TileSize
@@ -38,9 +38,9 @@ func waterMiddleware(
 			)
 			if topRow {
 				newObject.Image = "water_surface"
-				s, err = f(newObject, ld.levelAssets)
+				s, err = f(newObject, ImageLib, ld.levelAssets)
 			} else {
-				s, err = g(newObject, ld.levelAssets)
+				s, err = g(newObject, ImageLib, ld.levelAssets)
 			}
 			if err != nil {
 				return nil, err

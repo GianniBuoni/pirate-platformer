@@ -8,8 +8,8 @@ type Particle struct {
 	Animation
 }
 
-func NewParticle(o Object, a *Assets) (Sprite, error) {
-	id, err := newId(o, ImageLib, a)
+func NewParticle(o Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
+	id, err := newId(o, aLib, a)
 	if err != nil {
 		return nil, err
 	}

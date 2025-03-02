@@ -12,11 +12,11 @@ var sawPathLoader = Loader[Object]{
 }
 
 func sawPathMiddleware(
-	f, g func(Object, *Assets) (Sprite, error),
+	f, g func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
 		// path
-		s, err := f(o, ld.levelAssets)
+		s, err := f(o, ImageLib, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}
@@ -59,7 +59,7 @@ func sawPathMiddleware(
 			} else {
 				newO.Y += i
 			}
-			s, err := g(newO, ld.levelAssets)
+			s, err := g(newO, ImageLib, ld.levelAssets)
 			if err != nil {
 				return nil, err
 			}

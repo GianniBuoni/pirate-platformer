@@ -10,8 +10,8 @@ type ObjectSprite struct {
 	Pos
 }
 
-func NewSprite(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj, ImageLib, a)
+func NewSprite(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
+	id, err := newId(obj, aLib, a)
 	if err != nil {
 		return nil, err
 	}

@@ -1387,6 +1387,7 @@
      "bg":"bg_green",
      "death border":15,
      "horizon":9,
+     "id":0,
      "next level":1,
      "top limit":-1
     },
@@ -1395,6 +1396,7 @@
      "bg":"string",
      "death border":"int",
      "horizon":"int",
+     "id":"int",
      "next level":"int",
      "top limit":"int"
     },

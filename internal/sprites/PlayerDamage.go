@@ -1,8 +1,6 @@
 package sprites
 
 import (
-	"fmt"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -39,5 +37,4 @@ func (p *Player) setHit() {
 	p.frameIndex = 0
 	p.state.ToggleState(hit, true)
 	p.stats.AddHP(-1)
-	fmt.Printf("PlayerHP: %v\n", p.stats.PlayerHP())
 }

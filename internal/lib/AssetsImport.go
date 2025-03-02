@@ -23,6 +23,8 @@ func (a *Assets) ImportImages(
 			a.Player[key] = rl.LoadTexture(path)
 		case TilesetLib:
 			a.Tilesets[key] = rl.LoadTexture(path)
+		case UiLib:
+			a.UI[key] = rl.LoadTexture(path)
 		default:
 			return errors.New("passed in asset library not implemented.")
 		}

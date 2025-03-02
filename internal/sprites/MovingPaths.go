@@ -6,7 +6,7 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
-func NewPath(obj Object, a *Assets) (Sprite, error) {
+func NewPath(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
 	s := ObjectSprite{
 		ID: ID{
 			Image: obj.Image,

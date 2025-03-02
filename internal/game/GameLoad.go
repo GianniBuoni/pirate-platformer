@@ -1,6 +1,8 @@
 package game
 
 import (
+	"path/filepath"
+
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/ui"
@@ -27,6 +29,11 @@ func (g *GameData) LoadUi() {
 		g.Quit(1, err)
 	}
 	g.ui = ui
+	mapPath := filepath.Join("data", "ui", "base.json")
+	err = g.ui.Load(mapPath)
+	if err != nil {
+		g.Quit(1, err)
+	}
 }
 
 func (g *GameData) loadAssets() {
@@ -35,6 +42,7 @@ func (g *GameData) loadAssets() {
 		"tilesets": TilesetLib,
 		"level":    ImageLib,
 		"player":   PlayerLib,
+		"ui":       UiLib,
 	}
 
 	data := map[string]AssetLibrary{

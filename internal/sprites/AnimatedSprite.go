@@ -10,8 +10,10 @@ type AnimatedSprite struct {
 	Animation
 }
 
-func NewAnimatedSprite(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj, ImageLib, a)
+func NewAnimatedSprite(
+	obj Object, aLib AssetLibrary, a *Assets,
+) (Sprite, error) {
+	id, err := newId(obj, aLib, a)
 	if err != nil {
 		return nil, err
 	}
