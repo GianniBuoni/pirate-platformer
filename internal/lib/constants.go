@@ -9,14 +9,15 @@ const (
 	TileSize float32 = 64
 	Title            = "Pirate Platformer 💀!"
 
-	// BASIC SPRITES
-	PlatHitbox float32 = 13
+	// UI
+	UITileSize float32 = 32
 
 	// ANIMATED SPRITES
 	FrameSpeed float32 = 6
 
 	// PLAYER
-	Gravity float32 = 2
+	MaxHealth int     = 10
+	Gravity   float32 = 2
 )
 
 var (

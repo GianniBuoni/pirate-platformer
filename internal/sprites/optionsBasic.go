@@ -93,10 +93,6 @@ func newId(
 	}, nil
 }
 
-func (id *ID) Name() string {
-	return id.Image
-}
-
 func (id *ID) GetID() *ID {
 	return id
 }

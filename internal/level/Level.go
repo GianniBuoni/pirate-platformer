@@ -16,6 +16,7 @@ type LevelData struct {
 	levelAssets *Assets
 	camera      *CameraRect
 	player      *Player
+	stats       *Stats
 	groups      map[string][]Sprite
 	tileRefs    map[GIDRange]string
 	pathRects   map[int]*Rect
@@ -23,7 +24,9 @@ type LevelData struct {
 	Height      int `json:"height"`
 }
 
-func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
+func NewLevel(
+	stats *Stats, assets *Assets, mapPath string,
+) (*LevelData, error) {
 	data, err := os.ReadFile(mapPath)
 	if err != nil {
 		return nil, err
@@ -31,6 +34,7 @@ func NewLevel(assets *Assets, mapPath string) (*LevelData, error) {
 
 	l := LevelData{
 		levelAssets: assets,
+		stats:       stats,
 		tileRefs:    map[GIDRange]string{},
 		groups:      map[string][]Sprite{},
 		pathRects:   map[int]*Rect{},

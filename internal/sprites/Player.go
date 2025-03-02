@@ -12,12 +12,13 @@ type Player struct {
 	Animation
 	platform Sprite
 	state    PlayerState
+	stats    *Stats
 	Groups   map[string][]Sprite
 	cRects   map[CollisionSide]*Rect
 	cSide    CollisionSide
 }
 
-func NewPlayer(obj Object, a *Assets) (Sprite, error) {
+func NewPlayer(obj Object, stats *Stats, a *Assets) (Sprite, error) {
 	id, err := newId(obj, PlayerLib, a)
 	if err != nil {
 		return nil, err
@@ -28,6 +29,7 @@ func NewPlayer(obj Object, a *Assets) (Sprite, error) {
 		Movement:  newMovement(obj),
 		Animation: newAnimation(),
 		state:     newStateData(),
+		stats:     stats,
 		cRects:    map[CollisionSide]*Rect{},
 	}
 	p.getCRects()

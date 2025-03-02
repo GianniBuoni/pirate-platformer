@@ -3,14 +3,15 @@ package game
 import (
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	"github.com/GianniBuoni/pirate-platformer/internal/ui"
 )
 
 func (g *GameData) Load() {
 	g.window = NewWindow()
 	g.loadAssets()
 	var err error
-	mapPath := g.levelMaps[g.stats.currentLevel]
-	g.levelCurrent, err = level.NewLevel(g.levelAssets, mapPath)
+	mapPath := g.levelMaps[g.stats.CurrentLevel]
+	g.levelCurrent, err = level.NewLevel(g.stats, g.levelAssets, mapPath)
 	if err != nil {
 		g.Quit(1, err)
 	}
@@ -19,12 +20,10 @@ func (g *GameData) Load() {
 		g.Quit(1, err)
 	}
 	g.window.loadCam(g.levelCurrent.CameraPos())
+	g.ui = ui.NewUI(g.stats, g.levelAssets)
 }
 
 func (g *GameData) loadAssets() {
-	// init assets
-	g.levelAssets = NewAssets()
-
 	// load all assets
 	assetMap := map[string]AssetLibrary{
 		"tilesets": TilesetLib,

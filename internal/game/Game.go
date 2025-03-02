@@ -6,6 +6,7 @@ import (
 
 	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	"github.com/GianniBuoni/pirate-platformer/internal/ui"
 )
 
 type GameData struct {
@@ -13,31 +14,19 @@ type GameData struct {
 	levelCurrent *level.LevelData
 	levelMaps    map[int]string
 	loaders      *level.Loaders
+	ui           *ui.UI
 	stats        *Stats
 	window       *WindowData
 	Running      bool
 }
 
-type Stats struct {
-	currentLevel  int
-	unlockedLevel int
-	playerHealth  int
-}
-
 func NewGame() *GameData {
 	return &GameData{
-		levelMaps: GetMaps(),
-		loaders:   level.NewLoaders(),
-		stats:     NewStats(),
-		Running:   true,
-	}
-}
-
-func NewStats() *Stats {
-	return &Stats{
-		currentLevel:  1,
-		unlockedLevel: 4,
-		playerHealth:  5,
+		levelAssets: NewAssets(),
+		levelMaps:   GetMaps(),
+		loaders:     level.NewLoaders(),
+		stats:       NewStats(),
+		Running:     true,
 	}
 }
 
