@@ -9,11 +9,11 @@ type UI struct {
 	stats  *Stats
 }
 
-func NewUI(s *Stats, a *Assets) *UI {
+func NewUI(s *Stats, a *Assets) (*UI, error) {
 	return &UI{
 		assets: a,
 		stats:  s,
-	}
+	}, nil
 }
 
 func (ui *UI) Update() {}

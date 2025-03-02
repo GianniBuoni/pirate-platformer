@@ -6,7 +6,7 @@ import (
 
 func main() {
 	game := game.NewGame()
-	game.Load()
+	game.LoadLevel()
 	defer game.Quit(0)
 
 	for game.Running {

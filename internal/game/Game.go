@@ -21,13 +21,16 @@ type GameData struct {
 }
 
 func NewGame() *GameData {
-	return &GameData{
+	g := &GameData{
 		levelAssets: NewAssets(),
 		levelMaps:   GetMaps(),
 		loaders:     level.NewLoaders(),
 		stats:       NewStats(),
+		window:      NewWindow(),
 		Running:     true,
 	}
+	g.loadAssets()
+	return g
 }
 
 func GetMaps() map[int]string {

@@ -10,13 +10,16 @@ const (
 	ImageLib AssetLibrary = iota
 	PlayerLib
 	TilesetLib
+	TileData
 	SpawnInLib
 )
 
 type Assets struct {
-	Images      map[string]rl.Texture2D
-	Player      map[string]rl.Texture2D
-	Tilesets    map[string]rl.Texture2D
+	// TEXTURES
+	Images   map[string]rl.Texture2D
+	Player   map[string]rl.Texture2D
+	Tilesets map[string]rl.Texture2D
+	// DATA
 	TilesetData map[string]Tileset
 	SpawnIn     map[string]Object
 	Hitboxes    map[string]Rect
