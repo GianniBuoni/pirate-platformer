@@ -2,11 +2,13 @@ package ui
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type UI struct {
@@ -39,7 +41,7 @@ func (ui *UI) Load(mapPath string) error {
 			continue
 		}
 		for _, obj := range layer.Objects {
-			s, err := sprites.NewSprite(obj, UiLib, ui.assets)
+			s, err := sprites.NewAnimatedSprite(obj, UiLib, ui.assets)
 			if err != nil {
 				return err
 			}
@@ -54,6 +56,19 @@ func (ui *UI) Draw() {
 	c := ui.sprites["coin"]
 	c.Draw(c.GetID(), c.GetPos())
 
+	coins := fmt.Sprintf("%d", ui.stats.Coins)
+	rl.DrawTextEx(
+		ui.assets.Fonts["runescape_uf"],
+		coins,
+		rl.NewVector2(81, 66),
+		32, 8, rl.White,
+	)
+
+	pos := s.GetPos()
+	heart, ok := s.(*AnimatedSprite)
+	if ok {
+		heart.Animation.FrameSpeed = 2
+	}
 	for i := range ui.stats.PlayerHP() {
 		var margin float32
 		if i == 0 {
@@ -61,7 +76,6 @@ func (ui *UI) Draw() {
 		} else {
 			margin = 32 + (float32(i) * 8)
 		}
-		pos := s.GetPos()
 		pos.Rect().X = float32(i)*pos.Rect().Width + margin
 		s.Draw(s.GetID(), s.GetPos())
 	}

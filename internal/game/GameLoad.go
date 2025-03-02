@@ -48,6 +48,7 @@ func (g *GameData) loadAssets() {
 	data := map[string]AssetLibrary{
 		"tilesets":  TileData,
 		"templates": SpawnInLib,
+		"fonts":     FontLib,
 	}
 
 	for k, v := range graphics {

@@ -35,7 +35,7 @@ func (a *Assets) ImportImages(
 func (a *Assets) ImportData(aLib AssetLibrary, root ...string) error {
 	paths := GetFilePaths(root...)
 	for _, path := range paths {
-		if !strings.Contains(path, "json") {
+		if !strings.Contains(path, "json") && !strings.Contains(path, "ttf") {
 			continue
 		}
 		key := GetAssetKey(path)
@@ -50,6 +50,8 @@ func (a *Assets) ImportData(aLib AssetLibrary, root ...string) error {
 			if err != nil {
 				return err
 			}
+		case FontLib:
+			a.Fonts[key] = rl.LoadFont(path)
 		default:
 			return errors.New("passed in asset library not implemented.")
 		}

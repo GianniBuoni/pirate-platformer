@@ -8,19 +8,19 @@ import (
 type Animation struct {
 	frameCount int
 	frameIndex float32
-	frameSpeed float32
+	FrameSpeed float32
 }
 
 func newAnimation() Animation {
 	return Animation{
-		frameSpeed: FrameSpeed,
+		FrameSpeed: FrameSpeed,
 	}
 }
 
 func (a *Animation) animate(rect *Rect, src rl.Texture2D) {
 	a.frameCount = int(float32(src.Width) / rect.Width)
 	dt := rl.GetFrameTime()
-	a.frameIndex += a.frameSpeed * dt
+	a.frameIndex += a.FrameSpeed * dt
 }
 
 // Call after A.animate() to prevent animation from looping.
