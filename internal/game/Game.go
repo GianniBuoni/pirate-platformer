@@ -18,6 +18,7 @@ type GameData struct {
 	stats        *Stats
 	window       *WindowData
 	Running      bool
+	CanUpdate    bool
 }
 
 func NewGame() *GameData {
@@ -28,6 +29,7 @@ func NewGame() *GameData {
 		stats:       NewStats(),
 		window:      NewWindow(),
 		Running:     true,
+		CanUpdate:   true,
 	}
 	g.loadAssets()
 	return g

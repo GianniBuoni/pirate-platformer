@@ -65,13 +65,15 @@ func (p *Pos) Facing() float32 {
 	return p.FlipH
 }
 
-func (p *Pos) Update() {
+func (p *Pos) Update() error {
 	p.rect.X = p.hitbox.X - p.hitboxOffset.X
 	p.rect.Y = p.hitbox.Y - p.hitboxOffset.Y
+	return nil
 }
 
 // Sprite info that identifies asset metadata
 type ID struct {
+	Src      rl.Texture2D
 	Image    string
 	GID      int
 	assets   *Assets
@@ -82,15 +84,18 @@ type ID struct {
 func newId(
 	obj Object, aLib AssetLibrary, a *Assets,
 ) (ID, error) {
-	if _, err := a.GetImage(aLib, obj.Image); err != nil {
-		return ID{}, err
-	}
-	return ID{
+	id := ID{
 		Image:    obj.Image,
 		GID:      obj.Id,
 		assets:   a,
 		assetLib: aLib,
-	}, nil
+	}
+	var err error
+	id.Src, err = a.GetImage(aLib, obj.Image)
+	if err != nil {
+		return ID{}, err
+	}
+	return id, nil
 }
 
 func (id *ID) GetID() *ID {

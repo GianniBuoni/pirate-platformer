@@ -15,16 +15,16 @@ type Pearl struct {
 	Lifetime time.Duration
 }
 
-func NewPearl(o Object, a *Assets) (*Pearl, error) {
-	id, err := newId(o, ImageLib, a)
-	if err != nil {
-		return nil, err
-	}
+func NewPearl(o Object, aLib AssetLibrary, a *Assets) (*Pearl, error) {
 	p := &Pearl{
 		Pos:      newPos(o, a),
-		ID:       id,
 		Movement: newMovement(o),
 		Lifetime: time.Duration(o.Properties.Lifetime) * time.Second,
+	}
+	var err error
+	p.ID, err = newId(o, aLib, a)
+	if err != nil {
+		return nil, err
 	}
 	p.rect.Set(
 		Center(o.X+o.Width*p.direction.X, o.Y),
@@ -32,24 +32,20 @@ func NewPearl(o Object, a *Assets) (*Pearl, error) {
 	return p, nil
 }
 
-func (p *Pearl) Update() {
+func (p *Pearl) Update() error {
 	dt := rl.GetFrameTime()
 	p.MoveX(p.rect, dt)
 	p.collision()
+	return nil
 }
 
-func (p *Pearl) Draw(id *ID, pos *Pos) error {
-	src, err := p.assets.GetImage(p.assetLib, p.Image)
-	if err != nil {
-		return err
-	}
+func (p *Pearl) Draw(src rl.Texture2D, pos *Pos) {
 	rl.DrawTexturePro(
 		src,
 		rl.NewRectangle(0, 0, p.rect.Width, p.rect.Height),
 		rl.Rectangle(*p.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	return nil
 }
 
 func (p *Pearl) collision() {

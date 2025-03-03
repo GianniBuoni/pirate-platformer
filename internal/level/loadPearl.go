@@ -31,10 +31,10 @@ func (l *LevelData) spawnPearl(s Sprite) error {
 }
 
 func pearlMiddleware(
-	f func(Object, *Assets) (*Pearl, error),
+	f func(Object, AssetLibrary, *Assets) (*Pearl, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
-		p, err := f(o, ld.levelAssets)
+		p, err := f(o, ImageLib, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}

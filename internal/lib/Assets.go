@@ -43,13 +43,15 @@ func NewAssets() *Assets {
 }
 
 func (a *Assets) Unload() {
-	for _, image := range a.Images {
-		rl.UnloadTexture(image)
+	imagesToUnload := []map[string]rl.Texture2D{
+		a.Images, a.Player, a.Tilesets, a.UI,
 	}
-	for _, state := range a.Player {
-		rl.UnloadTexture(state)
+	for _, lib := range imagesToUnload {
+		for _, v := range lib {
+			rl.UnloadTexture(v)
+		}
 	}
-	for _, tileset := range a.Tilesets {
-		rl.UnloadTexture(tileset)
+	for _, v := range a.Fonts {
+		rl.UnloadFont(v)
 	}
 }

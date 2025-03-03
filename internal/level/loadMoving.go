@@ -42,10 +42,10 @@ func pathMiddleware(
 }
 
 func movingMiddleware(
-	f func(Object, *Assets) (Sprite, error),
+	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
-		s, err := f(o, ld.levelAssets)
+		s, err := f(o, ImageLib, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}

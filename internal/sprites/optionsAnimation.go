@@ -40,13 +40,7 @@ func (a *Animation) animateOnce(
 	}
 }
 
-func (a *Animation) Draw(id *ID, pos *Pos) error {
-	src, err := id.assets.GetImage(id.assetLib, id.Image)
-	if err != nil {
-		return err
-	}
-	a.animate(pos.rect, src)
-
+func (a *Animation) Draw(src rl.Texture2D, pos *Pos) {
 	srcRect := rl.NewRectangle(
 		pos.rect.Width*float32(int(a.frameIndex)%a.frameCount),
 		0,
@@ -57,5 +51,4 @@ func (a *Animation) Draw(id *ID, pos *Pos) error {
 		src, srcRect, rl.Rectangle(*pos.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	return nil
 }

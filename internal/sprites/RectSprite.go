@@ -20,14 +20,15 @@ func NewRectSrite(
 	return rs, nil
 }
 
-func (rs *RectSprite) Draw(*ID, *Pos) error {
+func (rs *RectSprite) Draw(rl.Texture2D, *Pos) {
 	rl.DrawRectangleRec(
 		rl.Rectangle(*rs.rect), rs.color,
 	)
-	return nil
 }
 
-func (rs *RectSprite) Update() {}
+func (rs *RectSprite) Update() error {
+	return nil
+}
 func (rs *RectSprite) GetID() *ID {
 	return &ID{}
 }

@@ -14,26 +14,32 @@ type Shell struct {
 	Attack      bool
 }
 
-func NewShell(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj, ImageLib, a)
-	if err != nil {
-		return nil, err
-	}
+func NewShell(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
 	s := Shell{
 		Pos:         newPos(obj, a),
-		ID:          id,
 		Animation:   newAnimation(),
 		attackRange: obj.Properties.DirX,
 		canAttack:   true,
 	}
+	var err error
+	s.ID, err = newId(obj, aLib, a)
+	if err != nil {
+		return nil, err
+	}
 	return &s, nil
 }
 
-func (s *Shell) Update() {
+func (s *Shell) Update() (err error) {
+	s.Src, err = s.assets.GetImage(s.assetLib, s.Image)
+	if err != nil {
+		return err
+	}
 	if s.playerInFront() {
 		s.fire()
 	}
+	s.animate(s.rect, s.Src)
 	s.stop()
+	return nil
 }
 
 func (s *Shell) playerInFront() bool {

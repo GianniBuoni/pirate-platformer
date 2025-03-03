@@ -11,12 +11,15 @@ func (g *GameData) Run() {
 }
 
 func (g *GameData) update() {
+	g.input()
 	g.Running = !rl.WindowShouldClose()
-	err := g.levelCurrent.Update()
-	if err != nil {
-		g.Quit(1, err)
+	if g.CanUpdate {
+		err := g.levelCurrent.Update()
+		if err != nil {
+			g.Quit(1, err)
+		}
+		g.window.Update(g.levelCurrent.CameraPos())
 	}
-	g.window.Update(g.levelCurrent.CameraPos())
 }
 
 func (g *GameData) draw() {
@@ -24,12 +27,9 @@ func (g *GameData) draw() {
 	rl.BeginTextureMode(g.window.renderTexture)
 	rl.BeginMode2D(g.window.camera)
 	rl.ClearBackground(BgColor)
-	err := g.levelCurrent.Draw()
-	if err != nil {
-		g.Quit(1, err)
-	}
+	g.levelCurrent.Draw()
 	rl.EndMode2D()
-	g.ui.Draw()
+	//g.ui.Draw()
 	rl.EndTextureMode()
 
 	// draw render texture scaled

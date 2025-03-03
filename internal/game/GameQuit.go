@@ -18,6 +18,4 @@ func (g *GameData) Quit(i int, errs ...error) {
 
 func (g *GameData) unloadAssets() {
 	g.levelAssets.Unload()
-	// unload uiAssets
-	// unload soundAssets
 }

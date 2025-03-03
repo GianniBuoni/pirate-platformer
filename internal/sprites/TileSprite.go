@@ -18,16 +18,14 @@ func NewTileSprite(tile Tile, a *Assets) (
 		Image: tile.Image,
 		X:     tile.X, Y: tile.Y, Width: TileSize, Height: TileSize,
 	}
-
-	id, err := newId(obj, TilesetLib, a)
-	if err != nil {
-		return nil, err
-	}
-
 	ts := TileSprite{
-		ID:     id,
 		Pos:    newPos(obj, a),
 		imgPos: rl.NewVector2(tile.ImgX, tile.ImgY),
+	}
+	var err error
+	ts.ID, err = newId(obj, TilesetLib, a)
+	if err != nil {
+		return nil, err
 	}
 	if tile.Image == "platforms" {
 		ts.hitbox = NewRectangle(
@@ -37,13 +35,7 @@ func NewTileSprite(tile Tile, a *Assets) (
 	return &ts, nil
 }
 
-func (ts *TileSprite) Update() {}
-
-func (ts *TileSprite) Draw(id *ID, pos *Pos) error {
-	src, err := ts.assets.GetImage(ts.assetLib, ts.Image)
-	if err != nil {
-		return err
-	}
+func (ts *TileSprite) Draw(src rl.Texture2D, pos *Pos) {
 	srcRect := rl.NewRectangle(
 		ts.imgPos.X, ts.imgPos.Y, TileSize, TileSize,
 	)
@@ -51,6 +43,4 @@ func (ts *TileSprite) Draw(id *ID, pos *Pos) error {
 		src, srcRect, rl.Rectangle(*ts.rect),
 		rl.Vector2{}, 0, rl.White,
 	)
-	//drawRect(ts.hitbox, rl.Red)
-	return nil
 }

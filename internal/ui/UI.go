@@ -54,7 +54,7 @@ func (ui *UI) Load(mapPath string) error {
 func (ui *UI) Draw() {
 	s := ui.sprites["heart"]
 	c := ui.sprites["coin"]
-	c.Draw(c.GetID(), c.GetPos())
+	c.Draw(c.GetID().Src, c.GetPos())
 
 	coins := fmt.Sprintf("%d", ui.stats.Coins)
 	rl.DrawTextEx(
@@ -77,6 +77,6 @@ func (ui *UI) Draw() {
 			margin = 32 + (float32(i) * 8)
 		}
 		pos.Rect().X = float32(i)*pos.Rect().Width + margin
-		s.Draw(s.GetID(), s.GetPos())
+		//s.Draw(s.GetID().Src, s.GetPos())
 	}
 }

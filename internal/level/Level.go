@@ -60,17 +60,13 @@ func NewLevel(
 	return &l, nil
 }
 
-func (l *LevelData) Draw() error {
+func (l *LevelData) Draw() {
 	allSprites, ok := l.groups["all"]
 	if ok {
-		for _, sprite := range allSprites {
-			err := sprite.Draw(sprite.GetID(), sprite.GetPos())
-			if err != nil {
-				return err
-			}
+		for _, s := range allSprites {
+			s.Draw(s.GetID().Src, s.GetPos())
 		}
 	}
-	return nil
 }
 
 func (l *LevelData) CameraPos() rl.Vector2 {

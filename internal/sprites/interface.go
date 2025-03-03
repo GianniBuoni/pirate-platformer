@@ -1,10 +1,13 @@
 package sprites
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 type Sprite interface {
-	Update()
-	Draw(*ID, *Pos) error
+	Update() error
+	Draw(rl.Texture2D, *Pos)
 
 	// Pos
 	Rect() *Rect

@@ -10,14 +10,20 @@ type Item struct {
 }
 
 func NewItem(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
-	id, err := newId(obj, aLib, a)
+	item := &Item{
+		Pos:       newPos(obj, a),
+		Animation: newAnimation(),
+		Value:     obj.Properties.Value,
+	}
+	var err error
+	item.ID, err = newId(obj, aLib, a)
 	if err != nil {
 		return nil, err
 	}
-	return &Item{
-		Pos:       newPos(obj, a),
-		ID:        id,
-		Animation: newAnimation(),
-		Value:     obj.Properties.Value,
-	}, nil
+	return item, nil
+}
+
+func (item *Item) Update() error {
+	item.animate(item.rect, item.Src)
+	return nil
 }

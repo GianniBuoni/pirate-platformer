@@ -8,7 +8,7 @@ import (
 var waterLoader = Loader[Object]{
 	key:     "water",
 	builder: waterMiddleware(NewAnimatedSprite, NewSprite),
-	groups:  []string{"all"},
+	groups:  []string{"all", "moving"},
 }
 
 func waterMiddleware(

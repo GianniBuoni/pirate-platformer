@@ -1,6 +1,8 @@
 package sprites
 
-import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+import (
+	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
+)
 
 type Particle struct {
 	Pos
@@ -9,21 +11,24 @@ type Particle struct {
 }
 
 func NewParticle(o Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
-	id, err := newId(o, aLib, a)
+	p := &Particle{
+		Pos:       newPos(o, a),
+		Animation: newAnimation(),
+	}
+	var err error
+	p.ID, err = newId(o, aLib, a)
 	if err != nil {
 		return nil, err
 	}
-	p := &Particle{
-		Pos:       newPos(o, a),
-		ID:        id,
-		Animation: newAnimation(),
-	}
 	p.rect.Set(Center(o.X, o.Y))
+	p.animate(p.rect, p.Src)
 	return p, nil
 }
 
-func (p *Particle) Update() {
-	if int(p.frameIndex) >= 3 {
+func (p *Particle) Update() error {
+	p.animate(p.rect, p.Src)
+	if int(p.frameIndex) >= p.frameCount {
 		p.GetID().Kill = true
 	}
+	return nil
 }

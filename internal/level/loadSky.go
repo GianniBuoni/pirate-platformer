@@ -13,7 +13,7 @@ var loadSky = Loader[MapProps]{
 
 func skyboxMiddleware(
 	f func(Object, rl.Color, *Assets) (Sprite, error),
-	g func(Object, *Assets) (Sprite, error),
+	g func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(MapProps, *LevelData) ([]Sprite, error) {
 	return func(mp MapProps, ld *LevelData) ([]Sprite, error) {
 		// check if valid map props
@@ -43,7 +43,7 @@ func skyboxMiddleware(
 			if err != nil {
 				return nil, err
 			}
-			s, err = g(cloud, ld.levelAssets)
+			s, err = g(cloud, ImageLib, ld.levelAssets)
 			if err != nil {
 				return nil, err
 			}

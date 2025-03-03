@@ -18,6 +18,9 @@ func (l *LevelData) spawnParticle(s Sprite) error {
 	}
 	o.X = s.HitBox().Center().X
 	o.Y = s.HitBox().Center().Y
-	particleLoader.Run(o, l)
+	err = particleLoader.Run(o, l)
+	if err != nil {
+		return err
+	}
 	return nil
 }

@@ -19,16 +19,18 @@ type MovingSprite struct {
 	Animation
 }
 
-func NewMovingSprite(obj Object, a *Assets) (Sprite, error) {
-	id, err := newId(obj, ImageLib, a)
-	if err != nil {
-		return nil, err
-	}
+func NewMovingSprite(
+	obj Object, aLib AssetLibrary, a *Assets,
+) (Sprite, error) {
 	ms := MovingSprite{
 		Pos:       newPos(obj, a),
-		ID:        id,
 		Movement:  newMovement(obj),
 		Animation: newAnimation(),
+	}
+	var err error
+	ms.ID, err = newId(obj, aLib, a)
+	if err != nil {
+		return nil, err
 	}
 	return &ms, nil
 }
@@ -41,7 +43,7 @@ func (ms *MovingSprite) GetPath(src map[int]*Rect) {
 	ms.pathRect = path
 }
 
-func (ms *MovingSprite) Update() {
+func (ms *MovingSprite) Update() error {
 	dt := rl.GetFrameTime()
 	ms.oldRect.Copy(ms.hitbox)
 	ms.MoveX(ms.hitbox, dt)
@@ -50,4 +52,6 @@ func (ms *MovingSprite) Update() {
 		ms.FlipH = ms.Movement.PathConstrain(ms.hitbox, ms.FlipH)
 	}
 	ms.Pos.Update()
+	ms.animate(ms.rect, ms.Src)
+	return nil
 }

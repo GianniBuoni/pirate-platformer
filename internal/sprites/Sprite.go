@@ -11,30 +11,22 @@ type ObjectSprite struct {
 }
 
 func NewSprite(obj Object, aLib AssetLibrary, a *Assets) (Sprite, error) {
-	id, err := newId(obj, aLib, a)
+	s := ObjectSprite{
+		Pos: newPos(obj, a),
+	}
+	var err error
+	s.ID, err = newId(obj, aLib, a)
 	if err != nil {
 		return nil, err
-	}
-	s := ObjectSprite{
-		ID:  id,
-		Pos: newPos(obj, a),
 	}
 	return &s, nil
 }
 
-func (s *ObjectSprite) Update() {}
-
-func (s *ObjectSprite) Draw(id *ID, pos *Pos) error {
-	src, err := s.assets.GetImage(s.assetLib, s.Image)
-	if err != nil {
-		return err
-	}
+func (s *ObjectSprite) Draw(src rl.Texture2D, pos *Pos) {
 	rl.DrawTexturePro(
 		src,
 		rl.NewRectangle(0, 0, s.rect.Width*s.FlipH, s.rect.Height*s.FlipV),
 		rl.Rectangle(*s.Rect()),
 		rl.Vector2{}, 0, rl.White,
 	)
-	//drawRect(s.hitbox, rl.Blue)
-	return nil
 }

@@ -12,12 +12,12 @@ var radialLoader = Loader[Object]{
 }
 
 func spikeMiddleware(
-	f func(Object, *Assets) (Sprite, error),
+	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, *LevelData) ([]Sprite, error) {
 	return func(o Object, ld *LevelData) ([]Sprite, error) {
 		// spike ball sprite
 		sprites := []Sprite{}
-		spike, err := f(o, ld.levelAssets)
+		spike, err := f(o, ImageLib, ld.levelAssets)
 		if err != nil {
 			return nil, err
 		}
@@ -37,7 +37,7 @@ func spikeMiddleware(
 			newO.Width = float32(src.Width)
 			newO.Height = float32(src.Height)
 			newO.Properties.DirX = i
-			s, err := f(newO, ld.levelAssets)
+			s, err := f(newO, ImageLib, ld.levelAssets)
 			if err != nil {
 				return nil, err
 			}

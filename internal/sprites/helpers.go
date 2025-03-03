@@ -14,6 +14,7 @@ func drawRect(r *Rect, c rl.Color) {
 	)
 }
 
+// call printRect if drawRect isn't available
 func printRect(r *Rect, pos string) {
 	switch pos {
 	case "top":

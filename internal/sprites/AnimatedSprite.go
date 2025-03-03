@@ -13,16 +13,19 @@ type AnimatedSprite struct {
 func NewAnimatedSprite(
 	obj Object, aLib AssetLibrary, a *Assets,
 ) (Sprite, error) {
-	id, err := newId(obj, aLib, a)
-	if err != nil {
-		return nil, err
-	}
 	as := AnimatedSprite{
-		ID:        id,
 		Pos:       newPos(obj, a),
 		Animation: newAnimation(),
+	}
+	var err error
+	as.ID, err = newId(obj, aLib, a)
+	if err != nil {
+		return nil, err
 	}
 	return &as, nil
 }
 
-func (as *AnimatedSprite) Update() {}
+func (as *AnimatedSprite) Update() (err error) {
+	as.animate(as.rect, as.Src)
+	return nil
+}

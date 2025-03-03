@@ -8,11 +8,17 @@ import (
 
 func (l *LevelData) Update() error {
 	for _, mSprite := range l.groups["moving"] {
-		mSprite.Update()
+		err := mSprite.Update()
+		if err != nil {
+			return err
+		}
 	}
-	l.player.Update()
+	err := l.player.Update()
+	if err != nil {
+		return err
+	}
 	l.camera.Update()
-	err := l.checkShells()
+	err = l.checkShells()
 	if err != nil {
 		return err
 	}
