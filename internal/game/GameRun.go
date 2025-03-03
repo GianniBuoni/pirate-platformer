@@ -19,6 +19,7 @@ func (g *GameData) update() {
 			g.Quit(1, err)
 		}
 		g.window.Update(g.levelCurrent.CameraPos())
+		g.ui.Update()
 	}
 }
 
@@ -29,7 +30,7 @@ func (g *GameData) draw() {
 	rl.ClearBackground(BgColor)
 	g.levelCurrent.Draw()
 	rl.EndMode2D()
-	//g.ui.Draw()
+	g.ui.Draw(g.CanUpdate)
 	rl.EndTextureMode()
 
 	// draw render texture scaled
