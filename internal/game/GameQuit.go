@@ -17,5 +17,5 @@ func (g *GameData) Quit(i int, errs ...error) {
 }
 
 func (g *GameData) unloadAssets() {
-	g.levelAssets.Unload()
+	g.assets.Unload()
 }

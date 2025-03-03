@@ -10,26 +10,22 @@ import (
 )
 
 type GameData struct {
-	levelAssets  *Assets
-	levelCurrent *level.LevelData
-	levelMaps    map[int]string
-	loaders      *level.Loaders
-	ui           *ui.UI
-	stats        *Stats
-	window       *WindowData
-	Running      bool
-	CanUpdate    bool
+	assets *Assets
+	window *WindowData
+	level  *level.LevelData
+	ui     *ui.UI
+	stats  *Stats
+	// Game States
+	Running bool
+	Paused  bool
 }
 
 func NewGame() *GameData {
 	g := &GameData{
-		levelAssets: NewAssets(),
-		levelMaps:   GetMaps(),
-		loaders:     level.NewLoaders(),
-		stats:       NewStats(),
-		window:      NewWindow(),
-		Running:     true,
-		CanUpdate:   true,
+		assets:  NewAssets(),
+		stats:   NewStats(),
+		window:  NewWindow(),
+		Running: true,
 	}
 	g.loadAssets()
 	return g

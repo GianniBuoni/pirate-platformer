@@ -12,6 +12,14 @@
                  "height":32,
                  "id":8,
                  "name":"coin",
+                 "properties":
+                    {
+                     "loader":"object"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -34,13 +42,32 @@
                 {
                  "height":32,
                  "id":18,
-                 "name":"",
+                 "name":"coinText",
+                 "properties":
+                    {
+                     "loader":"bookLeft"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":88,
                  "x":72,
                  "y":64
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":492,
+                 "y":-182
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -49,7 +76,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":19,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

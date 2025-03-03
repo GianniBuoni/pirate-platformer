@@ -20,14 +20,11 @@ func NewWindow() *WindowData {
 	target := rl.LoadRenderTexture(int32(WindowW), int32(WindowH))
 	rl.SetTextureFilter(target.Texture, rl.FilterBilinear)
 
-	return &WindowData{
+	w := &WindowData{
 		gameScreen:    rl.Rectangle{Width: WindowW, Height: WindowH},
 		renderTexture: target,
 	}
-}
-
-func (w *WindowData) loadCam(target rl.Vector2) {
-	w.camera.Target = target
-	w.camera.Offset = rl.NewVector2(w.gameScreen.Width/2, w.gameScreen.Height/2)
-	w.camera.Zoom = 1
+	camTarget := rl.NewVector2(w.gameScreen.Width/2, w.gameScreen.Height/2)
+	w.camera = rl.NewCamera2D(camTarget, camTarget, 0, 0)
+	return w
 }

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="19">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="21">
  <editorsettings>
   <export target="base.json" format="json1"/>
  </editorsettings>
  <tileset firstgid="1" source="../tilesets/ui.json"/>
  <objectgroup id="2" name="base">
-  <object id="8" name="coin" gid="3" x="32" y="64" width="32" height="32"/>
+  <object id="8" name="coin" gid="3" x="32" y="64" width="32" height="32">
+   <properties>
+    <property name="loader" value="object"/>
+   </properties>
+  </object>
   <object id="12" name="heart" gid="2" x="32" y="24" width="32" height="32"/>
-  <object id="18" x="72" y="64" width="88" height="32"/>
+  <object id="18" name="coinText" x="72" y="64" width="88" height="32">
+   <properties>
+    <property name="loader" value="bookLeft"/>
+   </properties>
+  </object>
+  <object id="19" x="492" y="-182"/>
  </objectgroup>
 </map>
