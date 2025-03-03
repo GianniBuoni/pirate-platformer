@@ -11,7 +11,7 @@ import (
 
 func newUiLoaders() map[string]SpriteLoader[Object] {
 	loaders := []SpriteLoader[Object]{
-		ObjectLoader,
+		ObjectLoader, bodyLeftLoader,
 	}
 	uiLoaders := map[string]SpriteLoader[Object]{}
 	for _, loader := range loaders {

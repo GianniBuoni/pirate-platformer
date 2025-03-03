@@ -10,7 +10,10 @@ const (
 	Title            = "Pirate Platformer 💀!"
 
 	// UI
-	UITileSize float32 = 32
+	UITileSize      float32 = 32
+	BodyTextSize    float32 = 32
+	DispalyTextSize float32 = 32
+	TextSpacing     float32 = 8
 
 	// ANIMATED SPRITES
 	FrameSpeed float32 = 6

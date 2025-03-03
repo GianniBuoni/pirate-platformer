@@ -9,8 +9,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-var loadTextLeft = SpriteLoader[Object]{
-	Key:     "textLeft",
+var bodyLeftLoader = SpriteLoader[Object]{
+	Key:     "bodyLeft",
 	Builder: textMiddleWare(mapText),
 }
 
@@ -29,10 +29,12 @@ func textMiddleWare(
 
 func mapText(o Object, ui *UI) {
 	text := Text{
-		pos: rl.NewVector2(o.X, o.Y),
+		font:  ui.assets.Fonts["runescape_uf"],
+		pos:   rl.NewVector2(o.X, o.Y),
+		color: rl.White,
 	}
 	switch o.Properties.Loader {
-	case "textCenter":
+	case "bodyCenter":
 		text.alignment = center
 	}
 	ui.texts[o.Image] = text
