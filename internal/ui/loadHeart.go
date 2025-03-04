@@ -9,7 +9,7 @@ import (
 
 var heartLoader = SpriteLoader[Object]{
 	Key:     "heart",
-	Builder: ObjectMiddleWare(NewAnimatedSprite),
+	Builder: ObjectMiddleWare(NewHeartSprite),
 	Groups:  []string{"heart"},
 }
 
