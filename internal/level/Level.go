@@ -1,72 +1,65 @@
 package level
 
 import (
-	"encoding/json"
-	"fmt"
-	"os"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type LevelData struct {
-	MapProps    MapProps `json:"properties"`
-	Layers      []Layer  `json:"layers"`
-	levelAssets *Assets
-	camera      *CameraRect
-	player      *Player
-	stats       *Stats
-	groups      map[string][]Sprite
-	tileRefs    map[GIDRange]string
-	pathRects   map[int]*Rect
-	Width       int `json:"width"`
-	Height      int `json:"height"`
+	MapProps  MapProps `json:"properties"`
+	assets    *Assets
+	camera    *CameraRect
+	player    *Player
+	stats     *Stats
+	sprites   map[int]Sprite
+	groups    map[string][]int
+	tileRefs  map[GIDRange]string
+	pathRects map[int]*Rect
+	nextId    int
+	Width     int `json:"width"`
+	Height    int `json:"height"`
 }
 
-func NewLevel(
-	stats *Stats, assets *Assets, mapPath string,
-) (*LevelData, error) {
-	data, err := os.ReadFile(mapPath)
-	if err != nil {
-		return nil, err
-	}
-
+func NewLevel(stats *Stats, assets *Assets) (*LevelData, error) {
 	l := LevelData{
-		levelAssets: assets,
-		stats:       stats,
-		tileRefs:    map[GIDRange]string{},
-		groups:      map[string][]Sprite{},
-		pathRects:   map[int]*Rect{},
+		assets:    assets,
+		stats:     stats,
+		tileRefs:  map[GIDRange]string{},
+		sprites:   map[int]Sprite{},
+		groups:    map[string][]int{},
+		pathRects: map[int]*Rect{},
 	}
-	t := TileRefs{}
 
-	json.Unmarshal(data, &l)
-	json.Unmarshal(data, &t)
-
-	for _, ref := range t.TileRef {
-		name := GetAssetKey(ref.Source)
-		tileset, ok := l.levelAssets.TilesetData[name]
-		if !ok {
-			return nil,
-				fmt.Errorf("key: %s\n not found in levelAssets tileset data.", name)
-		}
-		key := GIDRange{
-			FirstGID: ref.FirstGID,
-			LastGID:  ref.FirstGID + tileset.Count - 1,
-		}
-		l.tileRefs[key] = name
-	}
 	return &l, nil
 }
 
 func (l *LevelData) Draw() {
 	allSprites, ok := l.groups["all"]
 	if ok {
-		for _, s := range allSprites {
+		for _, id := range allSprites {
+			s := l.sprites[id]
 			s.Draw(s.GetID().Src, s.GetPos())
 		}
 	}
+}
+
+func (l *LevelData) Assets() *Assets {
+	return l.assets
+}
+
+func (l *LevelData) NextId() int {
+	id := l.nextId
+	l.nextId++
+	return id
+}
+
+func (l *LevelData) Sprites() map[int]Sprite {
+	return l.sprites
+}
+
+func (l *LevelData) Texts() map[string]Text {
+	return map[string]Text{}
 }
 
 func (l *LevelData) CameraPos() rl.Vector2 {

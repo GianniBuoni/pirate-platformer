@@ -13,6 +13,7 @@ func (g *GameData) Run() {
 func (g *GameData) update() {
 	g.Running = !rl.WindowShouldClose()
 	g.input()
+	g.level.Update()
 	g.ui.Update()
 	g.window.Update(
 		rl.NewVector2(WindowW/2, WindowH/2),
@@ -24,6 +25,7 @@ func (g *GameData) draw() {
 	rl.BeginTextureMode(g.window.renderTexture)
 	rl.BeginMode2D(g.window.camera)
 	rl.ClearBackground(BgColor)
+	g.level.Draw()
 	rl.EndMode2D()
 	g.ui.Draw()
 	rl.EndTextureMode()

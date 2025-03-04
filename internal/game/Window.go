@@ -25,6 +25,6 @@ func NewWindow() *WindowData {
 		renderTexture: target,
 	}
 	camTarget := rl.NewVector2(w.gameScreen.Width/2, w.gameScreen.Height/2)
-	w.camera = rl.NewCamera2D(camTarget, camTarget, 0, 0)
+	w.camera = rl.NewCamera2D(camTarget, camTarget, 0, 1)
 	return w
 }

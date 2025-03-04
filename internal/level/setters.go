@@ -18,12 +18,15 @@ func (l *LevelData) AddPlayer(s Sprite) {
 		cam := NewPlayerCam(p, top, width, height)
 		l.player = p
 		l.camera = cam
-		l.AddSpriteGroup(p, "all")
+		l.AddSpriteGroup(p, l.sprites, "all")
 	}
 }
 
-func (l *LevelData) AddSpriteGroup(s Sprite, groups ...string) {
+func (l *LevelData) AddSpriteGroup(
+	s Sprite, spriteMap map[int]Sprite, groups ...string,
+) {
+	spriteMap[s.GetID().GID] = s
 	for _, group := range groups {
-		l.groups[group] = append(l.groups[group], s)
+		l.groups[group] = append(l.groups[group], s.GetID().GID)
 	}
 }

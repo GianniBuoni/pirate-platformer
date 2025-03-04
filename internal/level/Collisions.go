@@ -6,7 +6,8 @@ import (
 )
 
 func (l *LevelData) itemCollisions() {
-	for _, sprite := range l.groups["item"] {
+	for _, id := range l.groups["item"] {
+		sprite := l.sprites[id]
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*sprite.HitBox()), rl.Rectangle(*l.player.HitBox()),
 		) {
@@ -22,7 +23,7 @@ func (l *LevelData) itemCollisions() {
 					l.stats.AddHP(item.Value)
 				}
 				item.GetID().Kill = true
-				l.spawnParticle(item)
+				// TODO spawn particle
 			}
 		}
 	}

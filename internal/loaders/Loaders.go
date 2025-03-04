@@ -6,9 +6,6 @@ import (
 )
 
 type GameModule interface {
-	Load(string) error
-	Update() error
-	Draw()
 	Assets() *Assets
 	Texts() map[string]Text
 	Sprites() map[int]Sprite

@@ -3,12 +3,24 @@ package game
 import (
 	"path/filepath"
 
+	"github.com/GianniBuoni/pirate-platformer/internal/level"
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/ui"
 )
 
 // LoadLevel is resposible for loading in levels
 func (g *GameData) LoadLevel() {
+	var err error
+	g.level, err = level.NewLevel(g.stats, g.assets)
+	if err != nil {
+		g.Quit(1, err)
+	}
+	mapPath := filepath.Join("data", "levels", "0.json")
+	err = g.level.Load(mapPath)
+	if err != nil {
+		g.Quit(1, err)
+	}
+
 }
 
 func (g *GameData) LoadUi() {
