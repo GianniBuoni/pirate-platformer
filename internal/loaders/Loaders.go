@@ -10,7 +10,8 @@ type GameModule interface {
 	Update() error
 	Draw()
 	Assets() *Assets
-	AddSpriteGroup(Sprite, ...string)
+	Sprites() map[int]Sprite
+	AddSpriteGroup(Sprite, map[int]Sprite, ...string)
 }
 
 type SpriteLoader[T any] struct {
@@ -26,7 +27,7 @@ func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
 	}
 	if sprites != nil {
 		for _, s := range sprites {
-			gm.AddSpriteGroup(s, sl.Groups...)
+			gm.AddSpriteGroup(s, gm.Sprites(), sl.Groups...)
 		}
 	}
 	return err

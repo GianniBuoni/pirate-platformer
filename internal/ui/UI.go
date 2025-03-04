@@ -1,15 +1,13 @@
 package ui
 
 import (
-	"fmt"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
-	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type UI struct {
-	sprites map[string][]Sprite
+	groups  map[string][]int
+	sprites map[int]Sprite
 	texts   map[string]Text
 	assets  *Assets
 	stats   *Stats
@@ -17,7 +15,8 @@ type UI struct {
 
 func NewUI(s *Stats, a *Assets) (*UI, error) {
 	return &UI{
-		sprites: map[string][]Sprite{},
+		groups:  map[string][]int{},
+		sprites: map[int]Sprite{},
 		texts:   map[string]Text{},
 		assets:  a,
 		stats:   s,
@@ -28,24 +27,17 @@ func (ui *UI) Update() error {
 	return nil
 }
 
-func (ui *UI) Draw() {
-	rl.DrawRectangleRec(
-		rl.NewRectangle(0, 0, WindowW, WindowH),
-		rl.ColorAlpha(rl.Black, 0.3),
-	)
-	for _, s := range ui.sprites["all"] {
-		s.Draw(s.GetID().Src, s.GetPos())
-	}
-	coins := fmt.Sprint(ui.stats.Coins)
-	ui.texts["coinText"].Draw(coins)
-}
-
-func (ui *UI) AddSpriteGroup(s Sprite, groups ...string) {
+func (ui *UI) AddSpriteGroup(s Sprite, spriteMap map[int]Sprite, groups ...string) {
+	spriteMap[s.GetID().GID] = s
 	for _, group := range groups {
-		ui.sprites[group] = append(ui.sprites[group], s)
+		ui.groups[group] = append(ui.groups[group], s.GetID().GID)
 	}
 }
 
 func (ui *UI) Assets() *Assets {
 	return ui.assets
+}
+
+func (ui *UI) Sprites() map[int]Sprite {
+	return ui.sprites
 }
