@@ -6,6 +6,7 @@ type Stats struct {
 	Coins         int
 	playerHealth  int
 	maxHealth     int
+	Paused        bool
 }
 
 func NewStats() *Stats {

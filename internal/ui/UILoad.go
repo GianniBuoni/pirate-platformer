@@ -6,22 +6,11 @@ import (
 	"os"
 
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	. "github.com/GianniBuoni/pirate-platformer/internal/loaders"
+	"github.com/GianniBuoni/pirate-platformer/internal/loaders"
 )
 
-func newUiLoaders() map[string]SpriteLoader[Object] {
-	loaders := []SpriteLoader[Object]{
-		ObjectLoader, bodyLeftLoader,
-	}
-	uiLoaders := map[string]SpriteLoader[Object]{}
-	for _, loader := range loaders {
-		uiLoaders[loader.Key] = loader
-	}
-	return uiLoaders
-}
-
 func (ui *UI) Load(mapPath string) error {
-	loaderMap := newUiLoaders()
+	loaderMap := loaders.UILoaders()
 
 	// find get map objects and make sprites
 	data, err := os.ReadFile(mapPath)

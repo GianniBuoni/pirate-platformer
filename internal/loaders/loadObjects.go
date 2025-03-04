@@ -5,13 +5,25 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var ObjectLoader = SpriteLoader[Object]{
-	Key:     "object",
-	Builder: ObjectMiddleWare(NewSprite),
+var objectLoader = SpriteLoader{
+	key:     "object",
+	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"all"},
 }
 
-func ObjectMiddleWare(
+var HeartLoader = SpriteLoader{
+	key:     "heart",
+	Builder: objectMiddleWare(NewHeartSprite),
+	Groups:  []string{"heart"},
+}
+
+var coinLoader = SpriteLoader{
+	key:     "coin",
+	Builder: objectMiddleWare(NewHeartSprite),
+	Groups:  []string{"coin"},
+}
+
+func objectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {
 	return func(o Object, a AssetLibrary, gm GameModule) ([]Sprite, error) {

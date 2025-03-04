@@ -2,16 +2,9 @@ package ui
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	. "github.com/GianniBuoni/pirate-platformer/internal/loaders"
-	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
+	"github.com/GianniBuoni/pirate-platformer/internal/loaders"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
-
-var heartLoader = SpriteLoader[Object]{
-	Key:     "heart",
-	Builder: ObjectMiddleWare(NewHeartSprite),
-	Groups:  []string{"heart"},
-}
 
 func (ui *UI) spawnHeart(i int) error {
 	obj, err := ui.assets.GetObject("heart")
@@ -25,7 +18,7 @@ func (ui *UI) spawnHeart(i int) error {
 	)
 	obj.X = newPos.X
 	obj.Y = newPos.Y
-	err = heartLoader.Run(obj, UiLib, ui)
+	err = loaders.HeartLoader.Run(obj, UiLib, ui)
 	if err != nil {
 		return err
 	}

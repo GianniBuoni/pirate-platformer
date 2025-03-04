@@ -17,7 +17,6 @@ type GameData struct {
 	stats  *Stats
 	// Game States
 	Running bool
-	Paused  bool
 }
 
 func NewGame() *GameData {

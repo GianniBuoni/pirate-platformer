@@ -10,19 +10,34 @@ type GameModule interface {
 	Update() error
 	Draw()
 	Assets() *Assets
+	Texts() map[string]Text
 	Sprites() map[int]Sprite
 	NextId() int
 	AddSpriteGroup(Sprite, map[int]Sprite, ...string)
 }
 
-type SpriteLoader[T any] struct {
-	Key     string
-	Builder func(T, AssetLibrary, GameModule) ([]Sprite, error)
+type Loader interface {
+	Key() string
+	Run(Object, AssetLibrary, GameModule) error
+}
+
+type TextLoader struct {
+	key     string
+	Builder func(Object, map[string]Text)
+}
+
+type SpriteLoader struct {
+	key     string
+	Builder func(Object, AssetLibrary, GameModule) ([]Sprite, error)
 	Groups  []string
 }
 
-func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
-	sprites, err := sl.Builder(t, aLib, gm)
+func (sl *SpriteLoader) Key() string {
+	return sl.key
+}
+
+func (sl *SpriteLoader) Run(o Object, aLib AssetLibrary, gm GameModule) error {
+	sprites, err := sl.Builder(o, aLib, gm)
 	if err != nil {
 		return err
 	}
@@ -31,5 +46,14 @@ func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
 			gm.AddSpriteGroup(s, gm.Sprites(), sl.Groups...)
 		}
 	}
-	return err
+	return nil
+}
+
+func (tl *TextLoader) Key() string {
+	return tl.key
+}
+
+func (tl *TextLoader) Run(o Object, aLib AssetLibrary, gm GameModule) error {
+	tl.Builder(o, gm.Texts())
+	return nil
 }

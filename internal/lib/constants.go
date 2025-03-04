@@ -12,7 +12,7 @@ const (
 	// UI
 	UITileSize      float32 = 32
 	BodyTextSize    float32 = 32
-	DispalyTextSize float32 = 32
+	DisplayTextSize float32 = 64
 	TextSpacing     float32 = 8
 
 	// ANIMATED SPRITES

@@ -49,6 +49,10 @@ func (ui *UI) Assets() *Assets {
 	return ui.assets
 }
 
+func (ui *UI) Texts() map[string]Text {
+	return ui.texts
+}
+
 func (ui *UI) Sprites() map[int]Sprite {
 	return ui.sprites
 }

@@ -34,7 +34,7 @@
                  "name":"heart",
                  "properties":
                     {
-                     "loader":"heart"
+                     "loader":"object"
                     },
                  "propertytypes":
                     {
@@ -67,15 +67,42 @@
                  "y":82
                 }, 
                 {
-                 "height":0,
-                 "id":19,
-                 "name":"",
+                 "height":64,
+                 "id":21,
+                 "name":"pause message",
+                 "properties":
+                    {
+                     "loader":"displayCenter"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":492,
-                 "y":-182
+                 "width":80.5,
+                 "x":639.5,
+                 "y":280
+                }, 
+                {
+                 "height":32,
+                 "id":22,
+                 "name":"pause hint",
+                 "properties":
+                    {
+                     "loader":"bodyCenter"
+                    },
+                 "propertytypes":
+                    {
+                     "loader":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":80,
+                 "x":640,
+                 "y":368
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -84,7 +111,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":21,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

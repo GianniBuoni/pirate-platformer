@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="21">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="24">
  <editorsettings>
   <export target="base.json" format="json1"/>
  </editorsettings>
@@ -10,12 +10,25 @@
     <property name="loader" value="object"/>
    </properties>
   </object>
-  <object id="12" template="../templates/ui/heart.json" x="32" y="24"/>
+  <object id="12" template="../templates/ui/heart.json" x="32" y="24">
+   <properties>
+    <property name="loader" value="object"/>
+   </properties>
+  </object>
   <object id="18" name="coinText" x="72" y="82" width="88" height="14">
    <properties>
     <property name="loader" value="bodyLeft"/>
    </properties>
   </object>
-  <object id="19" x="492" y="-182"/>
+  <object id="21" name="pause message" x="639.5" y="280" width="80.5" height="64">
+   <properties>
+    <property name="loader" value="displayCenter"/>
+   </properties>
+  </object>
+  <object id="22" name="pause hint" x="640" y="368" width="80" height="32">
+   <properties>
+    <property name="loader" value="bodyCenter"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
