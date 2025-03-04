@@ -6,27 +6,9 @@ import (
 )
 
 var objectLoaders = []Loader[Object]{
-	playerLoader, cloudLoader, objectLoader, objectCollide, pathLoader, sawPathLoader,
-	animatedLoader, platformLoader, damageLoader, radialLoader, itemLoader,
+	playerLoader, cloudLoader, pathLoader, sawPathLoader,
+	platformLoader, damageLoader, radialLoader, itemLoader,
 	shellLoader, waterLoader,
-}
-
-var objectLoader = Loader[Object]{
-	key:     "object",
-	builder: objectMiddleWare(NewSprite),
-	groups:  []string{"all"},
-}
-
-var objectCollide = Loader[Object]{
-	key:     "collision",
-	builder: objectMiddleWare(NewSprite),
-	groups:  []string{"all", "collision"},
-}
-
-var animatedLoader = Loader[Object]{
-	key:     "animated",
-	builder: objectMiddleWare(NewAnimatedSprite),
-	groups:  []string{"all", "moving"},
 }
 
 var itemLoader = Loader[Object]{

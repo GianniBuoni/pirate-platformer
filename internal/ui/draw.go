@@ -14,6 +14,10 @@ func (ui *UI) Draw() {
 		rl.ColorAlpha(rl.Black, 0.3),
 	)
 	// stats
+	for _, id := range ui.groups["heart"] {
+		s := ui.sprites[id]
+		s.Draw(s.GetID().Src, s.GetPos())
+	}
 	for _, id := range ui.groups["all"] {
 		s := ui.sprites[id]
 		s.Draw(s.GetID().Src, s.GetPos())

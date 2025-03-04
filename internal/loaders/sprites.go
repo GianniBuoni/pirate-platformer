@@ -7,11 +7,11 @@ import (
 
 var ObjectLoader = SpriteLoader[Object]{
 	Key:     "object",
-	Builder: objectMiddleWare(NewSprite),
+	Builder: ObjectMiddleWare(NewSprite),
 	Groups:  []string{"all"},
 }
 
-func objectMiddleWare(
+func ObjectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {
 	return func(o Object, a AssetLibrary, gm GameModule) ([]Sprite, error) {
@@ -19,6 +19,7 @@ func objectMiddleWare(
 		if err != nil {
 			return nil, err
 		}
+		s.GetID().GID = gm.NextId()
 		return []Sprite{s}, nil
 	}
 }

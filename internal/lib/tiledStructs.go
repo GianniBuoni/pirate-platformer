@@ -25,7 +25,6 @@ type Layer struct {
 type Object struct {
 	Properties Properties `json:"properties,omitempty"`
 	Image      string     `json:"name"`
-	Id         int        `json:"id"`
 	Height     float32    `json:"height"`
 	Width      float32    `json:"width"`
 	X          float32    `json:"x"`

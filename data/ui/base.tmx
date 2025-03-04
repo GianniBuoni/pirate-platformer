@@ -10,7 +10,7 @@
     <property name="loader" value="object"/>
    </properties>
   </object>
-  <object id="12" name="heart" gid="2" x="32" y="24" width="32" height="32"/>
+  <object id="12" template="../templates/ui/heart.json" x="32" y="24"/>
   <object id="18" name="coinText" x="72" y="82" width="88" height="14">
    <properties>
     <property name="loader" value="bodyLeft"/>

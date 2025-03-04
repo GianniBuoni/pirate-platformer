@@ -86,7 +86,6 @@ func newId(
 ) (ID, error) {
 	id := ID{
 		Image:    obj.Image,
-		GID:      obj.Id,
 		assets:   a,
 		assetLib: aLib,
 	}

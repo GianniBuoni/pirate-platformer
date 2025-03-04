@@ -11,6 +11,7 @@ type GameModule interface {
 	Draw()
 	Assets() *Assets
 	Sprites() map[int]Sprite
+	NextId() int
 	AddSpriteGroup(Sprite, map[int]Sprite, ...string)
 }
 
