@@ -14,7 +14,7 @@
                  "name":"coin",
                  "properties":
                     {
-                     "loader":"object"
+                     "loader":"coin"
                     },
                  "propertytypes":
                     {
@@ -34,7 +34,7 @@
                  "name":"heart",
                  "properties":
                     {
-                     "loader":"object"
+                     "loader":"heart"
                     },
                  "propertytypes":
                     {

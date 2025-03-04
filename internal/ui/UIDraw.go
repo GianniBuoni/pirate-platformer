@@ -26,9 +26,13 @@ func (ui *UI) Draw() {
 }
 
 func (ui *UI) drawStats() {
-	for _, id := range ui.groups["heart"] {
+	for _, id := range ui.groups["heart"][1:] {
 		s := ui.sprites[id]
 		s.Draw(s.GetID().Src, s.GetPos())
+	}
+	for _, id := range ui.groups["coin"] {
+		s := ui.sprites[id]
+		s.Draw(s.GetID().Src, s.GetPos().GetPos())
 	}
 	coins := fmt.Sprint(ui.stats.Coins)
 	ui.texts["coinText"].Draw(coins, ui.assets.Fonts["runescape_uf"])

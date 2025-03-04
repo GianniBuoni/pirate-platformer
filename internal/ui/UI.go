@@ -25,13 +25,18 @@ func NewUI(s *Stats, a *Assets) (*UI, error) {
 }
 
 func (ui *UI) Update() error {
-	if len(ui.groups["heart"]) < ui.stats.PlayerHP() {
-		for i := range ui.stats.PlayerHP() - len(ui.groups["heart"]) {
+	renderedHearts := ui.groups["heart"][1:]
+	if len(renderedHearts) < ui.stats.PlayerHP() {
+		for i := len(renderedHearts); i < ui.stats.PlayerHP(); i++ {
 			ui.spawnHeart(i)
 		}
 	}
-	for _, int := range ui.groups["heart"] {
-		ui.sprites[int].Update()
+	renderedHearts = ui.groups["heart"][1:]
+	for _, id := range renderedHearts {
+		err := ui.sprites[id].Update()
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }

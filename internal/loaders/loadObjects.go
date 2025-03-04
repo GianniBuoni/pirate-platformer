@@ -19,7 +19,7 @@ var HeartLoader = SpriteLoader{
 
 var coinLoader = SpriteLoader{
 	key:     "coin",
-	Builder: objectMiddleWare(NewHeartSprite),
+	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"coin"},
 }
 
