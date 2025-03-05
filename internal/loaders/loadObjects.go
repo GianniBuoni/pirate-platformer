@@ -41,6 +41,12 @@ var itemLoader = SpriteLoader[Object]{
 	Groups:  []string{"all", "item", "moving"},
 }
 
+var particleLoader = SpriteLoader[Object]{
+	Key:     "particle",
+	Builder: objectMiddleWare(NewParticle),
+	Groups:  []string{"all", "moving", "ephemeral"},
+}
+
 func objectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {
