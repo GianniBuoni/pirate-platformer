@@ -15,9 +15,7 @@ func (g *GameData) update() {
 	g.input()
 	g.level.Update()
 	g.ui.Update()
-	g.window.Update(
-		rl.NewVector2(WindowW/2, WindowH/2),
-	)
+	g.window.Update(g.level.CameraPos())
 }
 
 func (g *GameData) draw() {

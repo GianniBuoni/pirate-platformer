@@ -10,13 +10,9 @@ import (
 
 // LoadLevel is resposible for loading in levels
 func (g *GameData) LoadLevel() {
-	var err error
-	g.level, err = level.NewLevel(g.stats, g.assets)
-	if err != nil {
-		g.Quit(1, err)
-	}
 	mapPath := filepath.Join("data", "levels", "0.json")
-	err = g.level.Load(mapPath)
+	g.level = level.NewLevel(g.stats, g.assets)
+	err := g.level.Load(mapPath)
 	if err != nil {
 		g.Quit(1, err)
 	}

@@ -12,7 +12,7 @@ import (
 type GameData struct {
 	assets *Assets
 	window *WindowData
-	level  *level.LevelData
+	level  *level.Level
 	ui     *ui.UI
 	stats  *Stats
 	// Game States

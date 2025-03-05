@@ -1,12 +1,20 @@
 package loaders
 
-func LevelLoaders() map[string]Loader {
-	loaders := []Loader{
-		&objectLoader,
+import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
+
+type LoadersForLevel struct {
+	Tiles map[string]Loader[TileParams]
+}
+
+func LevelLoaders() LoadersForLevel {
+	ll := LoadersForLevel{
+		Tiles: map[string]Loader[TileParams]{},
 	}
-	loaderMap := map[string]Loader{}
-	for _, l := range loaders {
-		loaderMap[l.Key()] = l
+	levelTileLoaders := []Loader[TileParams]{
+		&bgTileLoader, &cTileLoader, &pTileLoader,
 	}
-	return loaderMap
+	for _, v := range levelTileLoaders {
+		ll.Tiles[v.Key()] = v
+	}
+	return ll
 }

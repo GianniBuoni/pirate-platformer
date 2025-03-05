@@ -6,65 +6,60 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type LevelData struct {
-	MapProps  MapProps `json:"properties"`
-	assets    *Assets
-	camera    *CameraRect
-	player    *Player
-	stats     *Stats
-	sprites   map[int]Sprite
-	groups    map[string][]int
-	tileRefs  map[GIDRange]string
-	pathRects map[int]*Rect
-	nextId    int
-	Width     int `json:"width"`
-	Height    int `json:"height"`
+type Level struct {
+	groups  map[string][]int
+	spirtes map[int]Sprite
+	assets  *Assets
+	camera  *CameraRect
+	player  *Player
+	stats   *Stats
+	nextID  int
 }
 
-func NewLevel(stats *Stats, assets *Assets) (*LevelData, error) {
-	l := LevelData{
-		assets:    assets,
-		stats:     stats,
-		tileRefs:  map[GIDRange]string{},
-		sprites:   map[int]Sprite{},
-		groups:    map[string][]int{},
-		pathRects: map[int]*Rect{},
+func NewLevel(stats *Stats, assets *Assets) *Level {
+	l := &Level{
+		groups:  map[string][]int{},
+		spirtes: map[int]Sprite{},
+		assets:  assets,
+		stats:   stats,
 	}
-
-	return &l, nil
+	return l
 }
 
-func (l *LevelData) Draw() {
-	allSprites, ok := l.groups["all"]
-	if ok {
-		for _, id := range allSprites {
-			s := l.sprites[id]
-			s.Draw(s.GetID().Src, s.GetPos())
-		}
-	}
+func (l *Level) Update() error {
+	return nil
 }
 
-func (l *LevelData) Assets() *Assets {
+func (l *Level) Assets() *Assets {
 	return l.assets
 }
 
-func (l *LevelData) NextId() int {
-	id := l.nextId
-	l.nextId++
+func (l *Level) NextId() int {
+	id := l.nextID
+	l.nextID++
 	return id
 }
 
-func (l *LevelData) Sprites() map[int]Sprite {
-	return l.sprites
+func (l *Level) Sprites() map[int]Sprite {
+	return l.spirtes
 }
 
-func (l *LevelData) Texts() map[string]Text {
-	return map[string]Text{}
+func (l *Level) AddSpriteGroup(
+	s Sprite, spriteMap map[int]Sprite, groups ...string,
+) {
+	spriteMap[s.GetID().GID] = s
+	for _, key := range groups {
+		l.groups[key] = append(l.groups[key], s.GetID().GID)
+	}
 }
 
-func (l *LevelData) CameraPos() rl.Vector2 {
+func (l *Level) CameraPos() rl.Vector2 {
 	if l.player == nil {
 		return rl.NewVector2(WindowW/2, WindowH/2)
 	}
 	return l.camera.CamTarget
+}
+
+func (l *Level) Texts() map[string]Text {
+	return map[string]Text{}
 }

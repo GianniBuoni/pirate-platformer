@@ -5,19 +5,19 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var objectLoader = SpriteLoader{
+var objectLoader = SpriteLoader[Object]{
 	key:     "object",
 	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"all"},
 }
 
-var HeartLoader = SpriteLoader{
+var HeartLoader = SpriteLoader[Object]{
 	key:     "heart",
 	Builder: objectMiddleWare(NewHeartSprite),
 	Groups:  []string{"heart"},
 }
 
-var coinLoader = SpriteLoader{
+var coinLoader = SpriteLoader[Object]{
 	key:     "coin",
 	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"coin"},
