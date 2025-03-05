@@ -11,7 +11,7 @@ func UILoaders() map[string]Loader[Object] {
 	}
 	loaderMap := map[string]Loader[Object]{}
 	for _, l := range loaders {
-		loaderMap[l.Key()] = l
+		loaderMap[l.GetKey()] = l
 	}
 	return loaderMap
 }

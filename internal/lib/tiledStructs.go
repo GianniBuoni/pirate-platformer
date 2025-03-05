@@ -6,6 +6,8 @@ type MapProps struct {
 	Id        int     `json:"id"`
 	NextLevel int     `json:"next level"`
 	TopLimit  int     `json:"top limit"`
+	Width     int
+	Height    int
 }
 
 // Stores layer data: Data (a tile layer)
@@ -25,6 +27,7 @@ type Layer struct {
 type Object struct {
 	Properties Properties `json:"properties,omitempty"`
 	Image      string     `json:"name"`
+	TiledID    int        `json:"id"`
 	Height     float32    `json:"height"`
 	Width      float32    `json:"width"`
 	X          float32    `json:"x"`

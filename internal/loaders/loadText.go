@@ -5,17 +5,17 @@ import (
 )
 
 var bodyLeftLoader = TextLoader{
-	key:     "bodyLeft",
+	Key:     "bodyLeft",
 	Builder: textMiddleWare(NewText),
 }
 
 var displayCenterLoader = TextLoader{
-	key:     "displayCenter",
+	Key:     "displayCenter",
 	Builder: textMiddleWare(NewText),
 }
 
 var bodyCenterLoader = TextLoader{
-	key:     "bodyCenter",
+	Key:     "bodyCenter",
 	Builder: textMiddleWare(NewText),
 }
 

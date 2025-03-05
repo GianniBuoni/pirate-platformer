@@ -226,6 +226,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":15,
          "id":5,
+         "locked":true,
          "name":"platform",
          "opacity":1,
          "type":"tilelayer",
@@ -557,7 +558,6 @@
         {
          "draworder":"topdown",
          "id":13,
-         "locked":true,
          "name":"paths",
          "objects":[
                 {
@@ -651,7 +651,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":300,
+                 "width":320,
                  "x":384,
                  "y":128
                 }, 

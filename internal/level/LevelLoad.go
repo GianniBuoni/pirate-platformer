@@ -9,17 +9,31 @@ import (
 )
 
 func (l *Level) Load(mapPath string) error {
+	// init loaders
 	lLoaders := loaders.LevelLoaders()
+	l.addLocalLoaders(lLoaders.Objects)
+
+	// data unmarshaling
 	data, err := os.ReadFile(mapPath)
 	if err != nil {
 		return err
 	}
-
-	// data unmarshaling
 	ld := LevelData{}
 	err = json.Unmarshal(data, &ld)
 	if err != nil {
 		return err
+	}
+	ld.MapProps.Width = ld.Width
+	ld.MapProps.Height = ld.Height
+	l.Width = float32(ld.Width) * TileSize
+	l.Height = float32(ld.Height) * TileSize
+
+	// load sprites
+	for _, mpLoader := range lLoaders.MapProps {
+		err := l.loadMapProps(ld.MapProps, mpLoader)
+		if err != nil {
+			return err
+		}
 	}
 	for _, layer := range ld.Layers {
 		if len(layer.Data) > 0 {
@@ -35,8 +49,15 @@ func (l *Level) Load(mapPath string) error {
 				return err
 			}
 		}
-
 	}
-
 	return nil
+}
+
+func (l *Level) addLocalLoaders(ldOject map[string]loaders.Loader[Object]) {
+	local := []loaders.Loader[Object]{
+		&platformLoader, &pathLoader,
+	}
+	for _, loader := range local {
+		ldOject[loader.GetKey()] = loader
+	}
 }

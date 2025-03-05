@@ -9,25 +9,25 @@ import (
 type Level struct {
 	groups  map[string][]int
 	spirtes map[int]Sprite
+	paths   map[int]*Rect
 	assets  *Assets
 	camera  *CameraRect
 	player  *Player
 	stats   *Stats
 	nextID  int
+	Width   float32
+	Height  float32
 }
 
 func NewLevel(stats *Stats, assets *Assets) *Level {
 	l := &Level{
 		groups:  map[string][]int{},
 		spirtes: map[int]Sprite{},
+		paths:   map[int]*Rect{},
 		assets:  assets,
 		stats:   stats,
 	}
 	return l
-}
-
-func (l *Level) Update() error {
-	return nil
 }
 
 func (l *Level) Assets() *Assets {
@@ -47,7 +47,9 @@ func (l *Level) Sprites() map[int]Sprite {
 func (l *Level) AddSpriteGroup(
 	s Sprite, spriteMap map[int]Sprite, groups ...string,
 ) {
-	spriteMap[s.GetID().GID] = s
+	id := l.NextId()
+	s.GetID().GID = id
+	spriteMap[id] = s
 	for _, key := range groups {
 		l.groups[key] = append(l.groups[key], s.GetID().GID)
 	}

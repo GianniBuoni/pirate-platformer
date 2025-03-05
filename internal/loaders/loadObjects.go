@@ -6,19 +6,25 @@ import (
 )
 
 var objectLoader = SpriteLoader[Object]{
-	key:     "object",
+	Key:     "object",
 	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"all"},
 }
 
+var objectCollide = SpriteLoader[Object]{
+	Key:     "collision",
+	Builder: objectMiddleWare(NewSprite),
+	Groups:  []string{"all", "collision"},
+}
+
 var HeartLoader = SpriteLoader[Object]{
-	key:     "heart",
+	Key:     "heart",
 	Builder: objectMiddleWare(NewHeartSprite),
 	Groups:  []string{"heart"},
 }
 
 var coinLoader = SpriteLoader[Object]{
-	key:     "coin",
+	Key:     "coin",
 	Builder: objectMiddleWare(NewSprite),
 	Groups:  []string{"coin"},
 }
@@ -31,7 +37,6 @@ func objectMiddleWare(
 		if err != nil {
 			return nil, err
 		}
-		s.GetID().GID = gm.NextId()
 		return []Sprite{s}, nil
 	}
 }

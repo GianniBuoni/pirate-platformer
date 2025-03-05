@@ -5,20 +5,20 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
-var bgTileLoader = SpriteLoader[TileParams]{
-	key:     "bg",
+var tileLoader = SpriteLoader[TileParams]{
+	Key:     "bg",
 	Builder: tileMiddleware(NewTileSprite),
 	Groups:  []string{"all"},
 }
 
 var cTileLoader = SpriteLoader[TileParams]{
-	key:     "collision",
+	Key:     "collision",
 	Builder: tileMiddleware(NewTileSprite),
 	Groups:  []string{"all", "collsion", "wall"},
 }
 
 var pTileLoader = SpriteLoader[TileParams]{
-	key:     "platform",
+	Key:     "platform",
 	Builder: tileMiddleware(NewTileSprite),
 	Groups:  []string{"all", "platform"},
 }
@@ -40,7 +40,6 @@ func tileMiddleware(
 			if err != nil {
 				return nil, err
 			}
-			s.GetID().GID = gm.NextId()
 			out = append(out, s)
 		}
 		return out, nil

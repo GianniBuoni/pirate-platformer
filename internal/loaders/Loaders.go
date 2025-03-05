@@ -9,28 +9,27 @@ type GameModule interface {
 	Assets() *Assets
 	Texts() map[string]Text
 	Sprites() map[int]Sprite
-	NextId() int
 	AddSpriteGroup(Sprite, map[int]Sprite, ...string)
 }
 
 type Loader[T any] interface {
-	Key() string
+	GetKey() string
 	Run(T, AssetLibrary, GameModule) error
 }
 
 type TextLoader struct {
-	key     string
+	Key     string
 	Builder func(Object, map[string]Text)
 }
 
 type SpriteLoader[T any] struct {
-	key     string
+	Key     string
 	Builder func(T, AssetLibrary, GameModule) ([]Sprite, error)
 	Groups  []string
 }
 
-func (sl *SpriteLoader[T]) Key() string {
-	return sl.key
+func (sl *SpriteLoader[T]) GetKey() string {
+	return sl.Key
 }
 
 func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
@@ -46,8 +45,8 @@ func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
 	return nil
 }
 
-func (tl *TextLoader) Key() string {
-	return tl.key
+func (tl *TextLoader) GetKey() string {
+	return tl.Key
 }
 
 func (tl *TextLoader) Run(o Object, aLib AssetLibrary, gm GameModule) error {

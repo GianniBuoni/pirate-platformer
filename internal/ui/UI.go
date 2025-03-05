@@ -44,7 +44,9 @@ func (ui *UI) Update() error {
 func (ui *UI) AddSpriteGroup(
 	s Sprite, spriteMap map[int]Sprite, groups ...string,
 ) {
-	spriteMap[s.GetID().GID] = s
+	id := ui.NextId()
+	s.GetID().GID = id
+	spriteMap[id] = s
 	for _, group := range groups {
 		ui.groups[group] = append(ui.groups[group], s.GetID().GID)
 	}

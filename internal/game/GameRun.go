@@ -13,7 +13,10 @@ func (g *GameData) Run() {
 func (g *GameData) update() {
 	g.Running = !rl.WindowShouldClose()
 	g.input()
-	g.level.Update()
+	err := g.level.Update()
+	if err != nil {
+		g.Quit(1, err)
+	}
 	g.ui.Update()
 	g.window.Update(g.level.CameraPos())
 }
