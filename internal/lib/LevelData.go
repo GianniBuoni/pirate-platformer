@@ -7,9 +7,10 @@ import (
 
 type LevelData struct {
 	MapProps MapProps  `json:"properties"`
+	TileRefs []TileRef `json:"tilesets"`
 	Layers   []Layer   `json:"layers"`
 	Width    int       `json:"width"`
-	TileRefs []TileRef `json:"tilesets"`
+	Height   int       `json:"height"`
 }
 
 type TileParams struct {

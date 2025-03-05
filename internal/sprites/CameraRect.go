@@ -6,7 +6,7 @@ import (
 )
 
 type CameraRect struct {
-	window    Rect
+	level     Rect
 	CamTarget rl.Vector2
 	rect      *Rect
 	hitbox    *Rect
@@ -15,7 +15,7 @@ type CameraRect struct {
 
 func NewPlayerCam(p *Player, top, width, height float32) *CameraRect {
 	cam := CameraRect{
-		window: *NewRectangle(0, top, width, height),
+		level:  *NewRectangle(0, top, width, height),
 		rect:   NewRectangle(0, 0, WindowW, WindowH),
 		hitbox: NewRectangle(0, 0, WindowW/8, WindowH/8),
 		player: p,
@@ -56,16 +56,16 @@ func (cr *CameraRect) playerFollow() {
 }
 
 func (cr *CameraRect) constrain() {
-	if cr.rect.Left() <= cr.window.Left() {
-		cr.rect.Set(Left(cr.window.Left()))
+	if cr.rect.Left() <= cr.level.Left() {
+		cr.rect.Set(Left(cr.level.Left()))
 	}
-	if cr.rect.Right() >= cr.window.Right() {
-		cr.rect.Set(Right(cr.window.Right()))
+	if cr.rect.Right() >= cr.level.Right() {
+		cr.rect.Set(Right(cr.level.Right()))
 	}
-	if cr.rect.Top() <= cr.window.Top() {
-		cr.rect.Set(Top(cr.window.Top()))
+	if cr.rect.Top() <= cr.level.Top() {
+		cr.rect.Set(Top(cr.level.Top()))
 	}
-	if cr.rect.Bottom() >= cr.window.Bottom() {
-		cr.rect.Set(Bottom(cr.window.Bottom()))
+	if cr.rect.Bottom() >= cr.level.Bottom() {
+		cr.rect.Set(Bottom(cr.level.Bottom()))
 	}
 }

@@ -23,8 +23,19 @@ func (l *Level) Load(mapPath string) error {
 	}
 	for _, layer := range ld.Layers {
 		if len(layer.Data) > 0 {
-			l.loadTiles(ld, layer.Data, layer.Name, lLoaders.Tiles)
+			err := l.loadTiles(ld, layer.Data, layer.Name, lLoaders.Tiles)
+			if err != nil {
+				return err
+			}
+			continue
 		}
+		for _, o := range layer.Objects {
+			err := l.loadObjects(o, lLoaders.Objects)
+			if err != nil {
+				return err
+			}
+		}
+
 	}
 
 	return nil
