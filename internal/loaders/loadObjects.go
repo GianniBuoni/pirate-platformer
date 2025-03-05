@@ -29,6 +29,18 @@ var coinLoader = SpriteLoader[Object]{
 	Groups:  []string{"coin"},
 }
 
+var animatedLoader = SpriteLoader[Object]{
+	Key:     "animated",
+	Builder: objectMiddleWare(NewAnimatedSprite),
+	Groups:  []string{"all", "moving"},
+}
+
+var itemLoader = SpriteLoader[Object]{
+	Key:     "item",
+	Builder: objectMiddleWare(NewItem),
+	Groups:  []string{"all", "item", "moving"},
+}
+
 func objectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {
