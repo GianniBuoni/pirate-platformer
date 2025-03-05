@@ -55,7 +55,7 @@ func (l *Level) Load(mapPath string) error {
 
 func (l *Level) addLocalLoaders(ldOject map[string]loaders.Loader[Object]) {
 	local := []loaders.Loader[Object]{
-		&platformLoader, &pathLoader,
+		&platformLoader, &pathLoader, &sawPathLoader, &damageLoader,
 	}
 	for _, loader := range local {
 		ldOject[loader.GetKey()] = loader
