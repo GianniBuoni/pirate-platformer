@@ -15,6 +15,7 @@ type Level struct {
 	player  *Player
 	stats   *Stats
 	nextID  int
+	Top     float32
 	Width   float32
 	Height  float32
 }

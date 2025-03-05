@@ -17,5 +17,10 @@ func (l *Level) Update() error {
 			return err
 		}
 	}
+	err := l.player.Update()
+	if err != nil {
+		return err
+	}
+	l.camera.Update()
 	return nil
 }

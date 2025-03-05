@@ -25,6 +25,7 @@ func (l *Level) Load(mapPath string) error {
 	}
 	ld.MapProps.Width = ld.Width
 	ld.MapProps.Height = ld.Height
+	l.Top = float32(ld.MapProps.TopLimit) * TileSize
 	l.Width = float32(ld.Width) * TileSize
 	l.Height = float32(ld.Height) * TileSize
 
@@ -55,7 +56,8 @@ func (l *Level) Load(mapPath string) error {
 
 func (l *Level) addLocalLoaders(ldOject map[string]loaders.Loader[Object]) {
 	local := []loaders.Loader[Object]{
-		&platformLoader, &pathLoader, &sawPathLoader, &damageLoader,
+		&platformLoader, &pathLoader, &sawPathLoader, &damageLoader, &playerLoader,
+		&shellLoader,
 	}
 	for _, loader := range local {
 		ldOject[loader.GetKey()] = loader

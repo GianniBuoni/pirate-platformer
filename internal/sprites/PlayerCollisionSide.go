@@ -15,14 +15,22 @@ const (
 )
 
 func (p *Player) checkCollisionSide() CollisionSide {
-	for _, s := range p.Groups["collision"] {
+	for _, id := range p.Groups["collision"] {
+		s, ok := p.Sprites[id]
+		if !ok {
+			continue
+		}
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.cRects[floor]), rl.Rectangle(*s.HitBox()),
 		) {
 			return floor
 		}
 	}
-	for _, s := range p.Groups["wall"] {
+	for _, id := range p.Groups["wall"] {
+		s, ok := p.Sprites[id]
+		if !ok {
+			continue
+		}
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.cRects[left]), rl.Rectangle(*s.HitBox()),
 		) {
@@ -34,7 +42,11 @@ func (p *Player) checkCollisionSide() CollisionSide {
 			return right
 		}
 	}
-	for _, s := range p.Groups["platform"] {
+	for _, id := range p.Groups["platform"] {
+		s, ok := p.Sprites[id]
+		if !ok {
+			continue
+		}
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.cRects[floor]), rl.Rectangle(*s.HitBox()),
 		) {

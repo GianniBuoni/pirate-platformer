@@ -14,7 +14,7 @@ var tileLoader = SpriteLoader[TileParams]{
 var cTileLoader = SpriteLoader[TileParams]{
 	Key:     "collision",
 	Builder: tileMiddleware(NewTileSprite),
-	Groups:  []string{"all", "collsion", "wall"},
+	Groups:  []string{"all", "collision", "wall"},
 }
 
 var pTileLoader = SpriteLoader[TileParams]{

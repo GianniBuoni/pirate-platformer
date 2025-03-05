@@ -6,7 +6,11 @@ import (
 
 func (p *Player) damageCollision() {
 	if !p.state.CheckState(hit) {
-		for _, s := range p.Groups["damage"] {
+		for _, id := range p.Groups["damage"] {
+			s, ok := p.Sprites[id]
+			if !ok {
+				continue
+			}
 			if rl.CheckCollisionRecs(
 				rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
 			) {

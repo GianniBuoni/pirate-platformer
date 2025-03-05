@@ -6,7 +6,11 @@ import (
 )
 
 func (p *Player) collison(axis string) {
-	for _, s := range p.Groups["collision"] {
+	for _, id := range p.Groups["collision"] {
+		s, ok := p.Sprites[id]
+		if !ok {
+			continue
+		}
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*s.HitBox()), rl.Rectangle(*p.hitbox),
 		) {
@@ -36,7 +40,11 @@ func (p *Player) collison(axis string) {
 }
 
 func (p *Player) patformCollision() {
-	for _, pl := range p.Groups["platform"] {
+	for _, id := range p.Groups["platform"] {
+		pl, ok := p.Sprites[id]
+		if !ok {
+			continue
+		}
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*pl.HitBox()),
 		) && p.state.CheckState(canPlatform) {

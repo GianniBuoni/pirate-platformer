@@ -13,7 +13,8 @@ type Player struct {
 	platform Sprite
 	state    PlayerState
 	stats    *Stats
-	Groups   map[string][]Sprite
+	Groups   map[string][]int
+	Sprites  map[int]Sprite
 	cRects   map[CollisionSide]*Rect
 	cSide    CollisionSide
 }
