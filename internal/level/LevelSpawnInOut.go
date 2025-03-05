@@ -7,6 +7,8 @@ import (
 )
 
 func (l *Level) spawnInOut() error {
+	defer l.cleanup("damage", "item")
+
 	for _, id := range l.groups["shell"] {
 		s, ok := l.spirtes[id]
 		if !ok {
@@ -27,7 +29,26 @@ func (l *Level) spawnInOut() error {
 			shell.Attack = false
 		}
 	}
-	l.cleanup("damage", "item")
+
+	ephemeral, ok := l.groups["ephemeral"]
+	if !ok {
+		return nil
+	}
+	for _, id := range ephemeral {
+		s, ok := l.spirtes[id]
+		if !ok {
+			fmt.Printf("Sprite %d might already be deleted\n", id)
+			continue
+		}
+		pearl, ok := s.(*sprites.Pearl)
+		if !ok {
+			continue
+		}
+		if pearl.Kill {
+			l.spawnParticle(pearl)
+		}
+	}
+
 	return nil
 }
 

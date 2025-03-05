@@ -40,6 +40,12 @@ func (l *Level) Update() error {
 	}
 	l.camera.Update()
 
+	// check collisions
+	err = l.itemCollisions()
+	if err != nil {
+		return err
+	}
+
 	// manage sprites
 	err = l.spawnInOut()
 	if err != nil {

@@ -38,13 +38,13 @@ var animatedLoader = SpriteLoader[Object]{
 var itemLoader = SpriteLoader[Object]{
 	Key:     "item",
 	Builder: objectMiddleWare(NewItem),
-	Groups:  []string{"all", "item", "moving"},
+	Groups:  []string{"item", "ephemeral"},
 }
 
-var particleLoader = SpriteLoader[Object]{
+var ParticleLoader = SpriteLoader[Object]{
 	Key:     "particle",
 	Builder: objectMiddleWare(NewParticle),
-	Groups:  []string{"all", "moving", "ephemeral"},
+	Groups:  []string{"ephemeral"},
 }
 
 func objectMiddleWare(
