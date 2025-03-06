@@ -11,7 +11,7 @@ type LoadersForLevel struct {
 func LevelLoaders() LoadersForLevel {
 	ll := LoadersForLevel{
 		MapProps: []Loader[MapProps]{
-			&bgTileLoader,
+			&bgTileLoader, &cloudBGLoader,
 		},
 		Tiles:   map[string]Loader[TileParams]{},
 		Objects: map[string]Loader[Object]{},
@@ -21,7 +21,7 @@ func LevelLoaders() LoadersForLevel {
 	}
 	levelObjectLoaders := []Loader[Object]{
 		&objectLoader, &objectCollide, &animatedLoader, &radialLoader, &itemLoader,
-		&waterLoader,
+		&waterLoader, &cloudLoader,
 	}
 	for _, v := range levelTileLoaders {
 		ll.Tiles[v.GetKey()] = v

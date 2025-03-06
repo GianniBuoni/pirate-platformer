@@ -47,6 +47,12 @@ var ParticleLoader = SpriteLoader[Object]{
 	Groups:  []string{"ephemeral"},
 }
 
+var cloudLoader = SpriteLoader[Object]{
+	Key:     "cloud",
+	Builder: objectMiddleWare(NewCloud),
+	Groups:  []string{"all", "moving"},
+}
+
 func objectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {

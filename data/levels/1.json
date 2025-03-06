@@ -2689,28 +2689,6 @@
          "name":"items",
          "objects":[
                 {
-                 "gid":2,
-                 "height":64,
-                 "id":25,
-                 "name":"silver",
-                 "properties":
-                    {
-                     "loader":"item",
-                     "value":5
-                    },
-                 "propertytypes":
-                    {
-                     "loader":"string",
-                     "value":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":640,
-                 "y":448
-                }, 
-                {
                  "gid":1,
                  "height":64,
                  "id":26,
