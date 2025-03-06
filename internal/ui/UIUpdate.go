@@ -1,29 +1,24 @@
 package ui
 
-import (
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-)
-
 func (ui *UI) Update() error {
 	// update ephemeral group
-	ephemeral, ok := ui.groups["ephemeral"]
-	if ok {
-		for _, id := range ephemeral {
-			s, ok := ui.sprites[id]
-			if !ok {
-				return DeletedError("ephemeral", id)
-			}
-			err := s.Update()
-			if err != nil {
-				return err
-			}
-		}
-	}
-	// update heart group
-	err := ui.updateHearts()
+	err := ui.groups.Update("ephemeral")
 	if err != nil {
 		return err
 	}
-	ui.spriteCleanup("heart", "ephemeral")
+	// update heart group
+	err = ui.updateHearts()
+	if err != nil {
+		return err
+	}
+	// cleanup
+	err = ui.groups.Cleanup("heart")
+	if err != nil {
+		return err
+	}
+	err = ui.groups.Cleanup("ephemeral")
+	if err != nil {
+		return err
+	}
 	return nil
 }

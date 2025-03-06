@@ -28,7 +28,10 @@ func (g *GameData) draw() {
 	rl.ClearBackground(BgColor)
 	g.level.Draw()
 	rl.EndMode2D()
-	g.ui.Draw()
+	err := g.ui.Draw()
+	if err != nil {
+		g.Quit(1, err)
+	}
 	rl.EndTextureMode()
 
 	// draw render texture scaled

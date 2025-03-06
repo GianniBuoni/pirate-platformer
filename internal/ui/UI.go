@@ -6,21 +6,24 @@ import (
 )
 
 type UI struct {
-	groups  map[string][]int
-	sprites map[int]Sprite
-	texts   map[string]Text
-	assets  *Assets
-	stats   *Stats
-	nextId  int
+	groups SpriteGroup
+	texts  map[string]Text
+	assets *Assets
+	stats  *Stats
+	nextId int
 }
 
 func NewUI(s *Stats, a *Assets) (*UI, error) {
 	return &UI{
-		groups:  map[string][]int{},
-		sprites: map[int]Sprite{},
-		texts:   map[string]Text{},
-		assets:  a,
-		stats:   s,
+		groups: SpriteGroup{
+			IDs: map[string][]int{
+				"ephemeral": {},
+			},
+			Sprites: map[int]Sprite{},
+		},
+		texts:  map[string]Text{},
+		assets: a,
+		stats:  s,
 	}, nil
 }
 
@@ -31,7 +34,7 @@ func (ui *UI) AddSpriteGroup(
 	s.GetID().GID = id
 	spriteMap[id] = s
 	for _, group := range groups {
-		ui.groups[group] = append(ui.groups[group], s.GetID().GID)
+		ui.groups.IDs[group] = append(ui.groups.IDs[group], s.GetID().GID)
 	}
 }
 
@@ -44,7 +47,7 @@ func (ui *UI) Texts() map[string]Text {
 }
 
 func (ui *UI) Sprites() map[int]Sprite {
-	return ui.sprites
+	return ui.groups.Sprites
 }
 
 func (ui *UI) NextId() int {

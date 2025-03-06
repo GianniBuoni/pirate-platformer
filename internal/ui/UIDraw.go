@@ -7,7 +7,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-func (ui *UI) Draw() {
+func (ui *UI) Draw() error {
 	// bg
 	if ui.stats.Paused {
 		rl.DrawRectangleRec(
@@ -22,27 +22,37 @@ func (ui *UI) Draw() {
 		)
 	}
 	// stats
-	ui.drawStats()
+	err := ui.drawStats()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
-func (ui *UI) drawStats() {
+func (ui *UI) drawStats() error {
 	groups := []string{"coin", "heart", "ephemeral"}
 	for _, name := range groups {
-		group, ok := ui.groups[name]
-		if !ok {
-			continue
-		}
 		if name == "heart" {
-			group = group[1:]
-		}
-		if len(group) == 0 {
+			rendered, err := ui.groups.GetIDs(name)
+			if err != nil {
+				return err
+			}
+			rendered = rendered[1:]
+			hearts, err := ui.groups.GetSprites(rendered, name)
+			if err != nil {
+				return err
+			}
+			for _, s := range hearts {
+				s.Draw(s.GetID().Src, s.GetPos())
+			}
 			continue
 		}
-		for _, id := range group {
-			s := ui.sprites[id]
-			s.Draw(s.GetID().Src, s.GetPos())
+		err := ui.groups.Draw(name)
+		if err != nil {
+			return err
 		}
 	}
 	coins := fmt.Sprint(ui.stats.Coins)
 	ui.texts["coinText"].Draw(coins, ui.assets.Fonts["runescape_uf"])
+	return nil
 }

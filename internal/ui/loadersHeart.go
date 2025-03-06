@@ -15,8 +15,12 @@ func (ui *UI) spawnHeart(i int) error {
 	}
 
 	// copy pos of the original heart at index 0
-	heartId := ui.groups["heart"][0]
-	heartPos := ui.sprites[heartId].GetPos()
+	ids, err := ui.groups.GetIDs("heart")
+	if err != nil {
+		return err
+	}
+	heartId := ids[0]
+	heartPos := ui.groups.Sprites[heartId].GetPos()
 	startPos := rl.NewVector2(heartPos.Rect().X, heartPos.Rect().Y)
 
 	newPos := rl.NewVector2(
