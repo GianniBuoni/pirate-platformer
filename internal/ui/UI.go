@@ -24,23 +24,6 @@ func NewUI(s *Stats, a *Assets) (*UI, error) {
 	}, nil
 }
 
-func (ui *UI) Update() error {
-	renderedHearts := ui.groups["heart"][1:]
-	if len(renderedHearts) < ui.stats.PlayerHP() {
-		for i := len(renderedHearts); i < ui.stats.PlayerHP(); i++ {
-			ui.spawnHeart(i)
-		}
-	}
-	renderedHearts = ui.groups["heart"][1:]
-	for _, id := range renderedHearts {
-		err := ui.sprites[id].Update()
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 func (ui *UI) AddSpriteGroup(
 	s Sprite, spriteMap map[int]Sprite, groups ...string,
 ) {

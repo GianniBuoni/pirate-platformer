@@ -2,7 +2,8 @@ package ui
 
 import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-	"github.com/GianniBuoni/pirate-platformer/internal/loaders"
+	. "github.com/GianniBuoni/pirate-platformer/internal/loaders"
+	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -25,7 +26,21 @@ func (ui *UI) spawnHeart(i int) error {
 
 	obj.X = newPos.X
 	obj.Y = newPos.Y
-	err = loaders.HeartLoader.Run(obj, UiLib, ui)
+	err = HeartLoader.Run(obj, UiLib, ui)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (ui *UI) spawnParticle(s Sprite) error {
+	o, err := ui.assets.GetObject("particle")
+	if err != nil {
+		return err
+	}
+	o.X = s.HitBox().Center().X
+	o.Y = s.HitBox().Center().Y
+	err = ParticleLoader.Run(o, ImageLib, ui)
 	if err != nil {
 		return err
 	}
