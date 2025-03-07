@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func (a *Assets) importTileData(key, path string) error {
@@ -15,7 +16,7 @@ func (a *Assets) importTileData(key, path string) error {
 	tsd := Tileset{}
 	err = json.Unmarshal(data, &tsd)
 	if err != nil {
-		return fmt.Errorf("%s, %w", path, err)
+		return UnmarshalError(path, err)
 	}
 	a.TilesetData[key] = tsd
 
@@ -44,9 +45,29 @@ func (a *Assets) importSpawnIn(key, path string) error {
 	template := Template{}
 	err = json.Unmarshal(data, &template)
 	if err != nil {
-		return fmt.Errorf("%s, %w", path, err)
+		return UnmarshalError(path, err)
 	}
 	obj := template.Objects
 	a.SpawnIn[key] = obj
+	return nil
+}
+
+func (a *Assets) importMapFile(key, path string) error {
+	intKey64, err := strconv.ParseInt(key, 10, 64)
+	if err != nil {
+		return err
+	}
+	intKey := int(intKey64)
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	ld := LevelData{}
+	err = json.Unmarshal(data, &ld)
+	if err != nil {
+		return UnmarshalError(path, err)
+	}
+	a.Maps[intKey] = ld
 	return nil
 }

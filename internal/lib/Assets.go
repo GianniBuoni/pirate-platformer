@@ -14,6 +14,7 @@ const (
 	TileData
 	SpawnInLib
 	FontLib
+	MapLib
 )
 
 type Assets struct {
@@ -27,6 +28,7 @@ type Assets struct {
 	SpawnIn     map[string]Object
 	Hitboxes    map[string]Rect
 	Fonts       map[string]rl.Font
+	Maps        map[int]LevelData
 }
 
 func NewAssets() *Assets {
@@ -39,6 +41,7 @@ func NewAssets() *Assets {
 		SpawnIn:     map[string]Object{},
 		Hitboxes:    map[string]Rect{},
 		Fonts:       map[string]rl.Font{},
+		Maps:        map[int]LevelData{},
 	}
 }
 

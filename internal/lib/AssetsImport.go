@@ -2,7 +2,6 @@ package lib
 
 import (
 	"errors"
-	"path/filepath"
 	"strings"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -15,7 +14,7 @@ func (a *Assets) ImportImages(
 	paths := GetFilePaths(root...)
 
 	for _, path := range paths {
-		key := strings.Split(filepath.Base(path), ".")[0]
+		key := GetAssetKey(path)
 		switch aLib {
 		case ImageLib:
 			a.Images[key] = rl.LoadTexture(path)
@@ -47,6 +46,11 @@ func (a *Assets) ImportData(aLib AssetLibrary, root ...string) error {
 			}
 		case SpawnInLib:
 			err := a.importSpawnIn(key, path)
+			if err != nil {
+				return err
+			}
+		case MapLib:
+			err := a.importMapFile(key, path)
 			if err != nil {
 				return err
 			}

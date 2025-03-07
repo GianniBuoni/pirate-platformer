@@ -1,28 +1,15 @@
 package level
 
 import (
-	"encoding/json"
-	"os"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	"github.com/GianniBuoni/pirate-platformer/internal/loaders"
 )
 
-func (l *Level) Load(mapPath string) error {
+func (l *Level) Load(ld LevelData) error {
 	// init loaders
 	lLoaders := loaders.LevelLoaders()
 	l.addLocalLoaders(lLoaders.Objects)
 
-	// data unmarshaling
-	data, err := os.ReadFile(mapPath)
-	if err != nil {
-		return err
-	}
-	ld := LevelData{}
-	err = json.Unmarshal(data, &ld)
-	if err != nil {
-		return err
-	}
 	ld.MapProps.Width = ld.Width
 	ld.MapProps.Height = ld.Height
 	l.Top = float32(ld.MapProps.TopLimit) * TileSize

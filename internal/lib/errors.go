@@ -8,3 +8,7 @@ func DeletedError(groupName string, id int) error {
 		groupName, id,
 	)
 }
+
+func UnmarshalError(path string, err error) error {
+	return fmt.Errorf("\"%s\", %w", path, err)
+}

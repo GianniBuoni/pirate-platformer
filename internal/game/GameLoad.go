@@ -8,15 +8,12 @@ import (
 	"github.com/GianniBuoni/pirate-platformer/internal/ui"
 )
 
-// LoadLevel is resposible for loading in levels
 func (g *GameData) LoadLevel() {
-	mapPath := filepath.Join("data", "levels", "0.json")
 	g.level = level.NewLevel(g.stats, g.assets)
-	err := g.level.Load(mapPath)
+	err := g.level.Load(g.assets.Maps[g.stats.CurrentLevel])
 	if err != nil {
 		g.Quit(1, err)
 	}
-
 }
 
 func (g *GameData) LoadUi() {
@@ -45,16 +42,16 @@ func (g *GameData) loadAssets() {
 		"tilesets":  TileData,
 		"templates": SpawnInLib,
 		"fonts":     FontLib,
+		"levels":    MapLib,
 	}
-
-	for k, v := range graphics {
-		err := g.assets.ImportImages(v, "graphics", k)
+	for k, v := range data {
+		err := g.assets.ImportData(v, "data", k)
 		if err != nil {
 			g.Quit(1, err)
 		}
 	}
-	for k, v := range data {
-		err := g.assets.ImportData(v, "data", k)
+	for k, v := range graphics {
+		err := g.assets.ImportImages(v, "graphics", k)
 		if err != nil {
 			g.Quit(1, err)
 		}
