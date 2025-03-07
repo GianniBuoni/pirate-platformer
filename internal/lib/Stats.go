@@ -7,15 +7,13 @@ type Stats struct {
 	playerHealth  int
 	maxHealth     int
 	Paused        bool
+	Victory       bool
 }
 
 func NewStats() *Stats {
 	return &Stats{
-		CurrentLevel:  1,
-		UnlockedLevel: 4,
-		Coins:         0,
-		playerHealth:  3,
-		maxHealth:     3,
+		playerHealth: 3,
+		maxHealth:    3,
 	}
 }
 
@@ -31,4 +29,17 @@ func (s *Stats) SetMaxHP(hpTpAdd int) {
 func (s *Stats) AddHP(hpToAdd int) {
 	health := s.playerHealth + hpToAdd
 	s.playerHealth = max(0, min(health, s.maxHealth))
+}
+
+func (s *Stats) EnterStage() {
+	s.Victory = false
+	s.Paused = false
+	s.CurrentLevel = s.UnlockedLevel
+}
+
+func (s *Stats) SetVictory(next int) {
+	if next > s.UnlockedLevel {
+		s.UnlockedLevel = next
+	}
+	s.Victory = true
 }

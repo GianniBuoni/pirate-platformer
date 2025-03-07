@@ -7,4 +7,9 @@ func (g *GameData) input() {
 	if rl.IsKeyPressed(rl.KeyEscape) {
 		g.stats.Paused = !g.stats.Paused
 	}
+
+	if g.stats.Victory && rl.IsKeyPressed(rl.KeyEnter) {
+		g.stats.EnterStage()
+		g.LoadLevel()
+	}
 }

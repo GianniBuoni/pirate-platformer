@@ -7,16 +7,17 @@ import (
 )
 
 type Level struct {
-	groups SpriteGroup
-	paths  map[int]*Rect
-	assets *Assets
-	camera *CameraRect
-	player *Player
-	stats  *Stats
-	nextID int
-	Top    float32
-	Width  float32
-	Height float32
+	groups    SpriteGroup
+	paths     map[int]*Rect
+	assets    *Assets
+	camera    *CameraRect
+	player    *Player
+	stats     *Stats
+	nextID    int
+	nextLevel int
+	Top       float32
+	Width     float32
+	Height    float32
 }
 
 func NewLevel(stats *Stats, assets *Assets) *Level {

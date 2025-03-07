@@ -21,7 +21,7 @@ func LevelLoaders() LoadersForLevel {
 	}
 	levelObjectLoaders := []Loader[Object]{
 		&objectLoader, &objectCollide, &animatedLoader, &radialLoader, &itemLoader,
-		&waterLoader, &cloudLoader,
+		&waterLoader, &cloudLoader, &flagLoader,
 	}
 	for _, v := range levelTileLoaders {
 		ll.Tiles[v.GetKey()] = v

@@ -41,8 +41,18 @@ func (l *Level) itemCollisions() error {
 	return nil
 }
 
-func (l *Level) checkKillPlane() {
+func (l *Level) checkDeathVictory() error {
 	if l.player.HitBox().Top() >= l.Height {
 		l.stats.AddHP(-l.stats.PlayerHP())
 	}
+	flags, err := l.groups.GetSpritesName("flag")
+	if err != nil {
+		return err
+	}
+	if rl.CheckCollisionRecs(
+		rl.Rectangle(*l.player.HitBox()), rl.Rectangle(*flags[0].HitBox()),
+	) {
+		l.stats.SetVictory(l.nextLevel)
+	}
+	return nil
 }

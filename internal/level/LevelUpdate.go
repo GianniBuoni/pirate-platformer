@@ -1,7 +1,7 @@
 package level
 
 func (l *Level) Update() (err error) {
-	if l.stats.PlayerHP() == 0 {
+	if l.stats.PlayerHP() == 0 || l.stats.Victory {
 		l.stats.Paused = true
 	}
 	if l.stats.Paused {
@@ -22,8 +22,11 @@ func (l *Level) Update() (err error) {
 	// update camera based on player update
 	l.camera.Update()
 	// check collisions
-	l.checkKillPlane()
 	err = l.itemCollisions()
+	if err != nil {
+		return err
+	}
+	err = l.checkDeathVictory()
 	if err != nil {
 		return err
 	}

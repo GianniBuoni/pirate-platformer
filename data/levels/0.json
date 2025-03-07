@@ -813,7 +813,7 @@
                  "name":"flag",
                  "properties":
                     {
-                     "loader":"animated"
+                     "loader":"flag"
                     },
                  "propertytypes":
                     {

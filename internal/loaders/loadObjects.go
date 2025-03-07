@@ -53,6 +53,12 @@ var cloudLoader = SpriteLoader[Object]{
 	Groups:  []string{"all", "moving"},
 }
 
+var flagLoader = SpriteLoader[Object]{
+	Key:     "flag",
+	Builder: objectMiddleWare(NewAnimatedSprite),
+	Groups:  []string{"all", "moving", "flag"},
+}
+
 func objectMiddleWare(
 	f func(Object, AssetLibrary, *Assets) (Sprite, error),
 ) func(Object, AssetLibrary, GameModule) ([]Sprite, error) {

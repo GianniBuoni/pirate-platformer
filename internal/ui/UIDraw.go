@@ -11,6 +11,10 @@ func (ui *UI) Draw() error {
 	// bg
 	center := "GAME PAUSED"
 	hint := "Press (ESC) again to resume."
+	if ui.stats.Victory {
+		center = "ARRRRG, YE DEED IT!"
+		hint = "Continute? (Enter)"
+	}
 	if ui.stats.PlayerHP() == 0 {
 		center = "GAME OVER, MAN."
 		hint = "Game over."
