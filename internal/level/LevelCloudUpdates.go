@@ -1,30 +1,22 @@
 package level
 
-import (
-	"fmt"
-
-	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
-)
+import . "github.com/GianniBuoni/pirate-platformer/internal/lib"
 
 func (l *Level) checkClouds() error {
 	// 0 index is the water so we need to skip it
-	firstID := l.groups["clouds large"][1]
-	firstCloud, ok := l.spirtes[firstID]
-	if !ok {
+	ids, err := l.groups.GetIDs("clouds large")
+	if err != nil {
+		// an error here just means that the level might not have
+		// large clouds
 		return nil
 	}
-	if firstCloud.HitBox().Right() <= 0 {
-		for i, id := range l.groups["clouds large"] {
-			// 0 index is the water so we need to skip it
-			if i == 0 {
-				continue
-			}
-			s, ok := l.spirtes[id]
-			if !ok {
-				return fmt.Errorf(
-					"large cloud spirte id \"%d\" not found in level sprite map", id,
-				)
-			}
+	ids = ids[1:]
+	cloudsLarge, err := l.groups.GetSprites(ids, "clouds large")
+	if err != nil {
+		return err
+	}
+	if cloudsLarge[0].HitBox().Right() <= 0 {
+		for _, s := range cloudsLarge {
 			x := s.HitBox().Left()
 			w := s.HitBox().Width
 			s.HitBox().Set(Left(x + w))

@@ -1,43 +1,22 @@
 package level
 
-import "fmt"
-
-func (l *Level) Update() error {
+func (l *Level) Update() (err error) {
 	if l.stats.Paused {
 		return nil
 	}
-	// update moving sprites
-	moving, ok := l.groups["moving"]
-	if !ok {
-		fmt.Println("Level sprite group \"moving\" is empty.")
-		return nil
-	}
-	for _, id := range moving {
-		err := l.spirtes[id].Update()
+	groups := []string{"moving", "ephemeral"}
+	for _, group := range groups {
+		err := l.groups.Update(group)
 		if err != nil {
 			return err
 		}
 	}
-	// update ephemeral sprites
-	ephemeral, ok := l.groups["ephemeral"]
-	if ok {
-		for _, id := range ephemeral {
-			s, ok := l.spirtes[id]
-			if !ok {
-				fmt.Printf("Can't update %d; it might be deleted\n", id)
-				continue
-			}
-			err := s.Update()
-			if err != nil {
-				return err
-			}
-		}
-	}
 	// update player
-	err := l.player.Update()
+	err = l.player.Update()
 	if err != nil {
 		return err
 	}
+	// update camera based on player update
 	l.camera.Update()
 	// check collisions
 	err = l.itemCollisions()
@@ -49,10 +28,12 @@ func (l *Level) Update() error {
 	if err != nil {
 		return err
 	}
-	// manage sprites
+	// manage sprite spawning
 	err = l.spawnInOut()
 	if err != nil {
 		return err
 	}
+	// cleanup
+	err = l.groups.Cleanup("ephemeral", "damage", "item")
 	return nil
 }

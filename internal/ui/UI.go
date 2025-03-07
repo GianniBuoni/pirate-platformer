@@ -27,14 +27,15 @@ func NewUI(s *Stats, a *Assets) (*UI, error) {
 	}, nil
 }
 
-func (ui *UI) AddSpriteGroup(
-	s Sprite, spriteMap map[int]Sprite, groups ...string,
-) {
+func (ui *UI) AddSpriteGroup(s Sprite, groups ...string) {
+	// assign ids
 	id := ui.NextId()
 	s.GetID().GID = id
-	spriteMap[id] = s
+	// register sprites
+	ui.groups.Sprites[id] = s
+	// register groups
 	for _, group := range groups {
-		ui.groups.IDs[group] = append(ui.groups.IDs[group], s.GetID().GID)
+		ui.groups.IDs[group] = append(ui.groups.IDs[group], id)
 	}
 }
 
@@ -44,10 +45,6 @@ func (ui *UI) Assets() *Assets {
 
 func (ui *UI) Texts() map[string]Text {
 	return ui.texts
-}
-
-func (ui *UI) Sprites() map[int]Sprite {
-	return ui.groups.Sprites
 }
 
 func (ui *UI) NextId() int {

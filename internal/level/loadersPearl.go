@@ -45,7 +45,6 @@ func pearlMiddleware(
 			return nil, errors.New("type mismatch, local Level loader used out of scope.")
 		}
 		p.Groups = level.groups
-		p.Sprites = level.spirtes
 		go func() {
 			killTimer := time.NewTimer(p.Lifetime)
 			<-killTimer.C

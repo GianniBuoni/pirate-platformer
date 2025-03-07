@@ -11,8 +11,7 @@ type Pearl struct {
 	Pos
 	ID
 	Movement
-	Sprites  map[int]Sprite
-	Groups   map[string][]int
+	Groups   SpriteGroup
 	Lifetime time.Duration
 }
 
@@ -49,16 +48,21 @@ func (p *Pearl) Draw(src rl.Texture2D, pos *Pos) {
 	)
 }
 
-func (p *Pearl) collision() {
-	for _, id := range p.Groups["collision"] {
-		s, ok := p.Sprites[id]
-		if !ok {
-			continue
-		}
+func (p *Pearl) collision() error {
+	ids, err := p.Groups.GetIDs("collision")
+	if err != nil {
+		return err
+	}
+	sprites, err := p.Groups.GetSprites(ids, "collision")
+	if err != nil {
+		return err
+	}
+	for _, s := range sprites {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
 		) {
 			p.GetID().Kill = true
 		}
 	}
+	return nil
 }

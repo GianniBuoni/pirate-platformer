@@ -1,45 +1,36 @@
 package level
 
 import (
-	"fmt"
-
 	"github.com/GianniBuoni/pirate-platformer/internal/sprites"
 )
 
 func (l *Level) spawnInOut() error {
-	defer l.cleanup("damage", "item")
-
-	for _, id := range l.groups["shell"] {
-		s, ok := l.spirtes[id]
+	// check shells
+	ids, err := l.groups.GetIDs("shell")
+	if err != nil {
+		return err
+	}
+	shells, err := l.groups.GetSprites(ids, "shell")
+	for _, s := range shells {
+		shell, ok := s.(*sprites.Shell)
 		if !ok {
 			continue
 		}
-		shell, ok := s.(*sprites.Shell)
-		if !ok {
-			return fmt.Errorf(
-				"sprite \"%s\" is in the shell sprite group.",
-				s.GetID().Image,
-			)
-		}
 		if shell.SpawnFrame() {
-			err := l.spawnPearl(shell)
-			if err != nil {
-				return err
-			}
+			l.spawnPearl(shell)
 			shell.Attack = false
 		}
 	}
-
-	ephemeral, ok := l.groups["ephemeral"]
-	if !ok {
-		return nil
+	// check pearls
+	ids, err = l.groups.GetIDs("ephemeral")
+	if err != nil {
+		return err
 	}
-	for _, id := range ephemeral {
-		s, ok := l.spirtes[id]
-		if !ok {
-			fmt.Printf("Sprite %d might already be deleted\n", id)
-			continue
-		}
+	ephemeral, err := l.groups.GetSprites(ids, "ephemeral")
+	if err != nil {
+		return err
+	}
+	for _, s := range ephemeral {
 		pearl, ok := s.(*sprites.Pearl)
 		if !ok {
 			continue
@@ -48,38 +39,5 @@ func (l *Level) spawnInOut() error {
 			l.spawnParticle(pearl)
 		}
 	}
-
 	return nil
-}
-
-func (l *Level) cleanup(groups ...string) {
-	for i, id := range l.groups["ephemeral"] {
-		s, ok := l.spirtes[id]
-		if !ok {
-			fmt.Printf("Sprite %d might already be deleted\n", id)
-			continue
-		}
-		if s.GetID().Kill {
-			l.groups["ephemeral"] = removeSliceIndex(i, l.groups["ephemeral"])
-			delete(l.spirtes, id)
-		}
-	}
-	for _, name := range groups {
-		group, ok := l.groups[name]
-		if !ok {
-			continue
-		}
-		for i, id := range group {
-			_, ok := l.spirtes[id]
-			if !ok {
-				l.groups[name] = removeSliceIndex(i, group)
-			}
-		}
-	}
-}
-
-func removeSliceIndex(i int, src []int) []int {
-	last := len(src) - 1
-	src[i] = src[last]
-	return src[:last]
 }

@@ -4,14 +4,27 @@ import (
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 )
 
-func (p *Player) move(dt float32) {
+func (p *Player) move(dt float32) error {
 	p.MoveX(p.hitbox, dt)
-	p.collison("x")
+	err := p.collison("x")
+	if err != nil {
+		return err
+	}
 	p.MoveY(p.hitbox, dt)
-	p.collison("y")
-	p.patformCollision()
+	err = p.collison("y")
+	if err != nil {
+		return err
+	}
+	err = p.patformCollision()
+	if err != nil {
+		return err
+	}
 	p.platformMove(dt)
-	p.damageCollision()
+	err = p.damageCollision()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (p *Player) platformMove(dt float32) {

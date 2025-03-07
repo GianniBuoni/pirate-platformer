@@ -26,9 +26,12 @@ func (g *GameData) draw() {
 	rl.BeginTextureMode(g.window.renderTexture)
 	rl.BeginMode2D(g.window.camera)
 	rl.ClearBackground(BgColor)
-	g.level.Draw()
+	err := g.level.Draw()
+	if err != nil {
+		g.Quit(1, err)
+	}
 	rl.EndMode2D()
-	err := g.ui.Draw()
+	err = g.ui.Draw()
 	if err != nil {
 		g.Quit(1, err)
 	}

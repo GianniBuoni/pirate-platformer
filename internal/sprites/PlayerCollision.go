@@ -5,12 +5,16 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-func (p *Player) collison(axis string) {
-	for _, id := range p.Groups["collision"] {
-		s, ok := p.Sprites[id]
-		if !ok {
-			continue
-		}
+func (p *Player) collison(axis string) error {
+	ids, err := p.Groups.GetIDs("collision")
+	if err != nil {
+		return err
+	}
+	sprites, err := p.Groups.GetSprites(ids, "collision")
+	if err != nil {
+		return err
+	}
+	for _, s := range sprites {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*s.HitBox()), rl.Rectangle(*p.hitbox),
 		) {
@@ -37,14 +41,19 @@ func (p *Player) collison(axis string) {
 			}
 		}
 	}
+	return nil
 }
 
-func (p *Player) patformCollision() {
-	for _, id := range p.Groups["platform"] {
-		pl, ok := p.Sprites[id]
-		if !ok {
-			continue
-		}
+func (p *Player) patformCollision() error {
+	ids, err := p.Groups.GetIDs("platform")
+	if err != nil {
+		return err
+	}
+	sprites, err := p.Groups.GetSprites(ids, "platform")
+	if err != nil {
+		return err
+	}
+	for _, pl := range sprites {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*p.hitbox), rl.Rectangle(*pl.HitBox()),
 		) && p.state.CheckState(canPlatform) {
@@ -56,4 +65,5 @@ func (p *Player) patformCollision() {
 			}
 		}
 	}
+	return nil
 }

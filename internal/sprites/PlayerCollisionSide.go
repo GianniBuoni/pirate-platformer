@@ -14,46 +14,39 @@ const (
 	air
 )
 
-func (p *Player) checkCollisionSide() CollisionSide {
-	for _, id := range p.Groups["collision"] {
-		s, ok := p.Sprites[id]
-		if !ok {
-			continue
+func (p *Player) checkCollisionSide() (CollisionSide, error) {
+	// check floor
+	groupsToCheck := []string{"collision", "platform"}
+	for _, group := range groupsToCheck {
+		sprites, err := p.Groups.GetSpritesName(group)
+		if err != nil {
+			return 0, err
 		}
-		if rl.CheckCollisionRecs(
-			rl.Rectangle(*p.cRects[floor]), rl.Rectangle(*s.HitBox()),
-		) {
-			return floor
-		}
-	}
-	for _, id := range p.Groups["wall"] {
-		s, ok := p.Sprites[id]
-		if !ok {
-			continue
-		}
-		if rl.CheckCollisionRecs(
-			rl.Rectangle(*p.cRects[left]), rl.Rectangle(*s.HitBox()),
-		) {
-			return left
-		}
-		if rl.CheckCollisionRecs(
-			rl.Rectangle(*p.cRects[right]), rl.Rectangle(*s.HitBox()),
-		) {
-			return right
+		for _, s := range sprites {
+			if rl.CheckCollisionRecs(
+				rl.Rectangle(*p.cRects[floor]), rl.Rectangle(*s.HitBox()),
+			) {
+				return floor, nil
+			}
 		}
 	}
-	for _, id := range p.Groups["platform"] {
-		s, ok := p.Sprites[id]
-		if !ok {
-			continue
-		}
-		if rl.CheckCollisionRecs(
-			rl.Rectangle(*p.cRects[floor]), rl.Rectangle(*s.HitBox()),
-		) {
-			return floor
+	// check left and right
+	sides := map[CollisionSide]rl.Rectangle{
+		left:  rl.Rectangle(*p.cRects[left]),
+		right: rl.Rectangle(*p.cRects[right]),
+	}
+	sprites, err := p.Groups.GetSpritesName("wall")
+	if err != nil {
+		return 0, err
+	}
+	for k, v := range sides {
+		for _, s := range sprites {
+			if rl.CheckCollisionRecs(rl.Rectangle(v), rl.Rectangle(*s.HitBox())) {
+				return k, nil
+			}
 		}
 	}
-	return air
+	return air, nil
 }
 
 func (p *Player) getCRects() {

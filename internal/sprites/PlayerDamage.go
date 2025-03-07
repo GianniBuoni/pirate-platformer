@@ -4,13 +4,17 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-func (p *Player) damageCollision() {
+func (p *Player) damageCollision() error {
 	if !p.state.CheckState(hit) {
-		for _, id := range p.Groups["damage"] {
-			s, ok := p.Sprites[id]
-			if !ok {
-				continue
-			}
+		ids, err := p.Groups.GetIDs("damage")
+		if err != nil {
+			return err
+		}
+		damage, err := p.Groups.GetSprites(ids, "damage")
+		if err != nil {
+			return err
+		}
+		for _, s := range damage {
 			if rl.CheckCollisionRecs(
 				rl.Rectangle(*p.hitbox), rl.Rectangle(*s.HitBox()),
 			) {
@@ -35,6 +39,7 @@ func (p *Player) damageCollision() {
 			}
 		}
 	}
+	return nil
 }
 
 func (p *Player) setHit() {

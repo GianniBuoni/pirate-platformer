@@ -31,6 +31,18 @@ func (sg *SpriteGroup) GetSprites(ids []int, name string) ([]Sprite, error) {
 	return out, nil
 }
 
+func (sg *SpriteGroup) GetSpritesName(name string) ([]Sprite, error) {
+	ids, err := sg.GetIDs(name)
+	if err != nil {
+		return nil, err
+	}
+	out, err := sg.GetSprites(ids, name)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (sg *SpriteGroup) Update(name string) error {
 	ids, err := sg.GetIDs(name)
 	if err != nil {
@@ -81,16 +93,16 @@ func (sg *SpriteGroup) Cleanup(name string, linked ...string) error {
 	}
 	// check if deleted id is in other groups
 	for _, linkedName := range linked {
-		linkedName, ok := sg.IDs[linkedName]
-		// continue if linked group is not initialized
-		if !ok {
+		ids, err := sg.GetIDs(linkedName)
+		if err != nil {
+			// should be ok if linked group isn't initialized yet?
 			continue
 		}
-		for i, id := range linkedName {
+		for i, id := range ids {
 			_, ok := sg.Sprites[id]
 			// ok should fail if id is deleted by parent group
 			if !ok {
-				sg.IDs[name] = removeSliceIndex(i, linkedName)
+				sg.IDs[linkedName] = removeSliceIndex(i, ids)
 			}
 		}
 	}

@@ -21,7 +21,7 @@ func spikeMiddleware(
 		if err != nil {
 			return nil, err
 		}
-		gm.AddSpriteGroup(spike, gm.Sprites(), "damage")
+		gm.AddSpriteGroup(spike, "damage")
 
 		// chain sprites
 		newImage := "spike_chain"

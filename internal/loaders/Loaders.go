@@ -8,8 +8,7 @@ import (
 type GameModule interface {
 	Assets() *Assets
 	Texts() map[string]Text
-	Sprites() map[int]Sprite
-	AddSpriteGroup(Sprite, map[int]Sprite, ...string)
+	AddSpriteGroup(Sprite, ...string)
 }
 
 type Loader[T any] interface {
@@ -39,7 +38,7 @@ func (sl *SpriteLoader[T]) Run(t T, aLib AssetLibrary, gm GameModule) error {
 	}
 	if sprites != nil {
 		for _, s := range sprites {
-			gm.AddSpriteGroup(s, gm.Sprites(), sl.Groups...)
+			gm.AddSpriteGroup(s, sl.Groups...)
 		}
 	}
 	return nil

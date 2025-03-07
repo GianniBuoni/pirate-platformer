@@ -8,11 +8,15 @@ import (
 )
 
 func (l *Level) itemCollisions() error {
-	for _, id := range l.groups["item"] {
-		s, ok := l.spirtes[id]
-		if !ok {
-			fmt.Printf("Sprite \"%d\" might already be deleted", id)
-		}
+	ids, err := l.groups.GetIDs("item")
+	if err != nil {
+		return err
+	}
+	items, err := l.groups.GetSprites(ids, "item")
+	if err != nil {
+		return err
+	}
+	for _, s := range items {
 		if rl.CheckCollisionRecs(
 			rl.Rectangle(*s.HitBox()), rl.Rectangle(*l.player.HitBox()),
 		) {
@@ -20,8 +24,8 @@ func (l *Level) itemCollisions() error {
 				item, ok := s.(*sprites.Item)
 				if !ok {
 					return fmt.Errorf(
-						"type mismatch, \"%s\" is in the item sprite group",
-						s.GetID().Image,
+						"type mismatch, \"%s: %d\" is in the item sprite group",
+						s.GetID().Image, s.GetID().GID,
 					)
 				}
 				switch item.Image {

@@ -10,11 +10,10 @@ type Player struct {
 	ID
 	Movement
 	Animation
+	Groups   SpriteGroup
 	platform Sprite
 	state    PlayerState
 	stats    *Stats
-	Groups   map[string][]int
-	Sprites  map[int]Sprite
 	cRects   map[CollisionSide]*Rect
 	cSide    CollisionSide
 }
@@ -37,17 +36,22 @@ func NewPlayer(obj Object, stats *Stats, a *Assets) (Sprite, error) {
 	return &p, nil
 }
 
-func (p *Player) Update() error {
+func (p *Player) Update() (err error) {
 	dt := rl.GetFrameTime()
 	p.oldRect.Copy(p.hitbox)
 	p.input(p.cSide)
-	p.move(dt)
+	err = p.move(dt)
+	if err != nil {
+		return err
+	}
 	p.Pos.Update()
 	p.updateCRects()
-	p.cSide = p.checkCollisionSide()
+	p.cSide, err = p.checkCollisionSide()
+	if err != nil {
+		return err
+	}
 	p.Image = string(p.getState())
 
-	var err error
 	p.Src, err = p.assets.GetImage(p.assetLib, p.Image)
 	if err != nil {
 		return err
