@@ -8,11 +8,7 @@ import (
 )
 
 func (l *Level) itemCollisions() error {
-	ids, err := l.groups.GetIDs("item")
-	if err != nil {
-		return err
-	}
-	items, err := l.groups.GetSprites(ids, "item")
+	items, err := l.groups.GetSpritesName("item")
 	if err != nil {
 		return err
 	}

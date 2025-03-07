@@ -6,11 +6,7 @@ import (
 
 func (p *Player) damageCollision() error {
 	if !p.state.CheckState(hit) {
-		ids, err := p.Groups.GetIDs("damage")
-		if err != nil {
-			return err
-		}
-		damage, err := p.Groups.GetSprites(ids, "damage")
+		damage, err := p.Groups.GetSpritesName("damage")
 		if err != nil {
 			return err
 		}

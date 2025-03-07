@@ -11,7 +11,7 @@ func (l *Level) checkClouds() error {
 		return nil
 	}
 	ids = ids[1:]
-	cloudsLarge, err := l.groups.GetSprites(ids, "clouds large")
+	cloudsLarge, err := l.groups.GetSpritesID("clouds large", ids)
 	if err != nil {
 		return err
 	}

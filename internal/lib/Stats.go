@@ -11,7 +11,7 @@ type Stats struct {
 
 func NewStats() *Stats {
 	return &Stats{
-		CurrentLevel:  1,
+		CurrentLevel:  0,
 		UnlockedLevel: 4,
 		Coins:         0,
 		playerHealth:  3,

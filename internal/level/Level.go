@@ -1,8 +1,6 @@
 package level
 
 import (
-	"fmt"
-
 	. "github.com/GianniBuoni/pirate-platformer/internal/lib"
 	. "github.com/GianniBuoni/pirate-platformer/internal/sprites"
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -24,9 +22,7 @@ type Level struct {
 func NewLevel(stats *Stats, assets *Assets) *Level {
 	l := &Level{
 		groups: SpriteGroup{
-			IDs: map[string][]int{
-				"ephemeral": {},
-			},
+			IDs:     map[string][]int{},
 			Sprites: map[int]Sprite{},
 		},
 		paths:  map[int]*Rect{},
@@ -54,8 +50,6 @@ func (l *Level) AddSpriteGroup(s Sprite, groups ...string) {
 	// assign id to sprite
 	id := l.NextId()
 	s.GetID().GID = id
-	fmt.Printf("id: %d, assigned to \"%s\"\n", s.GetID().GID, s.GetID().Image)
-
 	// add sprites to map id -> Sprite
 	l.groups.Sprites[id] = s
 	// add id to all passed in group names

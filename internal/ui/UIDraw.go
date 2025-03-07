@@ -38,7 +38,7 @@ func (ui *UI) drawStats() error {
 				return err
 			}
 			rendered = rendered[1:]
-			hearts, err := ui.groups.GetSprites(rendered, name)
+			hearts, err := ui.groups.GetSpritesID(name, rendered)
 			if err != nil {
 				return err
 			}

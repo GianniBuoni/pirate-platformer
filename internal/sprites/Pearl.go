@@ -49,11 +49,7 @@ func (p *Pearl) Draw(src rl.Texture2D, pos *Pos) {
 }
 
 func (p *Pearl) collision() error {
-	ids, err := p.Groups.GetIDs("collision")
-	if err != nil {
-		return err
-	}
-	sprites, err := p.Groups.GetSprites(ids, "collision")
+	sprites, err := p.Groups.GetSpritesName("collision")
 	if err != nil {
 		return err
 	}

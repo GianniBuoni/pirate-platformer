@@ -6,11 +6,7 @@ import (
 
 func (l *Level) spawnInOut() error {
 	// check shells
-	ids, err := l.groups.GetIDs("shell")
-	if err != nil {
-		return err
-	}
-	shells, err := l.groups.GetSprites(ids, "shell")
+	shells, err := l.groups.GetSpritesName("shell")
 	for _, s := range shells {
 		shell, ok := s.(*sprites.Shell)
 		if !ok {
@@ -22,11 +18,7 @@ func (l *Level) spawnInOut() error {
 		}
 	}
 	// check pearls
-	ids, err = l.groups.GetIDs("ephemeral")
-	if err != nil {
-		return err
-	}
-	ephemeral, err := l.groups.GetSprites(ids, "ephemeral")
+	ephemeral, err := l.groups.GetSpritesName("ephemeral")
 	if err != nil {
 		return err
 	}

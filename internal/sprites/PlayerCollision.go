@@ -6,11 +6,7 @@ import (
 )
 
 func (p *Player) collison(axis string) error {
-	ids, err := p.Groups.GetIDs("collision")
-	if err != nil {
-		return err
-	}
-	sprites, err := p.Groups.GetSprites(ids, "collision")
+	sprites, err := p.Groups.GetSpritesName("collision")
 	if err != nil {
 		return err
 	}
@@ -45,11 +41,7 @@ func (p *Player) collison(axis string) error {
 }
 
 func (p *Player) patformCollision() error {
-	ids, err := p.Groups.GetIDs("platform")
-	if err != nil {
-		return err
-	}
-	sprites, err := p.Groups.GetSprites(ids, "platform")
+	sprites, err := p.Groups.GetSpritesName("platform")
 	if err != nil {
 		return err
 	}

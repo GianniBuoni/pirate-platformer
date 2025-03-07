@@ -19,7 +19,7 @@ func (sg *SpriteGroup) GetIDs(name string) ([]int, error) {
 	return groupIDs, nil
 }
 
-func (sg *SpriteGroup) GetSprites(ids []int, name string) ([]Sprite, error) {
+func (sg *SpriteGroup) GetSpritesID(name string, ids []int) ([]Sprite, error) {
 	out := []Sprite{}
 	for _, id := range ids {
 		s, ok := sg.Sprites[id]
@@ -36,7 +36,7 @@ func (sg *SpriteGroup) GetSpritesName(name string) ([]Sprite, error) {
 	if err != nil {
 		return nil, err
 	}
-	out, err := sg.GetSprites(ids, name)
+	out, err := sg.GetSpritesID(name, ids)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func (sg *SpriteGroup) Update(name string) error {
 	if err != nil {
 		return err
 	}
-	sprites, err := sg.GetSprites(ids, name)
+	sprites, err := sg.GetSpritesID(name, ids)
 	if err != nil {
 		return err
 	}
@@ -62,11 +62,7 @@ func (sg *SpriteGroup) Update(name string) error {
 }
 
 func (sg *SpriteGroup) Draw(name string) error {
-	ids, err := sg.GetIDs(name)
-	if err != nil {
-		return err
-	}
-	sprites, err := sg.GetSprites(ids, name)
+	sprites, err := sg.GetSpritesName(name)
 	if err != nil {
 		return err
 	}
