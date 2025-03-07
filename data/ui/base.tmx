@@ -20,12 +20,12 @@
     <property name="loader" value="bodyLeft"/>
    </properties>
   </object>
-  <object id="21" name="pause message" x="639.5" y="280" width="80.5" height="64">
+  <object id="21" name="center message" x="639.5" y="280" width="80.5" height="64">
    <properties>
     <property name="loader" value="displayCenter"/>
    </properties>
   </object>
-  <object id="22" name="pause hint" x="640" y="368" width="80" height="32">
+  <object id="22" name="center hint" x="640" y="368" width="80" height="32">
    <properties>
     <property name="loader" value="bodyCenter"/>
    </properties>

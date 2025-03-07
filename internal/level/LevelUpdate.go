@@ -1,6 +1,9 @@
 package level
 
 func (l *Level) Update() (err error) {
+	if l.stats.PlayerHP() == 0 {
+		l.stats.Paused = true
+	}
 	if l.stats.Paused {
 		return nil
 	}
@@ -19,6 +22,7 @@ func (l *Level) Update() (err error) {
 	// update camera based on player update
 	l.camera.Update()
 	// check collisions
+	l.checkKillPlane()
 	err = l.itemCollisions()
 	if err != nil {
 		return err
@@ -35,5 +39,8 @@ func (l *Level) Update() (err error) {
 	}
 	// cleanup
 	err = l.groups.Cleanup("ephemeral", "damage", "item")
+	if err != nil {
+		return err
+	}
 	return nil
 }

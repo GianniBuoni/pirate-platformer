@@ -83,7 +83,7 @@ func (sg *SpriteGroup) Cleanup(name string, linked ...string) error {
 			return DeletedError(name, id)
 		}
 		if s.GetID().Kill {
-			sg.IDs[name] = removeSliceIndex(i, ids)
+			sg.IDs[name] = removeSliceIndex(i, sg.IDs[name])
 			delete(sg.Sprites, id)
 		}
 	}
@@ -98,7 +98,7 @@ func (sg *SpriteGroup) Cleanup(name string, linked ...string) error {
 			_, ok := sg.Sprites[id]
 			// ok should fail if id is deleted by parent group
 			if !ok {
-				sg.IDs[linkedName] = removeSliceIndex(i, ids)
+				sg.IDs[linkedName] = removeSliceIndex(i, sg.IDs[linkedName])
 			}
 		}
 	}
@@ -106,6 +106,9 @@ func (sg *SpriteGroup) Cleanup(name string, linked ...string) error {
 }
 
 func removeSliceIndex(i int, src []int) []int {
+	if len(src) == 1 {
+		return []int{}
+	}
 	last := len(src) - 1
 	src[i] = src[last]
 	return src[:last]

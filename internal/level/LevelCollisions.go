@@ -40,3 +40,9 @@ func (l *Level) itemCollisions() error {
 	}
 	return nil
 }
+
+func (l *Level) checkKillPlane() {
+	if l.player.HitBox().Top() >= l.Height {
+		l.stats.AddHP(-l.stats.PlayerHP())
+	}
+}

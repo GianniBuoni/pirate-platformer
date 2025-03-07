@@ -9,17 +9,19 @@ import (
 
 func (ui *UI) Draw() error {
 	// bg
+	center := "GAME PAUSED"
+	hint := "Press (ESC) again to resume."
+	if ui.stats.PlayerHP() == 0 {
+		center = "GAME OVER, MAN."
+		hint = "Game over."
+	}
 	if ui.stats.Paused {
 		rl.DrawRectangleRec(
 			rl.NewRectangle(0, 0, WindowW, WindowH),
-			rl.ColorAlpha(rl.Black, 0.3),
+			rl.ColorAlpha(rl.Black, 0.7),
 		)
-		ui.texts["pause message"].Draw(
-			"GAME PAUSED", ui.assets.Fonts["runescape_uf"],
-		)
-		ui.texts["pause hint"].Draw(
-			"Press (ESC) again to resume.", ui.assets.Fonts["runescape_uf"],
-		)
+		ui.texts["center message"].Draw(center, ui.assets.Fonts["runescape_uf"])
+		ui.texts["center hint"].Draw(hint, ui.assets.Fonts["runescape_uf"])
 	}
 	// stats
 	err := ui.drawStats()
