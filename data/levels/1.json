@@ -3698,16 +3698,14 @@
     {
      "bg":"",
      "horizon":24.5,
-     "id":1,
-     "level_unlock":2,
+     "next level":2,
      "top limit":0
     },
  "propertytypes":
     {
      "bg":"string",
      "horizon":"float",
-     "id":"int",
-     "level_unlock":"int",
+     "next level":"int",
      "top limit":"int"
     },
  "renderorder":"right-down",

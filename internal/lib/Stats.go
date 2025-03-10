@@ -12,6 +12,7 @@ type Stats struct {
 
 func NewStats() *Stats {
 	return &Stats{
+		CurrentLevel: 0,
 		playerHealth: 3,
 		maxHealth:    3,
 	}

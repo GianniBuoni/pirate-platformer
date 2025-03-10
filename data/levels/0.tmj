@@ -728,19 +728,9 @@
          "value":"bg_green"
         }, 
         {
-         "name":"death border",
-         "type":"int",
-         "value":15
-        }, 
-        {
          "name":"horizon",
          "type":"int",
          "value":9
-        }, 
-        {
-         "name":"id",
-         "type":"int",
-         "value":0
         }, 
         {
          "name":"next level",

@@ -3,7 +3,6 @@ package lib
 type MapProps struct {
 	Bg        string  `json:"bg"`
 	Horizon   float32 `json:"horizon"`
-	Id        int     `json:"id"`
 	NextLevel int     `json:"next level"`
 	TopLimit  int     `json:"top limit"`
 	Width     int

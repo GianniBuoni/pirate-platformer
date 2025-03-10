@@ -6,8 +6,7 @@
  <properties>
   <property name="bg" value=""/>
   <property name="horizon" type="float" value="24.5"/>
-  <property name="id" type="int" value="1"/>
-  <property name="level_unlock" type="int" value="2"/>
+  <property name="next level" type="int" value="2"/>
   <property name="top limit" type="int" value="0"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/items.json"/>

@@ -1,349 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="24" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="194">
- <tileset firstgid="1" source="../tilesets/outside.tsx"/>
- <tileset firstgid="49" source="../tilesets/items.tsx"/>
- <tileset firstgid="54" source="../tilesets/inside.tsx"/>
- <tileset firstgid="150" source="../tilesets/extra.tsx"/>
- <tileset firstgid="216" source="../tilesets/objects.tsx"/>
- <tileset firstgid="244" source="../tilesets/platforms.tsx"/>
- <tileset firstgid="252" source="../tilesets/enemies.tsx"/>
- <tileset firstgid="252" source="../tilesets/grass.tsx"/>
- <layer id="9" name="BG" width="24" height="30">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="130">
+ <properties>
+  <property name="bg" value=""/>
+  <property name="horizon" type="float" value="14.5"/>
+  <property name="next level" type="int" value="3"/>
+  <property name="top limit" type="int" value="-3"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/outside.json"/>
+ <tileset firstgid="49" source="../tilesets/items.json"/>
+ <tileset firstgid="54" source="../tilesets/inside.json"/>
+ <tileset firstgid="150" source="../tilesets/extra.json"/>
+ <tileset firstgid="216" source="../tilesets/objects.json"/>
+ <tileset firstgid="254" source="../tilesets/platforms.json"/>
+ <tileset firstgid="262" source="../tilesets/grass.json"/>
+ <tileset firstgid="267" source="../tilesets/clouds.json"/>
+ <objectgroup id="12" name="clouds" class="window" locked="1">
+  <object id="88" template="../templates/clouds/small_cloud2.tx" x="-16" y="96"/>
+  <object id="89" template="../templates/clouds/small_cloud2.tx" x="640" y="288"/>
+  <object id="90" template="../templates/clouds/small_cloud2.tx" x="1472" y="672"/>
+  <object id="91" template="../templates/clouds/small_cloud2.tx" x="2496" y="480"/>
+  <object id="92" template="../templates/clouds/small_cloud2.tx" x="3456" y="96"/>
+  <object id="93" template="../templates/clouds/small_cloud1.tx" x="256" y="672"/>
+  <object id="95" template="../templates/clouds/small_cloud1.tx" x="1280" y="96"/>
+  <object id="96" template="../templates/clouds/small_cloud1.tx" x="3392" y="672"/>
+  <object id="97" template="../templates/clouds/small_cloud1.tx" x="2912" y="288"/>
+  <object id="98" template="../templates/clouds/small_cloud0.tx" x="2192" y="96"/>
+  <object id="100" template="../templates/clouds/small_cloud0.tx" x="896" y="672"/>
+  <object id="101" template="../templates/clouds/small_cloud0.tx" x="-160" y="288"/>
+  <object id="104" template="../templates/clouds/small_cloud0.tx" x="1136" y="288"/>
+  <object id="105" template="../templates/clouds/small_cloud0.tx" x="3232" y="480"/>
+  <object id="107" template="../templates/clouds/small_cloud0.tx" x="1824" y="480"/>
+  <object id="108" template="../templates/clouds/small_cloud0.tx" x="208" y="480"/>
+  <object id="109" template="../templates/clouds/small_cloud0.tx" x="2320" y="672"/>
+ </objectgroup>
+ <objectgroup id="14" name="zero" locked="1">
+  <object id="27" template="../templates/objects/palm_bg.tx" x="736" y="256"/>
+  <object id="43" template="../templates/objects/palm_bg_left.tx" x="45" y="880"/>
+  <object id="112" template="../templates/objects/palm_short.tx" x="432" y="736"/>
+  <object id="114" template="../templates/objects/palm_long.tx" x="384" y="704"/>
+  <object id="115" template="../templates/objects/palm_long.tx" x="1088" y="832"/>
+  <object id="116" template="../templates/objects/palm_long.tx" x="960" y="800"/>
+ </objectgroup>
+ <layer id="1" name="collision" width="60" height="20" locked="1">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,38,39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,37,38,32,3,0,0,0,0,0,0,0,0,0,37,32,2,31,39,0,0,0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,25,27,0,0,37,38,38,39,0,0,0,0,25,26,27,0,0,0,0,0,0,0,0,0,0,0,37,44,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,25,26,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,3,0,0,0,1,2,2,2,
+0,0,0,0,0,0,1,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,13,14,14,14,
+0,0,1,2,2,2,2,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,18,14,14,14,15,0,0,0,13,14,14,14,
+0,0,13,14,14,14,14,14,14,5,27,0,0,1,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,5,27,0,0,0,13,14,14,14,
+0,0,13,14,14,14,14,14,14,15,0,0,0,13,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,1,18,14,14,14,
+0,0,13,14,14,14,14,14,5,27,0,0,0,13,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,13,14,14,14,14,
+0,0,13,14,14,14,14,5,27,0,0,0,0,13,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,13,14,14,14,14,
+0,0,13,14,14,14,14,15,0,0,0,0,0,13,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,13,14,14,14,14,
+0,0,13,14,14,14,14,15,0,0,0,0,0,13,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,15,0,0,0,13,14,14,14,14
 </data>
  </layer>
- <objectgroup id="12" name="BG details" class="window"/>
- <layer id="1" name="Terrain" width="24" height="30">
+ <layer id="10" name="bg" width="60" height="20" locked="1">
   <data encoding="csv">
-162,162,153,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,154,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,186,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,186,185,161,162,162,
-162,162,163,0,0,0,0,0,0,0,185,0,0,0,0,0,0,0,0,0,196,161,162,162,
-162,162,163,0,0,0,0,0,0,0,196,0,186,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,150,151,152,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,172,173,174,0,0,0,0,0,0,150,151,151,151,151,151,165,162,162,
-162,162,163,0,0,0,0,0,186,0,0,0,0,0,0,161,162,162,162,162,162,162,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,172,173,173,173,173,173,154,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,185,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,186,196,161,162,162,
-162,162,163,0,0,0,150,151,152,0,0,0,0,0,0,0,0,0,0,0,186,161,162,162,
-162,162,163,0,0,0,172,173,174,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,150,151,151,152,0,0,161,162,162,
-162,162,164,151,151,152,0,0,0,0,0,0,0,0,0,172,173,173,174,0,0,161,162,162,
-162,162,153,173,173,174,0,0,0,0,0,0,0,0,0,186,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,161,162,162,
-162,162,163,0,0,0,0,0,150,151,152,0,0,0,0,150,151,151,152,186,185,161,162,162,
-162,162,163,185,0,0,0,0,161,162,163,0,0,194,195,161,162,162,163,185,196,161,162,162,
-162,162,163,196,186,0,0,186,161,162,163,0,0,205,206,161,162,162,163,196,186,161,162,162,
-162,162,164,151,151,151,151,151,165,162,164,151,151,151,151,165,162,162,164,151,151,165,162,162,
-162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,
-162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162,162
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,265,263,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,266,266,265,264,0,0,0,0,0,0,0,0,0,264,262,263,264,0,0,0,0,0,0,0,0,0,0,0,0,266,262,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,262,264,265,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,263,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,265,264,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,263,266,266,264,266,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,262,264,264,264,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,264,265,266,264,265,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="5" name="Platforms" width="24" height="30">
+ <layer id="5" name="platform" width="60" height="20" locked="1">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,261,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,254,255,256,0,0,257,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,258,259,260,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,261,0,0,0,0,0,0,0,0,0,0,0,0,261,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="10" name="FG" width="24" height="30">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <objectgroup id="4" name="Objects">
-  <object id="4" name="flag" gid="219" x="1184" y="384" width="68" height="186"/>
-  <object id="15" name="player" gid="223" x="208" y="1536" width="74" height="56"/>
-  <object id="88" name="saw" x="448" y="1216" width="64" height="64">
+ <objectgroup id="13" name="paths">
+  <object id="66" name="121" x="1280" y="960" width="1600" height="38">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="89" name="saw" x="576" y="1152" width="64" height="64">
+  <object id="67" name="122" x="1536" y="832" width="640" height="10">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="90" name="saw" x="704" y="1216" width="64" height="64">
+  <object id="68" name="123" x="2368" y="832" width="10" height="256">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="91" name="saw" x="832" y="1152" width="64" height="64">
+  <object id="74" name="120" x="1152" y="128" width="10" height="320">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="134" name="saw" x="352" y="352" width="64" height="64">
+  <object id="75" name="119" x="1408" y="64" width="320" height="10">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="135" name="saw" x="352" y="736" width="64" height="64">
+  <object id="127" name="87" x="1232" y="304" width="288" height="16">
    <properties>
-    <property name="speed" type="int" value="0"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="140" name="saw" x="896" y="512" width="64" height="64">
+  <object id="128" name="85" x="3088" y="688" width="288" height="16">
    <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="141" name="saw" x="832" y="448" width="64" height="64">
-   <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="142" name="saw" x="704" y="448" width="64" height="64">
-   <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="143" name="saw" x="576" y="448" width="64" height="64">
-   <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="178" name="saw" x="640" y="512" width="64" height="64">
-   <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="179" name="saw" x="768" y="512" width="64" height="64">
-   <properties>
-    <property name="speed" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="189" name="floor_spike" gid="1073742050" x="960" y="640" width="64" height="64">
-   <properties>
-    <property name="inverted" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="190" name="floor_spike" gid="1073742050" x="1024" y="640" width="64" height="64">
-   <properties>
-    <property name="inverted" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="191" name="floor_spike" gid="1073742050" x="1088" y="640" width="64" height="64">
-   <properties>
-    <property name="inverted" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="192" name="floor_spike" gid="1073742050" x="512" y="576" width="64" height="64">
-   <properties>
-    <property name="inverted" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="193" name="floor_spike" gid="1073742050" x="640" y="384" width="64" height="64">
-   <properties>
-    <property name="inverted" type="bool" value="true"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="13" name="Moving Objects">
-  <object id="81" name="spike" gid="227" x="576" y="1536" width="54" height="54">
+ <objectgroup id="4" name="object">
+  <object id="9" template="../templates/objects/barrel.tx" x="339" y="784"/>
+  <object id="4" template="../templates/objects/flag.tx" x="3671" y="487"/>
+  <object id="7" template="../templates/objects/crate.tx" x="335" y="750"/>
+  <object id="6" template="../templates/objects/crate.tx" x="303" y="796"/>
+  <object id="65" template="../templates/damage/saw.tx" x="1562" y="923"/>
+  <object id="69" template="../templates/damage/floor_spikes.tx" x="768" y="352"/>
+  <object id="76" template="../templates/damage/saw.tx" x="2074" y="923"/>
+  <object id="77" template="../templates/damage/saw.tx" x="2586" y="923"/>
+  <object id="44" template="../templates/objects/palm_bg_right.tx" x="640" y="896"/>
+  <object id="110" template="../templates/objects/palm.tx" x="368" y="640"/>
+  <object id="111" template="../templates/objects/palm.tx" x="416" y="672"/>
+  <object id="117" template="../templates/objects/palm.tx" x="944" y="736"/>
+  <object id="118" template="../templates/objects/palm.tx" x="1072" y="784"/>
+  <object id="119" template="../templates/objects/helicopter.tx" x="1408" y="64"/>
+  <object id="120" template="../templates/objects/helicopter.tx" x="1152" y="128">
    <properties>
-    <property name="end_angle" type="int" value="360"/>
-    <property name="platform" type="bool" value="false"/>
-    <property name="radius" type="int" value="100"/>
-    <property name="speed" type="int" value="50"/>
-    <property name="start_angle" type="int" value="180"/>
+    <property name="dirX" type="float" value="0"/>
+    <property name="dirY" type="float" value="1"/>
+    <property name="speedX" type="float" value="0"/>
+    <property name="speedY" type="float" value="100"/>
    </properties>
   </object>
-  <object id="87" name="helicopter" x="384" y="1088" width="512" height="10">
+  <object id="73" template="../templates/damage/spike.tx" x="512" y="192"/>
+  <object id="121" template="../templates/objects/boat.tx" x="1280" y="933">
    <properties>
-    <property name="flip" type="bool" value="false"/>
-    <property name="platform" type="bool" value="true"/>
-    <property name="speed" type="int" value="60"/>
+    <property name="speedX" type="float" value="200"/>
    </properties>
   </object>
-  <object id="133" name="saw" x="187" y="320" width="10" height="512">
+  <object id="122" template="../templates/damage/saw.tx" x="1536" y="794"/>
+  <object id="123" template="../templates/damage/saw.tx" x="2368" y="832">
    <properties>
-    <property name="flip" type="bool" value="false"/>
-    <property name="platform" type="bool" value="false"/>
-    <property name="speed" type="int" value="100"/>
+    <property name="speedX" type="float" value="100"/>
    </properties>
   </object>
-  <object id="137" name="spike" gid="227" x="192" y="128" width="54" height="54">
+  <object id="87" template="../templates/damage/tooth.tx" x="1216" y="256"/>
+  <object id="85" template="../templates/damage/tooth.tx" x="3136" y="640"/>
+  <object id="129" template="../templates/damage/floor_spikes.tx" x="3008" y="800"/>
+ </objectgroup>
+ <objectgroup id="7" name="items" locked="1">
+  <object id="22" template="../templates/items/diamond.tx" x="3520" y="896"/>
+  <object id="23" template="../templates/items/gold.tx" x="2048" y="64"/>
+  <object id="24" template="../templates/items/potion.tx" x="2368" y="256"/>
+  <object id="25" template="../templates/items/silver.tx" x="640" y="704"/>
+  <object id="26" template="../templates/items/skull.tx" x="1856" y="896"/>
+  <object id="78" template="../templates/items/silver.tx" x="832" y="832"/>
+  <object id="79" template="../templates/items/silver.tx" x="1024" y="832"/>
+  <object id="80" template="../templates/items/silver.tx" x="384" y="256"/>
+  <object id="81" template="../templates/items/silver.tx" x="192" y="384"/>
+  <object id="82" template="../templates/items/silver.tx" x="1280" y="256"/>
+  <object id="83" template="../templates/items/silver.tx" x="1408" y="256"/>
+  <object id="84" template="../templates/items/gold.tx" x="1344" y="192"/>
+  <object id="124" template="../templates/items/skull.tx" x="320" y="64"/>
+ </objectgroup>
+ <objectgroup id="6" name="shells">
+  <object id="36" template="../templates/damage/shell.tx" x="0" y="400"/>
+  <object id="125" template="../templates/damage/shell.tx" gid="2147483872" x="2112" y="336">
    <properties>
-    <property name="end_angle" type="int" value="90"/>
-    <property name="platform" type="bool" value="false"/>
-    <property name="radius" type="int" value="100"/>
-    <property name="speed" type="int" value="50"/>
-    <property name="start_angle" type="int" value="0"/>
+    <property name="flipH" type="float" value="-1"/>
    </properties>
   </object>
-  <object id="139" name="helicopter" x="1024" y="704" width="10" height="320">
+  <object id="126" template="../templates/damage/shell.tx" gid="2147483872" x="1792" y="144">
    <properties>
-    <property name="flip" type="bool" value="false"/>
-    <property name="platform" type="bool" value="true"/>
-    <property name="speed" type="int" value="100"/>
+    <property name="flipH" type="float" value="-1"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7" name="Items">
-  <object id="114" name="silver" gid="52" x="448" y="1408" width="64" height="64"/>
-  <object id="115" name="silver" gid="52" x="384" y="1344" width="64" height="64"/>
-  <object id="116" name="silver" gid="52" x="320" y="1472" width="64" height="64"/>
-  <object id="117" name="silver" gid="52" x="448" y="1536" width="64" height="64"/>
-  <object id="118" name="silver" gid="52" x="384" y="1472" width="64" height="64"/>
-  <object id="119" name="silver" gid="52" x="384" y="1600" width="64" height="64"/>
-  <object id="120" name="silver" gid="52" x="448" y="1472" width="64" height="64"/>
-  <object id="121" name="silver" gid="52" x="256" y="1472" width="64" height="64"/>
-  <object id="122" name="gold" gid="50" x="512" y="1472" width="64" height="64"/>
-  <object id="124" name="silver" gid="52" x="1152" y="1344" width="64" height="64"/>
-  <object id="125" name="silver" gid="52" x="1152" y="1408" width="64" height="64"/>
-  <object id="126" name="silver" gid="52" x="1152" y="1472" width="64" height="64"/>
-  <object id="127" name="silver" gid="52" x="1088" y="1408" width="64" height="64"/>
-  <object id="128" name="silver" gid="52" x="1216" y="1408" width="64" height="64"/>
-  <object id="129" name="silver" gid="52" x="1280" y="1472" width="64" height="64"/>
-  <object id="130" name="silver" gid="52" x="1024" y="1472" width="64" height="64"/>
-  <object id="131" name="silver" gid="52" x="1152" y="1536" width="64" height="64"/>
-  <object id="132" name="diamond" gid="49" x="640" y="1216" width="64" height="64"/>
-  <object id="138" name="skull" gid="53" x="192" y="128" width="64" height="64"/>
-  <object id="144" name="silver" gid="52" x="192" y="1152" width="64" height="64"/>
-  <object id="145" name="silver" gid="52" x="256" y="1152" width="64" height="64"/>
-  <object id="146" name="silver" gid="52" x="192" y="1088" width="64" height="64"/>
-  <object id="147" name="silver" gid="52" x="704" y="896" width="64" height="64"/>
-  <object id="148" name="silver" gid="52" x="768" y="896" width="64" height="64"/>
-  <object id="149" name="silver" gid="52" x="640" y="896" width="64" height="64"/>
-  <object id="150" name="silver" gid="52" x="768" y="960" width="64" height="64"/>
-  <object id="151" name="silver" gid="52" x="832" y="960" width="64" height="64"/>
-  <object id="152" name="silver" gid="52" x="704" y="960" width="64" height="64"/>
-  <object id="153" name="silver" gid="52" x="640" y="960" width="64" height="64"/>
-  <object id="154" name="silver" gid="52" x="576" y="960" width="64" height="64"/>
-  <object id="155" name="silver" gid="52" x="704" y="832" width="64" height="64"/>
-  <object id="156" name="silver" gid="52" x="768" y="256" width="64" height="64"/>
-  <object id="157" name="silver" gid="52" x="640" y="192" width="64" height="64"/>
-  <object id="162" name="silver" gid="52" x="256" y="320" width="64" height="64"/>
-  <object id="163" name="silver" gid="52" x="256" y="256" width="64" height="64"/>
-  <object id="164" name="silver" gid="52" x="256" y="384" width="64" height="64"/>
-  <object id="165" name="silver" gid="52" x="256" y="448" width="64" height="64"/>
-  <object id="166" name="silver" gid="52" x="256" y="512" width="64" height="64"/>
-  <object id="167" name="silver" gid="52" x="256" y="576" width="64" height="64"/>
-  <object id="168" name="silver" gid="52" x="384" y="192" width="64" height="64"/>
-  <object id="169" name="silver" gid="52" x="320" y="192" width="64" height="64"/>
-  <object id="170" name="silver" gid="52" x="448" y="256" width="64" height="64"/>
-  <object id="171" name="silver" gid="52" x="512" y="192" width="64" height="64"/>
-  <object id="172" name="silver" gid="52" x="576" y="192" width="64" height="64"/>
-  <object id="173" name="silver" gid="52" x="704" y="256" width="64" height="64"/>
-  <object id="174" name="silver" gid="52" x="832" y="320" width="64" height="64"/>
-  <object id="175" name="silver" gid="52" x="896" y="384" width="64" height="64"/>
-  <object id="176" name="diamond" gid="49" x="960" y="384" width="64" height="64"/>
-  <object id="180" name="silver" gid="52" x="256" y="960" width="64" height="64"/>
-  <object id="181" name="silver" gid="52" x="320" y="704" width="64" height="64"/>
-  <object id="182" name="silver" gid="52" x="256" y="768" width="64" height="64"/>
-  <object id="183" name="silver" gid="52" x="256" y="832" width="64" height="64"/>
-  <object id="184" name="silver" gid="52" x="256" y="896" width="64" height="64"/>
-  <object id="185" name="silver" gid="52" x="256" y="1024" width="64" height="64"/>
-  <object id="186" name="silver" gid="52" x="320" y="640" width="64" height="64"/>
- </objectgroup>
- <objectgroup id="6" name="Enemies"/>
- <objectgroup id="2" name="Water"/>
- <objectgroup id="8" name="Data">
-  <object id="28" name="Data" x="0" y="0" width="64" height="64">
-   <properties>
-    <property name="bg" value="Blue"/>
-    <property name="bottom_limit" type="int" value="1200"/>
-    <property name="death_border_bottom" type="int" value="0"/>
-    <property name="horizon_line" type="int" value="600"/>
-    <property name="level_unlock" type="int" value="3"/>
-    <property name="top_limit" type="int" value="0"/>
-   </properties>
-  </object>
+ <objectgroup id="2" name="water" locked="1">
+  <object id="2" name="water" x="0" y="960" width="3840" height="320"/>
  </objectgroup>
 </map>
