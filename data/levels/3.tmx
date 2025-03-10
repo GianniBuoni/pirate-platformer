@@ -3,7 +3,7 @@
  <properties>
   <property name="bg" value="bg_blue"/>
   <property name="horizon" type="int" value="30"/>
-  <property name="next level" type="int" value="3"/>
+  <property name="next level" type="int" value="4"/>
   <property name="top limit" type="int" value="0"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/outside.json"/>

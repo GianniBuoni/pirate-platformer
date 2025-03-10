@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="130">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="134">
+ <editorsettings>
+  <export target="2.json" format="json1"/>
+ </editorsettings>
  <properties>
   <property name="bg" value=""/>
   <property name="horizon" type="float" value="14.5"/>
@@ -14,24 +17,67 @@
  <tileset firstgid="254" source="../tilesets/platforms.json"/>
  <tileset firstgid="262" source="../tilesets/grass.json"/>
  <tileset firstgid="267" source="../tilesets/clouds.json"/>
- <objectgroup id="12" name="clouds" class="window" locked="1">
-  <object id="88" template="../templates/clouds/small_cloud2.tx" x="-16" y="96"/>
-  <object id="89" template="../templates/clouds/small_cloud2.tx" x="640" y="288"/>
-  <object id="90" template="../templates/clouds/small_cloud2.tx" x="1472" y="672"/>
-  <object id="91" template="../templates/clouds/small_cloud2.tx" x="2496" y="480"/>
-  <object id="92" template="../templates/clouds/small_cloud2.tx" x="3456" y="96"/>
-  <object id="93" template="../templates/clouds/small_cloud1.tx" x="256" y="672"/>
-  <object id="95" template="../templates/clouds/small_cloud1.tx" x="1280" y="96"/>
-  <object id="96" template="../templates/clouds/small_cloud1.tx" x="3392" y="672"/>
-  <object id="97" template="../templates/clouds/small_cloud1.tx" x="2912" y="288"/>
-  <object id="98" template="../templates/clouds/small_cloud0.tx" x="2192" y="96"/>
-  <object id="100" template="../templates/clouds/small_cloud0.tx" x="896" y="672"/>
-  <object id="101" template="../templates/clouds/small_cloud0.tx" x="-160" y="288"/>
-  <object id="104" template="../templates/clouds/small_cloud0.tx" x="1136" y="288"/>
-  <object id="105" template="../templates/clouds/small_cloud0.tx" x="3232" y="480"/>
-  <object id="107" template="../templates/clouds/small_cloud0.tx" x="1824" y="480"/>
-  <object id="108" template="../templates/clouds/small_cloud0.tx" x="208" y="480"/>
-  <object id="109" template="../templates/clouds/small_cloud0.tx" x="2320" y="672"/>
+ <objectgroup id="12" name="clouds" class="window">
+  <object id="88" template="../templates/clouds/small_cloud2.tx" x="0" y="32">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="89" template="../templates/clouds/small_cloud2.tx" x="640" y="288">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="91" template="../templates/clouds/small_cloud2.tx" x="2496" y="480">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="92" template="../templates/clouds/small_cloud2.tx" x="3472" y="32">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="95" template="../templates/clouds/small_cloud1.tx" x="1296" y="32">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="97" template="../templates/clouds/small_cloud1.tx" x="2912" y="288">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="98" template="../templates/clouds/small_cloud0.tx" x="2208" y="32">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="101" template="../templates/clouds/small_cloud0.tx" x="-160" y="288">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="104" template="../templates/clouds/small_cloud0.tx" x="1136" y="288">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="105" template="../templates/clouds/small_cloud0.tx" x="3232" y="480">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="107" template="../templates/clouds/small_cloud0.tx" x="1824" y="480">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
+  <object id="108" template="../templates/clouds/small_cloud0.tx" x="208" y="480">
+   <properties>
+    <property name="lifetime" type="float" value="60"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="14" name="zero" locked="1">
   <object id="27" template="../templates/objects/palm_bg.tx" x="736" y="256"/>
@@ -113,7 +159,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="13" name="paths">
+ <objectgroup id="13" name="paths" locked="1">
   <object id="66" name="121" x="1280" y="960" width="1600" height="38">
    <properties>
     <property name="loader" value="path"/>
@@ -129,12 +175,12 @@
     <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="74" name="120" x="1152" y="128" width="10" height="320">
+  <object id="74" name="120" x="1088" y="64" width="10" height="384">
    <properties>
     <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="75" name="119" x="1408" y="64" width="320" height="10">
+  <object id="75" name="119" x="1216" y="64" width="576" height="10">
    <properties>
     <property name="loader" value="path"/>
    </properties>
@@ -150,22 +196,37 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="4" name="object">
+ <objectgroup id="4" name="object" locked="1">
   <object id="9" template="../templates/objects/barrel.tx" x="339" y="784"/>
   <object id="4" template="../templates/objects/flag.tx" x="3671" y="487"/>
   <object id="7" template="../templates/objects/crate.tx" x="335" y="750"/>
   <object id="6" template="../templates/objects/crate.tx" x="303" y="796"/>
-  <object id="65" template="../templates/damage/saw.tx" x="1562" y="923"/>
+  <object id="65" template="../templates/damage/saw.tx" x="1562" y="923">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
   <object id="69" template="../templates/damage/floor_spikes.tx" x="768" y="352"/>
-  <object id="76" template="../templates/damage/saw.tx" x="2074" y="923"/>
-  <object id="77" template="../templates/damage/saw.tx" x="2586" y="923"/>
+  <object id="76" template="../templates/damage/saw.tx" x="2074" y="923">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="77" template="../templates/damage/saw.tx" x="2586" y="923">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
   <object id="44" template="../templates/objects/palm_bg_right.tx" x="640" y="896"/>
   <object id="110" template="../templates/objects/palm.tx" x="368" y="640"/>
   <object id="111" template="../templates/objects/palm.tx" x="416" y="672"/>
   <object id="117" template="../templates/objects/palm.tx" x="944" y="736"/>
   <object id="118" template="../templates/objects/palm.tx" x="1072" y="784"/>
-  <object id="119" template="../templates/objects/helicopter.tx" x="1408" y="64"/>
-  <object id="120" template="../templates/objects/helicopter.tx" x="1152" y="128">
+  <object id="119" template="../templates/objects/helicopter.tx" x="1216" y="64"/>
+  <object id="120" template="../templates/objects/helicopter.tx" x="1088" y="64">
    <properties>
     <property name="dirX" type="float" value="0"/>
     <property name="dirY" type="float" value="1"/>
@@ -182,12 +243,16 @@
   <object id="122" template="../templates/damage/saw.tx" x="1536" y="794"/>
   <object id="123" template="../templates/damage/saw.tx" x="2368" y="832">
    <properties>
-    <property name="speedX" type="float" value="100"/>
+    <property name="dirX" type="float" value="0"/>
+    <property name="dirY" type="float" value="1"/>
+    <property name="speedX" type="float" value="0"/>
+    <property name="speedY" type="float" value="100"/>
    </properties>
   </object>
   <object id="87" template="../templates/damage/tooth.tx" x="1216" y="256"/>
   <object id="85" template="../templates/damage/tooth.tx" x="3136" y="640"/>
   <object id="129" template="../templates/damage/floor_spikes.tx" x="3008" y="800"/>
+  <object id="131" template="../templates/player.tx" x="1152" y="512"/>
  </objectgroup>
  <objectgroup id="7" name="items" locked="1">
   <object id="22" template="../templates/items/diamond.tx" x="3520" y="896"/>
@@ -197,15 +262,20 @@
   <object id="26" template="../templates/items/skull.tx" x="1856" y="896"/>
   <object id="78" template="../templates/items/silver.tx" x="832" y="832"/>
   <object id="79" template="../templates/items/silver.tx" x="1024" y="832"/>
-  <object id="80" template="../templates/items/silver.tx" x="384" y="256"/>
+  <object id="80" template="../templates/items/silver.tx" x="960" y="320"/>
   <object id="81" template="../templates/items/silver.tx" x="192" y="384"/>
   <object id="82" template="../templates/items/silver.tx" x="1280" y="256"/>
   <object id="83" template="../templates/items/silver.tx" x="1408" y="256"/>
   <object id="84" template="../templates/items/gold.tx" x="1344" y="192"/>
   <object id="124" template="../templates/items/skull.tx" x="320" y="64"/>
  </objectgroup>
- <objectgroup id="6" name="shells">
+ <objectgroup id="6" name="shells" locked="1">
   <object id="36" template="../templates/damage/shell.tx" x="0" y="400"/>
+  <object id="132" template="../templates/damage/shell.tx" gid="2147483872" x="320" y="272">
+   <properties>
+    <property name="flipH" type="float" value="-1"/>
+   </properties>
+  </object>
   <object id="125" template="../templates/damage/shell.tx" gid="2147483872" x="2112" y="336">
    <properties>
     <property name="flipH" type="float" value="-1"/>
@@ -218,6 +288,10 @@
   </object>
  </objectgroup>
  <objectgroup id="2" name="water" locked="1">
-  <object id="2" name="water" x="0" y="960" width="3840" height="320"/>
+  <object id="2" name="water_body" x="0" y="960" width="3840" height="320">
+   <properties>
+    <property name="loader" value="water"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

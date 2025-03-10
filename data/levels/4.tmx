@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="24" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="248">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="24" height="30" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="261">
+ <editorsettings>
+  <export target="4.json" format="json1"/>
+ </editorsettings>
+ <properties>
+  <property name="bg" value="bg_pink"/>
+  <property name="horizon" type="int" value="0"/>
+  <property name="next level" type="int" value="4"/>
+  <property name="top limit" type="int" value="0"/>
+ </properties>
  <tileset firstgid="1" source="../tilesets/outside.json"/>
  <tileset firstgid="49" source="../tilesets/items.json"/>
  <tileset firstgid="54" source="../tilesets/inside.json"/>
@@ -82,33 +91,103 @@
     <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="139" name="helicopter" x="1024" y="704" width="10" height="320">
+  <object id="139" name="248" x="1024" y="704" width="10" height="256">
    <properties>
-    <property name="flip" type="bool" value="false"/>
-    <property name="platform" type="bool" value="true"/>
-    <property name="speed" type="int" value="100"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
   <object id="234" name="246" x="576" y="1088" width="384" height="10">
    <properties>
-    <property name="flip" type="bool" value="false"/>
-    <property name="platform" type="bool" value="false"/>
-    <property name="speed" type="int" value="60"/>
+    <property name="loader" value="path"/>
    </properties>
   </object>
-  <object id="246" template="../templates/damage/saw.tx" x="576" y="1082"/>
+  <object id="249" name="228" x="336" y="1712" width="800" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
+  <object id="251" name="227" x="336" y="1712" width="800" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
+  <object id="252" name="230" x="336" y="1712" width="800" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
+  <object id="253" name="229" x="336" y="1712" width="800" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
+  <object id="254" name="225" x="336" y="1712" width="800" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
+  <object id="255" name="256" x="256" y="320" width="128" height="16">
+   <properties>
+    <property name="loader" value="path"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="4" name="flag" gid="232" x="1184" y="384" width="68" height="186"/>
-  <object id="91" template="../templates/damage/saw.tx" x="986" y="1498"/>
-  <object id="134" template="../templates/damage/saw.tx" x="346" y="409"/>
-  <object id="135" template="../templates/damage/saw.tx" x="346" y="730"/>
-  <object id="140" template="../templates/damage/saw.tx" x="890" y="506"/>
-  <object id="141" template="../templates/damage/saw.tx" x="826" y="442"/>
-  <object id="142" template="../templates/damage/saw.tx" x="698" y="442"/>
-  <object id="143" template="../templates/damage/saw.tx" x="570" y="442"/>
-  <object id="178" template="../templates/damage/saw.tx" x="634" y="506"/>
-  <object id="179" template="../templates/damage/saw.tx" x="762" y="506"/>
+  <object id="4" template="../templates/objects/flag.tx" x="1152" y="168"/>
+  <object id="91" template="../templates/damage/saw.tx" x="986" y="1498">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="134" template="../templates/damage/saw.tx" x="346" y="409">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="135" template="../templates/damage/saw.tx" x="346" y="730">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="140" template="../templates/damage/saw.tx" x="890" y="506">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="141" template="../templates/damage/saw.tx" x="826" y="442">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="142" template="../templates/damage/saw.tx" x="698" y="442">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="143" template="../templates/damage/saw.tx" x="570" y="442">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="178" template="../templates/damage/saw.tx" x="634" y="506">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="179" template="../templates/damage/saw.tx" x="762" y="506">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
   <object id="189" template="../templates/damage/floor_spikes.tx" gid="1073742063" x="960" y="576">
    <properties>
     <property name="flipV" type="int" value="-1"/>
@@ -125,15 +204,18 @@
    </properties>
   </object>
   <object id="193" template="../templates/damage/floor_spikes.tx" x="640" y="288"/>
-  <object id="232" template="../templates/damage/saw.tx" x="346" y="1498"/>
-  <object id="223" template="../templates/damage/tooth.tx" x="512" y="1664"/>
-  <object id="224" template="../templates/damage/tooth.tx" x="832" y="1664"/>
+  <object id="232" template="../templates/damage/saw.tx" x="346" y="1498">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="speedX" type="float" value="0"/>
+   </properties>
+  </object>
   <object id="225" template="../templates/damage/tooth.tx" x="576" y="1664"/>
   <object id="227" template="../templates/damage/tooth.tx" x="960" y="1664"/>
   <object id="228" template="../templates/damage/tooth.tx" x="384" y="1664"/>
   <object id="229" template="../templates/damage/tooth.tx" x="704" y="1664"/>
   <object id="230" template="../templates/damage/tooth.tx" x="896" y="1664"/>
-  <object id="137" template="../templates/damage/spike.tx" x="192" y="128"/>
+  <object id="137" template="../templates/damage/spike.tx" x="192" y="64"/>
   <object id="245" template="../templates/damage/saw.tx" x="154" y="320">
    <properties>
     <property name="dirX" type="float" value="0"/>
@@ -142,6 +224,16 @@
     <property name="speedY" type="float" value="100"/>
    </properties>
   </object>
+  <object id="248" template="../templates/objects/helicopter.tx" x="1024" y="704">
+   <properties>
+    <property name="dirX" type="float" value="0"/>
+    <property name="dirY" type="float" value="1"/>
+    <property name="speedX" type="float" value="0"/>
+    <property name="speedY" type="float" value="100"/>
+   </properties>
+  </object>
+  <object id="246" template="../templates/damage/saw.tx" x="576" y="1082"/>
+  <object id="256" template="../templates/objects/helicopter.tx" x="256" y="320"/>
  </objectgroup>
  <objectgroup id="14" name="player" locked="1">
   <object id="247" template="../templates/player.tx" x="192" y="1088"/>
@@ -201,17 +293,9 @@
   <object id="242" template="../templates/items/silver.tx" x="704" y="1280"/>
   <object id="243" template="../templates/items/gold.tx" x="448" y="1536"/>
   <object id="244" template="../templates/items/gold.tx" x="768" y="1408"/>
- </objectgroup>
- <objectgroup id="8" name="Data" visible="0" locked="1">
-  <object id="28" name="Data" x="0" y="0" width="64" height="64">
-   <properties>
-    <property name="bg" value="Pink"/>
-    <property name="bottom_limit" type="int" value="1200"/>
-    <property name="death_border_bottom" type="int" value="0"/>
-    <property name="horizon_line" type="int" value="600"/>
-    <property name="level_unlock" type="int" value="4"/>
-    <property name="top_limit" type="int" value="0"/>
-   </properties>
-  </object>
+  <object id="257" template="../templates/items/potion.tx" x="320" y="128"/>
+  <object id="258" template="../templates/items/potion.tx" x="256" y="960"/>
+  <object id="259" template="../templates/items/skull.tx" x="1152" y="576"/>
+  <object id="260" template="../templates/items/skull.tx" x="448" y="768"/>
  </objectgroup>
 </map>
